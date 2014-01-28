@@ -1,0 +1,55 @@
+/* Grid
+------------------------------------------------------------------------------------------------- */
+
+.container {
+  display: block;
+  width: 100%;
+  padding-left: 8%;
+  padding-right: 8%;
+
+  @media ( max-width: @screen-tiny-max ) {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+.row {
+  .make-row();
+}
+
+/*
+ * 1. Avoid column collapsing when empty
+ */
+.col {
+  position: relative;
+  float: left;
+  width: 100%;
+  min-height: 1px; /* 1 */
+  padding-left:  ( @grid-gutter-width / 2 );
+  padding-right: ( @grid-gutter-width / 2 );
+}
+
+@media all {
+  .generate-grid-columns( tiny );
+  .generate-grid-offset( tiny );
+}
+
+@media ( min-width: @screen-small ) {
+  .generate-grid-columns( small );
+  .generate-grid-offset( small );
+}
+
+@media ( min-width: @screen-medium ) {
+  .generate-grid-columns( medium );
+  .generate-grid-offset( medium );
+}
+
+@media ( min-width: @screen-large ) {
+  .generate-grid-columns( large );
+  .generate-grid-offset( large );
+}
+
+@media ( min-width: @screen-xlarge ) {
+  .generate-grid-columns( xlarge );
+  .generate-grid-offset( xlarge );
+}

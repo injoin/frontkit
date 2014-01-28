@@ -1,0 +1,56 @@
+/* Lists
+------------------------------------------------------------------------------------------------- */
+
+ul,
+ol {
+  padding: 0;
+  margin: 0 0 @margin-base-y unit( @line-height-base, rem );
+
+  > ul,
+  > ol {
+    margin-bottom: 0;
+  }
+}
+
+.list-unstyled,
+.list-inline {
+  margin-left: 0;
+  list-style: none;
+}
+
+.list-inline > li {
+  display: inline-block;
+  padding-left: ( @padding-base-x / 2 );
+  padding-right: ( @padding-base-x / 2 );
+}
+
+// Description Lists
+// -----------------
+
+dl {
+  margin-top: 0;
+  margin-bottom: @margin-base-y;
+}
+dt { font-weight: bold; }
+dd { margin-left: 0; }
+
+@media ( min-width: @screen-small ) {
+  /*
+   * 1. Make sure it always break to a new line
+   */
+  dl.dl-inline {
+    .clear-float();
+
+    dt {
+      float: left;
+      clear: left; /* 1 */
+      width: @offset-base-x;
+      text-align: right;
+      .text-overflow();
+    }
+
+    dd {
+      margin-left: calc( ~"@{offset-base-x} + @{padding-base-x}" );
+    }
+  }
+}

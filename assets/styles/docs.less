@@ -1,0 +1,97 @@
+@import "../../src/styles/frontkit.less";
+
+@theme-base-color: #00B5AD;
+
+@navbar-bg:                 @theme-base-color;
+@navbar-brand-color:        #fff;
+@navbar-brand-hover-color:  @navbar-brand-color;
+@navbar-link:               mix( @theme-base-color, #fff, 30% );
+@navbar-link-hover:         #fff;
+@navbar-active-link-bg:     transparent;
+
+.heading-background() {
+  color: #fff;
+  background: url( "../images/background.png" ) @theme-base-color;
+}
+
+body {
+  padding-top: @navbar-height;
+
+  &.home { .heading-background(); }
+}
+
+.docs-master-head {
+  .heading-background();
+
+  h1 {
+    line-height: 1;
+    font-size: 5rem;
+    font-weight: bold;
+    text-shadow: 0px 3px 10px rgba( 0, 0, 0, .5 );
+  }
+
+  .home & {
+    position: absolute;
+    top: 50%;
+    .transform( translateY( -50% ) );
+  }
+}
+
+.docs-navbar {
+  .box-shadow( 0 1px 0 rgba( 255, 255, 255, .5 ) );
+}
+
+.docs-sidebar {
+  //margin-top: -( hero-unit-padding-y * 2 );
+  padding: @padding-large-y 0;
+  background-color: lighten( @gray-lighter, 5% );
+}
+
+.docs-content {
+  > section + section {
+    margin-top: @margin-base-y;
+    padding-top: @margin-base-y;
+    border-top: 2px solid @divider-color;
+  }
+}
+
+.example {
+  position: relative;
+  margin-bottom: @margin-base-y;
+  padding: ( @padding-base-y + .6rem + unit( @line-height-base, rem ) ) @padding-base-x @padding-base-y;
+  border: 1px solid @gray-lighter;
+  border-radius: @border-radius-base;
+
+  &:before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: .3rem .5rem;
+    color: @gray-light;
+    font-weight: bold;
+    font-size: ( @font-size-small * .7 );
+    text-transform: uppercase;
+    background-color: @gray-lighter;
+    border-radius: @border-radius-base 0 @border-radius-base 0;
+    content: "Example";
+  }
+
+  + .highlight {
+    position: relative;
+    margin-top: calc( ~"-@{margin-base-y} - 3px" );
+    border-bottom-radius: @border-radius-base;
+  }
+
+  @media ( max-width: @screen-tiny-max ) {
+    &,
+    + .highlight {
+      margin-left: -( @grid-gutter-width / 2 );
+      margin-right: -( @grid-gutter-width / 2 );
+      border-radius: 0;
+    }
+  }
+}
+
+#focused-input {
+  .input-focus();
+}

@@ -1,0 +1,53 @@
+/* Code
+------------------------------------------------------------------------------------------------- */
+
+pre,
+code,
+kbd,
+samp {
+  font-size: @font-size-small;
+  border-radius: @border-radius-small;
+}
+
+samp,
+code,
+pre {
+  border: 1px solid @code-border;
+  color: @code-color;
+  background-color: @code-bg;
+}
+
+samp,
+code {
+  padding: .15rem .35rem;
+}
+
+pre {
+  display: block;
+  margin-bottom: @margin-base-y;
+  padding: @padding-base-y @padding-base-x;
+  color: @code-color;
+  background-color: @code-bg;
+
+  samp,
+  code {
+    border: none;
+    padding: 0;
+    background-color: transparent;
+  }
+}
+
+kbd {
+  padding: 2px 7px;
+  border: 1px solid @kbd-border;
+  color: @kbd-color;
+  .box-shadow( 0 1px 1px rgba( 0, 0, 0, 0.2 ) );
+}
+
+/*
+ * 1. Ensure that it doesn't break into 2 lines
+ */
+code,
+kbd {
+  white-space: nowrap; /* 1 */
+}

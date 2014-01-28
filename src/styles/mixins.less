@@ -1,0 +1,247 @@
+// MIXINS
+// -------------------------------------------------------------------------------------------------
+
+// Utilities
+// ----------
+
+// The good & old clearfix hack we all know.
+// http://nicolasgallagher.com/micro-clearfix-hack/
+.clear-float() {
+  &:before,
+  &:after {
+    content: " ";
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+// Text Overflow - requires display: inline-block or block to work
+.text-overflow() {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.tab-focus() {
+  // Default
+  outline: thin dotted #333;
+  // Webkit
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+
+// Vendor Prefix Helpers
+// ---------------------
+
+// user-select
+.user-select( @select ) {
+  -webkit-user-select: @select;
+     -moz-user-select: @select;
+      -ms-user-select: @select;
+       -o-user-select: @select;
+          user-select: @select;
+}
+
+// border-radius - single side
+.border-top-radius( @radius ) {
+  border-top-left-radius: @radius;
+  border-top-right-radius: @radius;
+}
+
+.border-left-radius( @radius ) {
+  border-top-left-radius: @radius;
+  border-bottom-left-radius: @radius;
+}
+
+.border-right-radius( @radius ) {
+  border-top-right-radius: @radius;
+  border-bottom-right-radius: @radius;
+}
+
+.border-bottom-radius( @radius ) {
+  border-bottom-left-radius: @radius;
+  border-bottom-right-radius: @radius;
+}
+
+// box-shadow
+.box-shadow( @shadow ) {
+  -webkit-box-shadow: @shadow; // iOS < 4.3 & Android < 4.1
+  box-shadow: @shadow;
+}
+
+// transform
+.transform( @transform ) {
+  -webkit-transform: @transform;
+     -moz-transform: @transform;
+          transform: @transform;
+}
+
+// transition
+.transition( @transition ) {
+  -webkit-transition: @transition;
+     -moz-transition: @transition;
+       -o-transition: @transition;
+          transition: @transition;
+}
+
+// box-sizing
+.box-sizing( @boxmodel ) {
+  -webkit-box-sizing: @boxmodel;
+     -moz-box-sizing: @boxmodel;
+          box-sizing: @boxmodel;
+}
+
+// hyphenation
+.hyphens( @mode: auto ) {
+  word-wrap: break-word;
+  -webkit-hyphens: @mode;
+     -moz-hyphens: @mode;
+      -ms-hyphens: @mode;
+       -o-hyphens: @mode;
+          hyphens: @mode;
+}
+
+.placeholder( @color: @input-placeholder-color ) {
+  &:-moz-placeholder            { color: @color; }
+  &::-moz-placeholder           { color: @color; }
+  &:-ms-input-placeholder       { color: @color; }
+  &::-webkit-input-placeholder  { color: @color; }
+}
+
+// Gradients
+// ---------
+
+#gradient {
+  .horizontal( @startColor, @endColor ) {
+    background-color: @endColor;
+    background-image: -webkit-linear-gradient( left, @startColor, @endColor ); // Safari 5.1+, Chrome 10+
+    background-image: -webkit-gradient( linear, 0 0, 100% 0, from( @startColor ), to( @endColor ) ); // Safari 4+, Chrome 2+
+    background-image: -moz-linear-gradient( left, @startColor, @endColor ); // FF 3.6+
+    background-image: -o-linear-gradient( left, @startColor, @endColor ); // Opera 11.10
+    background-image: linear-gradient( to right, @startColor, @endColor ); // Standard, IE10
+    background-repeat: repeat-x;
+    filter: e( %( "progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=1)", argb( @startColor ), argb( @endColor ) ) ); // IE9 and down
+  }
+
+  .vertical( @startColor, @endColor ) {
+    background-color: @endColor;
+    background-image: -webkit-linear-gradient( top, @startColor, @endColor ); // Safari 5.1+, Chrome 10+
+    background-image: -webkit-gradient( linear, 0 0, 0 100%, from( @startColor ), to( @endColor ) ); // Safari 4+, Chrome 2+
+    background-image: -moz-linear-gradient( top, @startColor, @endColor ); // FF 3.6+
+    background-image: -o-linear-gradient( top, @startColor, @endColor ); // Opera 11.10
+    background-image: linear-gradient( to bottom, @startColor, @endColor ); // Standard, IE10
+    background-repeat: repeat-x;
+    filter: e( %( "progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)", argb( @startColor ), argb( @endColor ) ) ); // IE9 and down
+  }
+}
+
+// Frontkit reusable elements
+// --------------------------
+
+// Link default styles
+.link() {
+  color: @link-color;
+
+  &:hover {
+    color: @link-color-hover;
+    text-decoration: underline;
+  }
+}
+
+// Input focus styles
+.input-focus( @border-color: @input-border-focus ) {
+  @inner-shadow-color: @border-color;
+  @outer-shadow-color: fade( @inner-shadow-color, 15% );
+
+  border-color: @border-color;
+  outline: 0;
+  .box-shadow( ~"inset 2px 0 @{inner-shadow-color}, 0 0 5px 3px @{outer-shadow-color}" );
+}
+
+// Input validation state styles
+.input-validation-state( @name, @color ) {
+  .validation-@{name} .input,
+  .input.validation-@{name} {
+    border-color: lighten( @color, 10% );
+    color: @color;
+
+    &:focus {
+      .input-focus( @color );
+    }
+  }
+}
+
+// Button variation
+.button-variation( @bg: @brand-default, @text: @text-color, @border: @btn-border ) {
+  border-color: @border;
+  color: @text;
+  background-color: @bg;
+
+  &:hover,
+  &:focus,
+  &:active,
+  &.active {
+    border-color: darken( @border, 10% );
+    color: @text;
+    background-color: darken( @bg, 5% );
+  }
+
+  &[ disabled ],
+  &.disabled,
+  .disabled & {
+    &,
+    &:hover,
+    &:focus,
+    &:active
+    &.active {
+      border-color: @border;
+      background-color: @bg;
+    }
+  }
+}
+
+// Grid & Layouts
+// --------------
+
+// Helper for grid rows
+.make-row() {
+  .clear-float();
+
+  // Negative margin the row out to align the content of columns
+  .row {
+    margin-left:  ( @grid-gutter-width / -2 );
+    margin-right: ( @grid-gutter-width / -2 );
+  }
+}
+
+// Generate grid columns
+.generate-grid-columns( @column-name, @columns-count: @grid-columns ) {
+  .span-x( @index ) when ( @index > 0 ) {
+    .@{column-name}-@{index} { .span( @index ); }
+    .span-x( ( @index - 1 ) );
+  }
+  .span-x( 0 ) {}
+
+  .span( @columns  ) {
+    width: percentage( ( @columns / @columns-count ) );
+  }
+
+  .span-x( @columns-count );
+}
+
+// Generate grid offsets
+.generate-grid-offset( @column-name, @columns-count: @grid-columns ) {
+  .offset-x( @index ) when ( @index > 0 ) {
+    .@{column-name}-offset-@{index} { .offset( @index ); }
+    .offset-x( ( @index - 1 ) );
+  }
+  .offset-x( 0 ) {}
+
+  .offset( @columns  ) {
+    margin-left: percentage( ( @columns / @columns-count ) );
+  }
+
+  .offset-x( @columns-count - 1 );
+}

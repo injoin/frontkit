@@ -1,0 +1,47 @@
+/* Nav
+------------------------------------------------------------------------------------------------- */
+
+.nav {
+  display: block;
+  list-style: none;
+  margin: 0;
+  padding-left: 0;
+
+  .nav-item,
+  .nav-header,
+  .nav-item > a {
+    position: relative;
+    display: block;
+  }
+
+  .nav-item > a {
+    text-decoration: none;
+  }
+}
+
+// Nav List
+// --------
+
+.nav.nav-list {
+  margin-bottom: @margin-base-y;
+
+  .nav-item > a {
+    padding: @padding-base-y @padding-base-x;
+    color: @nav-list-link-color;
+  }
+
+  .nav-item.active > a,
+  .nav-item > a:hover {
+    color: @nav-list-link-hover-color;
+    background-color: @nav-list-hover-bg;
+  }
+
+  .nav-header {
+    margin-bottom: 3px;
+    padding: 0 @padding-base-x;
+    color: @nav-list-header-color;
+    font-size: @font-size-small;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+}

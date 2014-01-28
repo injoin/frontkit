@@ -1,0 +1,43 @@
+/* Scaffolding
+------------------------------------------------------------------------------------------------- */
+
+/*
+ * 1. http://paulirish.com/2012/box-sizing-border-box-ftw/
+ * 2. Override Normalize, which uses content-box for input search
+ */
+*,
+*:before,
+*:after, /* 1 */
+input[ type="search" ] { /* 2 */
+  .box-sizing( border-box );
+}
+
+// Body reset
+// ----------
+html {
+  font-size: @font-size-base;
+  line-height: @line-height-base;
+  -webkit-tap-highlight-color: rgba( 0, 0, 0, 0 );
+}
+
+body {
+  font-family: @font-family-base;
+  color: @text-color;
+  background-color: @body-bg;
+}
+
+// Reset font stuff for form elements
+input,
+button,
+textarea,
+select {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+// Links
+// -----
+a {
+  .link();
+}

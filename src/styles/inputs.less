@@ -1,0 +1,57 @@
+/* Inputs
+------------------------------------------------------------------------------------------------- */
+
+.input {
+  display: inline-block;
+  width: 100%;
+  margin-bottom: @margin-base-y;
+  padding: @padding-base-y @padding-base-x;
+  border: 1px solid @input-border;
+  color: @input-color;
+  background-color: @input-bg;
+  border-radius: @input-border-radius;
+  .transition( ~"box-shadow .1s linear, border-color .1s linear" );
+
+  // Placeholder support
+  .placeholder();
+
+  &:focus {
+     .input-focus();
+  }
+}
+
+/*
+ * 1. Reset textarea height, because they have rows
+ * 2. Allow for vertical resizing only
+ */
+textarea.input {
+  height: auto; /* 1 */
+  resize: vertical; /* 2 */
+}
+
+// Validation states
+// -----------------
+.input-validation-state( warning, @brand-warning );
+.input-validation-state( error, @brand-danger );
+.input-validation-state( success, @brand-success );
+
+// Disabled inputs
+// ---------------
+
+/*
+ * 1. Overwrites validation states
+ */
+.input[ disabled ],
+.input.disabled,
+.disabled .input,
+.input[ readonly ] {
+  border-color: @input-border; /* 1 */
+  color: @input-color; /* 1 */
+  background-color: @input-disabled-bg;
+  cursor: not-allowed;
+
+  &:focus {
+    border-color: @input-border;
+    .box-shadow( none ); /* 1 */
+  }
+}

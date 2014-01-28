@@ -1,0 +1,175 @@
+// VARIABLES
+// -------------------------------------------------------------------------------------------------
+
+// Global
+// ------
+
+@large-factor:                1.25;
+@small-factor:                0.85;
+
+// Components
+// ----------
+
+// margin between components
+@margin-base-y:               unit( @line-height-base, rem );
+
+// border-radius default sizing
+@border-radius-large:         6px;
+@border-radius-base:          4px;
+@border-radius-small:         3px;
+
+// paddings
+@padding-base-y:              .5rem;
+@padding-base-x:              1rem;
+
+@padding-large-y:             ( @padding-base-y * @large-factor );
+@padding-large-x:             ( @padding-base-x * @large-factor );
+
+@padding-small-y:             ( @padding-base-y * @small-factor );
+@padding-small-x:             ( @padding-base-x * @small-factor );
+
+// component sizing
+@offset-base-x:               ( @font-size-base * 10 );
+@height-base:                 unit( @line-height-base, rem ) + ( @padding-base-y * 2 );
+
+// Colors
+// ------
+
+// Grays
+@gray-darker:                 lighten( #000, 12.5% );
+@gray-dark:                   lighten( #000, 20% );
+@gray:                        lighten( #000, 33.3% );
+@gray-light:                  lighten( #000, 60% );
+@gray-lighter:                lighten( #000, 92.5% );
+
+// Brands
+@brand-default:               #fff;
+@brand-primary:               #0088cc;
+@brand-success:               #5cb85c;
+@brand-warning:               #f0ad4e;
+@brand-danger:                #d9534f;
+@brand-info:                  #5bc0de;
+
+// Scaffolding
+// -----------
+@body-bg:                     #fff;
+@text-color:                  @gray-dark;
+@text-color-light:            @gray-light;
+
+// Links
+@link-color:                  @brand-primary;
+@link-color-hover:            darken( @link-color, 15% );
+
+// Typography
+// ----------
+@font-family-sans-serif:      "Helvetica Neue", Helvetica, Arial, sans-serif;
+@font-family-serif:           Georgia, "Times New Roman", Times, serif;
+@font-family-monospace:       Monaco, Menlo, Consolas, "Courier New", monospace;
+@font-family-base:            @font-family-sans-serif;
+
+@font-size-base:              16px;
+@font-size-large:             unit( @large-factor, rem );
+@font-size-small:             unit( @small-factor, rem );
+
+@line-height-base:            1.42;
+@line-height-computed:        ceil( @font-size-base * @line-height-base );
+
+// Headings
+@font-family-headings:        @font-family-base;
+@font-weight-headings:        normal;
+
+// Z-Indexes
+// ---------
+@zindex-navbar-fixed:         1000;
+
+// Code
+// ----
+@code-color:                  @gray-dark;
+@code-border:                 @gray-lighter;
+@code-bg:                     lighten( @gray-lighter, 4% );
+
+@kbd-color:                   gray;
+@kbd-border:                  #ddd;
+
+// Input
+// -----
+@input-bg:                    #fff;
+@input-disabled-bg:           #f4f4f4;
+
+@input-color:                 #606060;
+@input-placeholder-color:     lighten( @input-color, 10% );
+@input-border-radius:         @border-radius-base;
+@input-height-base:           @height-base;
+
+@input-border:                #ccc;
+@input-border-focus:          #52a8ec;
+
+// Buttons
+// -------
+@btn-border:                  #ccc;
+@btn-border-radius:           @border-radius-base;
+
+// Images
+// ------
+@image-rounded-radius:        4%;
+@image-border-color:          @gray-lighter;
+
+// Divider
+// -------
+@divider-color:               @gray-lighter;
+
+// Hero Unit
+// ---------
+@hero-unit-bg:                @gray-lighter;
+@hero-unit-padding-y:         @padding-large-y * 5;
+@hero-unit-padding-x:         @padding-large-x;
+
+// Labels
+// ------
+@label-border-radius:         .3em;
+@label-font-size:             80%;
+@label-color:                 #fff;
+
+@label-default:               darken( @brand-default, 30% );
+@label-success:               darken( @brand-success, 15% );
+@label-info:                  darken( @brand-info,    15% );
+@label-warning:               darken( @brand-warning, 15% );
+@label-danger:                darken( @brand-danger,  15% );
+
+// Nav
+// ---
+@nav-list-link-color:         @link-color;
+@nav-list-link-hover-color:   @link-color-hover;
+@nav-list-header-color:       @gray;
+@nav-list-hover-bg:           @gray-lighter;
+
+// Navbar
+// ------
+@navbar-bg:                   @gray-lighter;
+@navbar-height:               unit( 50px / @font-size-base, rem );
+@navbar-border-radius:        @border-radius-base;
+@navbar-border:               darken( @navbar-bg, 15% );
+
+@navbar-brand-color:          @gray-light;
+@navbar-brand-hover-color:    @gray-darker;
+
+@navbar-link:                 mix( @gray-light, gray );
+@navbar-link-hover:           @gray-darker;
+@navbar-active-link-bg:       darken( @navbar-bg, 5% );
+
+// Grid
+// ----
+@grid-columns:                12;
+@grid-gutter-width:           30px;
+
+// Responsive Utils
+// ----------------
+@screen-xlarge:               1600px;
+@screen-large:                1200px;
+@screen-medium:               960px;
+@screen-small:                768px;
+@screen-tiny:                 360px;
+
+@screen-medium-max:           ( @screen-large - 1px );
+@screen-small-max:            ( @screen-medium - 1px );
+@screen-tiny-max:             ( @screen-small - 1px );

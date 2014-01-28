@@ -1,0 +1,75 @@
+/* Navbar
+------------------------------------------------------------------------------------------------- */
+
+.navbar {
+  position: relative;
+  display: block;
+  width: 100%;
+  min-height: @navbar-height;
+  border: 1px solid @navbar-border;
+  background-color: @navbar-bg;
+  border-radius: @navbar-border-radius;
+
+  .clear-float();
+}
+
+// Brand
+// -----
+.navbar-brand {
+  display: inline-block;
+  float: left;
+  padding: ( ( @navbar-height - ( @line-height-base * @font-size-large ) ) / 2 ) @padding-base-x;
+  color: @navbar-brand-color;
+  font-size: @font-size-large;
+
+  &,
+  &:hover {
+    text-decoration: none;
+  }
+
+  &:hover {
+    color: @navbar-brand-hover-color;
+  }
+}
+
+// Nav
+// ---
+.navbar .nav {
+  float: left;
+  margin: 0 1rem;
+  .clear-float();
+}
+
+.navbar-nav .nav-item {
+  float: left;
+
+  > a {
+    padding: ( ( @navbar-height - @line-height-base ) / 2 ) @padding-base-x;
+    color: @navbar-link;
+  }
+
+  &.active {
+    background-color: @navbar-active-link-bg;
+  }
+
+  &.active > a,
+  > a:hover {
+    color: @navbar-link-hover;
+  }
+}
+
+// Fixed navbar
+// ------------
+.navbar-fixed-top,
+.navbar-fixed-bottom {
+  position: fixed;
+  left: 0;
+  right: 0;
+  z-index: @zindex-navbar-fixed;
+  border-left-width: 0;
+  border-right-width: 0;
+  border-radius: 0;
+}
+
+.navbar-fixed-top    { top: 0; }
+.navbar-fixed-bottom { bottom: 0; }
