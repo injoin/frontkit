@@ -2,7 +2,9 @@
 {% set docs = "code" %}
 
 {% block content %}
-    <h2>Code</h2>
+    <header class="page-header">
+        <h2>Code</h2>
+    </header>
 
     <section id="inline">
         <h3>Inline</h3>

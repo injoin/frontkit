@@ -2,7 +2,9 @@
 {% set docs = "images" %}
 
 {% block content %}
-    <h2>Images</h2>
+    <header class="page-header">
+        <h2>Images</h2>
+    </
 
     <section id="rounded">
         <h3>Rounded</h3>

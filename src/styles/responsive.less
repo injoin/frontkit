@@ -1,0 +1,39 @@
+/* Responsive Utils
+------------------------------------------------------------------------------------------------- */
+
+.visible-tiny   { .responsive-visible(); }
+.visible-small  { .responsive-invisible(); }
+.visible-medium { .responsive-invisible(); }
+.visible-large  { .responsive-invisible(); }
+.visible-xlarge { .responsive-invisible(); }
+
+.hidden-tiny    { .responsive-invisible(); }
+.hidden-small   { .responsive-visible(); }
+.hidden-medium  { .responsive-visible(); }
+.hidden-large   { .responsive-visible(); }
+.hidden-xlarge  { .responsive-visible(); }
+
+@media ( min-width: @screen-small ) {
+  .visible-tiny { .responsive-invisible(); }
+  .hidden-tiny  { .responsive-visible(); }
+}
+
+@media ( min-width: @screen-small ) and ( max-width: @screen-small-max ) {
+  .visible-small { .responsive-visible(); }
+  .hidden-small  { .responsive-invisible(); }
+}
+
+@media ( min-width: @screen-medium ) and ( max-width: @screen-medium-max ) {
+  .visible-medium { .responsive-visible(); }
+  .hidden-medium  { .responsive-invisible(); }
+}
+
+@media ( min-width: @screen-large ) {
+  .visible-large { .responsive-visible(); }
+  .hidden-large  { .responsive-invisible(); }
+}
+
+@media ( min-width: @screen-xlarge ) {
+  .visible-xlarge { .responsive-visible(); }
+  .hidden-xlarge  { .responsive-invisible(); }
+}

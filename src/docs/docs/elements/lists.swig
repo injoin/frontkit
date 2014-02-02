@@ -2,7 +2,9 @@
 {% set docs = "lists" %}
 
 {% block content %}
-    <h2>Lists</h2>
+    <header class="page-header">
+        <h2>Lists</h2>
+    </header>
 
     <section id="unordered">
         <h3>Unordered</h3>

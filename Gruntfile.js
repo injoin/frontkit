@@ -7,7 +7,11 @@ module.exports = function( grunt ) {
 
     // Configurations
     grunt.initConfig({
+        /* Variables
+        ----------------------------------------------------------------------------------------- */
         pkg: grunt.file.readJSON( "package.json" ),
+        env: env,
+        liveReload: liveReload,
 
         /* Watch
         ----------------------------------------------------------------------------------------- */
@@ -28,12 +32,29 @@ module.exports = function( grunt ) {
                 tasks: []
             },
             docsHTML: {
-                files: [ "src/docs/**/*.swig" ],
+                files: [ "src/docs/**/*.swig", "build/*.json" ],
                 tasks: [ "swig:docs" ]
             },
             docsCSS: {
                 files: [ "assets/**/*.less", "<%= watch.styles.files %>" ],
                 tasks: [ "less:docs" ]
+            }
+        },
+
+        /* Deps
+        ----------------------------------------------------------------------------------------- */
+        bower: {
+            install: {
+                options: {
+                    // Install stuff to a different folder
+                    targetDir: "assets/vendor",
+
+                    // Make sure everything is cleaned up
+                    cleanup: true,
+
+                    // Storing files by component is more elegant
+                    layout: "byComponent"
+                }
             }
         },
 
@@ -62,16 +83,18 @@ module.exports = function( grunt ) {
         swig: {
             docs: {
                 options: {
-                    data: {
-                        pkg: "<%= pkg %>",
-                        env: env,
-                        liveReload: liveReload,
-                        basePath: process.env.BASE_PATH || "/"
+                    // Use a function, so we can always refresh menu items when there're changes
+                    data: function() {
+                        return {
+                            env: "<%= env %>",
+                            pkg: "<%= pkg %>",
+                            basePath: process.env.BASE_PATH || "/",
+                            menu: grunt.file.readJSON( "build/docs-menu.json" )
+                        };
                     },
-                    tags: require( "./build/swig-tags" ),
-                    swigOptions: {
-                        varControls: [ "<%=", "%>" ]
-                    }
+
+                    // Require some extra tags
+                    tags: require( "./build/swig-tags" )
                 },
                 expand: true,
                 cwd: "src/docs/",
@@ -92,15 +115,13 @@ module.exports = function( grunt ) {
     });
 
     // Task loading
-    grunt.loadNpmTasks( "grunt-contrib-jade" );
-    grunt.loadNpmTasks( "grunt-contrib-less" );
-    grunt.loadNpmTasks( "grunt-contrib-concat" );
-    grunt.loadNpmTasks( "grunt-contrib-watch" );
-    grunt.loadNpmTasks( "grunt-contrib-connect" );
-    grunt.loadNpmTasks( "grunt-swig2" );
+    require( "load-grunt-tasks" )( grunt );
 
-    grunt.registerTask( "default", [
-        "less",
-        "swig"
-    ]);
+    // Elapsed time reporting
+    require( "time-grunt" )( grunt );
+
+    // Aliases
+    grunt.registerTask( "docs", [ "less:docs", "swig" ] );
+
+    grunt.registerTask( "default", [ "less:main" ] );
 };

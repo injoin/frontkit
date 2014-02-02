@@ -1,0 +1,19 @@
+{
+    "name": "frontkit",
+    "version": "0.0.1",
+    "dependencies": {
+
+    },
+    "devDependencies": {
+        "holderjs": "*",
+        "highlight": "*"
+    },
+    "exportsOverride": {
+        "holderjs": {
+            "js": "holder.js"
+        },
+        "highlight": {
+            "css": "src/styles/github.css"
+        }
+    }
+}

@@ -1,5 +1,11 @@
-@import "../../src/styles/frontkit.less";
+// Imports
+// -------
+@import "../../src/styles/variables.less";
+@import "../../src/styles/mixins.less";
 
+
+// Variables
+// ---------
 @theme-base-color: #00B5AD;
 
 @navbar-bg:                 @theme-base-color;
@@ -9,10 +15,14 @@
 @navbar-link-hover:         #fff;
 @navbar-active-link-bg:     transparent;
 
+// Mixins
+// ------
 .heading-background() {
   color: #fff;
   background: url( "../images/background.png" ) @theme-base-color;
 }
+
+// -------------------------------------------------------------------------------------------------
 
 body {
   padding-top: @navbar-height;
@@ -33,18 +43,38 @@ body {
   .home & {
     position: absolute;
     top: 50%;
-    .transform( translateY( -50% ) );
+    left: 50%;
+    .transform( translate( -50%, -50% ) );
   }
 }
 
 .docs-navbar {
+  border-color: @navbar-border;
+  background: @navbar-bg;
   .box-shadow( 0 1px 0 rgba( 255, 255, 255, .5 ) );
+
+  .navbar-brand {
+    color: @navbar-brand-color;
+
+    &:hover {
+      color: @navbar-brand-hover-color;
+    }
+  }
+
+  .navbar-nav .nav-item {
+    > a { color: @navbar-link; }
+
+    &.active { background-color: @navbar-active-link-bg; }
+
+    &.active > a,
+    > a:hover { color: @navbar-link-hover; }
+  }
 }
 
 .docs-sidebar {
   //margin-top: -( hero-unit-padding-y * 2 );
   padding: @padding-large-y 0;
-  background-color: lighten( @gray-lighter, 5% );
+  background-color: lighten( @gray-light-2, 5% );
 }
 
 .docs-content {
@@ -55,11 +85,54 @@ body {
   }
 }
 
+.docs-heading {
+  position: relative;
+
+  .docs-anchor {
+    position: absolute;
+    top: 10%;
+    left: -1em;
+    display: block;
+    padding: 0 .25em;
+    color: @gray;
+    font-size: 80%;
+    text-decoration: none;
+    opacity: 0;
+    .transition( opacity .1s linear );
+  }
+
+  &:hover .docs-anchor {
+    opacity: 1;
+  }
+}
+
+// Examples
+// --------
+
+// Grid
+.grid-example {
+  .col {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border: 1px solid @gray-light-1;
+    background-color: @gray-light-2;
+
+    &:hover {
+      background-color: darken( @gray-light-2, 5% );
+    }
+  }
+
+  .row {
+    margin-bottom: @margin-base-y;
+  }
+}
+
+// General
 .example {
   position: relative;
   margin-bottom: @margin-base-y;
   padding: ( @padding-base-y + .6rem + unit( @line-height-base, rem ) ) @padding-base-x @padding-base-y;
-  border: 1px solid @gray-lighter;
+  border: 1px solid @gray-light-2;
   border-radius: @border-radius-base;
 
   &:before {
@@ -67,11 +140,11 @@ body {
     top: 0;
     left: 0;
     padding: .3rem .5rem;
-    color: @gray-light;
+    color: @gray;
     font-weight: bold;
     font-size: ( @font-size-small * .7 );
     text-transform: uppercase;
-    background-color: @gray-lighter;
+    background-color: @gray-light-2;
     border-radius: @border-radius-base 0 @border-radius-base 0;
     content: "Example";
   }
@@ -92,6 +165,8 @@ body {
   }
 }
 
+// Helpers
+// -------
 #focused-input {
   .input-focus();
 }

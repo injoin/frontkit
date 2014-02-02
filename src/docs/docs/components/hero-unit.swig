@@ -2,7 +2,9 @@
 {% set docs = "hero-unit" %}
 
 {% block content %}
-    <h2>Hero Unit</h2>
+    <header class="page-header">
+        <h2>Hero Unit</h2>
+    </header>
 
     <p class="lead">
         A lightweight but awesome component to showcase your key content, for example.

@@ -1,0 +1,80 @@
+/* Forms
+------------------------------------------------------------------------------------------------- */
+
+form {
+  margin: 0;
+}
+
+fieldset {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+legend :extend( .page-header ) {
+  width: 100%;
+  padding-bottom: 3px;
+  font-size: @form-legend-font-size;
+}
+
+label {
+  display: inline-block;
+}
+
+// Form Groups
+// -----------
+.form-group {
+  display: block;
+  margin-bottom: ( @margin-base-y / 2 );
+
+  label,
+  .input,
+  .form-help-block {
+    margin-bottom: ( @margin-small-y / 2 );
+  }
+
+  label {
+    font-weight: bold;
+  }
+}
+
+// Form Help
+// ---------
+.form-help-block {
+  display: block;
+  font-size: @font-size-small;
+}
+
+// Checkboxes & radios
+// -------------------
+.form-checkbox,
+.form-radio {
+  display: block;
+  padding-left: @padding-large-y * 2;
+
+  label,
+  label& {
+    font-weight: normal;
+  }
+}
+
+.form-checkbox input[type="checkbox"],
+.form-radio input[type="radio"] {
+  float: left;
+  margin-top: 4px;
+  margin-left: -@padding-large-y * 2;
+}
+
+// Inline form
+// -----------
+/*
+ * 1. Ensure that inputs don't use the whole row
+ */
+.form-inline {
+  .input {
+    width: auto; /* 1 */
+    display: inline-block;
+    margin-bottom: 0;
+    vertical-align: middle;
+  }
+}

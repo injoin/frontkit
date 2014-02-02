@@ -1,0 +1,31 @@
+/* Layout
+------------------------------------------------------------------------------------------------- */
+
+.container {
+  display: block;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: ( @grid-gutter-width / 2 );
+  padding-right: ( @grid-gutter-width / 2 );
+
+  @media ( max-width: @screen-tiny-max ) {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+// Container sizing
+// ----------------
+
+// Small screens (tablets and old monitors)
+.container-sizing( @screen-small, @container-small );
+
+// Medium screens (desktops and some tablets)
+.container-sizing( @screen-medium, @container-medium );
+
+// Large screens (modern monitors and newer)
+.container-sizing( @screen-large,  @container-large );
+
+// X-Large screens (modern monitors and newer)
+.container-sizing( @screen-xlarge, @container-xlarge );

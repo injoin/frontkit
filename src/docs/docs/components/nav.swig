@@ -8,40 +8,24 @@
         class, what makes it easier to switch styles.
     </p>
 
-    <section>
-        <h3>Nav Lists</h3>
+    <section id="nav-lists">
+        {{ macros.docsSectionTitle( "Nav Lists", "nav-lists", 3 ) }}
+        <p>Nav lists are vertical navigations that have light styles.</p>
 
         <div class="example">
             <ul class="nav nav-list">
                 <li class="nav-header">Header</li>
-                <li class="nav-item"><a href>Item 1</a></li>
-                <li class="nav-item"><a href>Item 2</a></li>
+                <li class="nav-item"><a href="#">Item</a></li>
+                <li class="nav-item active"><a href="#">Active Item</a></li>
+                <li class="nav-item"><a href="#">Item</a></li>
             </ul>
         </div>
         {% highlight xml %}
             <ul class="nav nav-list">
                 <li class="nav-header">Header</li>
-                <li class="nav-item"><a href>Item 1</a></li>
-                <li class="nav-item"><a href>Item 2</a></li>
-            </ul>
-        {% endhighlight %}
-    </section>
-
-    <section>
-        <h3>Nav Lists</h3>
-
-        <div class="example">
-            <ul class="nav nav-list">
-                <li class="nav-header">Header</li>
-                <li class="nav-item"><a href>Item 1</a></li>
-                <li class="nav-item"><a href>Item 2</a></li>
-            </ul>
-        </div>
-        {% highlight xml %}
-            <ul class="nav nav-list">
-                <li class="nav-header">Header</li>
-                <li class="nav-item"><a href>Item 1</a></li>
-                <li class="nav-item"><a href>Item 2</a></li>
+                <li class="nav-item"><a href="#">Item</a></li>
+                <li class="nav-item active"><a href="#">Active Item</a></li>
+                <li class="nav-item"><a href="#">Item</a></li>
             </ul>
         {% endhighlight %}
     </section>

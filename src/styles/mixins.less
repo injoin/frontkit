@@ -202,6 +202,15 @@
   }
 }
 
+// Frontkit component helpers
+// --------------------------
+.navbar-spacing( @height: @line-height-base, @prop: padding ) {
+  @value: ( ( @navbar-height - @height ) / 2 ) - @one-px;
+
+  @{prop}-top: @value;
+  @{prop}-bottom: @value;
+}
+
 // Grid & Layouts
 // --------------
 
@@ -244,4 +253,32 @@
   }
 
   .offset-x( @columns-count - 1 );
+}
+
+.container-sizing( @screen, @container ) {
+  @media screen and ( min-width: @screen ) {
+    .container {
+      max-width: @container;
+    }
+  }
+}
+
+// Responsive Utilities
+// --------------------
+.responsive-visible() {
+  display: block !important;
+
+  tr& { display: table-row !important; }
+
+  th&,
+  td& { display: table-cell !important; }
+}
+
+.responsive-invisible() {
+  display: none !important;
+
+  tr& { display: none !important; }
+
+  th&,
+  td& { display: none !important; }
 }

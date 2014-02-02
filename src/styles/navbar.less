@@ -18,9 +18,11 @@
 .navbar-brand {
   display: inline-block;
   float: left;
-  padding: ( ( @navbar-height - ( @line-height-base * @font-size-large ) ) / 2 ) @padding-base-x;
+  padding-left: @padding-base-x;
+  padding-right: @padding-base-x;
   color: @navbar-brand-color;
   font-size: @font-size-large;
+  .navbar-spacing( @line-height-base * @font-size-large );
 
   &,
   &:hover {
@@ -36,7 +38,6 @@
 // ---
 .navbar .nav {
   float: left;
-  margin: 0 1rem;
   .clear-float();
 }
 
@@ -44,8 +45,10 @@
   float: left;
 
   > a {
-    padding: ( ( @navbar-height - @line-height-base ) / 2 ) @padding-base-x;
     color: @navbar-link;
+    padding-left: @padding-base-x;
+    padding-right: @padding-base-x;
+    .navbar-spacing();
   }
 
   &.active {
@@ -55,6 +58,42 @@
   &.active > a,
   > a:hover {
     color: @navbar-link-hover;
+  }
+}
+
+// Navbar form
+// -----------
+.navbar-form :extend( .form-inline all ) {
+  float: left;
+  padding: 0 @padding-base-x;
+
+  .input {
+    .navbar-spacing( @input-height-base, margin );
+  }
+}
+
+// Navbar text
+// -----------
+.navbar-text {
+  float: left;
+  margin: 0;
+  padding: 0 @padding-base-x;
+  color: @navbar-text;
+  .navbar-spacing();
+}
+
+// Navbar link
+// -----------
+.navbar-link {
+  color: @navbar-link;
+
+  &:hover {
+    color: @navbar-link-hover;
+  }
+
+  &,
+  &:hover {
+    text-decoration: none;
   }
 }
 
@@ -73,3 +112,28 @@
 
 .navbar-fixed-top    { top: 0; }
 .navbar-fixed-bottom { bottom: 0; }
+
+// Navbar collapsing
+// -----------------
+.navbar-toggle :extend( .btn all ) {
+  display: none;
+  margin: 0 @padding-base-x;
+
+  .icon {
+    display: block;
+    width: 1.5rem;
+    height: unit( @input-height-base, rem );
+  }
+}
+
+@media ( max-width: @screen-small-max ) {
+  .navbar-toggle {
+    display: inline-block;
+    float: left;
+    .navbar-spacing( @input-height-base, margin );
+  }
+
+  .navbar-collapse {
+    display: none;
+  }
+}

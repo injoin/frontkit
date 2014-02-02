@@ -2,7 +2,9 @@
 {% set docs = "labels" %}
 
 {% block content %}
-    <h2>Labels</h2>
+    <header class="page-header">
+        <h2>Labels</h2>
+    </
     <p class="lead">Give your components some labels for easily distinguish them from the others.</p>
 
     <section id="default">

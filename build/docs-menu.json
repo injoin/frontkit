@@ -1,0 +1,26 @@
+{
+    "elements": {
+        "label": "Elements",
+        "items": {
+            "grid": "Grid",
+            "typography": "Typography",
+            "headings": "Headings",
+            "code": "Code",
+            "lists": "Lists",
+            "tables": "Tables",
+            "forms": "Forms",
+            "inputs": "Inputs",
+            "buttons": "Buttons",
+            "images": "Images"
+        }
+    },
+    "components": {
+        "label": "Components",
+        "items": {
+            "hero-unit": "Hero Unit",
+            "labels": "Labels",
+            "nav": "Nav",
+            "navbar": "Navbar"
+        }
+    }
+}

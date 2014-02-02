@@ -3,7 +3,9 @@
 {% set docs = "typography" %}
 
 {% block content %}
-    <h2>Typography</h2>
+    <header class="page-header">
+        <h2>Typography</h2>
+    </header>
 
     <section id="body-copy">
         <h3>Body copy</h3>

@@ -6,12 +6,14 @@
 
 @large-factor:                1.25;
 @small-factor:                0.85;
+@one-px:                      unit( 1px / @font-size-base, rem );
 
 // Components
 // ----------
 
 // margin between components
 @margin-base-y:               unit( @line-height-base, rem );
+@margin-small-y:              ( @margin-base-y * @small-factor );
 
 // border-radius default sizing
 @border-radius-large:         6px;
@@ -30,17 +32,19 @@
 
 // component sizing
 @offset-base-x:               ( @font-size-base * 10 );
-@height-base:                 unit( @line-height-base, rem ) + ( @padding-base-y * 2 );
+@height-base:                 unit( @line-height-base, rem ) + ( @padding-base-y * 2 ) + ( 2 * @one-px );
 
 // Colors
 // ------
 
 // Grays
-@gray-darker:                 lighten( #000, 12.5% );
-@gray-dark:                   lighten( #000, 20% );
-@gray:                        lighten( #000, 33.3% );
-@gray-light:                  lighten( #000, 60% );
-@gray-lighter:                lighten( #000, 92.5% );
+@gray:                        #999;
+@gray-dark-1:                 darken( @gray, 20% );
+@gray-dark-2:                 darken( @gray, 40% );
+@gray-dark-3:                 darken( @gray, 46.5% );
+@gray-light-1:                lighten( @gray, 20% );
+@gray-light-2:                lighten( @gray, 33.5% );
+@gray-light-3:                lighten( @gray, 38.5% );
 
 // Brands
 @brand-default:               #fff;
@@ -53,8 +57,8 @@
 // Scaffolding
 // -----------
 @body-bg:                     #fff;
-@text-color:                  @gray-dark;
-@text-color-light:            @gray-light;
+@text-color:                  #333;
+@text-color-light:            #999;
 
 // Links
 @link-color:                  @brand-primary;
@@ -71,8 +75,8 @@
 @font-size-large:             unit( @large-factor, rem );
 @font-size-small:             unit( @small-factor, rem );
 
-@line-height-base:            1.42;
-@line-height-computed:        ceil( @font-size-base * @line-height-base );
+@line-height-computed:        22px;
+@line-height-base:            unit( @line-height-computed / @font-size-base );
 
 // Headings
 @font-family-headings:        @font-family-base;
@@ -84,11 +88,11 @@
 
 // Code
 // ----
-@code-color:                  @gray-dark;
-@code-border:                 @gray-lighter;
-@code-bg:                     lighten( @gray-lighter, 4% );
+@code-color:                  #333;
+@code-border:                 #eee;
+@code-bg:                     lighten( @code-border, 5% );
 
-@kbd-color:                   gray;
+@kbd-color:                   #999;
 @kbd-border:                  #ddd;
 
 // Input
@@ -112,15 +116,30 @@
 // Images
 // ------
 @image-rounded-radius:        4%;
-@image-border-color:          @gray-lighter;
+@image-border-color:          #eee;
 
 // Divider
 // -------
-@divider-color:               @gray-lighter;
+@divider-color:               #eee;
+
+// Forms
+// -----
+@form-legend-font-size:       1.5rem;
+
+// Tables
+// ------
+@table-bg:                    @body-bg;
+@table-bg-header:             fade( #000, 5% );
+@table-bg-accent:             fade( #000, 1.5% );
+@table-bg-hover:              @table-bg-accent;
+@table-border:                @gray-light-2;
+@table-header-border:         darken( @table-border, 5% );
+
+@table-border-radius:         @border-radius-base;
 
 // Hero Unit
 // ---------
-@hero-unit-bg:                @gray-lighter;
+@hero-unit-bg:                @gray-light-2;
 @hero-unit-padding-y:         @padding-large-y * 5;
 @hero-unit-padding-x:         @padding-large-x;
 
@@ -141,20 +160,21 @@
 @nav-list-link-color:         @link-color;
 @nav-list-link-hover-color:   @link-color-hover;
 @nav-list-header-color:       @gray;
-@nav-list-hover-bg:           @gray-lighter;
+@nav-list-hover-bg:           @gray-light-2;
 
 // Navbar
 // ------
-@navbar-bg:                   @gray-lighter;
+@navbar-bg:                   @gray-light-2;
 @navbar-height:               unit( 50px / @font-size-base, rem );
 @navbar-border-radius:        @border-radius-base;
 @navbar-border:               darken( @navbar-bg, 15% );
+@navbar-text:                 @gray-dark-1;
 
-@navbar-brand-color:          @gray-light;
-@navbar-brand-hover-color:    @gray-darker;
+@navbar-brand-color:          @gray;
+@navbar-brand-hover-color:    @gray-dark-2;
 
-@navbar-link:                 mix( @gray-light, gray );
-@navbar-link-hover:           @gray-darker;
+@navbar-link:                 @gray-dark-1;
+@navbar-link-hover:           @gray-dark-3;
 @navbar-active-link-bg:       darken( @navbar-bg, 5% );
 
 // Grid
@@ -166,10 +186,18 @@
 // ----------------
 @screen-xlarge:               1600px;
 @screen-large:                1200px;
-@screen-medium:               960px;
+@screen-medium:               980px;
 @screen-small:                768px;
 @screen-tiny:                 360px;
 
-@screen-medium-max:           ( @screen-large - 1px );
+// Container sizing
+@container-xlarge:            1570px;
+@container-large:             1170px;
+@container-medium:            960px;
+@container-small:             750px;
+
+// Max media query sizing per each screen size
+@screen-large-max:            ( @screen-xlarge - 1px );
+@screen-medium-max:           ( @screen-large  - 1px );
 @screen-small-max:            ( @screen-medium - 1px );
-@screen-tiny-max:             ( @screen-small - 1px );
+@screen-tiny-max:             ( @screen-small  - 1px );

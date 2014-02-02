@@ -1,4 +1,4 @@
-/* Headers
+/* Headings
 ------------------------------------------------------------------------------------------------- */
 
 h1,
@@ -20,11 +20,12 @@ h6 {
   }
 }
 
-h1 { font-size: 3.5rem; }
-h2 { font-size: 3rem; }
-h3 { font-size: 2.5rem; }
-h4 { font-size: 1.9rem; }
-h5 { font-size: 1.5rem; }
+
+h1 { font-size: 2.4rem; }
+h2 { font-size: 2.1rem; }
+h3 { font-size: 1.75rem; }
+h4 { font-size: 1.5rem; }
+h5 { font-size: 1.25rem; }
 h6 { font-size: 1rem; }
 
 h1,
@@ -39,4 +40,12 @@ h5,
 h6 {
   margin-top: ( @margin-base-y / 2 );
   margin-bottom: ( @margin-base-y / 2 );
+}
+
+// Page headers
+// ------------
+.page-header {
+  display: block;
+  margin-bottom: @margin-base-y;
+  border-bottom: 1px solid @gray-light-2;
 }

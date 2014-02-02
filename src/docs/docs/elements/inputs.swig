@@ -2,7 +2,9 @@
 {% set docs = "inputs" %}
 
 {% block content %}
-    <h2>Inputs</h2>
+    <header class="page-header">
+        <h2>Inputs</h2>
+    </header>
     <p class="lead">Inputs are simple form controls that allow the user to enter information.</p>
 
     <section class="default">

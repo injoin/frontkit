@@ -2,7 +2,9 @@
 {% set docs = "buttons" %}
 
 {% block content %}
-    <h2>Buttons</h2>
+    <header class="page-header">
+        <h2>Buttons</h2>
+    </header>
     <p class="lead">Buttons denote some possible action for the user.</p>
 
     <section id="default">
