@@ -10,7 +10,7 @@
         {# Styles #}
         <link rel="stylesheet" href="{{ macros.baseUrl( "dist/frontkit.css" ) }}">
         <link rel="stylesheet" href="{{ macros.baseUrl( "assets/styles/docs.css" ) }}">
-        <link rel="stylesheet" href="{{ macros.baseUrl( "assets/vendor/highlightjs.css" ) }}">
+        <link rel="stylesheet" href="{{ macros.baseUrl( "libs/highlightjs/styles/github.css" ) }}">
     </head>
     <body class="{{ currentPage }}">
         <div class="navbar navbar-fixed-top docs-navbar">
@@ -34,6 +34,6 @@
 
         {% block page %}{% endblock %}
 
-        <script src="{{ macros.baseUrl( "assets/vendor/holder.js" ) }}"></script>
+        <script src="{{ macros.baseUrl( "libs/holderjs/holder.js" ) }}"></script>
     </body>
 </html>
