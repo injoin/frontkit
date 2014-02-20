@@ -1,5 +1,11 @@
+# IDE stuff
 .idea/
+*.iml
+
+# Generated files
 *.html
 dist/
+
+# Dependencies
 node_modules/
-assets/vendor/
+libs/

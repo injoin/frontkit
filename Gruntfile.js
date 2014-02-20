@@ -41,23 +41,6 @@ module.exports = function( grunt ) {
             }
         },
 
-        /* Deps
-        ----------------------------------------------------------------------------------------- */
-        bower: {
-            install: {
-                options: {
-                    // Install stuff to a different folder
-                    targetDir: "assets/vendor",
-
-                    // Make sure everything is cleaned up
-                    cleanup: true,
-
-                    // Storing files by component is more elegant
-                    layout: "byComponent"
-                }
-            }
-        },
-
         /* Styles
         ----------------------------------------------------------------------------------------- */
         less: {
@@ -114,14 +97,15 @@ module.exports = function( grunt ) {
         }
     });
 
-    // Task loading
-    require( "load-grunt-tasks" )( grunt );
-
     // Elapsed time reporting
     require( "time-grunt" )( grunt );
 
+    // Task loading
+    require( "load-grunt-tasks" )( grunt );
+    grunt.loadTasks( "build/tasks" );
+
     // Aliases
     grunt.registerTask( "docs", [ "less:docs", "swig" ] );
-
-    grunt.registerTask( "default", [ "less:main" ] );
+    grunt.registerTask( "package", [ "less:main" ] );
+    grunt.registerTask( "default", [ "deps", "package", "docs" ] );
 };
