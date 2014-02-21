@@ -7,11 +7,39 @@
     </header>
     <p class="lead">
         Included within Frontkit, there is an responsive, mobile-first, percent-based grid
-        system of 12 columns that scales up or down as needed.
+        system of 12, 16 and 24 columns that scales up or down as needed.
     </p>
 
+    <section id="classes">
+        {{ macros.docsSectionTitle( "Grid class pattern", "classes", 3 ) }}
+
+        <p>
+            All grid classes in Frontkit have the following pattern:
+            <strong>prefix</strong> + <strong>columns</strong> + <strong>grid size</strong>.
+            A base class <code>.column</code> must also be used.
+            A valid example is <code>.column.medium-4-12</code>.
+        </p>
+        <p>
+            We think that grids with such class pattern fixes a major problem of other responsive grids:
+            <strong>the capability of augmenting styles without HTML refactoring.</strong>
+        </p>
+        <p>
+            Suppose a CSS framework gives you 12 columns per grid row, what is the usual default.
+            His classes will look like <code>.medium-4</code> -
+            in this example, that's a width of 25%.
+        </p>
+        <p>
+            Now you decide a new page in your app or website will need more than 12 columns - 16,
+            for example. Using such framework, you would need to adapt <strong>every</strong> usage
+            of your classes to match the new size.
+        </p>
+        <p>
+            This sucks, and that's why we think our grid system is awesome!
+        </p>
+    </section>
+
     <section id="options">
-        <h3>Grid Options</h3>
+        {{ macros.docsSectionTitle( "Grid options", "classes", 3 ) }}
         <p>Below are listed some options that are inherent to each grid size.</p>
 
         <div class="table-responsive">
@@ -44,7 +72,7 @@
                 <tbody>
                     <tr>
                         <th># of columns</th>
-                        <td colspan="5">12 (default)</td>
+                        <td colspan="5">12, 16 and 24</td>
                     </tr>
                     <tr>
                         <th>Class prefix</th>
@@ -75,5 +103,13 @@
         </div>
     </section>
 
-    <p><strong>TODO:</strong> create examples</p>
+    <section id="examples">
+        {{ macros.docsSectionTitle( "Examples", "examples", 3 ) }}
+        <p>TODO</p>
+    </section>
+
+    <section id="golden-ratio">
+        {{ macros.docsSectionTitle( "Golden Ratio Grid", "goloden-ratio", 3 ) }}
+        <p>TODO</p>
+    </section>
 {% endblock %}

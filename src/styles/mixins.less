@@ -226,12 +226,11 @@
 }
 
 // Generate grid columns
-.generate-grid-columns( @column-name, @columns-count: @grid-columns ) {
+.generate-grid-columns( @column-name, @columns-count ) {
   .span-x( @index ) when ( @index > 0 ) {
-    .@{column-name}-@{index} { .span( @index ); }
+    .@{column-name}-@{index}-@{columns-count} { .span( @index ); }
     .span-x( ( @index - 1 ) );
   }
-  .span-x( 0 ) {}
 
   .span( @columns  ) {
     width: percentage( ( @columns / @columns-count ) );
@@ -241,18 +240,41 @@
 }
 
 // Generate grid offsets
-.generate-grid-offset( @column-name, @columns-count: @grid-columns ) {
+.generate-grid-offset( @column-name, @columns-count ) {
   .offset-x( @index ) when ( @index > 0 ) {
-    .@{column-name}-offset-@{index} { .offset( @index ); }
+    .@{column-name}-offset-@{index}-@{columns-count} { .offset( @index ); }
     .offset-x( ( @index - 1 ) );
   }
-  .offset-x( 0 ) {}
 
   .offset( @columns  ) {
     margin-left: percentage( ( @columns / @columns-count ) );
   }
 
   .offset-x( @columns-count - 1 );
+}
+
+// Generate golden ratio grid
+.generate-golden-grid( @column-name ) {
+  .@{column-name}-golden-long {
+    width: percentage( @golden-ratio );
+  }
+
+  .@{column-name}-golden-short {
+    width: percentage( 1 - @golden-ratio );
+  }
+}
+
+.grid-columns-loop( @column-name, @grid-size: @grid-columns ) {
+  .grid( @index ) when ( @index > 0 ) {
+    .generate-grid-columns( @column-name, extract( @grid-size, @index ) );
+    .generate-grid-offset( @column-name, extract( @grid-size, @index ) );
+
+    .grid( @index - 1 );
+  }
+
+  .generate-golden-grid( @column-name );
+
+  .grid( length( @grid-size ) );
 }
 
 .container-sizing( @screen, @container ) {

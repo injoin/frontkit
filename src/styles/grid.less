@@ -8,7 +8,7 @@
 /*
  * 1. Avoid column collapsing when empty
  */
-.col {
+.column {
   position: relative;
   float: left;
   width: 100%;
@@ -18,26 +18,21 @@
 }
 
 @media all {
-  .generate-grid-columns( tiny );
-  .generate-grid-offset( tiny );
+  .grid-columns-loop( tiny );
 }
 
 @media ( min-width: @screen-small ) {
-  .generate-grid-columns( small );
-  .generate-grid-offset( small );
+  .grid-columns-loop( small );
 }
 
 @media ( min-width: @screen-medium ) {
-  .generate-grid-columns( medium );
-  .generate-grid-offset( medium );
+  .grid-columns-loop( medium );
 }
 
 @media ( min-width: @screen-large ) {
-  .generate-grid-columns( large );
-  .generate-grid-offset( large );
+  .grid-columns-loop( large );
 }
 
 @media ( min-width: @screen-xlarge ) {
-  .generate-grid-columns( xlarge );
-  .generate-grid-offset( xlarge );
+  .grid-columns-loop( xlarge );
 }

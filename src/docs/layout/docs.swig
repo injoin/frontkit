@@ -6,7 +6,7 @@
     <header class="hero-unit docs-master-head">
         <div class="container">
             <div class="row">
-                <div class="col medium-8 x-large-9">
+                <div class="column medium-8-12 xlarge-9-12">
                     <h1>{{ pkg.title }}</h1>
                     <p>{{ pkg.description }}</p>
                 </div>
@@ -16,7 +16,7 @@
 
     <main class="container">
         <div class="row">
-            <div class="col small-4 large-3">
+            <div class="column small-4-12 large-3-12">
                 <aside class="docs-sidebar">
                     {% for menuId, data in menu %}
                     <ul class="nav nav-list">
@@ -34,7 +34,7 @@
                 </aside>
             </div>
 
-            <div class="col small-8 large-9">
+            <div class="column small-8-12 large-9-12">
                 <article class="docs-content">
                     {% block content %}{% endblock %}
                 </article>
