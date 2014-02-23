@@ -1,4 +1,4 @@
-{% extends "layout/main.swig" %}
+{% extends "../layout/main.swig" %}
 
 {% set currentPage = "home" %}
 

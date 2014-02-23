@@ -80,8 +80,8 @@ module.exports = function( grunt ) {
                     tags: require( "./build/swig-tags" )
                 },
                 expand: true,
-                cwd: "src/docs/",
-                src: [ "*.swig", "docs/**/*.swig" ],
+                cwd: "src/docs/pages/",
+                src: [ "**/*.swig" ],
                 dest: "./",
                 ext: ".html"
             }
