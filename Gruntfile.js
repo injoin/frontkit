@@ -107,5 +107,5 @@ module.exports = function( grunt ) {
     // Aliases
     grunt.registerTask( "docs", [ "less:docs", "swig" ] );
     grunt.registerTask( "package", [ "less:main" ] );
-    grunt.registerTask( "default", [ "deps", "package", "docs" ] );
+    grunt.registerTask( "default", [ "package", "docs" ] );
 };
