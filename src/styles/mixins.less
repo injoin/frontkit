@@ -67,8 +67,8 @@
 
 // box-shadow
 .box-shadow( @shadow ) {
-  -webkit-box-shadow: @shadow; // iOS < 4.3 & Android < 4.1
-  box-shadow: @shadow;
+  -webkit-box-shadow+: @shadow; // iOS < 4.3 & Android < 4.1
+          box-shadow+: @shadow;
 }
 
 // transform
@@ -219,10 +219,8 @@
   .clear-float();
 
   // Negative margin the row out to align the content of columns
-  .row {
-    margin-left:  ( @grid-gutter-width / -2 );
-    margin-right: ( @grid-gutter-width / -2 );
-  }
+  margin-left:  ( @grid-gutter-width / -2 );
+  margin-right: ( @grid-gutter-width / -2 );
 }
 
 // Generate grid columns
@@ -255,16 +253,15 @@
 
 // Generate golden ratio grid
 .generate-golden-grid( @column-name ) {
-  .@{column-name}-golden-long {
-    width: percentage( @golden-ratio );
-  }
+  .@{column-name}-golden-long   { width: percentage( @golden-ratio ); }
+  .@{column-name}-golden-short  { width: percentage( 1 - @golden-ratio ); }
 
-  .@{column-name}-golden-short {
-    width: percentage( 1 - @golden-ratio );
-  }
+  .@{column-name}-offset-golden-long  { margin-left: percentage( @golden-ratio ); }
+  .@{column-name}-offset-golden-short { margin-left: percentage( 1 - @golden-ratio ); }
 }
 
-.grid-columns-loop( @column-name, @grid-size: @grid-columns ) {
+// Create all grid classes for a given column name
+.all-grid-columns( @column-name, @grid-size: @grid-columns ) {
   .grid( @index ) when ( @index > 0 ) {
     .generate-grid-columns( @column-name, extract( @grid-size, @index ) );
     .generate-grid-offset( @column-name, extract( @grid-size, @index ) );
@@ -273,14 +270,17 @@
   }
 
   .generate-golden-grid( @column-name );
-
   .grid( length( @grid-size ) );
 }
 
+// Generate a media query for .container
 .container-sizing( @screen, @container ) {
+  @container-width: unit( @container / @font-size-base, rem );
+
   @media screen and ( min-width: @screen ) {
     .container {
-      max-width: @container;
+      // To not use inner mixins, we use the min() function here
+      max-width: min( @container-width, 80rem );
     }
   }
 }

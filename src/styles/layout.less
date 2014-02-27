@@ -1,15 +1,18 @@
 /* Layout
 ------------------------------------------------------------------------------------------------- */
 
-.container {
+.container,
+.container-fluid {
   display: block;
   width: 100%;
   margin-left: auto;
   margin-right: auto;
   padding-left: ( @grid-gutter-width / 2 );
   padding-right: ( @grid-gutter-width / 2 );
+}
 
-  @media ( max-width: @screen-tiny-max ) {
+@media ( max-width: @screen-tiny-max ) {
+  .container {
     padding-left: 0;
     padding-right: 0;
   }

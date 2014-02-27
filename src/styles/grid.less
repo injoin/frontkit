@@ -17,22 +17,8 @@
   padding-right: ( @grid-gutter-width / 2 );
 }
 
-@media all {
-  .grid-columns-loop( tiny );
-}
-
-@media ( min-width: @screen-small ) {
-  .grid-columns-loop( small );
-}
-
-@media ( min-width: @screen-medium ) {
-  .grid-columns-loop( medium );
-}
-
-@media ( min-width: @screen-large ) {
-  .grid-columns-loop( large );
-}
-
-@media ( min-width: @screen-xlarge ) {
-  .grid-columns-loop( xlarge );
-}
+@media all                            { .all-grid-columns( tiny ); }
+@media ( min-width: @screen-small )   { .all-grid-columns( small ); }
+@media ( min-width: @screen-medium )  { .all-grid-columns( medium ); }
+@media ( min-width: @screen-large )   { .all-grid-columns( large ); }
+@media ( min-width: @screen-xlarge )  { .all-grid-columns( xlarge ); }
