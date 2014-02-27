@@ -7,8 +7,8 @@
     </header>
     <p class="lead">Buttons denote some possible action for the user.</p>
 
-    <section id="default">
-        <h3>Button Options</h3>
+    <section id="options">
+        {{ macros.docsSectionTitle( "Button Options", "options", 3 ) }}
         <p>
             Frontkit comes with a variety of button classes that allow you to quickly create a
             semantic, informational button.
@@ -48,7 +48,7 @@
     </section>
 
     <section id="states">
-        <h3>States</h3>
+        {{ macros.docsSectionTitle( "States", "states", 3 ) }}
         <p>A button can have a few configurable states.</p>
 
         <div class="example">
@@ -64,7 +64,7 @@
     </section>
 
     <section id="groups">
-        <h3>Button Groups</h3>
+        {{ macros.docsSectionTitle( "Button Groups", "groups", 3 ) }}
         <p>Buttons can be grouped together.</p>
 
         <div class="example">

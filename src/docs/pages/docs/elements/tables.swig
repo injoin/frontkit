@@ -7,7 +7,7 @@
     </header>
 
     <section id="basic">
-        <h3>Basic example</h3>
+        {{ macros.docsSectionTitle( "Basic Table", "basic", 3 ) }}
         <p>
             A very simple and efficient table style.
             Just add the base class <code>.table</code> to any table, and you're done.<br>
@@ -55,7 +55,7 @@
     </section>
 
     <section id="striped">
-        <h3>Striped rows</h3>
+        {{ macros.docsSectionTitle( "Striped Rows", "striped", 3 ) }}
         <p>
             To give zebra-striping to any table, simply add the <code>.table-striped</code> class.
             Note that this will only affect rows within an <code>&lt;tbody&gt;</code>.
@@ -101,7 +101,7 @@
     </section>
 
     <section id="bordered">
-        <h3>Bordered Table</h3>
+        {{ macros.docsSectionTitle( "Bordered Table", "bordered", 3 ) }}
         <p>
             A table can have all borders highlighted.
             Do to that, just add the <code>.table-bordered</code> class.
@@ -147,7 +147,7 @@
     </section>
 
     <section id="hover">
-        <h3>Hover state</h3>
+        {{ macros.docsSectionTitle( "Hover State", "hover", 3 ) }}
         <p>
             You're able to show a hover state on table rows within a <code>&lt;tbody&gt;</code> -
             just add the <code>.table-hover</code> class.
@@ -193,7 +193,7 @@
     </section>
 
     <section id="responsive">
-        <h3>Responsive tables</h3>
+        {{ macros.docsSectionTitle( "Responsive Tables", "responsive", 3 ) }}
         <p>
             Make big tables scroll in small devices (&lt; 960px) by wrapping them in a element with
             the <code>.table-responsive</code> class.

@@ -7,7 +7,7 @@
     </header>
 
     <section id="rounded">
-        <h3>Rounded</h3>
+        {{ macros.docsSectionTitle( "Rounded", "rounded", 3 ) }}
         <p>
             An image can be rounded when you add the <code>img-rounded</code> class.
             By default, any image will get a 4% <code>border-radius</code>, no matter how big it is.
@@ -24,10 +24,8 @@
     </section>
 
     <section id="circular">
-        <h3>Circular</h3>
-        <p>
-            Images will be circular if you add the <code>img-circular</code> class.
-        </p>
+        {{ macros.docsSectionTitle( "Circular", "circular", 3 ) }}
+        <p>Images will be circular if you add the <code>img-circular</code> class.</p>
 
         <div class="example">
             <img data-src="holder.js/150x150" class="img-circular">
@@ -38,8 +36,8 @@
         {% endhighlight %}
     </section>
 
-    <section id="circular">
-        <h3>Thumbnail</h3>
+    <section id="thumbnail">
+        {{ macros.docsSectionTitle( "Thumbnail", "thumbnail", 3 ) }}
         <p>A image can be bordered by simply adding the <code>img-bordered</code> class.</p>
 
         <div class="example">

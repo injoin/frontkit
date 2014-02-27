@@ -8,7 +8,7 @@
     <p class="lead">Inputs are simple form controls that allow the user to enter information.</p>
 
     <section class="default">
-        <h3>Default Input</h3>
+        {{ macros.docsSectionTitle( "Default Input", "default", 3 ) }}
         <p>
             The default input has a light style.
             It's suitable for usage in any text-based form control, like for example,
@@ -42,14 +42,14 @@
     </section>
 
     <section id="states">
-        <h3>Input States</h3>
+        {{ macros.docsSectionTitle( "States", "states", 3 ) }}
         <p>
             To provide feedback to your users about something going on in the page,
             you may use any of the below states in your inputs:
         </p>
 
         <section id="state-focus">
-            <h4>Focus</h4>
+            {{ macros.docsSectionTitle( "Focus State", "state-focus", 4 ) }}
             <p>Demonstrate that the user is currently interacting with the input.</p>
 
             <div class="example">
@@ -58,7 +58,7 @@
         </section>
 
         <section id="state-disabled">
-            <h4>Disabled/Read-only</h4>
+            {{ macros.docsSectionTitle( "Disabled/Read-only States", "state-disabled", 4 ) }}
             <p>Disallow interaction with the input by giving it a disabled/read-only style.</p>
 
             <div class="example">
@@ -72,7 +72,7 @@
         </section>
 
         <section id="state-validation">
-            <h4>Validation States</h4>
+            {{ macros.docsSectionTitle( "Validation States", "state-validation", 4 ) }}
             <p>You are able to use some validation states with inputs as well.</p>
 
             <div class="example">
