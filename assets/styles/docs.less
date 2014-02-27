@@ -3,7 +3,6 @@
 @import "../../src/styles/variables.less";
 @import "../../src/styles/mixins.less";
 
-
 // Variables
 // ---------
 @theme-base-color: #00B5AD;
@@ -74,10 +73,12 @@ body {
 .docs-sidebar {
   //margin-top: -( hero-unit-padding-y * 2 );
   padding: @padding-large-y 0;
-  background-color: lighten( @gray-light-2, 5% );
+  background-color: lighten( @gray-light-2, 4% );
 }
 
 .docs-content {
+  padding-left: .75em;
+
   > section + section {
     margin-top: @margin-base-y;
     padding-top: @margin-base-y;
@@ -111,7 +112,12 @@ body {
 
 // Grid
 .grid-example {
-  .col {
+  .row {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .column {
     padding-top: 5px;
     padding-bottom: 5px;
     border: 1px solid @gray-light-1;
