@@ -37,3 +37,44 @@
   .visible-xlarge { .responsive-visible(); }
   .hidden-xlarge  { .responsive-invisible(); }
 }
+
+// Multi targeted classes
+// ----------------------
+@media ( max-width: @screen-small ) {
+  .visible-small-above  { .responsive-invisible(); }
+}
+
+@media ( max-width: @screen-small-max ) {
+  .visible-small-below  { .responsive-visible(); }
+  .hidden-small-below   { .responsive-invisible(); }
+  .visible-medium-above { .responsive-invisible(); }
+  .visible-large-above  { .responsive-invisible(); }
+}
+
+@media ( min-width: @screen-small ) {
+  .visible-small-above  { .responsive-visible(); }
+  .hidden-small-above   { .responsive-invisible(); }
+}
+
+@media ( max-width: @screen-medium-max ) {
+  .visible-medium-below { .responsive-visible(); }
+  .hidden-medium-below  { .responsive-invisible(); }
+  .visible-large-above  { .responsive-invisible(); }
+}
+
+@media ( min-width: @screen-medium ) {
+  .visible-medium-above { .responsive-visible(); }
+  .hidden-medium-above  { .responsive-invisible(); }
+  .visible-small-below  { .responsive-invisible(); }
+}
+
+@media ( max-width: @screen-large-max ) {
+  .visible-large-below { .responsive-visible(); }
+  .hidden-large-below  { .responsive-invisible(); }
+}
+
+@media ( min-width: @screen-large ) {
+  .visible-large-above  { .responsive-visible(); }
+  .hidden-large-above   { .responsive-invisible(); }
+  .visible-medium-below { .responsive-invisible(); }
+}
