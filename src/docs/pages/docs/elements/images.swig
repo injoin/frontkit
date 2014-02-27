@@ -4,7 +4,7 @@
 {% block content %}
     <header class="page-header">
         <h2>Images</h2>
-    </
+    </header>
 
     <section id="rounded">
         <h3>Rounded</h3>
