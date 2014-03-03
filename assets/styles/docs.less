@@ -77,7 +77,9 @@ body {
 }
 
 .docs-content {
-  padding-left: .75em;
+  @media ( min-width: @screen-small ) {
+    padding-left: .75em;
+  }
 
   > section + section {
     margin-top: @margin-base-y;
@@ -100,6 +102,11 @@ body {
     text-decoration: none;
     opacity: 0;
     .transition( opacity .1s linear );
+
+    @media ( max-width: @screen-tiny-max ) {
+      left: auto;
+      right: 0;
+    }
   }
 
   &:hover .docs-anchor {
@@ -137,7 +144,7 @@ body {
 .example {
   position: relative;
   margin-bottom: @margin-base-y;
-  padding: ( @padding-base-y + .6rem + unit( @line-height-base, rem ) ) @padding-base-x @padding-base-y;
+  padding: ( @padding-base-y + .6rem + unit( @line-height-base, rem ) ) @padding-base-x @padding-large-y;
   border: 1px solid @gray-light-2;
   border-radius: @border-radius-base;
 
@@ -164,8 +171,8 @@ body {
   @media ( max-width: @screen-tiny-max ) {
     &,
     + .highlight {
-      margin-left: -( @grid-gutter-width / 2 );
-      margin-right: -( @grid-gutter-width / 2 );
+      //margin-left: -( @grid-gutter-width / 2 );
+      //margin-right: -( @grid-gutter-width / 2 );
       border-radius: 0;
     }
   }
