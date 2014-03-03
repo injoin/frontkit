@@ -1,4 +1,4 @@
-{% extends "../../../layout//docs.swig" %}
+{% extends "../../../layout/docs.swig" %}
 {% set docs = "labels" %}
 
 {% block content %}
