@@ -1,5 +1,5 @@
 /* Responsive Utils
-------------------------------------------------------------------------------------------------- */
+   ============================================================================================== */
 
 .show-tiny      { .responsive-visible(); }
 .show-small     { .responsive-invisible(); }
@@ -38,8 +38,8 @@
   .hide-xlarge  { .responsive-invisible(); }
 }
 
-// Multi targeted classes
-// ----------------------
+/* Multi targeted classes
+   ---------------------- */
 @media ( max-width: @screen-small-max ) {
   .show-small-below   { .responsive-visible(); }
   .hide-small-below   { .responsive-invisible(); }
@@ -65,8 +65,8 @@
   .show-medium-below  { .responsive-invisible(); }
 }
 
-// Orientation detection
-// ---------------------
+/* Orientation detection
+   --------------------- */
 
 @media screen and ( orientation: landscape ) {
   .show-landscape { .responsive-visible(); }
