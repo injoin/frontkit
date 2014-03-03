@@ -192,6 +192,118 @@
         {% endhighlight %}
     </section>
 
+    <section id="contextual">
+        {{ macros.docsSectionTitle( "Contextual classes", "contextual", 3 ) }}
+        <p>You are able to give rows and cells different colors by applying contextual classes.</p>
+
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Class</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>.active</code></td>
+                    <td>Applies the hover color to a particular row or cell</td>
+                </tr>
+                <tr>
+                    <td><code>.success</code></td>
+                    <td>Indicates a successful action</td>
+                </tr>
+                <tr>
+                    <td><code>.warning</code></td>
+                    <td>Indicates a warning for a row or cell</td>
+                </tr>
+                <tr>
+                    <td><code>.danger</code></td>
+                    <td>Indicates a potentialy dangerous action</td>
+                </tr>
+                <tr>
+                    <td><code>.info</code></td>
+                    <td>Indicates a informational change or action</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="example">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Column 1</th>
+                        <th>Column 2</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="active">
+                        <td>1</td>
+                        <td>Lorem ipsum</td>
+                        <td>dolor sit amet</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Lorem ipsum</td>
+                        <td>dolor sit amet</td>
+                    </tr>
+                    <tr class="success">
+                        <td>3</td>
+                        <td>Lorem ipsum</td>
+                        <td>dolor sit amet</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Lorem ipsum</td>
+                        <td>dolor sit amet</td>
+                    </tr>
+                    <tr class="danger">
+                        <td>5</td>
+                        <td>Lorem ipsum</td>
+                        <td>dolor sit amet</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>Lorem ipsum</td>
+                        <td>dolor sit amet</td>
+                    </tr>
+                    <tr class="warning">
+                        <td>7</td>
+                        <td>Lorem ipsum</td>
+                        <td>dolor sit amet</td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td>Lorem ipsum</td>
+                        <td>dolor sit amet</td>
+                    </tr>
+                    <tr class="info">
+                        <td>9</td>
+                        <td>Lorem ipsum</td>
+                        <td>dolor sit amet</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        {% highlight xml %}
+            <!-- On rows -->
+            <tr class="active">...</tr>
+            <tr class="success">...</tr>
+            <tr class="warning">...</tr>
+            <tr class="danger">...</tr>
+            <tr class="info">...</tr>
+        
+            <!-- On cells - both td and th -->
+            <tr>
+                <td class="active">...</td>
+                <td class="success">...</td>
+                <td class="warning">...</td>
+                <td class="danger">...</td>
+                <td class="info">...</td>
+            </tr>
+        {% endhighlight %}
+    </section>
+
     <section id="responsive">
         {{ macros.docsSectionTitle( "Responsive Tables", "responsive", 3 ) }}
         <p>

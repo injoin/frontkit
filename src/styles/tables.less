@@ -1,15 +1,27 @@
 /* Tables
 ------------------------------------------------------------------------------------------------- */
 
+/*
+ * 1. Fix th alignment according to .text-* classes
+ */
 table.table {
   width: 100%;
   max-width: 100%;
   margin-bottom: @margin-base-y;
   background-color: @table-bg;
 
-  th {
-    text-align: left;
-  }
+  th,
+  &.text-left th,
+  th.text-left { .text-left; /* 1 */ }
+
+  &.text-center th,
+  th.text-center { .text-center; /* 1 */ }
+
+  &.text-right th,
+  th.text-right { .text-right; /* 1 */ }
+
+  &.text-justify th,
+  th.text-justify { .text-justify; /* 1 */ }
 
   thead,
   tbody,
@@ -184,4 +196,84 @@ table td.column,
 table th.column {
   float: none;
   display: table-cell;
+}
+
+// Contextual classes
+// ------------------
+.table tr,
+.table td,
+.table th {
+  &.active {
+    background-color: @table-bg-active;
+  }
+
+  &.success {
+    color: @table-text-success;
+    background-color: @table-bg-success;
+  }
+
+  &.danger {
+    color: @table-text-danger;
+    background-color: @table-bg-danger;
+  }
+
+  &.warning {
+    color: @table-text-warning;
+    background-color: @table-bg-warning;
+  }
+
+  &.info {
+    color: @table-text-info;
+    background-color: @table-bg-info;
+  }
+}
+
+.table > tbody > tr {
+  > td,
+  > th {
+    &.active,
+    &.success,
+    &.danger,
+    &.warning,
+    &.info {
+      padding-left: @padding-base-x - @one-px;
+      border-left: 2px solid transparent;
+    }
+
+    &.active  { border-left-color: @table-text-active; }
+    &.success { border-left-color: @table-text-success; }
+    &.danger  { border-left-color: @table-text-danger; }
+    &.warning { border-left-color: @table-text-warning; }
+    &.info    { border-left-color: @table-text-info; }
+  }
+}
+
+.table {
+  > tbody > tr > td,
+  > tbody > tr > th {
+    &.active + .active,
+    &.success + .success,
+    &.danger + .danger,
+    &.warning + .warning,
+    &.info + .info {
+      padding-left: @padding-base-x;
+    }
+
+    &.active + .active    { border-left: none; }
+    &.success + .success  { border-left: none; }
+    &.danger + .danger    { border-left: none; }
+    &.warning + .warning  { border-left: none; }
+    &.info + .info        { border-left: none; }
+  }
+
+  &.table-bordered {
+    > tbody > tr > td,
+    > tbody > tr > th {
+      &.active + .active    { border-left: 1px solid @table-border; }
+      &.success + .success  { border-left: 1px solid @table-border; }
+      &.danger + .danger    { border-left: 1px solid @table-border; }
+      &.warning + .warning  { border-left: 1px solid @table-border; }
+      &.info + .info        { border-left: 1px solid @table-border; }
+    }
+  }
 }
