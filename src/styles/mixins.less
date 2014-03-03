@@ -227,6 +227,7 @@
 .generate-grid-columns( @column-name, @columns-count ) {
   .span-x( @index ) when ( @index > 0 ) {
     .@{column-name}-@{index}-@{columns-count} { .span( @index ); }
+
     .span-x( ( @index - 1 ) );
   }
 
@@ -248,6 +249,7 @@
     margin-left: percentage( ( @columns / @columns-count ) );
   }
 
+  // Because there is no why to offset a column by 100%, we start from the @columns-count - 1
   .offset-x( @columns-count - 1 );
 }
 
@@ -273,6 +275,20 @@
   .grid( length( @grid-size ) );
 }
 
+// Generate block grids
+.generate-block-grid( @column-name, @grid-size: @block-grid-columns ) {
+  .span-x( @index ) when ( @index > 0 ) {
+    .@{column-name}-block-grid-@{index} > * { .span( @index ); }
+    .span-x( @index - 1 );
+  }
+
+  .span( @columns ) {
+    width: ( 100% / @columns );
+  }
+
+  .span-x( @grid-size );
+}
+
 // Generate a media query for .container
 .container-sizing( @screen, @container ) {
   @container-width: unit( @container / @font-size-base, rem );
@@ -288,19 +304,9 @@
 // Responsive Utilities
 // --------------------
 .responsive-visible() {
-  display: block !important;
-
-  tr& { display: table-row !important; }
-
-  th&,
-  td& { display: table-cell !important; }
+  display: inherit !important;
 }
 
 .responsive-invisible() {
   display: none !important;
-
-  tr& { display: none !important; }
-
-  th&,
-  td& { display: none !important; }
 }

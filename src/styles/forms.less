@@ -70,11 +70,18 @@ label {
 /*
  * 1. Ensure that inputs don't use the whole row
  */
-.form-inline {
-  .input {
-    width: auto; /* 1 */
-    display: inline-block;
-    margin-bottom: 0;
-    vertical-align: middle;
+@media ( min-width: @screen-small ) {
+  .form-inline {
+    .form-group {
+      display: inline-block;
+      margin-bottom: 0;
+    }
+
+    .input {
+      display: inline-block;
+      width: auto; /* 1 */
+      margin-bottom: 0;
+      vertical-align: middle;
+    }
   }
 }

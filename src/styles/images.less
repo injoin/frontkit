@@ -1,6 +1,16 @@
 /* Images
 ------------------------------------------------------------------------------------------------- */
 
+/*
+ * Responsive images. Prevents an image from scaling beyond parents.
+ * 1. Set max width relative to its parent
+ * 2. Scale the height according to the width, otherwise you get stretching
+ */
+.img-responsive {
+  max-width: 100%; /* 1 */
+  height: auto; /* 2 */
+}
+
 .img-rounded {
   border-radius: @image-rounded-radius;
 }

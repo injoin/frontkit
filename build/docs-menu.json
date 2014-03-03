@@ -1,17 +1,29 @@
 {
+    "structure": {
+        "label": "Structure",
+        "items": {
+            "grid": "Grid",
+            "block-grid": "Block Grid",
+            "responsive-utilities": "Responsive Utilities"
+        }
+    },
     "elements": {
         "label": "Elements",
         "items": {
-            "grid": "Grid",
             "typography": "Typography",
             "headings": "Headings",
             "code": "Code",
             "lists": "Lists",
             "tables": "Tables",
-            "forms": "Forms",
-            "inputs": "Inputs",
             "buttons": "Buttons",
             "images": "Images"
+        }
+    },
+    "forms": {
+        "label": "Forms",
+        "items": {
+            "inputs": "Inputs",
+            "forms": "Forms"
         }
     },
     "components": {

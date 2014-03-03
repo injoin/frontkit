@@ -1,80 +1,79 @@
 /* Responsive Utils
 ------------------------------------------------------------------------------------------------- */
 
-.visible-tiny   { .responsive-visible(); }
-.visible-small  { .responsive-invisible(); }
-.visible-medium { .responsive-invisible(); }
-.visible-large  { .responsive-invisible(); }
-.visible-xlarge { .responsive-invisible(); }
+.show-tiny      { .responsive-visible(); }
+.show-small     { .responsive-invisible(); }
+.show-medium    { .responsive-invisible(); }
+.show-large     { .responsive-invisible(); }
+.show-xlarge    { .responsive-invisible(); }
 
-.hidden-tiny    { .responsive-invisible(); }
-.hidden-small   { .responsive-visible(); }
-.hidden-medium  { .responsive-visible(); }
-.hidden-large   { .responsive-visible(); }
-.hidden-xlarge  { .responsive-visible(); }
+.hide-tiny      { .responsive-invisible(); }
+.hide-small     { .responsive-visible(); }
+.hide-medium    { .responsive-visible(); }
+.hide-large     { .responsive-visible(); }
+.hide-xlarge    { .responsive-visible(); }
 
 @media ( min-width: @screen-small ) {
-  .visible-tiny { .responsive-invisible(); }
-  .hidden-tiny  { .responsive-visible(); }
+  .show-tiny    { .responsive-invisible(); }
+  .hide-tiny    { .responsive-visible(); }
 }
 
 @media ( min-width: @screen-small ) and ( max-width: @screen-small-max ) {
-  .visible-small { .responsive-visible(); }
-  .hidden-small  { .responsive-invisible(); }
+  .show-small   { .responsive-visible(); }
+  .hide-small   { .responsive-invisible(); }
 }
 
 @media ( min-width: @screen-medium ) and ( max-width: @screen-medium-max ) {
-  .visible-medium { .responsive-visible(); }
-  .hidden-medium  { .responsive-invisible(); }
+  .show-medium  { .responsive-visible(); }
+  .hide-medium  { .responsive-invisible(); }
 }
 
 @media ( min-width: @screen-large ) {
-  .visible-large { .responsive-visible(); }
-  .hidden-large  { .responsive-invisible(); }
+  .show-large   { .responsive-visible(); }
+  .hide-large   { .responsive-invisible(); }
 }
 
 @media ( min-width: @screen-xlarge ) {
-  .visible-xlarge { .responsive-visible(); }
-  .hidden-xlarge  { .responsive-invisible(); }
+  .show-xlarge  { .responsive-visible(); }
+  .hide-xlarge  { .responsive-invisible(); }
 }
 
 // Multi targeted classes
 // ----------------------
-@media ( max-width: @screen-small ) {
-  .visible-small-above  { .responsive-invisible(); }
-}
-
 @media ( max-width: @screen-small-max ) {
-  .visible-small-below  { .responsive-visible(); }
-  .hidden-small-below   { .responsive-invisible(); }
-  .visible-medium-above { .responsive-invisible(); }
-  .visible-large-above  { .responsive-invisible(); }
-}
-
-@media ( min-width: @screen-small ) {
-  .visible-small-above  { .responsive-visible(); }
-  .hidden-small-above   { .responsive-invisible(); }
+  .show-small-below   { .responsive-visible(); }
+  .hide-small-below   { .responsive-invisible(); }
+  .show-medium-above  { .responsive-invisible(); }
+  .show-large-above   { .responsive-invisible(); }
 }
 
 @media ( max-width: @screen-medium-max ) {
-  .visible-medium-below { .responsive-visible(); }
-  .hidden-medium-below  { .responsive-invisible(); }
-  .visible-large-above  { .responsive-invisible(); }
+  .show-medium-below  { .responsive-visible(); }
+  .hide-medium-below  { .responsive-invisible(); }
+  .show-large-above   { .responsive-invisible(); }
 }
 
 @media ( min-width: @screen-medium ) {
-  .visible-medium-above { .responsive-visible(); }
-  .hidden-medium-above  { .responsive-invisible(); }
-  .visible-small-below  { .responsive-invisible(); }
-}
-
-@media ( max-width: @screen-large-max ) {
-  .visible-large-below { .responsive-visible(); }
-  .hidden-large-below  { .responsive-invisible(); }
+  .show-medium-above  { .responsive-visible(); }
+  .hide-medium-above  { .responsive-invisible(); }
+  .show-small-below   { .responsive-invisible(); }
 }
 
 @media ( min-width: @screen-large ) {
-  .visible-large-above  { .responsive-visible(); }
-  .hidden-large-above   { .responsive-invisible(); }
-  .visible-medium-below { .responsive-invisible(); }
+  .show-large-above   { .responsive-visible(); }
+  .hide-large-above   { .responsive-invisible(); }
+  .show-medium-below  { .responsive-invisible(); }
+}
+
+// Orientation detection
+// ---------------------
+
+@media screen and ( orientation: landscape ) {
+  .show-landscape { .responsive-visible(); }
+  .show-portrait  { .responsive-invisible(); }
+}
+
+@media screen and ( orientation: portrait ) {
+  .show-landscape { .responsive-invisible(); }
+  .show-portrait  { .responsive-visible(); }
 }
