@@ -187,37 +187,37 @@
             <div class="example grid-example">
                 <div class="row">
                     <div class="column medium-4-12 tiny-6-12">
-                        <span class="visible-medium-above">4</span>
-                        <span class="visible-small-below">6</span>
+                        <span class="show-medium-above">4</span>
+                        <span class="show-small-below">6</span>
                     </div>
                     <div class="column medium-4-12 tiny-6-12">
-                        <span class="visible-medium-above">4</span>
-                        <span class="visible-small-below">6</span>
+                        <span class="show-medium-above">4</span>
+                        <span class="show-small-below">6</span>
                     </div>
                     <div class="column medium-4-12 tiny-12-12">
-                        <span class="visible-medium-above">4</span>
-                        <span class="visible-small-below">full</span>
+                        <span class="show-medium-above">4</span>
+                        <span class="show-small-below">full</span>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="column small-4-12">
-                        <span class="visible-small-above">4</span>
-                        <span class="visible-tiny">full</span>
+                        <span class="hide-tiny">4</span>
+                        <span class="show-tiny">full</span>
                     </div>
                     <div class="column small-6-12 large-4-12">
-                        <span class="visible-small-above hidden-large-above">6</span>
-                        <span class="visible-large-above">4</span>
-                        <span class="visible-tiny">full</span>
+                        <span class="hide-tiny hide-large-above">6</span>
+                        <span class="show-large-above">4</span>
+                        <span class="show-tiny">full</span>
                     </div>
                     <div class="column small-2-12 tiny-6-12">
-                        <span class="visible-small-above">2</span>
-                        <span class="visible-tiny">6</span>
+                        <span class="hide-tiny">2</span>
+                        <span class="show-tiny">6</span>
                     </div>
                     <div class="column large-2-12 tiny-6-12 small-12-12">
-                        <span class="visible-large-above">2</span>
-                        <span class="visible-small-above hidden-large-above">full</span>
-                        <span class="visible-tiny">6</span>
+                        <span class="show-large-above">2</span>
+                        <span class="hide-tiny hide-large-above">full</span>
+                        <span class="show-tiny">6</span>
                     </div>
                 </div>
             </div>
@@ -280,32 +280,32 @@
 
         <div class="example grid-example">
             <div class="row">
-                <div class="column small-golden-long">Long golden section</div>
-                <div class="column small-golden-short">Short golden section</div>
+                <div class="column tiny-golden-long">Long golden section</div>
+                <div class="column tiny-golden-short">Short golden section</div>
             </div>
             <div class="row">
-                <div class="column small-golden-short small-offset-golden-long">
+                <div class="column tiny-golden-short tiny-offset-golden-long">
                     Short golden section, long golden offset
                 </div>
             </div>
             <div class="row">
-                <div class="column small-golden-long small-offset-golden-short">
+                <div class="column tiny-golden-long tiny-offset-golden-short">
                     Long golden section, short golden offset
                 </div>
             </div>
         </div>
         {% highlight xml %}
             <div class="row">
-                <div class="column small-golden-long">Long golden section</div>
-                <div class="column small-golden-short">Short golden section</div>
+                <div class="column tiny-golden-long">Long golden section</div>
+                <div class="column tiny-golden-short">Short golden section</div>
             </div>
             <div class="row">
-                <div class="column small-golden-short small-offset-golden-long">
+                <div class="column tiny-golden-short tiny-offset-golden-long">
                     Short golden section, long golden offset
                 </div>
             </div>
             <div class="row">
-                <div class="column small-golden-long small-offset-golden-short">
+                <div class="column tiny-golden-long tiny-offset-golden-short">
                     Long golden section, short golden offset
                 </div>
             </div>
