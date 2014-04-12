@@ -82,6 +82,11 @@
 @font-family-headings:        @font-family-base;
 @font-weight-headings:        normal;
 
+// Icons
+// -----
+@icon-fontpath:               fonts;
+@icon-prefix:                 icon;
+
 // Z-Indexes
 // ---------
 @zindex-navbar-fixed:         1000;
@@ -194,7 +199,8 @@
 // Grid
 // ----
 @grid-columns:                12 16 24;
-@grid-gutter-width:           30px;
+@_grid-gutter-width:          30px;
+@grid-gutter-width:           unit( 30px * @one-px, rem ) / 2;
 @block-grid-columns:          12;
 
 // We deduce 1 to make it percentage friendly

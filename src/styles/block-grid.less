@@ -3,15 +3,15 @@
 
 .block-grid {
   list-style: none;
-  margin: 0 -( @grid-gutter-width / 2 );
+  margin: 0 -@grid-gutter-width;
   padding: 0;
   font-size: 0;
 
   > * {
     display: inline-block;
     width: 100%;
-    padding-left: ( @grid-gutter-width / 2 );
-    padding-right: ( @grid-gutter-width / 2 );
+    padding-left: @grid-gutter-width;
+    padding-right: @grid-gutter-width;
     font-size: 1rem;
     vertical-align: top;
   }
