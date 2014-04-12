@@ -5,8 +5,12 @@
 
 // Variables
 // ---------
-@theme-base-color: #00B5AD;
 
+// Docs variables
+@theme-base-color:          #00B5AD;
+@icon-demo-size:            1.5rem;
+
+// Frontkit Overrides
 @navbar-bg:                 @theme-base-color;
 @navbar-brand-color:        #fff;
 @navbar-brand-hover-color:  @navbar-brand-color;
@@ -71,7 +75,6 @@ body {
 }
 
 .docs-sidebar {
-  //margin-top: -( hero-unit-padding-y * 2 );
   padding: @padding-large-y 0;
   background-color: lighten( @gray-light-2, 4% );
 }
@@ -165,7 +168,7 @@ body {
   + .highlight {
     position: relative;
     margin-top: calc( ~"-@{margin-base-y} - 3px" );
-    border-bottom-radius: @border-radius-base;
+    .border-bottom-radius( @border-radius-base );
   }
 
   @media ( max-width: @screen-tiny-max ) {
@@ -174,6 +177,28 @@ body {
       //margin-left: -( @grid-gutter-width / 2 );
       //margin-right: -( @grid-gutter-width / 2 );
       border-radius: 0;
+    }
+  }
+}
+
+// Icons
+.icons-list {
+  li {
+    position: relative;
+    margin-bottom: 5px;
+
+    // @one-px * 2 to add some space between icon and its description
+    padding-left: @icon-demo-size + @grid-gutter-width + ( @one-px * 2 );
+  }
+
+  .icon {
+    position: absolute;
+    left: @grid-gutter-width;
+
+    &:before {
+      display: inline-block;
+      width: 1.5rem;
+      text-align: center;
     }
   }
 }

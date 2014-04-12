@@ -2,7 +2,7 @@ module.exports = function( grunt ) {
     "use strict";
 
     var bower;
-    var _ = grunt.util._;
+    var _ = require( "lodash" );
 
     grunt.registerTask( "deps", "Install Bower dependencies if needed", function( arg ) {
         var dir, file, cfg, deps, installed, logger;

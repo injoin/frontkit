@@ -1,0 +1,13 @@
+core:
+  options:
+    sourceMap: true
+    sourceMapFilename: dist/frontkit.css.map
+    sourceMapBasepath: src/styles/
+    sourceMapRootpath: /
+    outputSourceFiles: true
+  src: src/styles/frontkit.less
+  dest: dist/frontkit.css
+
+docs:
+  src: assets/styles/docs.less
+  dest: assets/styles/docs.css

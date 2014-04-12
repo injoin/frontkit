@@ -1,0 +1,90 @@
+arrows:
+  - arrow-left
+  - arrow-up
+  - arrow-down
+  - arrow-right
+  - arrow-left-circle
+  - arrow-up-circle
+  - arrow-down-circle
+  - arrow-right-circle
+  - chevron-left
+  - chevron-up
+  - chevron-down
+  - chevron-right
+  - chevron-left-circle
+  - chevron-up-circle
+  - chevron-down-circle
+  - chevron-right-circle
+
+media:
+  - play
+  - pause
+  - stop
+  - eject
+  - fast-backward
+  - backward
+  - forward
+  - fast-forward
+  - retract
+  - expand
+  - shuffle
+  - crop
+  - equalizer
+  - volume-mute
+  - volume-down
+  - volume-up
+  - flip-horizontal
+  - flip-vertical
+
+textEdition:
+  - align-center
+  - align-justify
+  - align-left
+  - align-right
+  - bold
+  - italic
+  - underline
+  - strikethrough
+  - font
+  - fontcase
+  - text-width
+  - text-height
+  - subscript
+  - superscript
+  - list
+  - list-numeric
+  - indent-left
+  - indent-right
+
+brands:
+  - evernote
+  - facebook
+  - facebook-square
+  - facebook-circle
+  - twitter
+  - twitter-square
+  - twitter-circle
+  - linkedin
+  - github
+  - github-square
+  - google
+  - instagram
+  - skype
+  - youtube
+  - vk
+
+currency:
+  - dollar
+  - euro
+  - pound
+  - bitcoin
+  - dollar-square
+  - euro-square
+  - pound-square
+  - bitcoin-square
+  - dollar-circle
+  - euro-circle
+  - pound-circle
+  - bitcoin-circle
+
+others: true

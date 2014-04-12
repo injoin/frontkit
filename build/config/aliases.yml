@@ -1,0 +1,13 @@
+docs:
+  - icons:docs
+  - less:docs
+  - swig:docs
+
+package:
+  - less:core
+  - concat:core
+  - copy:fonts
+
+default:
+  - package
+  - docs

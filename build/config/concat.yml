@@ -1,0 +1,5 @@
+core:
+  src:
+    - src/scripts/frontkit.js
+    - src/scripts/*.js
+  dest: dist/frontkit.js

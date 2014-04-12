@@ -1,0 +1,6 @@
+fonts:
+  expand: true
+  flatten: true
+  src:
+    - src/fonts/*
+  dest: dist/fonts/

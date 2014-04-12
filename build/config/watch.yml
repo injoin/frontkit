@@ -1,0 +1,39 @@
+options:
+  spawn: false
+  livereload: "<%= liveReload %>"
+
+# Core stuff
+# ----------
+styles:
+  files:
+    - "libs/**/*.css"
+    - "src/styles/*.less"
+  tasks: less:core
+
+scripts:
+  files:
+    - "src/scripts/*.js"
+  tasks: concat:core
+
+fonts:
+  files:
+    - "src/fonts/*"
+  tasks: copy:fonts
+
+# Docs stuff
+# ----------
+docsHTML:
+  files:
+    - "src/docs/**/*.swig"
+    - "<%= icons.docs.src %>"
+    - "<%= icons.docs.options.categories %>"
+    - "build/*.json"
+  tasks:
+    - icons:docs
+    - swig:docs
+
+docsCSS:
+  files:
+    - "assets/**/*.less"
+    - "<%= watch.styles.files %>"
+  tasks: less:docs

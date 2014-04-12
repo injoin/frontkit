@@ -16,7 +16,8 @@
             "lists": "Lists",
             "tables": "Tables",
             "buttons": "Buttons",
-            "images": "Images"
+            "images": "Images",
+            "icons": "Icons"
         }
     },
     "forms": {
