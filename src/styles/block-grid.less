@@ -5,14 +5,15 @@
   list-style: none;
   margin: 0 -( @grid-gutter-width / 2 );
   padding: 0;
-  .clear-float();
+  font-size: 0;
 
   > * {
-    float: left;
+    display: inline-block;
     width: 100%;
-    margin-bottom: @margin-base-y;
     padding-left: ( @grid-gutter-width / 2 );
     padding-right: ( @grid-gutter-width / 2 );
+    font-size: 1rem;
+    vertical-align: top;
   }
 }
 
