@@ -37,7 +37,7 @@
         <section id="icons-list-{{ loop.key }}">
             {{ macros.docsSectionTitle( loop.key | capitalize, "icons-list-" + loop.key, 4 ) }}
 
-            <ul class="icons-list block-grid large-block-grid-5 medium-block-grid-4 small-block-grid-3 tiny-block-grid-2">
+            <ul class="icons-list block-grid medium-block-grid-4 small-block-grid-3 tiny-block-grid-2">
                 {% for icon in icons %}
                 <li>
                     <span class="icon icon-{{ icon }}"></span>
