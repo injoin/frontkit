@@ -1,4 +1,4 @@
-arrows:
+Arrows:
   - arrow-left
   - arrow-up
   - arrow-down
@@ -16,7 +16,7 @@ arrows:
   - chevron-down-circle
   - chevron-right-circle
 
-media:
+Media:
   - play
   - pause
   - stop
@@ -36,7 +36,7 @@ media:
   - flip-horizontal
   - flip-vertical
 
-textEdition:
+Text Edition:
   - align-center
   - align-justify
   - align-left
@@ -56,7 +56,7 @@ textEdition:
   - indent-left
   - indent-right
 
-brands:
+Brands:
   - evernote
   - facebook
   - facebook-square
@@ -73,7 +73,7 @@ brands:
   - youtube
   - vk
 
-currency:
+Currency:
   - dollar
   - euro
   - pound
@@ -87,4 +87,4 @@ currency:
   - pound-circle
   - bitcoin-circle
 
-others: true
+Others: true

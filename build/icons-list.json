@@ -1,5 +1,5 @@
 {
-    "arrows": [
+    "Arrows": [
         "arrow-left",
         "arrow-up",
         "arrow-down",
@@ -17,7 +17,7 @@
         "chevron-down-circle",
         "chevron-right-circle"
     ],
-    "media": [
+    "Media": [
         "play",
         "pause",
         "stop",
@@ -37,7 +37,7 @@
         "flip-horizontal",
         "flip-vertical"
     ],
-    "textEdition": [
+    "Text Edition": [
         "align-center",
         "align-justify",
         "align-left",
@@ -57,7 +57,7 @@
         "indent-left",
         "indent-right"
     ],
-    "brands": [
+    "Brands": [
         "evernote",
         "facebook",
         "facebook-square",
@@ -74,7 +74,7 @@
         "youtube",
         "vk"
     ],
-    "currency": [
+    "Currency": [
         "dollar",
         "euro",
         "pound",
@@ -88,7 +88,7 @@
         "pound-circle",
         "bitcoin-circle"
     ],
-    "others": [
+    "Others": [
         "external",
         "plus",
         "remove",
