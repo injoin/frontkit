@@ -14,21 +14,21 @@
             It's suitable for usage in any text-based form control, like for example,
             <code>&lt;textarea&gt;</code> and most <code>&lt;input&gt;</code> types:
         </p>
-        <ul class="block-grid">
-            <li>text</li>
-            <li>password</li>
-            <li>datetime</li>
-            <li>datetime-local</li>
-            <li>date</li>
-            <li>month</li>
-            <li>week</li>
-            <li>time</li>
-            <li>number</li>
-            <li>email</li>
-            <li>url</li>
-            <li>search</li>
-            <li>tel</li>
-            <li>color</li>
+        <ul class="block-grid small-block-grid-3">
+            <li><span class="icon icon-ok"></span> text</li>
+            <li><span class="icon icon-ok"></span> password</li>
+            <li><span class="icon icon-ok"></span> datetime</li>
+            <li><span class="icon icon-ok"></span> datetime-local</li>
+            <li><span class="icon icon-ok"></span> date</li>
+            <li><span class="icon icon-ok"></span> month</li>
+            <li><span class="icon icon-ok"></span> week</li>
+            <li><span class="icon icon-ok"></span> time</li>
+            <li><span class="icon icon-ok"></span> number</li>
+            <li><span class="icon icon-ok"></span> email</li>
+            <li><span class="icon icon-ok"></span> url</li>
+            <li><span class="icon icon-ok"></span> search</li>
+            <li><span class="icon icon-ok"></span> tel</li>
+            <li><span class="icon icon-ok"></span> color</li>
         </ul>
 
         <div class="example">
