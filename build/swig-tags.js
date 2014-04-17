@@ -48,6 +48,13 @@ exports.highlight = (function() {
         var indentation = Number.MAX_VALUE;
         var output = "";
 
+        content = content.map(function( part ) {
+            if ( typeof part === "string" ) {
+                return part;
+            }
+
+            return part.content.join( "" ) || "";
+        });
         content = content.join( "" ).split( "\n" );
         content.forEach(function( line ) {
             var match;
@@ -68,13 +75,10 @@ exports.highlight = (function() {
 
         output += "(function() {\n";
         output += " var lang = " + args[ 0 ] + ";\n";
-        output += " var __o = _output;\n";
-        output += " _output = '';\n";
-        output += compiler( [ content ], parents, options, blockName ) + ";\n";
-        output += " __o += '<pre class=\"highlight language-' + lang + '\">';\n";
-        output += " __o += _ext.highlight(" + args[ 0 ] + ", _output).value;\n";
-        output += " __o += '</pre>';\n";
-        output += " _output = __o;\n";
+        output += " var __o = " + JSON.stringify( content ) + ";\n";
+        output += " _output += '<pre ng-non-bindable class=\"highlight language-' + lang + '\">';\n";
+        output += " _output += _ext.highlight(" + args[ 0 ] + ", __o).value;\n";
+        output += " _output += '</pre>';\n";
         output += "})();\n";
 
         return output;
