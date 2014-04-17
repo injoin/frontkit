@@ -91,6 +91,9 @@ body {
   }
 }
 
+/*
+ * 1. Ensure that it's visible when focused
+ */
 .docs-heading {
   position: relative;
 
@@ -112,15 +115,17 @@ body {
     }
   }
 
-  &:hover .docs-anchor {
-    opacity: 1;
+  &:hover .docs-anchor,
+  .docs-anchor:focus {
+    opacity: 1; /* 1 */
   }
 }
 
-// Examples
-// --------
+/* Examples
+   ============================================================================================== */
 
-// Grid
+/* Grid
+   ---- */
 .grid-example {
   .row {
     margin-left: 0;
@@ -143,7 +148,8 @@ body {
   }
 }
 
-// General
+/* General
+   ------- */
 .example {
   position: relative;
   margin-bottom: @margin-base-y;
@@ -180,7 +186,8 @@ body {
   }
 }
 
-// Icons
+/* Icons
+   ----- */
 .icons-list {
   li {
     position: relative;
@@ -202,8 +209,8 @@ body {
   }
 }
 
-// Helpers
-// -------
+/* Helpers
+   ============================================================================================== */
 #focused-input {
   .input-focus();
 }
