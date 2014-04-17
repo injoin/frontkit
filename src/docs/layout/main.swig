@@ -1,6 +1,6 @@
 {% import "../includes/macros.swig" as macros %}
 <!DOCTYPE html>
-<html lang="en">
+<html ng-app="frontkit-docs" lang="en">
     <head>
         <title>{{ pkg.title }}</title>
 
@@ -35,5 +35,8 @@
         {% block page %}{% endblock %}
 
         <script src="{{ macros.baseUrl( "libs/holderjs/holder.js" ) }}"></script>
+        <script src="{{ macros.baseUrl( "libs/angular/angular.js" ) }}"></script>
+        <script src="{{ macros.baseUrl( "dist/frontkit.js" ) }}"></script>
+        <script src="{{ macros.baseUrl( "assets/scripts/docs.js" ) }}"></script>
     </body>
 </html>

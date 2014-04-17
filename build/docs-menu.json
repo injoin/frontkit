@@ -23,6 +23,7 @@
     "forms": {
         "label": "Forms",
         "items": {
+            "checkboxes": "Checkboxes",
             "inputs": "Inputs",
             "forms": "Forms"
         }

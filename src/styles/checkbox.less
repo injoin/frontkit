@@ -1,0 +1,44 @@
+/* Checkbox
+   ============================================================================================== */
+
+.checkbox {
+  .calculate-hypotenuse( @checkbox-check-width, @checkbox-check-height );
+
+  position: relative;
+  top: 2px;
+  display: inline-block;
+  width: @checkbox-size;
+  height: @checkbox-size;
+  margin-right: max( @hypotenuse - @checkbox-size, 0 );
+  border: 1px solid @checkbox-border-color;
+  border-radius: @border-radius-small;
+  cursor: pointer;
+  .transition( .2s linear border-color );
+
+  &:focus,
+  &:hover {
+    outline: none;
+    border-color: darken( @checkbox-border-color, 25% );
+  }
+}
+
+input[ type="checkbox" ] {
+  + .checkbox:before {
+    position: absolute;
+    top: ( ( @checkbox-size - @checkbox-check-width ) / 2 );
+    left: 2px;
+    width: @checkbox-check-width;
+    height: @checkbox-check-height;
+    border: round(@checkbox-check-width / 3, 1) solid @checkbox-check-color;
+    border-top: none;
+    border-right: none;
+    opacity: 0;
+    content: "";
+    .transform(rotate(-45deg));
+    .transition( .1s linear opacity );
+  }
+
+  &:checked + .checkbox:before {
+    opacity: 1;
+  }
+}

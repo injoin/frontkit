@@ -204,11 +204,18 @@
 
 // Frontkit component helpers
 // --------------------------
+
+// Calculate the vertical spacing of a navbar component
 .navbar-spacing( @height: @line-height-base, @prop: padding ) {
   @value: ( ( @navbar-height - @height ) / 2 ) - @one-px;
 
   @{prop}-top: @value;
   @{prop}-bottom: @value;
+}
+
+// Calculate the hypotenuse and extract it to a variable @hypotenuse
+.calculate-hypotenuse( @x, @y ) {
+  @hypotenuse: sqrt( pow( @x, 2 ) + pow( @y, 2 ) );
 }
 
 // Grid & Layouts

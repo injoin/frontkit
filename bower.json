@@ -1,10 +1,16 @@
 {
     "name": "frontkit",
     "version": "0.0.1",
-    "dependencies": {},
+    "dependencies": {
+        "angular": "~1.2.10"
+    },
     "devDependencies": {
-        "normalize.css": "~3.0.0",
+        "angular-mocks": "~1.2.10",
+        "chai": "~1.9.1",
         "holderjs": "~2.3.1",
-        "highlightjs": "~8.0.0"
+        "highlightjs": "~8.0.0",
+        "jquery": "~2.1.0",
+        "normalize.css": "~3.0.0",
+        "sinonjs": "~1.9.1"
     }
 }
