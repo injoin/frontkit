@@ -13,7 +13,9 @@ styles:
 scripts:
   files:
     - "src/scripts/*.js"
-  tasks: concat:core
+  tasks:
+    - concat:core
+    - karma:core
 
 fonts:
   files:
