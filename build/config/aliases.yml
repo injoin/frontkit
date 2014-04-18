@@ -8,6 +8,10 @@ package:
   - concat:core
   - copy:fonts
 
+test:
+  - karma:core
+
 default:
   - package
+  - test
   - docs
