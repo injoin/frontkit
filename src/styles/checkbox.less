@@ -5,7 +5,7 @@
   .calculate-hypotenuse( @checkbox-check-width, @checkbox-check-height );
 
   position: relative;
-  top: 2px;
+  top: ( @line-height-base - @checkbox-size ) / 4;
   display: inline-block;
   width: @checkbox-size;
   height: @checkbox-size;
@@ -16,7 +16,8 @@
   .transition( .2s linear border-color );
 
   &:focus,
-  &:hover {
+  &:hover,
+  label:hover > & {
     outline: none;
     border-color: darken( @checkbox-border-color, 25% );
   }
