@@ -28,9 +28,9 @@ module.exports = function( config ) {
         colors: true,
         logLevel: config.LOG_INFO,
         autoWatch: false,
-        browsers: [ "PhantomJS" ],
+        browsers: [ "PhantomJS", "Chrome", "Firefox" ],
 
-        // Stop running after 30 seconds
+        // Stop running after 1 minute
         captureTimeout: 60000,
 
         // CI mode
@@ -60,6 +60,6 @@ module.exports = function( config ) {
     if ( process.env.TRAVIS ) {
         config.transports = [ "xhr-polling" ];
         config.reporters = [ "dots" ];
-        config.browsers = config.browsers.concat( Object.keys( config.customLaunchers ) );
+        config.browsers = [ "PhantomJS" ].concat( Object.keys( config.customLaunchers ) );
     }
 };
