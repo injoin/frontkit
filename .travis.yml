@@ -1,0 +1,10 @@
+language: node_js
+node_js:
+- "0.10"
+
+env:
+  global:
+    - SAUCE_USERNAME: injoin
+
+    # SAUCE_ACCESS_KEY
+    - secure: YyhI+pQBi1QfS6OLoN/gwOB3oU/cPpuyFJ3oGpqlMFdQ8Ei60FfM1m7VE1KyfwrRLvbvH+RUisMz9AAQh9LyEEFkDVcicS1li/cVWSGFAJyMKlJZBcof0L+dZ7uwJxVdzewSHzM7pegnRGXfcxi3sVlsKnxrc7KVq7qKpg8CzoI=

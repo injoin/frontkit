@@ -1,13 +1,10 @@
 module.exports = function( config ) {
+    "use strict";
+
     config.set({
         // base path that will be used to resolve all patterns (eg. files, exclude)
         basePath: "../..",
-
-        // frameworks to use
-        // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
         frameworks: [ "mocha" ],
-
-        // list of files / patterns to load in the browser
         files: [
             // Deps
             "libs/jquery/dist/jquery.js",
@@ -24,38 +21,45 @@ module.exports = function( config ) {
             // Specs
             "test/unit/specs/**/*.spec.js"
         ],
-
-        // list of files to exclude
         exclude: [],
-
-        // preprocess matching files before serving them to the browser
-        // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
         preprocessors: {},
-
-        // test results reporter to use
-        // possible values: 'dots', 'progress'
-        // available reporters: https://npmjs.org/browse/keyword/karma-reporter
         reporters: [ "progress" ],
-
-        // web server port
         port: 9876,
-
-        // enable / disable colors in the output (reporters and logs)
         colors: true,
-
-        // level of logging
-        // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
         logLevel: config.LOG_INFO,
+        autoWatch: false,
+        browsers: [ "PhantomJS", "Chrome", "Firefox" ],
 
-        // enable / disable watching file and executing tests whenever any file changes
-        autoWatch: true,
+        // Stop running after 1 minute
+        captureTimeout: 60000,
 
-        // start these browsers
-        // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-        browsers: [ "Chrome", "Firefox", "PhantomJS" ],
+        // CI mode
+        // This is set when running via grunt
+        singleRun: true,
 
-        // Continuous Integration mode
-        // if true, Karma captures browsers, runs the tests and exits
-        singleRun: false
+        // SauceLabs configs
+        sauceLabs: {
+            testName: "Frontkit",
+            recordScreenshots: true,
+            startConnect: true,
+            tunnelIdentifier: process.env.TRAVIS_JOB_RUNNER
+        },
+        customLaunchers: {
+            SL_Chrome: {
+                base: "SauceLabs",
+                browserName: "chrome"
+            },
+            SL_Firefox: {
+                base: "SauceLabs",
+                browserName: "firefox"
+            }
+        }
     });
+
+    // When running via Travis CI
+    if ( process.env.TRAVIS ) {
+        config.transports = [ "xhr-polling" ];
+        config.reporters = [ "dots" ];
+        config.browsers = [ "PhantomJS" ].concat( Object.keys( config.customLaunchers ) );
+    }
 };

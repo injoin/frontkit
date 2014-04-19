@@ -1,0 +1,3 @@
+core:
+  configFile: test/unit/karma.conf.js
+  singleRun: true
