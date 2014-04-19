@@ -13,6 +13,7 @@ styles:
 scripts:
   files:
     - "src/scripts/*.js"
+    - "test/unit/specs/*.js"
   tasks:
     - concat:core
     - karma:core
