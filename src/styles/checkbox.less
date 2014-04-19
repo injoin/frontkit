@@ -1,6 +1,8 @@
-/* Checkbox
+/* Checkbox / Radio button
    ============================================================================================== */
 
+/* Checkbox
+   -------- */
 .checkbox {
   .calculate-hypotenuse( @checkbox-check-width, @checkbox-check-height );
 
@@ -40,6 +42,47 @@ input[ type="checkbox" ] {
   }
 
   &:checked + .checkbox:before {
+    opacity: 1;
+  }
+}
+
+/* Radio button
+   ------------ */
+
+.radio {
+  position: relative;
+  top: ( @line-height-base - @radio-size ) / 4;
+  display: inline-block;
+  width: @radio-size;
+  height: @radio-size;
+  border: 1px solid @radio-border-color;
+  border-radius: 50%;
+  cursor: pointer;
+  .transition( .2s linear border-color );
+
+  &:focus,
+  &:hover,
+  label:hover > & {
+    outline: none;
+    border-color: darken( @radio-border-color, 25% );
+  }
+}
+
+input[ type="radio" ] {
+  + .radio:before {
+    position: absolute;
+    top: calc( ~"( 100% - @{radio-dot-size} ) / 2" );
+    left: calc( ~"( 100% - @{radio-dot-size} ) / 2" );
+    width: @radio-dot-size;
+    height: @radio-dot-size;
+    background: @radio-dot-color;
+    opacity: 0;
+    border-radius: 50%;
+    content: "";
+    .transition( .1s linear opacity );
+  }
+
+  &:checked + .radio:before {
     opacity: 1;
   }
 }
