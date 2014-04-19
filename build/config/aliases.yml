@@ -12,6 +12,7 @@ test:
   - karma:core
 
 default:
+  - deps
   - package
   - test
   - docs
