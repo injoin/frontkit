@@ -5,6 +5,7 @@
 # Generated files
 *.html
 dist/
+*.log
 
 # Dependencies
 node_modules/
