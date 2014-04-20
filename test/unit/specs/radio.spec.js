@@ -1,3 +1,4 @@
+/* global chai, sinon, $, describe, module, inject, it, beforeEach, afterEach */
 describe( "Radio Directive", function() {
     "use strict";
 
@@ -61,7 +62,7 @@ describe( "Radio Directive", function() {
     });
 
     describe( "on click", function() {
-        it( "should invert checked state", function () {
+        it( "should invert checked state", function() {
             this.styled.triggerHandler( "click" );
             expect( this.input.prop( "checked" ) ).to.be.ok;
 

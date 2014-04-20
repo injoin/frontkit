@@ -18,7 +18,7 @@
                 var definition = {};
 
                 definition.restrict = "A";
-                definition.link = function( scope, input, attr ) {
+                definition.link = function( scope, input ) {
                     var styled = $compile( template )( scope );
                     input.after( styled );
                     input.addClass( "hide" );

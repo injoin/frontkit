@@ -9,6 +9,8 @@ package:
   - copy:fonts
 
 test:
+  - jshint:core
+  - jscs:core
   - karma:core
 
 default:
