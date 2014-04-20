@@ -1,0 +1,3 @@
+all:
+  src:
+    - "<%= jshint.all.src %>"
