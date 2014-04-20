@@ -30,8 +30,8 @@ module.exports = function( config ) {
         autoWatch: false,
         browsers: [ "PhantomJS", "Chrome", "Firefox" ],
 
-        // Stop running after 1 minute
-        captureTimeout: 60000,
+        // Stop running after 1.5 minutes
+        captureTimeout: 90000,
 
         // CI mode
         // This is set when running via grunt
