@@ -4,7 +4,7 @@
 {% block content %}
     <header class="page-header">
         <h2>Labels</h2>
-    </
+    </header>
     <p class="lead">Give your components some labels for easily distinguish them from the others.</p>
 
     <section id="default">
