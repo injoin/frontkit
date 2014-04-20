@@ -35,6 +35,10 @@ docsHTML:
     - icons:docs
     - swig:docs
 
+docsJS:
+  files:
+    - "assets/scripts/*.js"
+
 docsCSS:
   files:
     - "assets/**/*.less"
