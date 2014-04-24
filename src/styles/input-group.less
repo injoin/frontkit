@@ -1,0 +1,83 @@
+/* Input Groups
+   ============================================================================================== */
+
+/*
+ * 1. Prevent from inheriting borders from tables
+ */
+.input-group {
+  display: table;
+  width: 100%;
+  margin-bottom: @margin-base-y;
+  border-collapse: separate; /* 1 */
+}
+
+.input-group-addon,
+.input-group-btn,
+.input-group .input {
+  position: relative;
+  display: table-cell;
+  margin-bottom: 0;
+
+  &:not( :first-child ) {
+    left: -1px;
+  }
+}
+
+/*
+ * 1. Make sure that the input borders are always in the front of other elements
+ */
+.input-group .input {
+  z-index: 2; /* 1 */
+}
+
+.input-group-addon,
+.input-group-btn {
+  z-index: 1;
+  width: 1%;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
+.input-group-addon {
+  padding: @padding-base-y @padding-base-x;
+  border: 1px solid @input-group-addon-border;
+  text-align: center;
+  background-color: @input-group-addon-bg;
+}
+
+/*
+ * 1. Avoid double border
+ */
+.input-group-addon:first-child,
+.input-group-btn:first-child .btn {
+  border-right: none; /* 1 */
+}
+
+.input-group-addon:last-child,
+.input-group-btn:last-child .btn {
+  border-left: none; /* 1 */
+}
+
+/*
+ * Reset border radius
+ * 1. for inner elements
+ * 2. for first element
+ * 3. for last element
+ */
+.input-group-addon,
+.input-group-btn .btn,
+.input-group .input {
+  border-radius: 0; /* 1 */
+}
+
+.input-group-addon:first-child,
+.input-group-btn:first-child .btn,
+.input-group .input:first-child {
+  .border-left-radius( @border-radius-base ); /* 2 */
+}
+
+.input-group-addon:last-child,
+.input-group-btn:last-child .btn,
+.input-group .input:last-child {
+  .border-right-radius( @border-radius-base ); /* 3 */
+}

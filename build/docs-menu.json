@@ -32,6 +32,7 @@
         "label": "Components",
         "items": {
             "hero-unit": "Hero Unit",
+            "input-groups": "Input Groups",
             "labels": "Labels",
             "nav": "Nav",
             "navbar": "Navbar"

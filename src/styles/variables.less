@@ -13,7 +13,10 @@
 
 // margin between components
 @margin-base-y:               unit( @line-height-base, rem );
+@margin-base-x:               unit( @line-height-base * .5, rem );
+
 @margin-small-y:              ( @margin-base-y * @small-factor );
+@margin-small-x:              ( @margin-base-x * @small-factor );
 
 // border-radius default sizing
 @border-radius-large:         6px;
@@ -177,6 +180,11 @@
 @hero-unit-bg:                @gray-light-2;
 @hero-unit-padding-y:         @padding-large-y * 5;
 @hero-unit-padding-x:         @padding-large-x;
+
+// Input Groups
+// ------------
+@input-group-addon-bg:        @gray-light-2;
+@input-group-addon-border:    @gray-light-1;
 
 // Labels
 // ------
