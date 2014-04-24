@@ -45,4 +45,20 @@
     font-weight: bold;
     text-transform: uppercase;
   }
+
+  // Sub nav
+  .nav-item & {
+    font-size: 80%;
+    margin-bottom: 0;
+
+    .nav-item > a {
+      margin-left: @margin-base-x;
+      padding: @padding-small-y @padding-small-x;
+    }
+
+    .nav-item.active > a,
+    .nav-item > a:hover {
+      background-color: fade( @nav-list-hover-bg, 50% );
+    }
+  }
 }
