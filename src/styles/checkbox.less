@@ -1,20 +1,31 @@
 /* Checkbox / Radio button
    ============================================================================================== */
 
+/* Shared
+   ------ */
+
+/*
+ * 1. Fix bg visibility when inside an contrastant element
+ */
+.checkbox,
+.radio {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  background-color: @body-bg; /* 1 */
+}
+
 /* Checkbox
    -------- */
 .checkbox {
   .calculate-hypotenuse( @checkbox-check-width, @checkbox-check-height );
 
-  position: relative;
   top: ( @line-height-base - @checkbox-size ) / 4;
-  display: inline-block;
   width: @checkbox-size;
   height: @checkbox-size;
   margin-right: max( @hypotenuse - @checkbox-size, 0 );
   border: 1px solid @checkbox-border-color;
   border-radius: @border-radius-small;
-  cursor: pointer;
   .transition( .2s linear border-color );
 
   &:focus,
@@ -50,14 +61,11 @@ input[ type="checkbox" ] {
    ------------ */
 
 .radio {
-  position: relative;
   top: ( @line-height-base - @radio-size ) / 4;
-  display: inline-block;
   width: @radio-size;
   height: @radio-size;
   border: 1px solid @radio-border-color;
   border-radius: 50%;
-  cursor: pointer;
   .transition( .2s linear border-color );
 
   &:focus,
