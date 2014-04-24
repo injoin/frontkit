@@ -38,13 +38,7 @@
         "*",
         "/"
     ],
-    "requireRightStickedOperators": [
-        "!",
-        "+",
-        "-",
-        "*",
-        "/"
-    ],
+    "requireRightStickedOperators": [ "!" ],
     "disallowRightStickedOperators": [
         "?",
         ":",
