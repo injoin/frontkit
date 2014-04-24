@@ -26,6 +26,10 @@
                         <a href="{{ macros.siteUrl( "docs/" + menuId + "/" + id ) }}">
                             {{ label }}
                         </a>
+
+                        {% if docs === id %}
+                            <div submenu></div>
+                        {% endif %}
                     </li>
                     {%- endfor %}
                 </ul>
