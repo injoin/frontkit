@@ -78,8 +78,9 @@
 @font-size-large:             unit( @large-factor, rem );
 @font-size-small:             unit( @small-factor, rem );
 
-@line-height-computed:        24px;
-@line-height-base:            unit( @line-height-computed / @font-size-base );
+// it's a good practice to keep units out of the line-height.
+// this way it will always be relative to the font-size.
+@line-height-base:            1.5;
 
 // Headings
 @font-family-headings:        @font-family-base;
