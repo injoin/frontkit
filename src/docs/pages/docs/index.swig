@@ -1,5 +1,3 @@
 {% extends "../../layout/docs.swig" %}
 
-{% block content %}
-    <p>teste</p>
-{% endblock %}
+{% block content %}{% endblock %}
