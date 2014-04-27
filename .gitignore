@@ -6,6 +6,7 @@
 *.html
 dist/
 *.log
+assets/styles/*.css
 
 # Dependencies
 node_modules/
