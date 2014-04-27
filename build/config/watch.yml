@@ -16,7 +16,6 @@ scripts:
     - "test/unit/specs/*.js"
   tasks:
     - concat:core
-    - karma:core
 
 fonts:
   files:
