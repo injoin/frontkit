@@ -82,8 +82,8 @@
             </div>
         {% endhighlight %}
 
-        {#<section>
-            <h4>Shared state</h4>
+        <section id="groups-state">
+            {{ macros.docsSectionTitle( "Shared state", "groups-state", 4 ) }}
             <p>
                 When using button groups, you are able to share state between them.
                 Just add the desired state class in the <code>.btn-group</code> container.
@@ -109,6 +109,6 @@
                     <button type="button" class="btn btn-default">Active 2</button>
                 </div>
             {% endhighlight %}
-        </section>#}
+        </section>
     </section>
 {% endblock %}
