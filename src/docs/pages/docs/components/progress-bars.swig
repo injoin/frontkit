@@ -21,6 +21,43 @@
         {% endhighlight %}
     </section>
 
+    <section id="contextual-options">
+        {{ macros.docsSectionTitle( "Contextual Options", "contextual-options", 3 ) }}
+        <p>
+            You can use a few of the contextual classes of Frontkit to create different styles of
+            progress bars:
+        </p>
+
+        <div class="example">
+            <div class="progress">
+                <div class="progress-bar progress-bar-info" style="width: 60%"></div>
+            </div>
+            <div class="progress">
+                <div class="progress-bar progress-bar-success" style="width: 80%"></div>
+            </div>
+            <div class="progress">
+                <div class="progress-bar progress-bar-warning" style="width: 25%"></div>
+            </div>
+            <div class="progress">
+                <div class="progress-bar progress-bar-danger" style="width: 40%"></div>
+            </div>
+        </div>
+        {% highlight xml %}
+            <div class="progress">
+                <div class="progress-bar progress-bar-info" style="width: 60%"></div>
+            </div>
+            <div class="progress">
+                <div class="progress-bar progress-bar-success" style="width: 80%"></div>
+            </div>
+            <div class="progress">
+                <div class="progress-bar progress-bar-warning" style="width: 25%"></div>
+            </div>
+            <div class="progress">
+                <div class="progress-bar progress-bar-danger" style="width: 40%"></div>
+            </div>
+        {% endhighlight %}
+    </section>
+
     <section id="striped">
         {{ macros.docsSectionTitle( "Striped", "striped", 3 ) }}
         <p>

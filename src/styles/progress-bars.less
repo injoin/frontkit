@@ -1,24 +1,39 @@
 /* Progress bars
    ============================================================================================== */
 
+/*
+ * 1. Allow us to not care about border-radius in child bars
+ */
 .progress {
   width: 100%;
   height: @progressbar-height;
+  margin-bottom: @margin-base-x;
   background-color: @progressbar-color;
-  overflow: hidden;
+  overflow: hidden; /* 1 */
   border-radius: @border-radius-base;
   .box-shadow( inset 0 1px 2px rgba( 0, 0, 0, .1 ) );
-
-  .progress-bar {
-    display: block;
-    width: 0;
-    height: 100%;
-    line-height: @progressbar-height;
-    background-color: darken( @brand-default, 15% );
-    .box-shadow( inset 0 -1px 0 rgba( 0, 0, 0, .1 ) );
-    .transition( width .5s ease );
-  }
 }
+
+/*
+ * 1. Vertically align text in the middle
+ */
+.progress-bar {
+  display: block;
+  width: 0;
+  height: 100%;
+  line-height: @progressbar-height; /* 1 */
+  background-color: darken( @brand-default, 10% );
+  .box-shadow( inset 0 -1px 0 rgba( 0, 0, 0, .1 ) );
+  .transition( width .5s ease );
+}
+
+/* Contextual Options
+   ------------------ */
+
+.progress-bar.progress-bar-info     { background-color: @brand-info; }
+.progress-bar.progress-bar-success  { background-color: @brand-success; }
+.progress-bar.progress-bar-warning  { background-color: @brand-warning; }
+.progress-bar.progress-bar-danger   { background-color: @brand-danger; }
 
 /* Striped
    ------- */
