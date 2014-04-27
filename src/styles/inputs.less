@@ -1,9 +1,13 @@
 /* Inputs
    ============================================================================================== */
 
+/*
+ * 1. Fix the height when browsers have line-height: normal !important
+ */
 .input {
   display: inline-block;
   width: 100%;
+  height: @height-base; /* 1 */
   margin-bottom: @margin-base-y;
   padding: @padding-base-y @padding-base-x;
   border: 1px solid @input-border;
@@ -21,12 +25,19 @@
 }
 
 /*
- * 1. Reset textarea height, because they have rows
- * 2. Allow for vertical resizing only
+ * Reset height on textareas and multi select
+ */
+textarea.input,
+select[ size ].input,
+select[ multiple ].input, {
+  height: auto;
+}
+
+/*
+ * Allow for vertical resizing only
  */
 textarea.input {
-  height: auto; /* 1 */
-  resize: vertical; /* 2 */
+  resize: vertical;
 }
 
 /* Validation states

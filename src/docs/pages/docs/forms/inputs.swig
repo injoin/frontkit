@@ -11,7 +11,7 @@
         {{ macros.docsSectionTitle( "Default Input", "default", 3 ) }}
         <p>
             The default input has a light style.
-            It's suitable for usage in any text-based form control, like for example,
+            It's suitable for usage in selects and any text-based form control, like for example,
             <code>&lt;textarea&gt;</code> and most <code>&lt;input&gt;</code> types:
         </p>
         <ul class="block-grid small-block-grid-3">
@@ -33,10 +33,19 @@
 
         <div class="example">
             <input type="text" class="input" placeholder="Type something...">
+            <select class="input">
+                <option value="">Select something...</option>
+                <option value="apples">Apples</option>
+                <option value="bananas">Bananas</option>
+                <option value="potatoes">Potatoes</option>
+            </select>
             <textarea class="input" placeholder="Type something..."></textarea>
         </div>
         {% highlight xml %}
             <input type="text" class="input" placeholder="...">
+            <select class="input">
+                ...
+            </select>
             <textarea class="input" placeholder="..."></textarea>
         {% endhighlight %}
     </section>
