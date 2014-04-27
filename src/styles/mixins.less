@@ -103,6 +103,15 @@
           hyphens: @mode;
 }
 
+// animation
+.animation( @animation ) {
+  -webkit-animation: @animation;
+     -moz-animation: @animation;
+      -ms-animation: @animation;
+       -o-animation: @animation;
+          animation: @animation;
+}
+
 // input placeholder
 .placeholder( @color: @input-placeholder-color ) {
   &:-moz-placeholder            { color: @color; }

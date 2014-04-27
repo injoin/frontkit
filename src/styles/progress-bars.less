@@ -1,0 +1,52 @@
+/* Progress bars
+   ============================================================================================== */
+
+.progress {
+  width: 100%;
+  height: @progressbar-height;
+  background-color: @progressbar-color;
+  overflow: hidden;
+  border-radius: @border-radius-base;
+  .box-shadow( inset 0 1px 2px rgba( 0, 0, 0, .1 ) );
+
+  .progress-bar {
+    display: block;
+    width: 0;
+    height: 100%;
+    line-height: @progressbar-height;
+    background-color: darken( @brand-default, 15% );
+    .box-shadow( inset 0 -1px 0 rgba( 0, 0, 0, .1 ) );
+    .transition( width .5s ease );
+  }
+}
+
+/* Striped
+   ------- */
+.progress.progress-striped {
+  .progress-bar {
+    background-size: @progressbar-stripe-size @progressbar-stripe-size;
+    #gradient .striped( fade( #fff, 30% ) );
+  }
+}
+
+/* Animated Stripes
+   ---------------- */
+
+.progress.progress-striped.active {
+  .progress-bar {
+    .animation( progress-bar 1.5s linear infinite );
+  }
+}
+
+/* Animation keyframes
+   ------------------- */
+
+@-webkit-keyframes progress-bar {
+  from { background-position: @progressbar-stripe-size 0; }
+  to { background-position: 0 0; }
+}
+
+@keyframes progress-bar {
+  from { background-position: @progressbar-stripe-size 0; }
+  to { background-position: 0 0; }
+}

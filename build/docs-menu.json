@@ -35,7 +35,8 @@
             "input-groups": "Input Groups",
             "labels": "Labels",
             "nav": "Nav",
-            "navbar": "Navbar"
+            "navbar": "Navbar",
+            "progress-bars": "Progress Bars"
         }
     }
 }
