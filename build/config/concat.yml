@@ -2,4 +2,5 @@ core:
   src:
     - src/scripts/frontkit.js
     - src/scripts/*.js
+    - src/templates/**/*.js
   dest: dist/frontkit.js

@@ -24,6 +24,7 @@
         "label": "Forms",
         "items": {
             "checkboxes": "Checkboxes / Radio buttons",
+            "dropdowns": "Dropdowns",
             "inputs": "Inputs",
             "forms": "Forms"
         }

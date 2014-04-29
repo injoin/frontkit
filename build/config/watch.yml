@@ -14,7 +14,13 @@ scripts:
   files:
     - "src/scripts/*.js"
     - "test/unit/specs/*.js"
+  tasks: concat:core
+
+templates:
+  files:
+    - "src/templates/**/*.html"
   tasks:
+    - html2js:core
     - concat:core
 
 fonts:

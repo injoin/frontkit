@@ -1,0 +1,27 @@
+/* Dropdowns
+   ============================================================================================== */
+
+.dropdown {
+  position: relative;
+
+  .input {
+    margin-bottom: 0;
+  }
+}
+
+.dropdown-caret {
+  position: absolute;
+  top: 50%;
+  right: ( @padding-base-x / 2 );
+  width: 0;
+  height: 0;
+  border-top: .3rem solid #000;
+  border-left: .3rem solid transparent;
+  border-right: .3rem solid transparent;
+  cursor: pointer;
+  .transform( translateY( -50% ) );
+}
+
+.dropdown-options {
+  position: fixed;
+}

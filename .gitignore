@@ -7,6 +7,7 @@
 dist/
 *.log
 assets/styles/*.css
+src/templates/**/*.js
 
 # Dependencies
 node_modules/

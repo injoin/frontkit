@@ -5,6 +5,7 @@ docs:
 
 package:
   - less:core
+  - html2js:core
   - concat:core
   - copy:fonts
 
