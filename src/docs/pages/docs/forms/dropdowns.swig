@@ -10,10 +10,12 @@
 
     <section>
         <div class="example">
-            <select dropdown>
-                <option value="AC/DC">AC/DC</option>
-                <option value="The Beatles">The Beatles</option>
+            <select dropdown placeholder="Select a rock band..." ng-model="selectedBand" ng-options="band for band in bands">
             </select>
+
+            {% raw %}
+            <p>You have selected {{ selectedBand }}.</p>
+            {% endraw %}
         </div>
     </section>
 {% endblock %}

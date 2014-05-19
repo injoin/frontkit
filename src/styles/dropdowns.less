@@ -3,9 +3,18 @@
 
 .dropdown {
   position: relative;
+  margin-bottom: @margin-base-y;
+}
 
-  .input {
-    margin-bottom: 0;
+/*
+ * 1. Override .input margin-bottm
+ * 2. Make the input look clickable
+ */
+.dropdown-input {
+  margin-bottom: 0; /* 1 */
+
+  .dropdown:not( .open ) & {
+    cursor: pointer; /* 2 */
   }
 }
 
@@ -15,13 +24,48 @@
   right: ( @padding-base-x / 2 );
   width: 0;
   height: 0;
-  border-top: .3rem solid #000;
-  border-left: .3rem solid transparent;
-  border-right: .3rem solid transparent;
   cursor: pointer;
   .transform( translateY( -50% ) );
+  .make-triangle( down, .3rem, @text-color );
+
+  .dropdown.open & {
+    .make-triangle( up, .3rem, @text-color );
+  }
 }
 
 .dropdown-options {
-  position: fixed;
+  position: absolute;
+  overflow-y: auto;
+  display: none;
+  width: 100%;
+  max-height: ( unit( @line-height-base, rem ) + ( 2 * @padding-base-y ) ) * 5;
+  margin: 4px 0 0;
+  border: 1px solid @gray-light-1;
+  list-style: none;
+  background: @dropdown-options-bg;
+  border-radius: @border-radius-base;
+
+  .dropdown.open & {
+    display: block;
+  }
+}
+
+/*
+ * 1. When a option has empty text, make it at least one line tall.
+ */
+.dropdown-option {
+  min-height: unit( @line-height-base, rem ) + ( 2 * @padding-base-y ); /* 1 */
+  padding: @padding-base-y @padding-base-x;
+  color: @dropdown-item-text;
+  background-color: @dropdown-item-bg;
+  cursor: pointer;
+
+  &:first-child { .border-top-radius( @border-radius-base ); }
+  &:last-child  { .border-bottom-radius( @border-radius-base ); }
+
+  &.active,
+  &:hover {
+    color: @dropdown-item-hover-text;
+    background-color: @dropdown-item-hover-bg;
+  }
 }
