@@ -1,9 +1,6 @@
 !function( ng ) {
     "use strict";
 
-    var toArray = function( elem ) {
-        return [].slice.call( elem );
-    };
     var module = ng.module( "frontkit.dropdown", [
         "frontkit.utils",
         "templates/dropdown/single.html"
@@ -32,24 +29,6 @@
 
                 // Hide the original element
                 element.css( "display", "none" );
-
-                // Watch for changes in <option> elements.
-                // This allows ng-options (in <select>) and ng-repeat (in <option>) to be used.
-                scope.$watch(function() {
-                    var options = element[ 0 ].querySelectorAll( "option" );
-                    return toArray( options ).filter(function( option ) {
-                        // Ignore empty option
-                        return option.value !== "" && option.value !== "?";
-                    }).map(function( option ) {
-                        return {
-                            value: option.value,
-                            text: option.text
-                        };
-                    });
-                }, function( options ) {
-                    // Clear current options
-                    scope.options = options;
-                }, true );
             };
 
             return definition;
@@ -58,25 +37,44 @@
 
     module.controller( "DropdownController", [
         "$$safeApply",
+        "$filter",
         "$scope",
-        function( $$safeApply, $scope ) {
+        function( $$safeApply, $filter, $scope ) {
+            var options, open, value, highlighted;
+            var filterFilter = $filter( "filter" );
             var ctrl = this;
-            var open = false;
-            var value = null;
-            var highlighted = -1;
 
-            ctrl.value = $$safeApply( $scope, function( val ) {
+            // Initialize the search object
+            var search = {
+                text: ""
+            };
+
+            // Get/set the current option set.
+            // If a search is available, the options will be filtered.
+            ctrl.options = function( val ) {
+                // If it's not an array, we'll not overwrite the options.
+                // Let's just return the filtered value.
+                if ( !ng.isArray( val ) ) {
+                    return filterFilter( options || [], search );
+                }
+
+                options = val;
+                $$safeApply( $scope );
+            };
+
+            ctrl.value = function( val ) {
                 var i;
 
+                // If no value was passed, let's return the value
                 if ( val === undefined ) {
-                    return value;
+                    return value || null;
                 }
 
                 // Try to the find the option with the passed value
                 if ( val != null && !val.value ) {
-                    for ( i = 0; i < $scope.options.length; i++ ) {
-                        if ( $scope.options[ i ].value === val ) {
-                            val = $scope.options[ i ];
+                    for ( i = 0; i < options.length; i++ ) {
+                        if ( options[ i ].value === val ) {
+                            val = options[ i ];
                             break;
                         }
                     }
@@ -87,12 +85,14 @@
 
                 // Reset highlighted position to the current value
                 if ( val != null ) {
-                    highlighted = $scope.options.indexOf( val );
+                    highlighted = options.indexOf( val );
                 }
-            });
+
+                $$safeApply( $scope );
+            };
 
             ctrl.isOpen = function() {
-                return open;
+                return !!open;
             };
 
             ctrl.open = $$safeApply( $scope, function() {
@@ -103,13 +103,20 @@
                 open = false;
             });
 
-            ctrl.highlighted = $$safeApply( $scope, function( val ) {
+            ctrl.highlighted = function( val ) {
                 if ( typeof val !== "number" ) {
-                    return highlighted;
+                    return highlighted != null ? highlighted : -1;
                 }
 
                 highlighted = val;
+                $$safeApply( $scope );
+            };
+
+            ctrl.setSearch = $$safeApply( $scope, function( str ) {
+                search.text = str;
             });
+
+            $scope.$watch();
         }
     ]);
 
@@ -125,25 +132,18 @@
             definition.link = function( scope, element, attrs, controller ) {
                 var $original = scope.$select;
 
-                // Create a filter for the option list
-                scope.search = {
-                    text: ""
-                };
-
                 // Scope Watches
                 // -------------
                 // Watch on the input value and set the current search accordingly.
                 // If a value is present, then a empty string will be set - can't be null otherwise
                 // Angular's filter filter won't work.
                 scope.$watch( "input", function( input ) {
-                    scope.search.text = controller.value() == null ? input : "";
+                    controller.setSearch( controller.value() == null ? input : "" );
                 });
 
                 // Whenever the dropdown value is set/unset, we'll replace the input value and the
                 // original select element. Also, the dropdown must be closed if value was set.
-                scope.$watch(function() {
-                    return controller.value();
-                }, function( val ) {
+                scope.$watch( wrapFn( controller.value ), function( val ) {
                     // If there's a value, we'll close the dropdown
                     if ( val ) {
                         controller.close();
@@ -159,9 +159,32 @@
                     });
                 });
 
-                scope.$watch( "options", function() {
-                    controller.highlighted( -1 );
-                });
+                // Whenever the options change, the highlighted index must be reset.
+                // Either to the -1 index or to the selected option.
+                scope.$watch( wrapFn( controller.options ), function( options ) {
+                    var value = controller.value();
+                    var index = value ? options.indexOf( value ) : -1;
+
+                    controller.highlighted( index );
+                }, true );
+
+                // Watch for changes in <option> elements.
+                // This allows ng-options (in <select>) and ng-repeat (in <option>) to be used.
+                scope.$watch(function() {
+                    var options = $original[ 0 ].querySelectorAll( "option" );
+                    return toArray( options ).filter(function( option ) {
+                        // Ignore empty option
+                        return option.value !== "" && option.value !== "?";
+                    }).map(function( option ) {
+                        return {
+                            value: option.value,
+                            text: option.text
+                        };
+                    });
+                }, function( options ) {
+                    // Clear current options by setting the new values
+                    controller.options( options );
+                }, true );
 
                 // DOM Events
                 // ----------
@@ -182,8 +205,10 @@
 
     module.directive( "dropdownInput", [
         "$timeout",
+        "$filter",
         "keycodes",
-        function( $timeout, keycodes ) {
+        function( $timeout, $filter, keycodes ) {
+            var filterFilter = $filter( "filter" );
             var definition = {};
 
             definition.restrict = "C";
@@ -218,6 +243,7 @@
                 element.on( "keydown", function( evt ) {
                     var index = controller.highlighted();
                     var key = evt.keyCode;
+                    var options = controller.options();
 
                     // On escape, close and blur.
                     // On enter, set a value and blur.
@@ -225,7 +251,7 @@
                         controller.close();
                         return input.blur();
                     } else if ( key === keycodes.ENTER ) {
-                        controller.value( scope.options[ index ] );
+                        controller.value( options[ index ] );
                         return input.blur();
                     }
 
@@ -236,13 +262,14 @@
                         if ( key === keycodes.ARROWUP ) {
                             index = Math.max( 0, index - 1 );
                         } else if ( key === keycodes.ARROWDOWN ) {
-                            index = Math.min( scope.options.length - 1, index + 1 );
+                            index = Math.min( options.length - 1, index + 1 );
                         }
 
                         controller.highlighted( index );
                     }
 
                     if ( controller.value() != null ) {
+                        // Anything that's not trying to delete the current value is not welcome!
                         if ( key !== keycodes.BACKSPACE ) {
                             return evt.stopPropagation();
                         }
@@ -258,7 +285,8 @@
     ]);
 
     module.directive( "dropdownOptions", [
-        function() {
+        "$timeout",
+        function( $timeout ) {
             var definition = {};
 
             definition.restrict = "C";
@@ -267,35 +295,54 @@
             definition.link = function( scope, element, attrs, controller ) {
                 var list = element[ 0 ];
 
-                scope.$watch(function() {
-                    return controller.highlighted();
-                }, function( index ) {
+                scope.$watch( wrapFn( controller.highlighted ), adjustScroll );
+                scope.$watch( wrapFn( controller.isOpen ), function( open ) {
+                    if ( open ) {
+                        // Wait until it's really opened
+                        $timeout(function() {
+                            adjustScroll( controller.highlighted() );
+                        });
+                    }
+                });
+
+                function adjustScroll( index ) {
                     var fromScrollTop;
                     var scrollTop = list.scrollTop;
-                    var options = list.querySelectorAll( ".dropdown-option" );
-                    var option = options[ index ];
+                    var optionElem = list.querySelectorAll( ".dropdown-option" )[ index ];
 
                     // Option inexistent? Let's just do nothing
-                    if ( !option ) {
+                    if ( !optionElem ) {
                         return;
                     }
 
-                    fromScrollTop = option.offsetTop - list.scrollTop;
+                    fromScrollTop = optionElem.offsetTop - list.scrollTop;
 
                     // If the option is above the current scroll, we'll make it appear on the top of
                     // the scroll. Otherwise, it'll appear in the end of the scroll view.
                     if ( fromScrollTop < 0 ) {
-                        scrollTop = option.offsetTop;
+                        scrollTop = optionElem.offsetTop;
                     } else if ( list.clientHeight <= fromScrollTop ) {
-                        scrollTop = option.offsetTop + option.clientHeight - list.clientHeight;
+                        scrollTop = optionElem.offsetTop +
+                                    optionElem.clientHeight -
+                                    list.clientHeight;
                     }
 
                     list.scrollTop = scrollTop;
-                });
+                }
             };
 
             return definition;
         }
     ]);
+
+    function toArray( elem ) {
+        return [].slice.call( elem );
+    }
+
+    function wrapFn( fn ) {
+        return function() {
+            return fn();
+        };
+    }
 
 }( angular );
