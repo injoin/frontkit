@@ -1,0 +1,17 @@
+<div class="dropdown" ng-class="{ open: $.isOpen() }" dropdown-wrapper>
+    <div class="dropdown-container">
+        <input type="text" class="input dropdown-input"
+               ng-model="input"
+               ng-focus="$.open()"
+               placeholder="{{ placeholder }}">
+        <span class="dropdown-caret"></span>
+    </div>
+
+    <ul class="dropdown-options">
+        <li class="dropdown-option" ng-repeat="option in $.options()"
+            ng-class="{ active: $.highlighted() === $index }"
+            ng-click="$.value( option )">
+            {{ option.text }}
+        </li>
+    </ul>
+</div>
