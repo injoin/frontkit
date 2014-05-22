@@ -3,7 +3,8 @@
 *.iml
 
 # Generated files
-*.html
+/*.html
+/docs/*
 dist/
 *.log
 assets/styles/*.css
