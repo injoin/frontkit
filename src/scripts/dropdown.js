@@ -2,14 +2,12 @@
     "use strict";
 
     var module = ng.module( "frontkit.dropdown", [
-        "frontkit.utils",
-        "templates/dropdown/single.html"
+        "frontkit.utils"
     ]);
 
     module.directive( "dropdown", [
         "$compile",
-        "$templateCache",
-        function( $compile, $templateCache ) {
+        function( $compile ) {
             var definition = {};
 
             definition.scope = {
@@ -18,13 +16,12 @@
 
             definition.link = function( scope, element ) {
                 var $dropdown;
-                var templateUrl = "templates/dropdown/single.html";
 
                 // Save the reference to the original element in the scope
                 scope.$select = element;
 
                 // Compile the dropdown template and place it after the original element
-                $dropdown = $compile( $templateCache.get( templateUrl ) )( scope );
+                $dropdown = $compile( "<dropdown-wrapper></dropdown-wrapper>" )( scope );
                 element.after( $dropdown );
 
                 // Hide the original element
@@ -126,6 +123,8 @@
         function( $timeout, $document ) {
             var definition = {};
 
+            definition.restrict = "E";
+            definition.templateUrl = "templates/dropdown/single.html";
             definition.controller = "DropdownController";
             definition.controllerAs = "$";
 
