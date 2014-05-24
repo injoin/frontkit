@@ -10,7 +10,8 @@
 
     <section>
         <div class="example">
-            <select dropdown placeholder="Select a rock band..." ng-model="selectedBand" ng-options="band for band in bands">
+            <select dropdown placeholder="Select a rock band..." ng-model="selectedBand"
+                    ng-options="band for band in bands">
             </select>
 
             {% raw %}
