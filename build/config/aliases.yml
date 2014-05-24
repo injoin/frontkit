@@ -5,8 +5,9 @@ docs:
 
 package:
   - less:core
-  - html2js:core
+  - ngtemplates:core
   - concat:core
+  - concat:all
   - copy:fonts
 
 test:

@@ -20,8 +20,8 @@ templates:
   files:
     - "src/templates/**/*.html"
   tasks:
-    - html2js:core
-    - concat:core
+    - ngtemplates:core
+    - concat:all
 
 fonts:
   files:

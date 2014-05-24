@@ -1,9 +1,0 @@
-options:
-  module: null
-  useStrict: true
-  indentString: "    "
-
-core:
-  expand: true
-  src: "src/templates/**/*.html"
-  ext: ".html.js"
