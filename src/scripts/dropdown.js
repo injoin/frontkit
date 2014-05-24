@@ -205,10 +205,8 @@
 
     module.directive( "dropdownInput", [
         "$timeout",
-        "$filter",
         "keycodes",
-        function( $timeout, $filter, keycodes ) {
-            var filterFilter = $filter( "filter" );
+        function( $timeout, keycodes ) {
             var definition = {};
 
             definition.restrict = "C";
