@@ -2,6 +2,7 @@
     "use strict";
 
     ng.module( "frontkit", [
-        "frontkit.checkbox"
+        "frontkit.checkbox",
+        "frontkit.dropdown"
     ]);
 }( angular );

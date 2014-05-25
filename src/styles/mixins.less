@@ -221,6 +221,32 @@
   }
 }
 
+.make-triangle( @side, @size, @color ) {
+  border: @size solid transparent;
+
+  .triangle() when ( @side = down ) {
+    border-top-color: @color;
+    border-bottom: none;
+  }
+
+  .triangle() when ( @side = up ) {
+    border-bottom-color: @color;
+    border-top: none;
+  }
+
+  .triangle() when ( @side = left ) {
+    border-right-color: @color;
+    border-left: none;
+  }
+
+  .triangle() when ( @side = right ) {
+    border-left-color: @color;
+    border-right: none;
+  }
+
+  .triangle();
+}
+
 // Frontkit component helpers
 // --------------------------
 

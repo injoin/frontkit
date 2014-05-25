@@ -38,4 +38,26 @@
             return definition;
         }
     ]);
+
+    module.run([ "$rootScope", function( $rootScope ) {
+        // Add some bands for dropdowns example
+        $rootScope.bands = [
+            "AC/DC",
+            "Black Sabbath",
+            "Bon Jovi",
+            "Dio",
+            "Iron Maiden",
+            "Led Zeppelin",
+            "Metallica",
+            "Motorhead",
+            "Red Hot Chili Peppers",
+            "Scorpion",
+            "Sex Pistols",
+            "The Beatles",
+            "The Clash",
+            "The Ramones",
+            "The Who"
+        ];
+    }]);
+
 }( angular );

@@ -3,10 +3,12 @@
 *.iml
 
 # Generated files
-*.html
+/*.html
+/docs/*
 dist/
 *.log
 assets/styles/*.css
+src/templates/**/*.js
 
 # Dependencies
 node_modules/

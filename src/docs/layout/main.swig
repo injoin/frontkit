@@ -36,7 +36,7 @@
 
         <script src="{{ macros.baseUrl( "libs/holderjs/holder.js" ) }}"></script>
         <script src="{{ macros.baseUrl( "libs/angular/angular.js" ) }}"></script>
-        <script src="{{ macros.baseUrl( "dist/frontkit.js" ) }}"></script>
+        <script src="{{ macros.baseUrl( "dist/frontkit-tmpl.js" ) }}"></script>
         <script src="{{ macros.baseUrl( "assets/scripts/docs.js" ) }}"></script>
     </body>
 </html>

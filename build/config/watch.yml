@@ -14,9 +14,14 @@ scripts:
   files:
     - "src/scripts/*.js"
     - "test/unit/specs/*.js"
+  tasks: concat:core
+
+templates:
+  files:
+    - "src/templates/**/*.html"
   tasks:
-    - concat:core
-    - karma:core
+    - ngtemplates:core
+    - concat:all
 
 fonts:
   files:

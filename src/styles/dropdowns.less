@@ -1,0 +1,76 @@
+/* Dropdowns
+   ============================================================================================== */
+
+.dropdown {
+  position: relative;
+  margin-bottom: @margin-base-y;
+}
+
+/*
+ * 1. Override .input margin-bottm
+ * 2. Make the input look clickable
+ */
+.dropdown-input {
+  margin-bottom: 0; /* 1 */
+
+  .dropdown:not( .open ) & {
+    cursor: pointer; /* 2 */
+  }
+}
+
+.dropdown-caret {
+  position: absolute;
+  top: 50%;
+  right: ( @padding-base-x / 2 );
+  width: 0;
+  height: 0;
+  cursor: pointer;
+  .transform( translateY( -50% ) );
+  .make-triangle( down, .3rem, @text-color );
+
+  .dropdown.open & {
+    .make-triangle( up, .3rem, @text-color );
+  }
+}
+
+/*
+ * 1. Set a consitent background, so no problems when opening the dropdown above a colored component
+ * 2. Show no more than 5 items per scroll view
+ * 3. Add a frame effect to the options list
+ */
+.dropdown-options {
+  position: absolute;
+  overflow-y: auto;
+  display: none;
+  width: 100%;
+  max-height: ( unit( @line-height-base, rem ) + ( 2 * @padding-base-y ) ) * 5; /* 2 */
+  margin: 4px 0 0;
+  border: 1px solid @gray-light-1;
+  list-style: none;
+  background: @dropdown-options-bg; /* 1 */
+  border-radius: @border-radius-base;
+  .box-shadow( inset 0 1px 1px 0 rgba( 0, 0, 0, .1 ) );
+
+  .dropdown.open & {
+    display: block;
+  }
+}
+
+/*
+ * 1. When a option has empty text, make it at least one line tall.
+ */
+.dropdown-option {
+  min-height: unit( @line-height-base, rem ) + ( 2 * @padding-base-y ); /* 1 */
+  padding: @padding-base-y @padding-base-x;
+  color: @dropdown-item-text;
+  cursor: pointer;
+
+  &:first-child { .border-top-radius( @border-radius-base ); }
+  &:last-child  { .border-bottom-radius( @border-radius-base ); }
+
+  &.active,
+  &:hover {
+    color: @dropdown-item-hover-text;
+    background-color: @dropdown-item-hover-bg;
+  }
+}
