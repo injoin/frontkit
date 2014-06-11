@@ -16,9 +16,14 @@
         </p>
 
         <div class="example">
-            <select dropdown placeholder="Select a rock band..." ng-model="selectedBand"
-                    ng-options="band for band in bands">
-            </select>
+            {% raw %}
+            <dropdown ng-model="selectedBand">
+                <dropdown-items placeholder="Select a rock band...">{{ $dropdown.items[ $index ] }}</dropdown-items>
+                <dropdown-options items="band in bands | filter: $dropdown.search" value="band">
+                    {{ band }}
+                </dropdown-options>
+            </dropdown>
+            {% endraw %}
 
             {% raw %}
             <p>You have selected {{ selectedBand }}.</p>

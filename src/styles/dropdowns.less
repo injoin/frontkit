@@ -7,14 +7,57 @@
 }
 
 /*
- * 1. Override .input margin-bottm
- * 2. Make the input look clickable
+ * 1. Add room for the caret
  */
-.dropdown-input {
-  margin-bottom: 0; /* 1 */
+.dropdown-container:extend( .input ) {
+  position: relative;
+  width: 100%;
+  display: table;
+  padding-right: @padding-base-x + @dropdown-caret-size; /* 1 */
+  margin-bottom: 0;
 
-  .dropdown:not( .open ) & {
-    cursor: pointer; /* 2 */
+  .dropdown.open & {
+    &:extend( .input:focus );
+  }
+}
+
+.dropdown-items {
+  display: table-cell;
+  width: 1px;
+  white-space: nowrap;
+
+  .dropdown-item:last-child {
+    margin-right: .25rem;
+  }
+}
+
+.dropdown-input {
+  display: table-cell;
+
+  input {
+    width: 100%;
+    border: none;
+
+    &:focus {
+      outline: 0;
+    }
+  }
+}
+
+/*
+ * 1. Make dropdown look clickable when dropdown is closed
+ * 2. Make items look selectable only when dropdown is open
+ */
+.dropdown {
+  &:not( .open ) {
+    .dropdown-container,
+    .dropdown-input input {
+      cursor: pointer; /* 1 */
+    }
+  }
+
+  &.open .dropdown-items {
+    cursor: default; /* 2 */
   }
 }
 
@@ -26,10 +69,10 @@
   height: 0;
   cursor: pointer;
   .transform( translateY( -50% ) );
-  .make-triangle( down, .3rem, @text-color );
+  .make-triangle( down, @dropdown-caret-size, @text-color );
 
   .dropdown.open & {
-    .make-triangle( up, .3rem, @text-color );
+    .make-triangle( up, @dropdown-caret-size, @text-color );
   }
 }
 
@@ -47,11 +90,13 @@
   width: 100%;
   max-height: ( unit( @line-height-base, rem ) + ( 2 * @padding-base-y ) ) * 5; /* 2 */
   margin: 4px 0 0;
+  padding: @padding-small-y 0;
   border: 1px solid @gray-light-1;
   list-style: none;
   background: @dropdown-options-bg; /* 1 */
   border-radius: @border-radius-base;
   .box-shadow( inset 0 1px 1px 0 rgba( 0, 0, 0, .1 ) );
+  .box-shadow( 0 6px 12px rgba( 0, 0, 0, .2 ) );
 
   .dropdown.open & {
     display: block;
@@ -62,13 +107,13 @@
  * 1. When a option has empty text, make it at least one line tall.
  */
 .dropdown-option {
-  min-height: unit( @line-height-base, rem ) + ( 2 * @padding-base-y ); /* 1 */
-  padding: @padding-base-y @padding-base-x;
+  min-height: unit( @line-height-base, rem ) + ( 2 * @padding-small-y ); /* 1 */
+  padding: @padding-small-y @padding-base-x;
   color: @dropdown-item-text;
   cursor: pointer;
 
-  &:first-child { .border-top-radius( @border-radius-base ); }
-  &:last-child  { .border-bottom-radius( @border-radius-base ); }
+  //&:first-child { .border-top-radius( @border-radius-base ); }
+  //&:last-child  { .border-bottom-radius( @border-radius-base ); }
 
   &.active,
   &:hover {
