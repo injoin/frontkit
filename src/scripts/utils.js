@@ -10,6 +10,8 @@
         ENTER: 13,
         ESCAPE: 27,
         SPACE: 32,
+        PGUP: 33,
+        PGDOWN: 34,
         ARROWLEFT: 37,
         ARROWUP: 38,
         ARROWRIGHT: 39,
