@@ -9,8 +9,7 @@
 
     module.directive( "dropdown", [
         "$document",
-        "$timeout",
-        function( $document, $timeout ) {
+        function( $document ) {
             var definition = {};
 
             definition.restrict = "EA";
