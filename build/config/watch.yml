@@ -30,6 +30,12 @@ fonts:
     - "src/fonts/*"
   tasks: copy:fonts
 
+unit:
+  files:
+    - "test/unit/**/*"
+  tasks:
+    - karma:core
+
 # Docs stuff
 # ----------
 docsHTML:
