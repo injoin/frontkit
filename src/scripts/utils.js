@@ -43,11 +43,13 @@
 
                     // Find out if one of the parent scopes is in a phase
                     parent = scope;
-                    do {
+                    while ( parent ) {
                         if ( parent.$$phase ) {
                             return;
                         }
-                    } while ( parent = parent.$parent );
+
+                        parent = parent.$parent;
+                    }
 
                     // Finally apply if no parent scope is in a phase
                     scope.$apply();
