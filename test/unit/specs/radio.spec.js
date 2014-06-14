@@ -3,6 +3,7 @@ describe( "Radio Directive", function() {
     "use strict";
 
     var $rootScope, $compile, $document, $timeout, keycodes;
+    var $ = angular.element;
     var expect = chai.expect;
 
     beforeEach( module( "frontkit.checkbox" ) );
@@ -16,7 +17,7 @@ describe( "Radio Directive", function() {
 
         // Compile a few other things
         this.input = $( "<input type='radio' radio />" );
-        this.input.appendTo( "body" );
+        $document.find( "body" ).append( this.input );
         $compile( this.input )( $rootScope );
         $rootScope.$apply();
 
@@ -47,15 +48,20 @@ describe( "Radio Directive", function() {
         expect( tabindex ).to.be.gte( 0 );
     });
 
+    it( "should remove styled element after destroying", function() {
+        this.input.remove();
+        expect( this.styled.parent() ).to.have.property( "length", 0 );
+    });
+
     describe( "on keypress space", function() {
         it( "should trigger the click event", function() {
             var spy = sinon.spy();
-            var event = $.Event( "keypress", {
-                which: keycodes.SPACE
-            });
+            var event = document.createEvent( "Event" );
+            event.initEvent( "keypress", true, true );
+            event.which = keycodes.SPACE;
 
             this.styled.on( "click", spy );
-            this.styled.trigger( event );
+            this.styled[ 0 ].dispatchEvent( event );
 
             expect( spy.called ).to.be.ok;
         });

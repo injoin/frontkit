@@ -9,7 +9,6 @@
         "chai": "~1.9.1",
         "holderjs": "~2.3.1",
         "highlightjs": "~8.0.0",
-        "jquery": "~2.1.0",
         "normalize.css": "~3.0.0",
         "sinonjs": "~1.9.1"
     }

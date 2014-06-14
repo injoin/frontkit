@@ -7,11 +7,10 @@ module.exports = function( config ) {
         frameworks: [ "mocha" ],
         files: [
             // Deps
-            "libs/jquery/dist/jquery.js",
             "libs/angular/angular.js",
 
             // Sources
-            "dist/frontkit.js",
+            "src/scripts/*.js",
 
             // Test Libs
             "libs/angular-mocks/angular-mocks.js",

@@ -3,6 +3,7 @@ describe( "Checkbox Directive", function() {
     "use strict";
 
     var $rootScope, $compile, $document, $timeout, keycodes;
+    var $ = angular.element;
     var expect = chai.expect;
 
     beforeEach( module( "frontkit.checkbox" ) );
@@ -16,7 +17,7 @@ describe( "Checkbox Directive", function() {
 
         // Compile a few other things
         this.input = $( "<input type='checkbox' checkbox />" );
-        this.input.appendTo( "body" );
+        $document.find( "body" ).append( this.input );
         $compile( this.input )( $rootScope );
         $rootScope.$apply();
 
@@ -50,12 +51,12 @@ describe( "Checkbox Directive", function() {
     describe( "on keypress space", function() {
         it( "should trigger the click event", function() {
             var spy = sinon.spy();
-            var event = $.Event( "keypress", {
-                which: keycodes.SPACE
-            });
+            var event = document.createEvent( "Event" );
+            event.initEvent( "keypress", true, true );
+            event.which = keycodes.SPACE;
 
             this.styled.on( "click", spy );
-            this.styled.trigger( event );
+            this.styled[ 0 ].dispatchEvent( event );
 
             expect( spy.called ).to.be.ok;
         });

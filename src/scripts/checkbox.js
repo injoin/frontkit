@@ -23,6 +23,11 @@
                     input.after( styled );
                     input.addClass( "hide" );
 
+                    input.on( "$destroy", function() {
+                        // Remove the styled element as well
+                        styled.remove();
+                    });
+
                     styled.on( "keypress", function( evt ) {
                         // Space is the only key that triggers an click on a checkbox/radio, the far
                         // we know
