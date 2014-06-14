@@ -213,11 +213,24 @@
                     scope.$watch( "$dropdown.activeOption", adjustScroll );
 
                     function adjustScroll() {
-                        var fromScrollTop;
+                        var fromScrollTop, index, activeElem;
                         var options = $dropdown.options;
-                        var index = options.indexOf( $dropdown.activeOption );
-                        var activeElem = list.querySelectorAll( ".dropdown-option" )[ index ];
                         var scrollTop = list.scrollTop;
+
+                        if ( ng.isArray( options ) ) {
+                            index = options.indexOf( $dropdown.activeOption );
+                        } else {
+                            // To keep compatibility with arrays, we'll init the index as -1
+                            index = -1;
+                            Object.keys( options ).some(function( key, i ) {
+                                if ( options[ key ] === $dropdown.activeOption ) {
+                                    index = i;
+                                    return true;
+                                }
+                            });
+                        }
+
+                        activeElem = list.querySelectorAll( ".dropdown-option" )[ index ];
 
                         if ( !$dropdown.open || !activeElem ) {
                             // To be handled!
