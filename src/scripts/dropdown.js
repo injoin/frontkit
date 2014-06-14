@@ -205,7 +205,7 @@
                 "}" );
 
                 return function( scope, element, attr, $dropdown ) {
-                    var list = element[ 0 ]
+                    var list = element[ 0 ];
                     $dropdown.parseOptions( model );
                     $dropdown.valueKey = tAttr.value || null;
 
@@ -286,7 +286,7 @@
                 });
 
                 input.on( "focus", function() {
-                    var full = $dropdown.isFull()
+                    var full = $dropdown.isFull();
 
                     // Only open the options list if:
                     // 1. It's not full
