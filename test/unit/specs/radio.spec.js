@@ -1,4 +1,3 @@
-/* global chai, sinon, $, describe, module, inject, it, beforeEach, afterEach */
 describe( "Radio Directive", function() {
     "use strict";
 

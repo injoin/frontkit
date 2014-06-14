@@ -1,0 +1,28 @@
+{
+    "node": true,
+    "browser": true,
+    "eqeqeq": true,
+    "eqnull": true,
+    "freeze": true,
+    "noarg": true,
+    "undef": true,
+    "unused": true,
+    "strict": true,
+    "maxparams": 5,
+    "maxdepth": 5,
+    "expr": true,
+    "globalstrict": true,
+    "predef": [
+        "angular",
+        "describe",
+        "it",
+        "before",
+        "beforeEach",
+        "afterEach",
+        "after",
+        "chai",
+        "sinon",
+        "inject",
+        "module"
+    ]
+}
