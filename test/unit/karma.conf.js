@@ -11,23 +11,40 @@ module.exports = function( config ) {
 
             // Sources
             "src/scripts/*.js",
+            "src/templates/**/*.html",
 
             // Test Libs
             "libs/angular-mocks/angular-mocks.js",
             "libs/chai/chai.js",
             "libs/sinonjs/sinon.js",
 
+            // Fixtures
+            "test/unit/fixtures/**/*.html",
+
             // Specs
             "test/unit/specs/**/*.spec.js"
         ],
         exclude: [],
-        preprocessors: {},
-        reporters: [ "progress" ],
+        preprocessors: {
+            "**/*.html": [ "ng-html2js" ],
+            "src/scripts/*.js": [ "coverage" ]
+        },
+        reporters: [ "progress", "coverage" ],
         port: 9876,
         colors: true,
         logLevel: config.LOG_INFO,
         autoWatch: false,
         browsers: [ "PhantomJS", "Chrome", "Firefox" ],
+
+        ngHtml2JsPreprocessor: {
+            stripPrefix: "src/|test/unit/",
+            moduleName: "templates"
+        },
+
+        coverageReporter: {
+            type: "lcov",
+            dir: "coverage/"
+        },
 
         // Stop running after 1.5 minutes
         captureTimeout: 90000,
