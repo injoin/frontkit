@@ -6,6 +6,7 @@
 /*.html
 /docs/*
 dist/
+test/coverage/
 *.log
 assets/styles/*.css
 src/templates/**/*.js

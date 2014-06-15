@@ -43,7 +43,7 @@ module.exports = function( config ) {
 
         coverageReporter: {
             type: "lcov",
-            dir: "coverage/"
+            dir: "test/coverage/"
         },
 
         // Stop running after 1.5 minutes
