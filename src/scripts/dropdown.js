@@ -333,6 +333,11 @@
             // -------------------------------------------------------------------------------------
 
             function handleBackspace( evt, scope, $dropdown ) {
+                // If some search is available, backspace action should be delete the last char
+                if ( $dropdown.search ) {
+                    return;
+                }
+
                 // Is ctrl key is pressed?
                 // If yes, we'll remove all selected items;
                 // Otherwise, we'll just pop the last item.
