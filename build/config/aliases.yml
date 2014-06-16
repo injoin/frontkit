@@ -14,7 +14,6 @@ test:
   - jshint:all
   - jscs:all
   - karma:core
-  - coveralls:core
 
 default:
   - deps

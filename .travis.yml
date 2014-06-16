@@ -2,6 +2,10 @@ language: node_js
 node_js:
 - "0.10"
 
+# Submit coverage data to coveralls
+after_success:
+  - grunt coveralls:core
+
 env:
   global:
     - SAUCE_USERNAME: injoin
