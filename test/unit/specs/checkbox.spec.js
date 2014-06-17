@@ -3,7 +3,6 @@ describe( "Checkbox Directive", function() {
 
     var $rootScope, $compile, $document, $timeout, keycodes;
     var $ = angular.element;
-    var expect = chai.expect;
 
     beforeEach( module( "frontkit.checkbox" ) );
     beforeEach( inject(function( $injector ) {

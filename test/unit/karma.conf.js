@@ -4,7 +4,7 @@ module.exports = function( config ) {
     config.set({
         // base path that will be used to resolve all patterns (eg. files, exclude)
         basePath: "../..",
-        frameworks: [ "mocha" ],
+        frameworks: [ "mocha", "sinon-chai" ],
         files: [
             // Deps
             "libs/angular/angular.js",
@@ -15,8 +15,6 @@ module.exports = function( config ) {
 
             // Test Libs
             "libs/angular-mocks/angular-mocks.js",
-            "libs/chai/chai.js",
-            "libs/sinonjs/sinon.js",
 
             // Fixtures
             "test/unit/fixtures/**/*.html",

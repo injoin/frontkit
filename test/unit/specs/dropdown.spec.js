@@ -3,7 +3,6 @@ describe( "Dropdown Directive", function() {
 
     var $rootScope, $document, dropdown, keycodes, compileDirective;
     var $ = angular.element;
-    var expect = chai.expect;
 
     var getEvents = function( element ) {
         // Hacky way to add a new event where we want.

@@ -20,7 +20,7 @@
         "beforeEach",
         "afterEach",
         "after",
-        "chai",
+        "expect",
         "sinon",
         "inject",
         "module"
