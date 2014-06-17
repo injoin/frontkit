@@ -47,8 +47,8 @@ describe( "Checkbox Directive", function() {
         expect( tabindex ).to.be.gte( 0 );
     });
 
-    describe( "on keypress space", function() {
-        it( "should trigger the click event", function() {
+    describe( "on keypress", function() {
+        it( "should trigger the click event if space key", function() {
             var spy = sinon.spy();
             var event = document.createEvent( "Event" );
             event.initEvent( "keypress", true, true );
@@ -58,6 +58,18 @@ describe( "Checkbox Directive", function() {
             this.styled[ 0 ].dispatchEvent( event );
 
             expect( spy.called ).to.be.ok;
+        });
+
+        it( "should not handle the event if not space key", function() {
+            var spy = sinon.spy();
+            var event = document.createEvent( "Event" );
+            event.initEvent( "keypress", true, true );
+            event.which = "a".charCodeAt( 0 );
+
+            this.styled.on( "click", spy );
+            this.styled[ 0 ].dispatchEvent( event );
+
+            expect( spy.called ).to.not.be.ok;
         });
     });
 
