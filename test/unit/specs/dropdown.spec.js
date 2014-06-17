@@ -144,6 +144,22 @@ describe( "Dropdown Directive", function() {
                 expect( spy.called ).to.be.ok;
             });
 
+            it( "should not do anything if dropdown not full and not a special key", function() {
+                var events;
+                var spy = sinon.spy();
+
+                compileDirective();
+
+                events = getEvents( input[ 0 ] );
+                events.keydown.unshift(function( evt ) {
+                    evt.preventDefault = spy;
+                    evt.keyCode = "a".charCodeAt( 0 );
+                });
+
+                input.triggerHandler( "keydown" );
+                expect( spy ).to.not.have.been.called;
+            });
+
             // -------------------------------------------------------------------------------------
 
             describe( "backspace", function() {
