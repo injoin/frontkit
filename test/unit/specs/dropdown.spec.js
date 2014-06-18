@@ -1,7 +1,7 @@
 describe( "Dropdown Directive", function() {
     "use strict";
 
-    var $rootScope, $document, dropdown, keycodes, compileDirective;
+    var $rootScope, $document, dropdown, $dropdown, keycodes, compileDirective;
     var $ = angular.element;
 
     var getEvents = function( element ) {
@@ -21,6 +21,8 @@ describe( "Dropdown Directive", function() {
         compileDirective = function() {
             dropdown = $injector.get( "$compile" )( dropdown )( $rootScope );
             $rootScope.$apply();
+            $dropdown = dropdown.controller( "dropdown" );
+
             return dropdown;
         };
     }));
@@ -99,8 +101,8 @@ describe( "Dropdown Directive", function() {
 
     // ---------------------------------------------------------------------------------------------
 
-    describe( "search input container", function() {
-        var input, container, $dropdown;
+    describe( "searchbox", function() {
+        var input, container;
 
         beforeEach(function() {
             var oldCompile = compileDirective;
@@ -110,7 +112,6 @@ describe( "Dropdown Directive", function() {
 
                 container = dropdown.querySelector( ".dropdown-container" );
                 input = container.find( "input" );
-                $dropdown = dropdown.controller( "dropdown" );
 
                 return dropdown;
             };
@@ -324,4 +325,135 @@ describe( "Dropdown Directive", function() {
             });
         });
     });
+
+    // ---------------------------------------------------------------------------------------------
+
+    describe( "navigation", function() {
+        var input, event;
+        var options = [
+            "foo",
+            "bar",
+            "baz",
+            "qux",
+            "foobar",
+            "barbaz"
+        ];
+
+        beforeEach(function() {
+            $rootScope.options = options;
+            dropdown.find( "dropdown-options" )
+                    .attr( "items", "option in options" );
+
+            compileDirective();
+            input = dropdown.querySelector( ".dropdown-container input" )[ 0 ];
+
+            // Initialize as open by default, not all tests need it as closed
+            $dropdown.open = true;
+
+            event = document.createEvent( "Event" );
+            event.initEvent( "keydown", true, true );
+        });
+
+        describe( "with page up, page down, arrow up or arrow down", function() {
+            it( "should open the dropdown if it's not yet", function() {
+                $dropdown.open = false;
+                event.keyCode = keycodes.PGUP;
+                input.dispatchEvent( event );
+                expect( $dropdown.open ).to.be.ok;
+
+                $dropdown.open = false;
+                event.keyCode = keycodes.PGDOWN;
+                input.dispatchEvent( event );
+                expect( $dropdown.open ).to.be.ok;
+
+                $dropdown.open = false;
+                event.keyCode = keycodes.ARROWDOWN;
+                input.dispatchEvent( event );
+                expect( $dropdown.open ).to.be.ok;
+
+                $dropdown.open = false;
+                event.keyCode = keycodes.ARROWUP;
+                input.dispatchEvent( event );
+                expect( $dropdown.open ).to.be.ok;
+            });
+
+            it( "should use first option as active if previous one is not present", function() {
+                $dropdown.activeOption = Date.now();
+
+                sinon.spy( Math, "min" );
+                sinon.spy( Math, "max" );
+
+                event.keyCode = keycodes.ARROWDOWN;
+                input.dispatchEvent( event );
+
+                expect( Math.min ).to.have.been.calledWith( options.length - 1, 1 );
+                Math.min.restore();
+
+                event.keyCode = keycodes.ARROWUP;
+                input.dispatchEvent( event );
+
+                expect( Math.max ).to.have.been.calledWith( 0, 0 );
+                Math.max.restore();
+            });
+
+            it( "should not trigger another digest if same option is active", function() {
+                var scope = dropdown.scope();
+
+                $dropdown.activeOption = options[ 0 ];
+                sinon.spy( scope, "$safeApply" );
+
+                event.keyCode = keycodes.ARROWUP;
+                input.dispatchEvent( event );
+
+                expect( scope.$safeApply ).to.have.not.been.called;
+            });
+        });
+
+        describe( "with page up", function() {
+            it( "should move one page to the top", function() {
+                var index = options.length - 1;
+                $dropdown.activeOption = options[ index ];
+
+                event.keyCode = keycodes.PGUP;
+                input.dispatchEvent( event );
+
+                expect( $dropdown.activeOption ).to.equal( options[ index - 4 ] );
+            });
+        });
+
+        describe( "with page down", function() {
+            it( "should move one page to the bottom", function() {
+                var index = 0;
+                $dropdown.activeOption = options[ index ];
+
+                event.keyCode = keycodes.PGDOWN;
+                input.dispatchEvent( event );
+
+                expect( $dropdown.activeOption ).to.equal( options[ index + 4 ] );
+            });
+        });
+
+        describe( "with arrow up", function() {
+            it( "should move one item to the top", function() {
+                $dropdown.activeOption = options[ 1 ];
+
+                event.keyCode = keycodes.ARROWUP;
+                input.dispatchEvent( event );
+
+                expect( $dropdown.activeOption ).to.equal( options[ 0 ] );
+            });
+        });
+
+        describe( "with arrow down", function() {
+            it( "should move one item to the bottom", function() {
+                $dropdown.activeOption = options[ 0 ];
+
+                event.keyCode = keycodes.ARROWDOWN;
+                input.dispatchEvent( event );
+
+                expect( $dropdown.activeOption ).to.equal( options[ 1 ] );
+            });
+        });
+    });
+
 });
