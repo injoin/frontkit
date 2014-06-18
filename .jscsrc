@@ -4,6 +4,7 @@
         "else",
         "for",
         "while",
+        "do",
         "try",
         "catch"
     ],
@@ -17,7 +18,8 @@
         "try",
         "catch"
     ],
-
+    "requireSpaceBeforeBlockStatements": true,
+    "requireSpacesInConditionalExpression": true,
     "requireSpacesInFunctionExpression": {
         "beforeOpeningCurlyBrace": true
     },
@@ -37,21 +39,6 @@
         "*",
         "/"
     ],
-    "requireRightStickedOperators": [ "!" ],
-    "disallowRightStickedOperators": [
-        "?",
-        ":",
-        "=",
-        "==",
-        "===",
-        "!=",
-        "!==",
-        ">",
-        ">=",
-        "<",
-        "<="
-    ],
-    "requireLeftStickedOperators": [ "," ],
     "disallowSpaceAfterPrefixUnaryOperators": [
         "++",
         "--",
@@ -86,13 +73,20 @@
         "!=",
         "!=="
     ],
+    "requireCamelCaseOrUpperCaseIdentifiers": "ignoreProperties",
     "disallowKeywords": [ "with" ],
     "disallowMultipleLineStrings": true,
     "disallowMultipleLineBreaks": true,
     "validateQuoteMarks": "\"",
     "validateIndentation": 4,
     "disallowTrailingWhitespace": true,
+    "disallowTrailingComma": true,
     "disallowKeywordsOnNewLine": [ "else" ],
-    "maximumLineLength": 100,
-    "disallowYodaConditions": true
+    "maximumLineLength": {
+        "value": 100,
+        "tabSize": 4,
+        "allowUrlComments": true
+    },
+    "disallowYodaConditions": true,
+    "requireSpaceAfterLineComment": true
 }

@@ -1,3 +1,6 @@
+options:
+  config: ".jscsrc"
+
 core:
   src:
     - "<%= jshint.core.src %>"
