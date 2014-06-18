@@ -13,8 +13,9 @@ styles:
 scripts:
   files:
     - "src/scripts/*.js"
-    - "test/unit/specs/*.js"
   tasks:
+    - jshint:core
+    - jscs:core
     - concat:core
     - concat:all
 
@@ -34,6 +35,8 @@ unit:
   files:
     - "test/unit/**/*"
   tasks:
+    - jshint:tests
+    - jscs:tests
     - karma:core
 
 # Docs stuff

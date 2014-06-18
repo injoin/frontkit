@@ -10,13 +10,18 @@ package:
   - concat:all
   - copy:fonts
 
+lint:
+  - jshint:core
+  - jshint:tests
+  - jscs:core
+  - jscs:tests
+
 test:
-  - jshint:all
-  - jscs:all
   - karma:core
 
 default:
   - deps
   - package
+  - lint
   - test
   - docs

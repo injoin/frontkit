@@ -1,8 +1,13 @@
-all:
+core:
   options:
     jshintrc: true
   src:
     - src/scripts/*.js
-    - test/unit/**/*.js
     - assets/scripts/*.js
     - Gruntfile.js
+
+tests:
+  options:
+    jshintrc: true
+  src:
+    - test/unit/**/*.js

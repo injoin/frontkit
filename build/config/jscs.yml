@@ -1,3 +1,7 @@
-all:
+core:
   src:
-    - "<%= jshint.all.src %>"
+    - "<%= jshint.core.src %>"
+
+tests:
+  src:
+    - "<%= jshint.tests.src %>"
