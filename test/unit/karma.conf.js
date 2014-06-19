@@ -27,7 +27,7 @@ module.exports = function( config ) {
             "**/*.html": [ "ng-html2js" ],
             "src/scripts/*.js": [ "coverage" ]
         },
-        reporters: [ "progress", "coverage" ],
+        reporters: [ "dots", "coverage" ],
         port: 9876,
         colors: true,
         logLevel: config.LOG_INFO,
@@ -73,7 +73,6 @@ module.exports = function( config ) {
     // When running via Travis CI
     if ( process.env.TRAVIS ) {
         config.transports = [ "xhr-polling" ];
-        config.reporters = [ "dots", "coverage" ];
         config.browsers = [ "PhantomJS" ].concat( Object.keys( config.customLaunchers ) );
     }
 };
