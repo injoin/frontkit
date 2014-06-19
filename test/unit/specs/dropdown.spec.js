@@ -1,7 +1,7 @@
 describe( "Dropdown Directive", function() {
     "use strict";
 
-    var $rootScope, $document, dropdown, $dropdown, keycodes, compileDirective;
+    var $rootScope, dropdown, $dropdown, keycodes, compileDirective;
     var $ = angular.element;
 
     var getEvents = function( element ) {
@@ -12,20 +12,31 @@ describe( "Dropdown Directive", function() {
 
     beforeEach( module( "templates", "frontkit.dropdown" ) );
     beforeEach( inject(function( $injector ) {
+        var $document = $injector.get( "$document" );
+        var $rootElement = $injector.get( "$rootElement" );
         var $templateCache = $injector.get( "$templateCache" );
+
         keycodes = $injector.get( "keycodes" );
         $rootScope = $injector.get( "$rootScope" );
-        $document = $injector.get( "$document" );
-
         dropdown = $( $templateCache.get( "fixtures/dropdown.html" ) );
+
+        // Append $rootElement to the DOM and also the dropdown
+        $document.find( "body" ).append( $rootElement );
+        $rootElement.append( dropdown );
+
         compileDirective = function() {
             dropdown = $injector.get( "$compile" )( dropdown )( $rootScope );
+
             $rootScope.$apply();
             $dropdown = dropdown.controller( "dropdown" );
 
             return dropdown;
         };
     }));
+
+    afterEach(function() {
+        dropdown.remove();
+    });
 
     it( "should exist", inject(function( $injector ) {
         var getDirective = function() {
@@ -34,6 +45,53 @@ describe( "Dropdown Directive", function() {
 
         expect( getDirective ).to.not.throw( Error );
     }));
+
+    it( "should adjust scroll position to the active option", function() {
+        var list;
+
+        // Create a few options
+        $rootScope.options = [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ];
+
+        // Make the dropdown use that options and compile it
+        dropdown.find( "dropdown-options" ).attr( "items", "option in options" );
+        compileDirective();
+
+        // Find the compiled dropdown options container
+        list = dropdown.querySelector( ".dropdown-options" )[ 0 ];
+
+        // Adjust the active option
+        $dropdown.activeOption = 10;
+        $dropdown.open = true;
+        $rootScope.$apply();
+
+        expect( list.scrollTop ).to.be.gt( 0 );
+    });
+
+    it( "should close itself when click outside", function() {
+        var stopPropagation, close;
+        var dropdown = compileDirective()[ 0 ];
+        var event = document.createEvent( "Event" );
+        event.initEvent( "click", true, true );
+
+        // Create spies
+        stopPropagation = sinon.spy( event, "stopPropagation" );
+        close = sinon.spy( $dropdown, "close" );
+
+        // When clicking inside, propagation must be stopped
+        dropdown.dispatchEvent( event );
+        expect( stopPropagation ).to.have.been.called;
+        expect( close ).to.not.have.been.called;
+
+        // Reinit the event and spy
+        event = document.createEvent( "Event" );
+        event.initEvent( "click", true, true );
+        stopPropagation = sinon.spy( event, "stopPropagation" );
+
+        // When clicking outside, propagation shouldn't be stopped
+        dropdown.parentNode.dispatchEvent( event );
+        expect( stopPropagation ).to.not.have.been.called;
+        expect( close ).to.have.been.called;
+    });
 
     // ---------------------------------------------------------------------------------------------
 
@@ -204,7 +262,7 @@ describe( "Dropdown Directive", function() {
 
             describe( "esc", function() {
                 beforeEach(function() {
-                    $document.find( "body" ).append( compileDirective() );
+                    compileDirective();
                     getEvents( input[ 0 ] ).keydown.unshift(function( evt ) {
                         evt.target = input[ 0 ];
                         evt.keyCode = keycodes.ESCAPE;
@@ -280,10 +338,9 @@ describe( "Dropdown Directive", function() {
 
         describe( "on click", function() {
             it( "should focus the input", function() {
-                // In order to the element to be focused, it needs to be present in the page
-                $document.find( "body" ).append( compileDirective() );
-                container.triggerHandler( "click" );
+                compileDirective();
 
+                container.triggerHandler( "click" );
                 expect( document.activeElement ).to.equal( input[ 0 ] );
             });
         });
