@@ -37,7 +37,7 @@ unit:
   tasks:
     - jshint:tests
     - jscs:tests
-    - karma:core
+    - karma:dev:run
 
 # Docs stuff
 # ----------

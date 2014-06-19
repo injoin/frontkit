@@ -1,8 +1,10 @@
+# Build docs sources (styles and html pages)
 docs:
   - icons:docs
   - less:docs
   - swig:docs
 
+# Build sources (styles, scripts, fonts, Angular.js templates)
 package:
   - less:core
   - ngtemplates:core
@@ -10,15 +12,25 @@ package:
   - concat:all
   - copy:fonts
 
+# Lint all files
 lint:
   - jshint:core
   - jshint:tests
   - jscs:core
   - jscs:tests
 
+# Run only tests
 test:
   - karma:core
 
+# Build the package and docs, start karma server and watch the files for modifications
+dev:
+  - package
+  - docs
+  - karma:dev:start
+  - watch
+
+# Install deps, build the package, lint and test and build docs
 default:
   - deps
   - package
