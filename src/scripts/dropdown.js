@@ -7,6 +7,10 @@
         "frontkit.utils"
     ]);
 
+    module.value( "dropdownConfig", {
+        optionsPageSize: 5
+    });
+
     module.directive( "dropdown", [
         "$document",
         function( $document ) {
@@ -177,7 +181,8 @@
 
     module.directive( "dropdownOptions", [
         "repeatParser",
-        function( repeatParser ) {
+        "dropdownConfig",
+        function( repeatParser, dropdownConfig ) {
             var definition = {};
 
             definition.restrict = "EA";
@@ -206,6 +211,8 @@
 
                 return function( scope, element, attr, $dropdown ) {
                     var list = element[ 0 ];
+                    configureOverflow();
+
                     $dropdown.parseOptions( model );
                     $dropdown.valueKey = tAttr.value || null;
 
@@ -251,6 +258,43 @@
                         }
 
                         list.scrollTop = scrollTop;
+                    }
+
+                    function configureOverflow() {
+                        var height;
+                        var view = list.ownerDocument.defaultView;
+                        var styles = view.getComputedStyle( list, null );
+                        var display = element.css( "display" );
+                        var size = dropdownConfig.optionsPageSize;
+                        var li = $( "<li class='dropdown-option'>&nbsp;</li>" )[ 0 ];
+                        element.prepend( li );
+
+                        // Temporarily show the element, just to calculate the li height
+                        element.css( "display", "block" );
+
+                        // Calculate the height, considering border/padding
+                        height = li.clientHeight * size;
+                        height = [ "padding", "border" ].reduce(function( value, prop ) {
+                            var top = styles.getPropertyValue( prop + "-top" ) || "";
+                            var bottom = styles.getPropertyValue( prop + "-bottom" ) || "";
+
+                            value += +top.replace( "px", "" ) || 0;
+                            value += +bottom.replace( "px", "" ) || 0;
+
+                            return value;
+                        }, height );
+
+                        // Set overflow CSS rules
+                        element.css({
+                            "overflow-y": "auto",
+                            "max-height": height + "px"
+                        });
+
+                        // And finally, set the element display to the previous value
+                        element.css( "display", display );
+
+                        // Also remove the dummy <li> created previously
+                        $( li ).remove();
                     }
                 };
             };

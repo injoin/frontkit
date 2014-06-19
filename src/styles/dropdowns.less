@@ -78,9 +78,8 @@
 
 /*
  * 1. Set a consitent background, so no problems when opening the dropdown above a colored component
- * 2. Show no more than 5 items per scroll view
- * 3. Add a frame effect to the options list
- * 4. Make sure it's shown on top of other elements
+ * 2. Add a frame effect to the options list
+ * 3. Make sure it's shown on top of other elements
  */
 .dropdown-options {
   position: absolute;
@@ -88,7 +87,6 @@
   overflow-y: auto;
   display: none;
   width: 100%;
-  max-height: ( unit( @line-height-base, rem ) + ( 2 * @padding-base-y ) ) * 5; /* 2 */
   margin: 4px 0 0;
   padding: @padding-small-y 0;
   border: 1px solid @gray-light-1;
