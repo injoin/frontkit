@@ -41,8 +41,12 @@
                 var $dropdown = controllers[ 0 ];
                 var ngModel = controllers[ 1 ];
 
+                // Configure ngModel, if present
                 if ( ngModel ) {
                     scope.$watch( "$dropdown.items", function( items ) {
+                        // Almost all the time users expect to receive a single value if their
+                        // dropdown accepts only 1 item, and an array of values if the dropdown
+                        // accepts more than 1 value.
                         items = $dropdown.maxItems === 1 ? items[ 0 ] : items;
                         ngModel.$setViewValue( items );
                     }, true );
@@ -54,18 +58,12 @@
                             return;
                         }
 
+                        // Properly transform the value into an array, as used internally by us
                         $dropdown.items = ng.isArray( value ) ? value : [ value ];
                     };
                 }
 
-                element.on( "click", function( evt ) {
-                    evt.stopPropagation();
-                });
-
-                $document.on( "click", function() {
-                    scope.$safeApply( $dropdown.close );
-                });
-
+                // Transclude contents into the right place in the directive
                 transclude( scope, function( children ) {
                     var clone = $( "<div>" ).append( children );
                     var items = clone.querySelector( ".dropdown-items" );
@@ -78,6 +76,18 @@
                     if ( options.length ) {
                         element.querySelector( "dropdown-options" ).replaceWith( options );
                     }
+                });
+
+                // DOM Events
+                // ---------------------------------------------------------------------------------
+                // Make sure clicks inside the dropdown element don't close itself
+                element.on( "click", function( evt ) {
+                    evt.stopPropagation();
+                });
+
+                // Close the dropdown when a click outside is detected
+                $document.on( "click", function() {
+                    scope.$safeApply( $dropdown.close );
                 });
             };
 
