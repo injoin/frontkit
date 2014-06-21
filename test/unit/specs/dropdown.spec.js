@@ -127,11 +127,53 @@ describe( "Dropdown Directive", function() {
 
     // ---------------------------------------------------------------------------------------------
 
-    describe( "options list", function() {
-        var optionsElem;
-
+    describe( "on add item", function() {
         beforeEach(function() {
+            compileDirective();
+        });
+
+        it( "should close the dropdown if full", function() {
+            var isFull = sinon.stub( $dropdown, "isFull" ).returns( true );
+            var close = sinon.spy( $dropdown, "close" );
+
+            $dropdown.addItem( "foo" );
+
+            expect( isFull ).to.have.been.called;
+            expect( close ).to.have.been.called;
+
+            isFull.restore();
+            close.restore();
+        });
+
+        it( "should not close the dropdown if not full", function() {
+            var isFull = sinon.stub( $dropdown, "isFull" ).returns( false );
+            var close = sinon.spy( $dropdown, "close" );
+
+            $dropdown.addItem( "foo" );
+
+            expect( isFull ).to.have.been.called;
+            expect( close ).to.not.have.been.called;
+
+            isFull.restore();
+            close.restore();
+        });
+    });
+
+    // ---------------------------------------------------------------------------------------------
+
+    describe( "options list", function() {
+        var $q, optionsElem;
+
+        beforeEach(inject(function( $injector ) {
+            $q = $injector.get( "$q" );
             optionsElem = dropdown.find( "dropdown-options" );
+        }));
+
+        it( "should be empty array if value is null", function() {
+            optionsElem.attr( "items", "option in options" );
+            compileDirective();
+
+            expect( $dropdown.options ).to.eql( [] );
         });
 
         it( "should accept array of options", function() {
@@ -146,6 +188,7 @@ describe( "Dropdown Directive", function() {
 
             compiledOptions = compileDirective().querySelectorAll( ".dropdown-option" );
             expect( compiledOptions ).to.have.property( "length", 3 );
+            expect( $dropdown.options ).to.eql( $rootScope.options );
         });
 
         it( "should accept hash of options", function() {
@@ -159,6 +202,61 @@ describe( "Dropdown Directive", function() {
 
             compiledOptions = compileDirective().querySelectorAll( ".dropdown-option" );
             expect( compiledOptions ).to.have.property( "length", 2 );
+            expect( $dropdown.options ).to.eql( $rootScope.options );
+        });
+
+        it( "should throw error if value not array or object", function() {
+            optionsElem.attr( "items", "option in options" );
+            $rootScope.options = "foo";
+
+            expect( compileDirective ).to.throw(
+                Error,
+                "Dropdown options should be array or object!"
+            );
+        });
+
+        it( "should resolve a promise for options", function() {
+            var deferred = $q.defer();
+            var options = {
+                foo: "bar",
+                baz: "qux"
+            };
+
+            optionsElem.attr( "items", "option in options" );
+            $rootScope.options = deferred.promise;
+            compileDirective();
+
+            // Promise not yet resolved. The options must be an empty array for now
+            expect( $dropdown.options ).to.eql( [] );
+
+            // Promise resolved. The options must be equal to its value
+            deferred.resolve( options );
+            $rootScope.$apply();
+
+            expect( $dropdown.options ).to.eql( options );
+        });
+
+        it( "should not override promise values", function() {
+            var deferred1 = $q.defer();
+            var deferred2 = $q.defer();
+            var options1 = [ "foo", "bar" ];
+            var options2 = [ "baz", "qux" ];
+
+            optionsElem.attr( "items", "option in options" );
+            $rootScope.options = deferred1.promise;
+            compileDirective();
+
+            $rootScope.options = deferred2.promise;
+            deferred2.promise.xyz = 123;
+            $rootScope.$apply();
+
+            deferred1.resolve( options1 );
+            $rootScope.$apply();
+            expect( $dropdown.options ).to.not.eql( options1 );
+
+            deferred2.resolve( options2 );
+            $rootScope.$apply();
+            expect( $dropdown.options ).to.eql( options2 );
         });
 
         it( "should transclude the content for each option", function() {

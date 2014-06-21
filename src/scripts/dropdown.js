@@ -135,7 +135,21 @@
 
             ctrl.parseOptions = function( model ) {
                 var currPromise;
-                $scope.$watch( model, function( value ) {
+                $scope.$watch( model, watchFn, true );
+                $scope.$watch( model, function( newValue, oldValue ) {
+                    var isFn = ng.isFunction;
+                    var isPromise = !!newValue && isFn( newValue.then );
+                    isPromise &= !!oldValue && isFn( oldValue.then );
+
+                    // We won't handle anything here unless both values are promises.
+                    if ( !ng.equals( newValue, oldValue ) || !isPromise ) {
+                        return;
+                    }
+
+                    watchFn( newValue );
+                });
+
+                function watchFn( value ) {
                     var promise;
                     currPromise = null;
 
@@ -160,7 +174,7 @@
 
                         currPromise = promise;
                     }
-                }, true );
+                }
             };
 
             function clearSearch() {
