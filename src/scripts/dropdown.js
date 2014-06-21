@@ -149,7 +149,7 @@
                             if ( promise !== currPromise ) {
                                 return;
                             } else if ( !isArray && !ng.isObject( options ) ) {
-                                throw new Error();
+                                throw new Error( "Dropdown options should be array or object!" );
                             }
 
                             ctrl.options = options;
