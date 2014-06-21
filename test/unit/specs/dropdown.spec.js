@@ -65,6 +65,13 @@ describe( "Dropdown Directive", function() {
         $rootScope.$apply();
 
         expect( list.scrollTop ).to.be.gt( 0 );
+
+        // Adjust the active option to the first item
+        // This is above the current scroll position, so the scroll should be adjusted as well
+        $dropdown.activeOption = 1;
+        $rootScope.$apply();
+
+        expect( list.scrollTop ).to.equal( list.querySelector( "li" ).offsetTop );
     });
 
     it( "should close itself when click outside", function() {
