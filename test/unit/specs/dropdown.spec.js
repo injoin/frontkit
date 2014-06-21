@@ -132,6 +132,32 @@ describe( "Dropdown Directive", function() {
             compileDirective();
         });
 
+        it( "should override the array if maxItems = 1", function() {
+            $dropdown.maxItems = 1;
+            $dropdown.addItem( "foo" );
+            expect( $dropdown.items ).to.eql([ "foo" ]);
+
+            $dropdown.addItem( "bar" );
+            expect( $dropdown.items ).to.eql([ "bar" ]);
+        });
+
+        it( "should push the item in the array if not full and maxItems > 1", function() {
+            $dropdown.maxItems = 2;
+            $dropdown.addItem( "foo" );
+            $dropdown.addItem( "bar" );
+
+            expect( $dropdown.items ).to.eql([ "foo", "bar" ]);
+        });
+
+        it( "should not push the item in the array if full and maxItems > 1", function() {
+            $dropdown.maxItems = 2;
+            $dropdown.addItem( "foo" );
+            $dropdown.addItem( "bar" );
+            $dropdown.addItem( "baz" );
+
+            expect( $dropdown.items ).to.eql([ "foo", "bar" ]);
+        });
+
         it( "should close the dropdown if full", function() {
             var isFull = sinon.stub( $dropdown, "isFull" ).returns( true );
             var close = sinon.spy( $dropdown, "close" );
