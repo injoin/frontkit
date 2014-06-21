@@ -104,6 +104,25 @@ describe( "Dropdown Directive", function() {
         it( "should be bound to parent scope", function() {
             expect( dropdown.attr( "ng-model" ) ).to.equal( "$parent.foo" );
         });
+
+        it( "should set empty array if value is null", function() {
+            $rootScope.foo = null;
+            $rootScope.$apply();
+
+            expect( $dropdown.items ).to.eql( [] );
+        });
+
+        it( "should wrap the value in an array if needed", function() {
+            $rootScope.foo = "foo";
+            $rootScope.$apply();
+
+            expect( $dropdown.items ).to.eql([ "foo" ]);
+
+            $rootScope.foo = [ "bar" ];
+            $rootScope.$apply();
+
+            expect( $dropdown.items ).to.eql([ "bar" ]);
+        });
     });
 
     // ---------------------------------------------------------------------------------------------
