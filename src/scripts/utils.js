@@ -60,31 +60,6 @@
         }
     ]);
 
-    module.factory( "$$safeApply", [
-        "$rootScope",
-        function( $rootScope ) {
-            var apply = function( scope ) {
-                scope = scope || $rootScope;
-                !$rootScope.$$phase && scope.$apply();
-            };
-
-            return function( scope, fn ) {
-                // If a function was passed, everytime it's called a digest will be triggered.
-                if ( ng.isFunction( fn ) ) {
-                    return function() {
-                        var ret = fn.apply( this, arguments );
-                        apply( scope );
-
-                        return ret;
-                    };
-                }
-
-                // If no function, simply trigger a digest now.
-                apply( scope );
-            };
-        }
-    ]);
-
     // Extensions to jQLite
     $.prototype.querySelector = function( str ) {
         return $( this[ 0 ].querySelector( str ) );
