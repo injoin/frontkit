@@ -4,7 +4,7 @@ node_js:
 
 # Submit coverage data to coveralls
 after_success:
-  - grunt coveralls:core
+  - grunt -f coveralls:core
 
 env:
   global:
