@@ -12,3 +12,6 @@ env:
 
     # SAUCE_ACCESS_KEY
     - secure: YyhI+pQBi1QfS6OLoN/gwOB3oU/cPpuyFJ3oGpqlMFdQ8Ei60FfM1m7VE1KyfwrRLvbvH+RUisMz9AAQh9LyEEFkDVcicS1li/cVWSGFAJyMKlJZBcof0L+dZ7uwJxVdzewSHzM7pegnRGXfcxi3sVlsKnxrc7KVq7qKpg8CzoI=
+
+    # COVERALLS_REPO_TOKEN
+    - secure: dSLinYHNDWaueRbh/yKEUhlWt4y+Ygf1aCgtn5vfNbh2AOSRa+R1Sq4U1uinPKa5/vmoYbNahljM5Vk5u220EMuDtfGoZwy4m/TVMENcjP5T2zoDEGYMqB4hlL7D+9mzWgsO6TJkqtnUvxJq2A+TJaWKe2u+YuN4kgQ/koU8Zvo=
