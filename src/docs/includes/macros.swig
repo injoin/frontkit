@@ -25,6 +25,6 @@
 {% macro docsSectionTitle( label, path, level ) %}
     <h{{ level }} class="docs-heading">
         <a href="#{{ path }}" class="docs-anchor">#</a>
-        {{ label }}
+        {% autoescape false %}{{ label }}{% endautoescape %}
     </h{{ level }}>
 {% endmacro %}
