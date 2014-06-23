@@ -13,7 +13,7 @@
         <link rel="stylesheet" href="{{ macros.baseUrl( "libs/highlightjs/styles/github.css" ) }}">
     </head>
     <body class="{{ currentPage }}">
-        <div class="navbar navbar-fixed-top docs-navbar">
+        <div class="navbar navbar-fixed-top docs-navbar" headroom offset="150">
             <div class="container">
                 <a href="/" class="navbar-brand">{{ pkg.title }}</a>
                 <nav class="navbar-nav">
@@ -36,6 +36,8 @@
 
         <script src="{{ macros.baseUrl( "libs/holderjs/holder.js" ) }}"></script>
         <script src="{{ macros.baseUrl( "libs/angular/angular.js" ) }}"></script>
+        <script src="{{ macros.baseUrl( "libs/headroom.js/dist/headroom.js" ) }}"></script>
+        <script src="{{ macros.baseUrl( "libs/headroom.js/dist/angular.headroom.js" ) }}"></script>
         <script src="{{ macros.baseUrl( "dist/frontkit-tmpl.js" ) }}"></script>
         <script src="{{ macros.baseUrl( "assets/scripts/docs.js" ) }}"></script>
     </body>

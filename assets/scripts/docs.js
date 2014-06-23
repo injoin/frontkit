@@ -1,7 +1,10 @@
 !function( ng ) {
     "use strict";
 
-    var module = ng.module( "frontkit-docs", [ "frontkit" ] );
+    var module = ng.module( "frontkit-docs", [
+        "headroom",
+        "frontkit"
+    ]);
 
     module.directive( "submenu", [
         "$document",
