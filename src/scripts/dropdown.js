@@ -135,21 +135,7 @@
 
             ctrl.parseOptions = function( model ) {
                 var currPromise;
-                $scope.$watch( model, watchFn, true );
-                $scope.$watch( model, function( newValue, oldValue ) {
-                    var isFn = ng.isFunction;
-                    var isPromise = !!newValue && isFn( newValue.then );
-                    isPromise &= !!oldValue && isFn( oldValue.then );
-
-                    // We won't handle anything here unless both values are promises.
-                    if ( !ng.equals( newValue, oldValue ) || !isPromise ) {
-                        return;
-                    }
-
-                    watchFn( newValue );
-                });
-
-                function watchFn( value ) {
+                $scope.$watch( model, function watchFn( value ) {
                     var promise;
                     currPromise = null;
 
@@ -174,7 +160,7 @@
 
                         currPromise = promise;
                     }
-                }
+                }, true );
             };
 
             function clearSearch() {
@@ -204,9 +190,10 @@
     ]);
 
     module.directive( "dropdownOptions", [
+        "$compile",
         "repeatParser",
         "dropdownConfig",
-        function( repeatParser, dropdownConfig ) {
+        function( $compile, repeatParser, dropdownConfig ) {
             var definition = {};
 
             definition.restrict = "EA";
@@ -215,112 +202,131 @@
             definition.templateUrl = "templates/dropdown/options.html";
             definition.require = "^dropdown";
 
-            definition.compile = function( tElement, tAttr ) {
-                var model;
-                var option = tElement.querySelector( ".dropdown-option" );
-                var repeat = repeatParser.parse( tAttr.items );
-
-                if ( !repeat ) {
+            definition.compile = function( tElement ) {
+                // When in a detached case, we won't let compile go ahead
+                if ( !tElement.parent().length ) {
                     return;
                 }
 
-                model = repeat.expr;
-                repeat.expr = "$dropdown.options";
+                return definition.link;
+            };
 
-                option.attr( "ng-repeat", repeatParser.toNgRepeat( repeat ) );
-                option.attr( "ng-click", "$dropdown.addItem( " + repeat.item + " )" );
-                option.attr( "ng-class", "{" +
-                    "active: $dropdown.activeOption === " + repeat.item +
-                "}" );
+            definition.link = function( scope, element, attr, $dropdown, transclude ) {
+                var list = element[ 0 ];
+                var option = element.querySelector( ".dropdown-option" );
+                var repeat = repeatParser.parse( attr.items );
 
-                return function( scope, element, attr, $dropdown ) {
-                    var list = element[ 0 ];
-                    configureOverflow();
+                // If we have a repeat expr, let's use it to build the option list
+                if ( repeat ) {
+                    $dropdown.parseOptions( repeat.expr );
+                    repeat.expr = "$dropdown.options";
 
-                    $dropdown.parseOptions( model );
-                    $dropdown.valueKey = tAttr.value || null;
+                    // Option list building
+                    transclude(function( childs ) {
+                        option.append( childs );
+                    });
 
-                    scope.$watch( "$dropdown.open", adjustScroll );
-                    scope.$watch( "$dropdown.activeOption", adjustScroll );
+                    // Add a few directives to the option...
+                    option.attr( "ng-repeat", repeatParser.toNgRepeat( repeat ) );
+                    option.attr( "ng-click", "$dropdown.addItem( " + repeat.item + " )" );
+                    option.attr( "ng-class", "{" +
+                        "active: $dropdown.activeOption === " + repeat.item +
+                    "}" );
 
-                    function adjustScroll() {
-                        var fromScrollTop, index, activeElem;
-                        var options = $dropdown.options;
-                        var scrollTop = list.scrollTop;
+                    // ...and compile it
+                    $compile( option )( scope );
+                }
 
-                        if ( ng.isArray( options ) ) {
-                            index = options.indexOf( $dropdown.activeOption );
-                        } else {
-                            // To keep compatibility with arrays, we'll init the index as -1
-                            index = -1;
-                            Object.keys( options ).some(function( key, i ) {
-                                if ( options[ key ] === $dropdown.activeOption ) {
-                                    index = i;
-                                    return true;
-                                }
-                            });
-                        }
+                // Configure the overflow for this list
+                configureOverflow();
 
-                        activeElem = list.querySelectorAll( ".dropdown-option" )[ index ];
+                // Set the value key
+                $dropdown.valueKey = attr.value || null;
 
-                        if ( !$dropdown.open || !activeElem ) {
-                            // To be handled!
-                            return;
-                        }
+                // Scope Watches
+                // ---------------------------------------------------------------------------------
+                scope.$watch( "$dropdown.open", adjustScroll );
+                scope.$watch( "$dropdown.activeOption", adjustScroll );
 
-                        fromScrollTop = activeElem.offsetTop - list.scrollTop;
+                // Functions
+                // ---------------------------------------------------------------------------------
+                function adjustScroll() {
+                    var fromScrollTop, index, activeElem;
+                    var options = $dropdown.options;
+                    var scrollTop = list.scrollTop;
 
-                        // If the option is above the current scroll, we'll make it appear on the
-                        // top of the scroll.
-                        // Otherwise, it'll appear in the end of the scroll view.
-                        if ( fromScrollTop < 0 ) {
-                            scrollTop = activeElem.offsetTop;
-                        } else if ( list.clientHeight <= fromScrollTop + activeElem.clientHeight ) {
-                            scrollTop = activeElem.offsetTop +
-                                        activeElem.clientHeight -
-                                        list.clientHeight;
-                        }
-
-                        list.scrollTop = scrollTop;
-                    }
-
-                    function configureOverflow() {
-                        var height;
-                        var view = list.ownerDocument.defaultView;
-                        var styles = view.getComputedStyle( list, null );
-                        var display = element.css( "display" );
-                        var size = dropdownConfig.optionsPageSize;
-                        var li = $( "<li class='dropdown-option'>&nbsp;</li>" )[ 0 ];
-                        element.prepend( li );
-
-                        // Temporarily show the element, just to calculate the li height
-                        element.css( "display", "block" );
-
-                        // Calculate the height, considering border/padding
-                        height = li.clientHeight * size;
-                        height = [ "padding", "border" ].reduce(function( value, prop ) {
-                            var top = styles.getPropertyValue( prop + "-top" ) || "";
-                            var bottom = styles.getPropertyValue( prop + "-bottom" ) || "";
-
-                            value += +top.replace( "px", "" ) || 0;
-                            value += +bottom.replace( "px", "" ) || 0;
-
-                            return value;
-                        }, height );
-
-                        // Set overflow CSS rules
-                        element.css({
-                            "overflow-y": "auto",
-                            "max-height": height + "px"
+                    if ( ng.isArray( options ) ) {
+                        index = options.indexOf( $dropdown.activeOption );
+                    } else {
+                        // To keep compatibility with arrays, we'll init the index as -1
+                        index = -1;
+                        Object.keys( options ).some(function( key, i ) {
+                            if ( options[ key ] === $dropdown.activeOption ) {
+                                index = i;
+                                return true;
+                            }
                         });
-
-                        // And finally, set the element display to the previous value
-                        element.css( "display", display );
-
-                        // Also remove the dummy <li> created previously
-                        $( li ).remove();
                     }
-                };
+
+                    activeElem = list.querySelectorAll( ".dropdown-option" )[ index ];
+
+                    if ( !$dropdown.open || !activeElem ) {
+                        // To be handled!
+                        return;
+                    }
+
+                    fromScrollTop = activeElem.offsetTop - list.scrollTop;
+
+                    // If the option is above the current scroll, we'll make it appear on the
+                    // top of the scroll.
+                    // Otherwise, it'll appear in the end of the scroll view.
+                    if ( fromScrollTop < 0 ) {
+                        scrollTop = activeElem.offsetTop;
+                    } else if ( list.clientHeight <= fromScrollTop + activeElem.clientHeight ) {
+                        scrollTop = activeElem.offsetTop +
+                                    activeElem.clientHeight -
+                                    list.clientHeight;
+                    }
+
+                    list.scrollTop = scrollTop;
+                }
+
+                function configureOverflow() {
+                    var height;
+                    var view = list.ownerDocument.defaultView;
+                    var styles = view.getComputedStyle( list, null );
+                    var display = element.css( "display" );
+                    var size = dropdownConfig.optionsPageSize;
+                    var li = $( "<li class='dropdown-option'>&nbsp;</li>" )[ 0 ];
+                    element.prepend( li );
+
+                    // Temporarily show the element, just to calculate the li height
+                    element.css( "display", "block" );
+
+                    // Calculate the height, considering border/padding
+                    height = li.clientHeight * size;
+                    height = [ "padding", "border" ].reduce(function( value, prop ) {
+                        var top = styles.getPropertyValue( prop + "-top" ) || "";
+                        var bottom = styles.getPropertyValue( prop + "-bottom" ) || "";
+
+                        value += +top.replace( "px", "" ) || 0;
+                        value += +bottom.replace( "px", "" ) || 0;
+
+                        return value;
+                    }, height );
+
+                    // Set overflow CSS rules
+                    element.css({
+                        "overflow-y": "auto",
+                        "max-height": height + "px"
+                    });
+
+                    // And finally, set the element display to the previous value
+                    element.css( "display", display );
+
+                    // Also remove the dummy <li> created previously
+                    $( li ).remove();
+                }
             };
 
             return definition;
