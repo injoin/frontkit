@@ -136,6 +136,7 @@ describe( "Dropdown Directive", function() {
 
     describe( "on add item", function() {
         beforeEach(function() {
+            dropdown.find( "dropdown-items" ).text( "{{ $dropdown.items[ $index ] }}" );
             compileDirective();
         });
 
@@ -189,6 +190,16 @@ describe( "Dropdown Directive", function() {
 
             isFull.restore();
             close.restore();
+        });
+
+        it( "should show added item", function() {
+            var items;
+
+            $dropdown.addItem( "foo" );
+            $rootScope.$apply();
+
+            items = dropdown.querySelectorAll( ".dropdown-item" );
+            expect( $( items[ 0 ] ).text() ).to.equal( "foo" );
         });
     });
 

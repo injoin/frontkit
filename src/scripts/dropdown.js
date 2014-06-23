@@ -170,7 +170,8 @@
     ]);
 
     module.directive( "dropdownItems", [
-        function() {
+        "$compile",
+        function( $compile ) {
             var definition = {};
 
             definition.restrict = "EA";
@@ -179,7 +180,15 @@
             definition.templateUrl = "templates/dropdown/items.html";
             definition.require = "^dropdown";
 
-            definition.link = function( scope, element, attr, $dropdown ) {
+            definition.link = function( scope, element, attr, $dropdown, transclude ) {
+                var item = element.querySelector( ".dropdown-item" );
+                transclude(function( childs ) {
+                    item.append( childs );
+                });
+
+                item.attr( "ng-repeat", "item in $dropdown.items" );
+                $compile( item )( scope );
+
                 attr.$observe( "placeholder", function( placeholder ) {
                     $dropdown.placeholder = placeholder;
                 });
