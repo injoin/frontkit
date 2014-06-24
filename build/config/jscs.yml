@@ -1,9 +1,13 @@
 options:
-  config: ".jscsrc"
+  config: ".jshintrc"
 
 core:
   src:
     - "<%= jshint.core.src %>"
+
+chore:
+  src:
+    - "<%= jshint.chore.src %>"
 
 tests:
   src:

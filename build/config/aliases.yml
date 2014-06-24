@@ -15,8 +15,10 @@ package:
 # Lint all files
 lint:
   - jshint:core
+  - jshint:chore
   - jshint:tests
   - jscs:core
+  - jscs:chore
   - jscs:tests
 
 # Run only tests
