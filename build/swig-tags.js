@@ -7,7 +7,7 @@ exports.example = (function() {
         compile: compile
     };
 
-    function parse( str, line, parser, types, stack ) {
+    function parse() {
         return true;
     }
 
@@ -17,7 +17,14 @@ exports.example = (function() {
         output += "_output += '<div class=\"example\">';";
         output += compiler( content, parents, options, blockName );
         output += "_output += '</div>';";
-        output += exports.highlight.compile( compiler, [ "\"xml\"" ], content, parents, options, blockName );
+        output += exports.highlight.compile(
+            compiler,
+            [ "\"xml\"" ],
+            content,
+            parents,
+            options,
+            blockName
+        );
 
         return output;
     }
@@ -43,7 +50,7 @@ exports.highlight = (function() {
         return true;
     }
 
-    function compile( compiler, args, content, parents, options, blockName ) {
+    function compile( compiler, args, content ) {
         var indentationRegex;
         var indentation = Number.MAX_VALUE;
         var output = "";
@@ -76,9 +83,9 @@ exports.highlight = (function() {
         output += "(function() {\n";
         output += " var lang = " + args[ 0 ] + ";\n";
         output += " var __o = " + JSON.stringify( content ) + ";\n";
-        output += " _output += '<pre ng-non-bindable class=\"highlight language-' + lang + '\">';\n";
-        output += " _output += _ext.highlight(" + args[ 0 ] + ", __o).value;\n";
-        output += " _output += '</pre>';\n";
+        output += " _output += '<pre ng-non-bindable class=\"highlight language-' + lang + '\">';";
+        output += " _output += _ext.highlight(" + args[ 0 ] + ", __o).value;";
+        output += " _output += '</pre>';";
         output += "})();\n";
 
         return output;

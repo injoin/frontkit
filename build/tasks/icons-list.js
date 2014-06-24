@@ -38,7 +38,7 @@ module.exports = function( grunt ) {
                 if ( iconList === true ) {
                     iconList = actualIcons;
                 } else {
-                    iconList = iconList.filter( function ( icon ) {
+                    iconList = iconList.filter( function( icon ) {
                         var index = actualIcons.indexOf( icon );
                         var exists = index > -1;
 
