@@ -6,6 +6,12 @@ after_success:
   # Submit coverage data to coveralls
   - grunt -f coveralls:core
 
+notifications:
+  slack: "${SLACK_ROOM}"
+  email:
+    on_success: change
+    on_failure: always
+
 env:
   global:
     - SAUCE_USERNAME: injoin
@@ -15,3 +21,6 @@ env:
 
     # COVERALLS_REPO_TOKEN
     - secure: dSLinYHNDWaueRbh/yKEUhlWt4y+Ygf1aCgtn5vfNbh2AOSRa+R1Sq4U1uinPKa5/vmoYbNahljM5Vk5u220EMuDtfGoZwy4m/TVMENcjP5T2zoDEGYMqB4hlL7D+9mzWgsO6TJkqtnUvxJq2A+TJaWKe2u+YuN4kgQ/koU8Zvo=
+
+    # SLACK_ROOM
+    - secure: rcSWhrsP4NoiEDAUFo33J9Q2GtdaPTSnFrGabnr/EsVHwczi+dCLorDmRwkk18Gw5ako/C1WHm5y6LpTF3mCc+tUwZUPqr3YCpAtVfHiyl7W9maMaq28bd8+4+NDKOByuSpyYkzfDcxiyokcnGjk3xNMAwWMKmKXP2GmuUt+tF4=
