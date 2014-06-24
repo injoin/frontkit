@@ -2,8 +2,8 @@ language: node_js
 node_js:
 - "0.10"
 
-# Submit coverage data to coveralls
 after_success:
+  # Submit coverage data to coveralls
   - grunt -f coveralls:core
 
 env:
