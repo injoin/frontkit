@@ -14,8 +14,11 @@ ol {
 
 .list-unstyled,
 .list-inline {
-  margin-left: 0;
   list-style: none;
+
+  &:not( .row ) {
+    margin-left: 0;
+  }
 }
 
 .list-inline > li {
