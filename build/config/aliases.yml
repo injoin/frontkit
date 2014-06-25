@@ -32,6 +32,10 @@ dev:
   - karma:dev:start
   - watch
 
+# Start a web server for docs
+webserver:
+  - connect:docs
+
 # Install deps, build the package, lint and test and build docs
 default:
   - deps
