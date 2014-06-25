@@ -21,10 +21,23 @@
                 <ul class="nav nav-list">
                     <li class="nav-header">{{ data.label }}</li>
 
-                    {% for id, label in data.items -%}
+                    {% for id, item in data.items -%}
                     <li class="nav-item {{ macros.docsClass( id ) }}">
+                        {% if item.path %}
+                        <a href="{{ macros.siteUrl( "docs/" + item.path ) }}">
+                        {% else %}
                         <a href="{{ macros.siteUrl( "docs/" + menuId + "/" + id ) }}">
-                            {{ label }}
+                        {% endif %}
+
+                        {% if item.label -%}
+                            {{ item.label }}
+                        {% else %}
+                            {{ item }}
+                        {% endif %}
+
+                        {% if item.js %}
+                            <span class="label label-default js-highlight">JS</span>
+                        {% endif %}
                         </a>
 
                         {% if docs === id %}

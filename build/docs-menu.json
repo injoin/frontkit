@@ -1,4 +1,13 @@
 {
+    "overview": {
+        "label": "Overview",
+        "items": {
+            "getting-started": {
+                "path": "index",
+                "label": "Getting Started"
+            }
+        }
+    },
     "structure": {
         "label": "Structure",
         "items": {
@@ -23,8 +32,14 @@
     "forms": {
         "label": "Forms",
         "items": {
-            "checkboxes": "Checkboxes / Radio buttons",
-            "dropdowns": "Dropdowns",
+            "checkboxes": {
+                "label": "Checkboxes / Radio buttons",
+                "js": true
+            },
+            "dropdowns": {
+                "label": "Dropdowns",
+                "js": true
+            },
             "inputs": "Inputs",
             "forms": "Forms"
         }
