@@ -64,7 +64,7 @@
         </ul>
     </section>
 
-    <section id="package-contents">
+    <section id="dependencies">
         {{ macros.docsSectionTitle( "Dependencies", "dependencies", 3 ) }}
         <p>
             The only dependency in order to use Frontkit is
