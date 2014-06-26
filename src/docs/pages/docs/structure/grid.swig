@@ -49,7 +49,7 @@
     </section>
 
     <section id="options">
-        {{ macros.docsSectionTitle( "Grid options", "classes", 3 ) }}
+        {{ macros.docsSectionTitle( "Grid options", "options", 3 ) }}
         <p>
             Below are listed some options that are inherent to each screen size when you use the
             Frontkit grid system.
