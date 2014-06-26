@@ -20,7 +20,7 @@ module.exports = function( grunt ) {
             },
             expand: true,
             cwd: "src/docs/pages/",
-            src: [ "**/*/*.swig" ],
+            src: [ "**/*.swig" ],
             dest: "./",
             ext: ".html"
         }
