@@ -191,7 +191,7 @@
   }
 }
 
-// Button variation
+// Button color variation
 .button-variation( @bg: @brand-default, @text: @text-color, @border: @btn-border ) {
   border-color: @border;
   color: @text;
@@ -219,6 +219,13 @@
       background-color: @bg;
     }
   }
+}
+
+// Button size variation
+.button-size( @factor: 1 ) {
+  padding: ( @padding-base-y * @factor ) ( @padding-base-x * @factor );
+  font-size: unit( @factor, rem );
+  border-radius: max( @btn-border-radius * @factor, @border-radius-small );
 }
 
 .make-triangle( @side, @size, @color ) {

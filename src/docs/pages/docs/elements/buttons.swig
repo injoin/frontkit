@@ -63,6 +63,60 @@
         {% endhighlight %}
     </section>
 
+    <section id="sizes">
+        {{ macros.docsSectionTitle( "Sizes", "sizes", 3 ) }}
+        <p>A button can vary in size, from tiny to extra large.</p>
+
+        <div class="example">
+            <p>
+                <button type="button" class="btn btn-primary btn-xlarge">Extra Large Button</button>
+                <button type="button" class="btn btn-default btn-xlarge">Extra Large Button</button>
+            </p>
+
+            <p>
+                <button type="button" class="btn btn-primary btn-large">Large Button</button>
+                <button type="button" class="btn btn-default btn-large">Large Button</button>
+            </p>
+
+            <p>
+                <button type="button" class="btn btn-primary">Normal Button</button>
+                <button type="button" class="btn btn-default">Normal Button</button>
+            </p>
+
+            <p>
+                <button type="button" class="btn btn-primary btn-small">Small Button</button>
+                <button type="button" class="btn btn-default btn-small">Small Button</button>
+            </p>
+
+            <p>
+                <button type="button" class="btn btn-primary btn-tiny">Tiny Button</button>
+                <button type="button" class="btn btn-default btn-tiny">Tiny Button</button>
+            </p>
+        </div>
+        {% highlight xml %}
+            <p>
+                <button type="button" class="btn btn-primary btn-xlarge">Extra Large Button</button>
+                <button type="button" class="btn btn-default btn-xlarge">Extra Large Button</button>
+            </p>
+            <p>
+                <button type="button" class="btn btn-primary btn-large">Large Button</button>
+                <button type="button" class="btn btn-default btn-large">Large Button</button>
+            </p>
+            <p>
+                <button type="button" class="btn btn-primary">Normal Button</button>
+                <button type="button" class="btn btn-default">Normal Button</button>
+            </p>
+            <p>
+                <button type="button" class="btn btn-primary btn-small">Small Button</button>
+                <button type="button" class="btn btn-default btn-small">Small Button</button>
+            </p>
+            <p>
+                <button type="button" class="btn btn-primary btn-tiny">Tiny Button</button>
+                <button type="button" class="btn btn-default btn-tiny">Tiny Button</button>
+            </p>
+        {% endhighlight %}
+    </section>
+
     <section id="groups">
         {{ macros.docsSectionTitle( "Button Groups", "groups", 3 ) }}
         <p>Buttons can be grouped together.</p>

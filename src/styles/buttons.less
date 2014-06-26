@@ -7,11 +7,9 @@
 .btn {
   display: inline-block;
   white-space: nowrap;
-  padding: @padding-base-y @padding-base-x;
   border: 1px solid @btn-border;
   vertical-align: middle;
   background-color: transparent;
-  border-radius: @btn-border-radius;
   cursor: pointer;
   .user-select( none );
 
@@ -49,6 +47,14 @@
 .btn.btn-info     { .button-variation( @brand-info,    #fff, darken( @brand-info, 10% ) ); }
 .btn.btn-warning  { .button-variation( @brand-warning, #fff, darken( @brand-warning, 10% ) ); }
 .btn.btn-danger   { .button-variation( @brand-danger,  #fff, darken( @brand-danger, 10% ) ); }
+
+/* Button sizes
+   ------------ */
+.btn            { .button-size(); }
+.btn.btn-xlarge { .button-size( @xlarge-factor ); }
+.btn.btn-large  { .button-size( @large-factor ); }
+.btn.btn-small  { .button-size( @small-factor ); }
+.btn.btn-tiny   { .button-size( @tiny-factor ); }
 
 /* Link button
    ----------- */
