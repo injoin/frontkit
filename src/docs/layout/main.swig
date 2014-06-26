@@ -21,12 +21,6 @@
                         <li class="nav-item {{ macros.activeClass( 'docs' ) }}">
                             <a href="{{ macros.siteUrl( "docs/index" ) }}">Docs</a>
                         </li>
-                        <li class="nav-item {{ macros.activeClass( 'unit' ) }}">
-                            <a href="{{ macros.siteUrl( "index" ) }}">Unit Tests</a>
-                        </li>
-                        <li class="nav-item {{ macros.activeClass( 'visual' ) }}">
-                            <a href="{{ macros.siteUrl( "index" ) }}">Visual Tests</a>
-                        </li>
                     </ul>
                 </nav>
             </div>
