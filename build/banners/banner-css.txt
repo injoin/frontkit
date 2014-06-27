@@ -1,0 +1,8 @@
+/*!
+ * <%= package.name %> v<%= package.version %>
+ * <%= package.description %>
+ *
+ * <%= package.homepage %>
+ *
+ * Includes normalize.css | MIT license | http://git.io/normalize
+ */
