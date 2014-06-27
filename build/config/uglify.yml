@@ -1,0 +1,13 @@
+core:
+  options:
+    mangle: true
+    compress: true
+  src: dist/frontkit.js
+  dest: dist/frontkit.min.js
+
+core-tmpl:
+  options:
+    mangle: true
+    compress: true
+  src: dist/frontkit-tmpl.js
+  dest: dist/frontkit-tmpl.min.js
