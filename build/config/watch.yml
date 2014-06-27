@@ -8,7 +8,7 @@ styles:
   files:
     - "libs/**/*.css"
     - "src/styles/*.less"
-  tasks: less:core
+  tasks: css
 
 scripts:
   files:
@@ -16,20 +16,19 @@ scripts:
   tasks:
     - jshint:core
     - jscs:core
-    - concat:core
-    - concat:all
+    - js
 
 templates:
   files:
     - "src/templates/**/*.html"
   tasks:
-    - ngtemplates:core
-    - concat:all
+    - js-tmpl
+    - concat:banner-js
 
 fonts:
   files:
     - "src/fonts/*"
-  tasks: copy:fonts
+  tasks: fonts
 
 unit:
   files:
