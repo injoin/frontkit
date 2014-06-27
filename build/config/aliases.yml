@@ -4,13 +4,37 @@ docs:
   - less:docs
   - swig:docs
 
-# Build sources (styles, scripts, fonts, Angular.js templates)
+# --------------------------------------------------------------------------------------------------
+
+# Build complete package
 package:
+  - css
+  - js
+  - fonts
+
+# Build LESS and apply banners
+css:
   - less:core
-  - ngtemplates:core
+  - less:core-min
+  - concat:banner-css
+
+# Build JS and Angular.js templates, and apply banners
+js:
   - concat:core
-  - concat:all
+  - uglify:core
+  - js-tmpl
+  - concat:banner-js
+
+js-tmpl:
+  - ngtemplates:core
+  - concat:core-tmpl
+  - uglify:core-tmpl
+
+# Build fonts
+fonts:
   - copy:fonts
+
+# --------------------------------------------------------------------------------------------------
 
 # Lint all files
 lint:
@@ -25,6 +49,8 @@ lint:
 test:
   - karma:core
 
+# --------------------------------------------------------------------------------------------------
+
 # Build the package and docs, start karma server and watch the files for modifications
 dev:
   - package
@@ -35,6 +61,8 @@ dev:
 # Start a web server for docs
 webserver:
   - connect:docs
+
+# --------------------------------------------------------------------------------------------------
 
 # Install deps, build the package, lint and test and build docs
 default:
