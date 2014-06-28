@@ -53,7 +53,8 @@ module.exports = function( grunt ) {
 
                     value = value.replace( bowerPkgRegex, function( match, depname ) {
                         var dep = installed[ depname ];
-                        var slug = dep._source.replace( "git://github.com/", "" ).replace( ".git", "" );
+                        var slug = dep._source.replace( "git://github.com/", "" )
+                                              .replace( ".git", "" );
                         var url = "https://rawgit.com/" + slug + "/";
 
                         // Use tag if it exists or commit otherwise.
