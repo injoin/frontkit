@@ -8,6 +8,7 @@
 dist/
 test/coverage/
 *.log
+assets/meta/*.json
 assets/styles/*.css
 src/templates/**/*.js
 

@@ -42,25 +42,50 @@
         }
     ]);
 
-    module.run([ "$rootScope", function( $rootScope ) {
-        // Add some bands for dropdowns example
-        $rootScope.bands = [
-            "AC/DC",
-            "Black Sabbath",
-            "Bon Jovi",
-            "Dio",
-            "Iron Maiden",
-            "Led Zeppelin",
-            "Metallica",
-            "Motorhead",
-            "Red Hot Chili Peppers",
-            "Scorpion",
-            "Sex Pistols",
-            "The Beatles",
-            "The Clash",
-            "The Ramones",
-            "The Who"
-        ];
-    }]);
+    module.directive( "docsHeading", function() {
+        var definition = {};
+
+        definition.transclude = true;
+        definition.template =
+            "<a class='docs-anchor'>#</a> " +
+            "<span ng-transclude></span>";
+
+        definition.link = function( scope, element, attr ) {
+            var path = attr.docsHeading;
+            element.addClass( "docs-heading" );
+            element.find( "a" ).attr( "href", "#" + path );
+        };
+
+        return definition;
+    });
+
+    module.run([
+        "$rootScope",
+        "$http",
+        function( $rootScope, $http ) {
+            // Add some bands for dropdowns example
+            $rootScope.bands = [
+                "AC/DC",
+                "Black Sabbath",
+                "Bon Jovi",
+                "Dio",
+                "Iron Maiden",
+                "Led Zeppelin",
+                "Metallica",
+                "Motorhead",
+                "Red Hot Chili Peppers",
+                "Scorpion",
+                "Sex Pistols",
+                "The Beatles",
+                "The Clash",
+                "The Ramones",
+                "The Who"
+            ];
+
+            $http.get( "/assets/meta/icons-list.json" ).success(function( response ) {
+                $rootScope.iconCategories = response;
+            });
+        }
+    ]);
 
 }( angular );
