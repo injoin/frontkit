@@ -17,6 +17,7 @@ if [ ! -z "${TRAVIS_TAG}" ]; then
 
     # Force add ignored stuff
     git add -f assets/styles/docs.css
+    git add -f assets/meta/icons-list.json
     git add -f docs/
     git add -f index.html
 
