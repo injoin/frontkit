@@ -25,7 +25,8 @@
                     Compiled and minified CSS, JavaScript and font files.
                     No docs or source files are included.
                 </p>
-                <a href="" class="btn btn-primary">
+                <a href="https://github.com/injoin/frontkit/releases/{{ pkg.version }}/frontkit.zip"
+                   class="btn btn-primary">
                     Download package
                 </a>
             </li>
@@ -40,7 +41,8 @@
                     files for LESS and JavaScript.
                     Useful for customizing sources before building.
                 </p>
-                <a href="" class="btn btn-primary">
+                <a href="https://github.com/injoin/frontkit/releases/{{ pkg.version }}/frontkit.dev.zip"
+                   class="btn btn-primary">
                     Download package
                 </a>
             </li>
@@ -98,8 +100,8 @@
 
         <p>
             <strong>Note:</strong>
-            If you have opted for the <a href="">production package</a>, the <code>src/</code>
-            directory won't be available.
+            If you have opted for the <a href="#download">production package</a>, the
+            <code>src/</code> directory won't be available.
         </p>
     </section>
 
