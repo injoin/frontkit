@@ -34,6 +34,11 @@ js-tmpl:
 fonts:
   - copy:fonts
 
+# Build release zips
+release:
+  - compress:production
+  - compress:development
+
 # --------------------------------------------------------------------------------------------------
 
 # Lint all files

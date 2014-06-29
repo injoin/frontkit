@@ -1,0 +1,30 @@
+options:
+  mode: zip
+  pretty: true
+
+production:
+  options:
+    archive: frontkit.zip
+  files:
+    - cwd: dist
+      src: ./**/*
+      dest: /
+      expand: true
+    - cwd: src
+      src: templates/**/*.html
+      dest: /
+      expand: true
+
+development:
+  options:
+    archive: frontkit.dev.zip
+  files:
+    - <%= compress.production.files %>
+    - cwd: src/
+      src:
+        - fonts/**/*
+        - scripts/**/*
+        - styles/**/*
+        - templates/**/*.html
+      dest: src/
+      expand: true
