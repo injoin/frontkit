@@ -16,7 +16,7 @@ module.exports = function( grunt ) {
                 cheerio = require( "cheerio" );
             }
 
-            distRegex = new RegExp( "/?" + distDir + "/(.+)$" );
+            distRegex = new RegExp( "^/?" + distDir + "/(.+)$" );
 
             this.filesSrc.forEach(function( src ) {
                 var $ = cheerio.load( grunt.file.read( src ) );

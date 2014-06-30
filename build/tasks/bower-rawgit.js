@@ -36,7 +36,7 @@ module.exports = function( grunt ) {
 
             // Regex used to discover if a asset is a bower package.
             // The only assumption we make is that it must reside inside the configured directory.
-            bowerPkgRegex = new RegExp( "/?" + dir + "/(.+?)/" );
+            bowerPkgRegex = new RegExp( "^/?" + dir + "/(.+?)/" );
 
             this.filesSrc.forEach(function( src ) {
                 // Load the contents of the file as HTML
