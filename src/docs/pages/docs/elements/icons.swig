@@ -33,19 +33,24 @@
             category, and their respective classes.
         </p>
 
-        {% for icons in iconCategories %}
-        <section id="icons-list-{{ loop.key }}">
-            {{ macros.docsSectionTitle( loop.key | capitalize, "icons-list-" + loop.key, 4 ) }}
+        <input type="text" class="input" placeholder="Type to search icons..."
+               ng-model="iconSearch">
 
-            <ul class="icons-list block-grid medium-block-grid-4 small-block-grid-3 tiny-block-grid-2">
-                {% for icon in icons %}
-                <li>
-                    <span class="icon icon-{{ icon }}"></span>
-                    <small>icon-{{ icon }}</small>
-                </li>
-                {% endfor %}
-            </ul>
-        </section>
-        {% endfor %}
+        {% raw %}
+            <section ng-attr-id="icons-list-{{ category | lowercase }}"
+                     ng-repeat="(category, icons) in iconCategories"
+                     ng-show="( icons | filter: iconSearch ).length" ng-cloak>
+                <h4 docs-heading="icons-list-{{ category | lowercase }}">
+                    {{ category }}
+                </h4>
+
+                <ul class="icons-list block-grid medium-block-grid-4 small-block-grid-3 tiny-block-grid-2">
+                    <li ng-repeat="icon in icons | filter: iconSearch">
+                        <span class="icon icon-{{ icon }}"></span>
+                        <small>icon-{{ icon }}</small>
+                    </li>
+                </ul>
+            </section>
+        {% endraw %}
     </section>
 {% endblock %}

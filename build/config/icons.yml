@@ -2,4 +2,4 @@ docs:
   options:
     categories: src/meta/icons.yml
   src: src/styles/icons.less
-  dest: build/icons-list.json
+  dest: assets/meta/icons-list.json

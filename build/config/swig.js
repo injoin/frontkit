@@ -10,7 +10,6 @@ module.exports = function( grunt ) {
                         env: "<%= env %>",
                         pkg: "<%= package %>",
                         basePath: process.env.BASE_PATH || "/",
-                        iconCategories: grunt.file.readJSON( "build/icons-list.json" ),
                         menu: grunt.file.readJSON( "build/docs-menu.json" )
                     };
                 },
