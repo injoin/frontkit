@@ -17,7 +17,7 @@ if [ ! -z "${TRAVIS_TAG}" ]; then
     git clone git@github.com:injoin/bower-frontkit.git
 
     # Unzip the package into the git repo, copy the bower.json file
-    unzip frontkit.dev.zip -d bower-frontkit
+    unzip frontkit.dev.zip -o -d bower-frontkit
     cp bower.json bower-frontkit/bower.json
 
     # cd into the repo and configure git
