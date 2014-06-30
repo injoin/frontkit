@@ -9,7 +9,7 @@ module.exports = function( grunt ) {
         function() {
             var distRegex;
             var distDir = grunt.config( "cfg.distDir" );
-            var repoSlug = grunt.config( "cfg.repoSlug" );
+            var bowerSlug = grunt.config( "cfg.bowerSlug" );
             var version = grunt.config( "package.version" );
 
             if ( !cheerio ) {
@@ -29,7 +29,7 @@ module.exports = function( grunt ) {
                     value = asset.attr( attr );
 
                     value = value.replace( distRegex, function( match, file ) {
-                        var url = "https://rawgit.com/" + repoSlug + "/" + version + "/";
+                        var url = "https://rawgit.com/" + bowerSlug + "/" + version + "/";
                         return url + file;
                     });
 
