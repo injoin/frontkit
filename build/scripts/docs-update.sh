@@ -25,7 +25,7 @@ if [ ! -z "${TRAVIS_TAG}" ]; then
     git fetch --depth=50 origin gh-pages:gh-pages
     git fetch --depth=50 origin master:master
     git checkout -f gh-pages
-    git merge master
+    git merge master --no-edit
 
     # Update references to a few compiled files
     grunt docs deps bower-rawgit dist-bower
