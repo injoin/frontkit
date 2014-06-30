@@ -22,7 +22,8 @@ if [ ! -z "${TRAVIS_TAG}" ]; then
     git clean -f
 
     # Checkout gh-pages and merge changes from master
-    git fetch origin gh-pages:gh-pages
+    git fetch --depth=50 origin gh-pages:gh-pages
+    git fetch --depth=50 origin master:master
     git checkout -f gh-pages
     git merge master
 
