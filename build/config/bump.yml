@@ -13,7 +13,7 @@ options:
 
   # Tag
   createTag: true
-  tagName: %VERSION%
+  tagName: "%VERSION%"
   tagMessage: "Version %VERSION%"
 
   # Push
