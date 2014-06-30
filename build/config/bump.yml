@@ -7,7 +7,7 @@ options:
 
   # Commit
   commit: true
-  commitMessage: "chore(release): release 0.0.1"
+  commitMessage: "chore(release): release %VERSION%"
   commitFiles:
     - package.json
 
