@@ -1,0 +1,21 @@
+options:
+  files:
+    - package.json
+
+  updateConfigs:
+    - package
+
+  # Commit
+  commit: true
+  commitMessage: "chore(release): release 0.0.1"
+  commitFiles:
+    - package.json
+
+  # Tag
+  createTag: true
+  tagName: %VERSION%
+  tagMessage: "Version %VERSION%"
+
+  # Push
+  push: true
+  pushTo: origin
