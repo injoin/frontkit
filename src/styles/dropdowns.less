@@ -46,14 +46,6 @@
   }
 }
 
-.dropdown-input-helper {
-  position: fixed;
-  top: -9999em;
-  left: -9999em;
-  display: inline;
-  white-space: pre;
-}
-
 /*
  * 1. Make dropdown look clickable when dropdown is closed
  * 2. Make items look selectable only when dropdown is open
@@ -136,4 +128,23 @@
   color: @dropdown-item-text;
   background: @dropdown-item-bg;
   border-radius: @dropdown-item-border-radius;
+}
+
+/* Input helper
+   -------------
+   Element used to calculate string width. */
+
+/*
+ * 1. Position outside the screen
+ * 2. Make sure contents always show in a single row with all typed whitespaces
+ */
+.dropdown-input-helper {
+  /* 1 */
+  position: fixed;
+  top: -9999em;
+  left: -9999em;
+
+  /* 2 */
+  display: inline;
+  white-space: pre;
 }
