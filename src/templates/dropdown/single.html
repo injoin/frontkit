@@ -1,6 +1,12 @@
-<div class="dropdown" ng-class="{ open: $dropdown.open }">
+<div class="dropdown" ng-class="{
+    open: $dropdown.open,
+    'dropdown-single': $dropdown.maxItems === 1,
+    'dropdown-multi': $dropdown.maxItems > 1,
+    'dropdown-fulfilled': $dropdown.items.length
+}">
     <div class="dropdown-container">
         <div class="dropdown-input">
+            <span class="dropdown-input-helper"></span>
             <input type="text" ng-model="$dropdown.search"
                    placeholder="{{ $dropdown.items.length ? null : $dropdown.placeholder }}">
         </div>
