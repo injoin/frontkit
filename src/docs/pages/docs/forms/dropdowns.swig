@@ -8,24 +8,29 @@
         <code>&lt;select&gt;</code> tag behavior.
     </p>
 
-    <section id="single">
-        {{ macros.docsSectionTitle( "Single Selection", "single", 3 ) }}
+    <section id="example">
+        {{ macros.docsSectionTitle( "Example", "example", 3 ) }}
         <p>
-            A single selection dropdown is a simple <code>&lt;select&gt;</code> tag which is
-            decorated with the <code>dropdown</code> directive.
+            Below is shown a full featured example of the dropdown directive. You can see its
+            currently selected items and change the maximum number of items allowed.
         </p>
 
         <div class="example">
             {% raw -%}
-            <dropdown ng-model="selectedBand">
+            <div class="row form-group">
+                <div class=" column small-3-12">
+                    <input type="number" min="1" class="input" placeholder="Max items"
+                           ng-model="maxItems">
+                </div>
+            </div>
+
+            <dropdown ng-model="selectedBand" max-items="maxItems">
                 <dropdown-items placeholder="Select a rock band...">{{ $dropdown.items[ $index ] }}</dropdown-items>
                 <dropdown-options items="band in bands | filter: $dropdown.search">
                     {{ band }}
                 </dropdown-options>
             </dropdown>
-            {% endraw %}
 
-            {% raw %}
             <p>You have selected {{ selectedBand }}.</p>
             {% endraw %}
         </div>
