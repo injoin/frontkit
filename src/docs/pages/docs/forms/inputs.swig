@@ -32,14 +32,22 @@
         </ul>
 
         <div class="example">
-            <input type="text" class="input" placeholder="Type something...">
-            <select class="input">
-                <option value="">Select something...</option>
-                <option value="apples">Apples</option>
-                <option value="bananas">Bananas</option>
-                <option value="potatoes">Potatoes</option>
-            </select>
-            <textarea class="input" placeholder="Type something..."></textarea>
+            <div class="form-group">
+                <input type="text" class="input" placeholder="Type something...">
+            </div>
+
+            <div class="form-group">
+                <select class="input">
+                    <option value="">Select something...</option>
+                    <option value="apples">Apples</option>
+                    <option value="bananas">Bananas</option>
+                    <option value="potatoes">Potatoes</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <textarea class="input" placeholder="Type something..."></textarea>
+            </div>
         </div>
         {% highlight xml %}
             <input type="text" class="input" placeholder="...">
@@ -62,7 +70,9 @@
             <p>Demonstrate that the user is currently interacting with the input.</p>
 
             <div class="example">
-                <input type="text" class="input" id="focused-input" placeholder="Focused input">
+                <div class="form-group">
+                    <input type="text" class="input" id="focused-input" placeholder="Focused input">
+                </div>
             </div>
         </section>
 
@@ -71,8 +81,12 @@
             <p>Disallow interaction with the input by giving it a disabled/read-only style.</p>
 
             <div class="example">
-                <input type="text" class="input" placeholder="I'm disabled!" disabled>
-                <input type="text" class="input" placeholder="I'm read-only!" readonly>
+                <div class="form-group">
+                    <input type="text" class="input" placeholder="I'm disabled!" disabled>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="input" placeholder="I'm read-only!" readonly>
+                </div>
             </div>
             {% highlight xml %}
                 <input type="text" class="input" disabled>
@@ -85,9 +99,17 @@
             <p>You are able to use some validation states with inputs as well.</p>
 
             <div class="example">
-                <input type="text" class="input validation-success" value="Successful input!">
-                <input type="text" class="input validation-error" value="I have a error!">
-                <input type="text" class="input validation-warning" value="I have a warning!">
+                <div class="form-group">
+                    <input type="text" class="input validation-success" value="Successful input!">
+                </div>
+
+                <div class="form-group">
+                    <input type="text" class="input validation-error" value="I have a error!">
+                </div>
+
+                <div class="form-group">
+                    <input type="text" class="input validation-warning" value="I have a warning!">
+                </div>
             </div>
             {% highlight xml %}
                 <input type="text" class="input validation-success">
