@@ -225,7 +225,7 @@
             definition.link = function( scope, element, attr, $dropdown, transclude ) {
                 var list = element[ 0 ];
                 var option = element.querySelector( ".dropdown-option" );
-                var repeat = repeatParser.parse( attr.items );
+                var repeat = repeatParser.parse( attr.options );
 
                 // If we have a repeat expr, let's use it to build the option list
                 if ( repeat ) {

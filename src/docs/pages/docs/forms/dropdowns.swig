@@ -28,7 +28,7 @@
 
                 <dropdown ng-model="selectedBand" max-items="maxItems">
                     <dropdown-items placeholder="Select a rock band...">{{ $dropdown.items[ $index ] }}</dropdown-items>
-                    <dropdown-options items="band in bands | filter: $dropdown.search">
+                    <dropdown-options options="band in bands | filter: $dropdown.search">
                         {{ band }}
                     </dropdown-options>
                 </dropdown>
@@ -50,7 +50,7 @@
 
                     <dropdown ng-model="selectedBand">
                         <dropdown-items placeholder="Select a rock band...">{{ $dropdown.items[ $index ] }}</dropdown-items>
-                        <dropdown-options items="band in bands | filter: $dropdown.search">
+                        <dropdown-options options="band in bands | filter: $dropdown.search">
                             {{ band }}
                         </dropdown-options>
                     </dropdown>
@@ -196,7 +196,7 @@
         {% highlight xml %}
             {% raw %}
                 <!-- You could omit the filter if you don't want to allow searching options -->
-                <dropdown-options items="option in options | filter: $dropdown.search">
+                <dropdown-options options="option in options | filter: $dropdown.search">
                     <!-- Render the content of the foo property of the current option -->
                     {{ option.foo }}
                 </dropdown>
@@ -220,7 +220,7 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>items</td>
+                        <td>options</td>
                         <td>String</td>
                         <td><code>ng-repeat</code> like expression to generate the option list.</td>
                     </tr>
