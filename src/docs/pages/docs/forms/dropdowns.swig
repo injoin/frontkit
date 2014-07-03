@@ -16,27 +16,17 @@
         </p>
 
         <div class="example">
-            {% raw -%}
-            <div class="row form-group">
-                <div class=" column small-3-12">
-                    <input type="number" min="1" class="input" placeholder="Max items"
-                           ng-model="maxItems">
+            <form class="form-horizontal" ng-init="maxItems = 1">
+                {% raw -%}
+                <div class="form-group">
+                    <label class="column small-3-12 large-2-12">Max items:</label>
+                    <div class="column small-3-12 large-2-12">
+                        <input type="number" min="1" class="input" ng-model="maxItems"
+                               placeholder="Select...">
+                    </div>
                 </div>
-            </div>
 
-            <dropdown ng-model="selectedBand" max-items="maxItems">
-                <dropdown-items placeholder="Select a rock band...">{{ $dropdown.items[ $index ] }}</dropdown-items>
-                <dropdown-options items="band in bands | filter: $dropdown.search">
-                    {{ band }}
-                </dropdown-options>
-            </dropdown>
-
-            <p>You have selected {{ selectedBand }}.</p>
-            {% endraw %}
-        </div>
-        {% highlight xml %}
-            {% raw %}
-                <dropdown ng-model="selectedBand">
+                <dropdown ng-model="selectedBand" max-items="maxItems">
                     <dropdown-items placeholder="Select a rock band...">{{ $dropdown.items[ $index ] }}</dropdown-items>
                     <dropdown-options items="band in bands | filter: $dropdown.search">
                         {{ band }}
@@ -44,6 +34,29 @@
                 </dropdown>
 
                 <p>You have selected {{ selectedBand }}.</p>
+                {% endraw %}
+            </form>
+        </div>
+        {% highlight xml %}
+            {% raw %}
+                <form class="form-horizontal" ng-init="maxItems = 1">
+                    <div class="form-group">
+                        <label class="column small-3-12 large-2-12">Max items:</label>
+                        <div class="column small-3-12 large-2-12">
+                            <input type="number" min="1" class="input" ng-model="maxItems"
+                                   placeholder="Select...">
+                        </div>
+                    </div>
+
+                    <dropdown ng-model="selectedBand">
+                        <dropdown-items placeholder="Select a rock band...">{{ $dropdown.items[ $index ] }}</dropdown-items>
+                        <dropdown-options items="band in bands | filter: $dropdown.search">
+                            {{ band }}
+                        </dropdown-options>
+                    </dropdown>
+
+                    <p>You have selected {{ selectedBand }}.</p>
+                </form>
             {% endraw %}
         {% endhighlight %}
     </section>
