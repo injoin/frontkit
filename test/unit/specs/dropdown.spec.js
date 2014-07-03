@@ -53,7 +53,7 @@ describe( "Dropdown Directive", function() {
         $rootScope.options = [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ];
 
         // Make the dropdown use that options and compile it
-        dropdown.find( "dropdown-options" ).attr( "items", "option in options" );
+        dropdown.find( "dropdown-options" ).attr( "options", "option in options" );
         compileDirective();
 
         // Find the compiled dropdown options container
@@ -214,7 +214,7 @@ describe( "Dropdown Directive", function() {
         }));
 
         it( "should be empty array if value is null", function() {
-            optionsElem.attr( "items", "option in options" );
+            optionsElem.attr( "options", "option in options" );
             compileDirective();
 
             expect( $dropdown.options ).to.eql( [] );
@@ -223,7 +223,7 @@ describe( "Dropdown Directive", function() {
         it( "should accept array of options", function() {
             var compiledOptions;
 
-            optionsElem.attr( "items", "option in options" );
+            optionsElem.attr( "options", "option in options" );
             $rootScope.options = [
                 "foo",
                 "bar",
@@ -238,7 +238,7 @@ describe( "Dropdown Directive", function() {
         it( "should accept hash of options", function() {
             var compiledOptions;
 
-            optionsElem.attr( "items", "(key, value) in options" );
+            optionsElem.attr( "options", "(key, value) in options" );
             $rootScope.options = {
                 foo: "bar",
                 baz: "qux"
@@ -250,7 +250,7 @@ describe( "Dropdown Directive", function() {
         });
 
         it( "should throw error if value not array or object", function() {
-            optionsElem.attr( "items", "option in options" );
+            optionsElem.attr( "options", "option in options" );
             $rootScope.options = "foo";
 
             expect( compileDirective ).to.throw(
@@ -266,7 +266,7 @@ describe( "Dropdown Directive", function() {
                 baz: "qux"
             };
 
-            optionsElem.attr( "items", "option in options" );
+            optionsElem.attr( "options", "option in options" );
             $rootScope.options = deferred.promise;
             compileDirective();
 
@@ -286,7 +286,7 @@ describe( "Dropdown Directive", function() {
             var options1 = [ "foo", "bar" ];
             var options2 = [ "baz", "qux" ];
 
-            optionsElem.attr( "items", "option in options" );
+            optionsElem.attr( "options", "option in options" );
             $rootScope.options = deferred1.promise;
             compileDirective();
 
@@ -306,7 +306,7 @@ describe( "Dropdown Directive", function() {
         it( "should transclude the content for each option", function() {
             var compiledOptions;
 
-            optionsElem.attr( "items", "(key, value) in options" );
+            optionsElem.attr( "options", "(key, value) in options" );
             $rootScope.options = {
                 foo: "bar"
             };
@@ -560,7 +560,7 @@ describe( "Dropdown Directive", function() {
         beforeEach(function() {
             $rootScope.options = options;
             dropdown.find( "dropdown-options" )
-                    .attr( "items", "option in options" );
+                    .attr( "options", "option in options" );
 
             compileDirective();
             input = dropdown.querySelector( ".dropdown-container input" )[ 0 ];
