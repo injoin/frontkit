@@ -1,18 +1,12 @@
 /* Inputs
    ============================================================================================== */
 
-/*
- * 1. Fix the height when browsers have line-height: normal !important
- */
 .input {
   display: inline-block;
   width: 100%;
-  height: @height-base; /* 1 */
-  padding: @padding-base-y @padding-base-x;
   border: 1px solid @input-border;
   color: @input-color;
   background-color: @input-bg;
-  border-radius: @input-border-radius;
   .transition( ~"box-shadow .1s linear, border-color .1s linear" );
 
   // Placeholder support
@@ -21,15 +15,6 @@
   &:focus {
      .input-focus();
   }
-}
-
-/*
- * Reset height on textareas and multi select
- */
-textarea.input,
-select[ size ].input,
-select[ multiple ].input, {
-  height: auto;
 }
 
 /*
@@ -64,4 +49,22 @@ textarea.input {
     border-color: @input-border;
     .box-shadow( none ); /* 1 */
   }
+}
+
+/* Input Sizes
+   ----------- */
+
+.input        { .input-size(); }
+.input-xlarge { .input-size( @xlarge-factor ); }
+.input-large  { .input-size( @large-factor ); }
+.input-small  { .input-size( @small-factor ); }
+.input-tiny   { .input-size( @tiny-factor ); }
+
+/*
+ * Reset height on textareas and multi select
+ */
+textarea.input,
+select[ size ].input,
+select[ multiple ].input, {
+  height: auto;
 }
