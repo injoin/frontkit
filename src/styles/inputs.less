@@ -2,6 +2,7 @@
    ============================================================================================== */
 
 .input {
+  position: relative;
   display: inline-block;
   width: 100%;
   border: 1px solid @input-border;
@@ -67,4 +68,31 @@ textarea.input,
 select[ size ].input,
 select[ multiple ].input, {
   height: auto;
+}
+
+/* Wrapper mode
+   ------------- */
+
+/*
+ * 1. Required in order to selects align correctly
+ */
+.input {
+  input,
+  select,
+  textarea {
+    display: block; /* 1 */
+    border: 1px solid @input-border;
+    .transition( ~"box-shadow .1s linear, border-color .1s linear" );
+
+    &:focus {
+      .input-focus();
+    }
+
+    // Placeholder support
+    .placeholder();
+  }
+
+  select {
+    height: @height-base;
+  }
 }

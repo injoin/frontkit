@@ -230,13 +230,31 @@
 
 // Input size variation
 .input-size( @factor: 1 ) {
-  height: @height-base * @factor;
-  padding: ( @padding-base-y * @factor ) ( @padding-base-x * @factor );
+  min-height: @height-base * @factor;
   font-size: unit( @factor, rem );
-  border-radius: max( @input-border-radius * @factor, @border-radius-small );
 
   select& {
     line-height: @height-base * @factor;
+  }
+
+  &,
+  input,
+  select,
+  textarea {
+    padding: ( @padding-base-y * @factor ) ( @padding-base-x * @factor );
+    border-radius: max( @input-border-radius * @factor, @border-radius-small );
+  }
+
+  input,
+  select,
+  textarea {
+    /*
+     * 1. Adds 2px because of the horizontal border of the parent + 1px because of the margin-left move.
+     * 2. Place the input on top of the parent element
+     */
+    width: calc( ~"100% + ( @{padding-base-x} * @{factor} * 2 ) + 3px" ); /* 1 */
+    margin: -( ( @padding-base-y * @factor ) + @one-px )
+            -( ( @padding-base-x * @factor ) + @one-px ); /* 2 */
   }
 }
 

@@ -56,6 +56,43 @@
             </select>
             <textarea class="input" placeholder="..."></textarea>
         {% endhighlight %}
+
+        <p>
+            You're allowed to use <code>.input</code> as a wrapper for form controls as well.
+            The same result applies:
+        </p>
+        <div class="example example-inputs">
+            <div class="input">
+                <input type="text" placeholder="Type something...">
+            </div>
+            <div class="input">
+                <select>
+                    <option value="">Select something...</option>
+                    <option value="apples">Apples</option>
+                    <option value="bananas">Bananas</option>
+                    <option value="potatoes">Potatoes</option>
+                </select>
+            </div>
+            <div class="input">
+                <textarea placeholder="Type something..."></textarea>
+            </div>
+        </div>
+        {% highlight xml %}
+            <div class="input">
+                <input type="text" placeholder="Type something...">
+            </div>
+            <div class="input">
+                <select>
+                    <option value="">Select something...</option>
+                    <option value="apples">Apples</option>
+                    <option value="bananas">Bananas</option>
+                    <option value="potatoes">Potatoes</option>
+                </select>
+            </div>
+            <div class="input">
+                <textarea placeholder="Type something..."></textarea>
+            </div>
+        {% endhighlight %}
     </section>
 
     <section id="states">
@@ -125,14 +162,18 @@
 
         <div class="example example-inputs">
             <input type="text" class="input input-xlarge" placeholder="Extra Large input">
-            <input type="text" class="input input-large" placeholder="Large input">
+            <div class="input input-large">
+                <input type="text" placeholder="Large input">
+            </div>
             <input type="text" class="input" placeholder="Normal input">
             <select class="input input-small"><option>Small input</option></select>
             <input type="text" class="input input-tiny" placeholder="Tiny input">
         </div>
         {% highlight xml %}
             <input type="text" class="input input-xlarge" placeholder="Extra Large input">
-            <input type="text" class="input input-large" placeholder="Large input">
+            <div class="input input-large">
+                <input type="text" placeholder="Large input">
+            </div>
             <input type="text" class="input" placeholder="Normal input">
             <select class="input input-small"><option>Small input</option></select>
             <input type="text" class="input input-tiny" placeholder="Tiny input">
