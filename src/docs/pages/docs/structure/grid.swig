@@ -111,6 +111,10 @@
                         <th>Offsets</th>
                         <td colspan="5">Yes</td>
                     </tr>
+                    <tr>
+                        <th>Column ordering</th>
+                        <td colspan="5">Yes</td>
+                    </tr>
                 </tbody>
             </table>
         </div>
@@ -264,6 +268,30 @@
                 <div class="row">
                     <div class="column small-3-12 small-offset-3-12">3 offset 3</div>
                     <div class="column small-3-12 small-offset-3-12">3 offset 3</div>
+                </div>
+            {% endhighlight %}
+        </section>
+
+        {# Example: Ordering #}
+        <section id="examples-ordering">
+            {{ macros.docsSectionTitle( "Column Ordering", "examples-ordering", 4 ) }}
+            <p>
+                The following example shows you how to reorder grid columns, either by pulling or
+                pushing it.
+            </p>
+
+            <div class="example grid-example">
+                <div class="row">
+                    <div class="column small-4-12 small-push-8-12">1</div>
+                    <div class="column small-4-12 small-pull-4-12">2</div>
+                    <div class="column small-4-12 small-pull-4-12">3</div>
+                </div>
+            </div>
+            {% highlight xml %}
+                <div class="row">
+                    <div class="column small-4-12 small-push-8-12">1</div>
+                    <div class="column small-4-12 small-pull-4-12">2</div>
+                    <div class="column small-4-12 small-pull-4-12">3</div>
                 </div>
             {% endhighlight %}
         </section>
