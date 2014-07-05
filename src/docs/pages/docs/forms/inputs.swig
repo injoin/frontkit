@@ -179,4 +179,58 @@
             <input type="text" class="input input-tiny" placeholder="Tiny input">
         {% endhighlight %}
     </section>
+
+    <section id="icons">
+        {{ macros.docsSectionTitle( "Icons", "icons", 3 ) }}
+        <p>
+            It's quite common that people want to place an icon inside a input, either to show
+            feedback about validation, or maybe show the type of the input (username, password,
+            date, etc).
+        </p>
+        <p>
+            You'll need to use the <code>.input</code> as a wrapper with an additional
+            <code>.input-icon</code>. This is to fix the padding of the input, so the input text
+            doesn't go below the icon.
+        </p>
+
+        <div class="example example-inputs">
+            <div class="input input-icon">
+                <input type="text" placeholder="Type your username...">
+                <span class="icon icon-user"></span>
+            </div>
+
+            <div class="input input-icon">
+                <input type="text" placeholder="Type your password...">
+                <span class="icon icon-lock"></span>
+            </div>
+        </div>
+        {% highlight xml %}
+            <div class="input input-icon">
+                <input type="text" placeholder="Type your username...">
+                <span class="icon icon-user"></span>
+            </div>
+
+            <div class="input input-icon">
+                <input type="text" placeholder="Type your password...">
+                <span class="icon icon-lock"></span>
+            </div>
+        {% endhighlight %}
+
+        <p>
+            You're able to place icons in the right side as well. Just add
+            <code>.input-icon-end</code> to your input wrapper:
+        </p>
+        <div class="example">
+            <div class="input input-icon input-icon-end">
+                <input type="text" placeholder="Type a movie name...">
+                <span class="icon icon-film"></span>
+            </div>
+        </div>
+        {% highlight xml %}
+            <div class="input input-icon input-icon-end">
+                <input type="text" placeholder="Type a movie name...">
+                <span class="icon icon-film"></span>
+            </div>
+        {% endhighlight %}
+    </section>
 {% endblock %}
