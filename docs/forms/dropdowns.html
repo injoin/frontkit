@@ -8,7 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         
-        <link rel="stylesheet" href="https://rawgit.com/injoin/bower-frontkit/0.0.7/frontkit.css">
+        <link rel="stylesheet" href="https://rawgit.com/injoin/bower-frontkit/0.1.0/frontkit.css">
         <link rel="stylesheet" href="/assets/styles/docs.css">
         <link rel="stylesheet" href="https://rawgit.com/components/highlightjs/8.0.0/styles/github.css">
     </head>
@@ -53,6 +53,20 @@
                         
 
                         Getting Started
+                        
+
+                        
+                        </a>
+
+                        
+                    </li>
+                    <li class="nav-item ">
+                        
+                        <a href="/docs/overview/browser-support.html">
+                        
+
+                        
+                            Browser Support
                         
 
                         
@@ -398,39 +412,56 @@
         <code>&lt;select&gt;</code> tag behavior.
     </p>
 
-    <section id="single">
+    <section id="example">
         
     <h3 class="docs-heading">
-        <a href="#single" class="docs-anchor">#</a>
-        Single Selection
+        <a href="#example" class="docs-anchor">#</a>
+        Example
     </h3>
 
         <p>
-            A single selection dropdown is a simple <code>&lt;select&gt;</code> tag which is
-            decorated with the <code>dropdown</code> directive.
+            Below is shown a full featured example of the dropdown directive. You can see its
+            currently selected items and change the maximum number of items allowed.
         </p>
 
         <div class="example">
-            <dropdown ng-model="selectedBand">
-                <dropdown-items placeholder="Select a rock band...">{{ $dropdown.items[ $index ] }}</dropdown-items>
-                <dropdown-options items="band in bands | filter: $dropdown.search">
-                    {{ band }}
-                </dropdown-options>
-            </dropdown>
-            
+            <form class="form-horizontal" ng-init="maxItems = 1">
+                <div class="form-group">
+                    <label class="column small-3-12 large-2-12">Max items:</label>
+                    <div class="column small-3-12 large-2-12">
+                        <input type="number" min="1" class="input" ng-model="maxItems" placeholder="Select...">
+                    </div>
+                </div>
 
-            
-            <p>You have selected {{ selectedBand }}.</p>
-            
+                <dropdown ng-model="selectedBand" max-items="maxItems">
+                    <dropdown-items placeholder="Select a rock band...">{{ $dropdown.items[ $index ] }}</dropdown-items>
+                    <dropdown-options options="band in bands | filter: $dropdown.search">
+                        {{ band }}
+                    </dropdown-options>
+                </dropdown>
+
+                <p>You have selected {{ selectedBand }}.</p>
+                
+            </form>
         </div>
-        <pre ng-non-bindable="" class="highlight language-xml"><span class="hljs-tag">&lt;<span class="hljs-title">dropdown</span> <span class="hljs-attribute">ng-model</span>=<span class="hljs-value">&quot;selectedBand&quot;</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-title">dropdown-items</span> <span class="hljs-attribute">placeholder</span>=<span class="hljs-value">&quot;Select a rock band...&quot;</span>&gt;</span>{{ $dropdown.items[ $index ] }}<span class="hljs-tag">&lt;/<span class="hljs-title">dropdown-items</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-title">dropdown-options</span> <span class="hljs-attribute">items</span>=<span class="hljs-value">&quot;band in bands | filter: $dropdown.search&quot;</span>&gt;</span>
-        {{ band }}
-    <span class="hljs-tag">&lt;/<span class="hljs-title">dropdown-options</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-title">dropdown</span>&gt;</span>
+        <pre ng-non-bindable="" class="highlight language-xml"><span class="hljs-tag">&lt;<span class="hljs-title">form</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;form-horizontal&quot;</span> <span class="hljs-attribute">ng-init</span>=<span class="hljs-value">&quot;maxItems = 1&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;form-group&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">label</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;column small-3-12 large-2-12&quot;</span>&gt;</span>Max items:<span class="hljs-tag">&lt;/<span class="hljs-title">label</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;column small-3-12 large-2-12&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">&quot;number&quot;</span> <span class="hljs-attribute">min</span>=<span class="hljs-value">&quot;1&quot;</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;input&quot;</span> <span class="hljs-attribute">ng-model</span>=<span class="hljs-value">&quot;maxItems&quot;</span>
+                   <span class="hljs-attribute">placeholder</span>=<span class="hljs-value">&quot;Select...&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
 
-<span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>You have selected {{ selectedBand }}.<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span></pre>
+    <span class="hljs-tag">&lt;<span class="hljs-title">dropdown</span> <span class="hljs-attribute">ng-model</span>=<span class="hljs-value">&quot;selectedBand&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">dropdown-items</span> <span class="hljs-attribute">placeholder</span>=<span class="hljs-value">&quot;Select a rock band...&quot;</span>&gt;</span>{{ $dropdown.items[ $index ] }}<span class="hljs-tag">&lt;/<span class="hljs-title">dropdown-items</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">dropdown-options</span> <span class="hljs-attribute">options</span>=<span class="hljs-value">&quot;band in bands | filter: $dropdown.search&quot;</span>&gt;</span>
+            {{ band }}
+        <span class="hljs-tag">&lt;/<span class="hljs-title">dropdown-options</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">dropdown</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>You have selected {{ selectedBand }}.<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">form</span>&gt;</span></pre>
     </section>
 
     <section id="$dropdown-variable">
@@ -584,7 +615,7 @@
 
         <div class="example"></div>
         <pre ng-non-bindable="" class="highlight language-xml"><span class="hljs-comment">&lt;!-- You could omit the filter if you don&apos;t want to allow searching options --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">dropdown-options</span> <span class="hljs-attribute">items</span>=<span class="hljs-value">&quot;option in options | filter: $dropdown.search&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">dropdown-options</span> <span class="hljs-attribute">options</span>=<span class="hljs-value">&quot;option in options | filter: $dropdown.search&quot;</span>&gt;</span>
     <span class="hljs-comment">&lt;!-- Render the content of the foo property of the current option --&gt;</span>
     {{ option.foo }}
 <span class="hljs-tag">&lt;/<span class="hljs-title">dropdown</span>&gt;</span></pre>
@@ -611,7 +642,7 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>items</td>
+                        <td>options</td>
                         <td>String</td>
                         <td><code>ng-repeat</code> like expression to generate the option list.</td>
                     </tr>
@@ -627,10 +658,10 @@
 
 
         <script src="https://rawgit.com/imsky/holder/v2.3.2/holder.js"></script>
-        <script src="https://rawgit.com/angular/bower-angular/v1.2.18/angular.js"></script>
+        <script src="https://rawgit.com/angular/bower-angular/v1.2.19/angular.js"></script>
         <script src="https://rawgit.com/WickyNilliams/headroom.js/v0.6.0/dist/headroom.js"></script>
         <script src="https://rawgit.com/WickyNilliams/headroom.js/v0.6.0/dist/angular.headroom.js"></script>
-        <script src="https://rawgit.com/injoin/bower-frontkit/0.0.7/frontkit-tmpl.js"></script>
+        <script src="https://rawgit.com/injoin/bower-frontkit/0.1.0/frontkit-tmpl.js"></script>
         <script src="/assets/scripts/docs.js"></script>
     </body>
 </html>

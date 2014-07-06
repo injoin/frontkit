@@ -8,7 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         
-        <link rel="stylesheet" href="https://rawgit.com/injoin/bower-frontkit/0.0.7/frontkit.css">
+        <link rel="stylesheet" href="https://rawgit.com/injoin/bower-frontkit/0.1.0/frontkit.css">
         <link rel="stylesheet" href="/assets/styles/docs.css">
         <link rel="stylesheet" href="https://rawgit.com/components/highlightjs/8.0.0/styles/github.css">
     </head>
@@ -53,6 +53,20 @@
                         
 
                         Getting Started
+                        
+
+                        
+                        </a>
+
+                        
+                    </li>
+                    <li class="nav-item ">
+                        
+                        <a href="/docs/overview/browser-support.html">
+                        
+
+                        
+                            Browser Support
                         
 
                         
@@ -511,6 +525,10 @@
                         <th>Offsets</th>
                         <td colspan="5">Yes</td>
                     </tr>
+                    <tr>
+                        <th>Column ordering</th>
+                        <td colspan="5">Yes</td>
+                    </tr>
                 </tbody>
             </table>
         </div>
@@ -681,6 +699,33 @@
     <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;column small-3-12 small-offset-3-12&quot;</span>&gt;</span>3 offset 3<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span></pre>
         </section>
+
+        
+        <section id="examples-ordering">
+            
+    <h4 class="docs-heading">
+        <a href="#examples-ordering" class="docs-anchor">#</a>
+        Column Ordering
+    </h4>
+
+            <p>
+                The following example shows you how to reorder grid columns, either by pulling or
+                pushing it.
+            </p>
+
+            <div class="example grid-example">
+                <div class="row">
+                    <div class="column small-4-12 small-push-8-12">1</div>
+                    <div class="column small-4-12 small-pull-4-12">2</div>
+                    <div class="column small-4-12 small-pull-4-12">3</div>
+                </div>
+            </div>
+            <pre ng-non-bindable="" class="highlight language-xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;row&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;column small-4-12 small-push-8-12&quot;</span>&gt;</span>1<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;column small-4-12 small-pull-4-12&quot;</span>&gt;</span>2<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;column small-4-12 small-pull-4-12&quot;</span>&gt;</span>3<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span></pre>
+        </section>
     </section>
 
     <section id="golden-ratio">
@@ -736,10 +781,10 @@
 
 
         <script src="https://rawgit.com/imsky/holder/v2.3.2/holder.js"></script>
-        <script src="https://rawgit.com/angular/bower-angular/v1.2.18/angular.js"></script>
+        <script src="https://rawgit.com/angular/bower-angular/v1.2.19/angular.js"></script>
         <script src="https://rawgit.com/WickyNilliams/headroom.js/v0.6.0/dist/headroom.js"></script>
         <script src="https://rawgit.com/WickyNilliams/headroom.js/v0.6.0/dist/angular.headroom.js"></script>
-        <script src="https://rawgit.com/injoin/bower-frontkit/0.0.7/frontkit-tmpl.js"></script>
+        <script src="https://rawgit.com/injoin/bower-frontkit/0.1.0/frontkit-tmpl.js"></script>
         <script src="/assets/scripts/docs.js"></script>
     </body>
 </html>

@@ -8,7 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         
-        <link rel="stylesheet" href="https://rawgit.com/injoin/bower-frontkit/0.0.7/frontkit.css">
+        <link rel="stylesheet" href="https://rawgit.com/injoin/bower-frontkit/0.1.0/frontkit.css">
         <link rel="stylesheet" href="/assets/styles/docs.css">
         <link rel="stylesheet" href="https://rawgit.com/components/highlightjs/8.0.0/styles/github.css">
     </head>
@@ -53,6 +53,20 @@
                         
 
                         Getting Started
+                        
+
+                        
+                        </a>
+
+                        
+                    </li>
+                    <li class="nav-item ">
+                        
+                        <a href="/docs/overview/browser-support.html">
+                        
+
+                        
+                            Browser Support
                         
 
                         
@@ -427,20 +441,63 @@
         </ul>
 
         <div class="example">
-            <input type="text" class="input" placeholder="Type something...">
-            <select class="input">
-                <option value="">Select something...</option>
-                <option value="apples">Apples</option>
-                <option value="bananas">Bananas</option>
-                <option value="potatoes">Potatoes</option>
-            </select>
-            <textarea class="input" placeholder="Type something..."></textarea>
+            <div class="form-group">
+                <input type="text" class="input" placeholder="Type something...">
+            </div>
+
+            <div class="form-group">
+                <select class="input">
+                    <option value="">Select something...</option>
+                    <option value="apples">Apples</option>
+                    <option value="bananas">Bananas</option>
+                    <option value="potatoes">Potatoes</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <textarea class="input" placeholder="Type something..."></textarea>
+            </div>
         </div>
         <pre ng-non-bindable="" class="highlight language-xml"><span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">&quot;text&quot;</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;input&quot;</span> <span class="hljs-attribute">placeholder</span>=<span class="hljs-value">&quot;...&quot;</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-title">select</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;input&quot;</span>&gt;</span>
     ...
 <span class="hljs-tag">&lt;/<span class="hljs-title">select</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-title">textarea</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;input&quot;</span> <span class="hljs-attribute">placeholder</span>=<span class="hljs-value">&quot;...&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">textarea</span>&gt;</span></pre>
+
+        <p>
+            You&apos;re allowed to use <code>.input</code> as a wrapper for form controls as well.
+            The same result applies:
+        </p>
+        <div class="example example-inputs">
+            <div class="input">
+                <input type="text" placeholder="Type something...">
+            </div>
+            <div class="input">
+                <select>
+                    <option value="">Select something...</option>
+                    <option value="apples">Apples</option>
+                    <option value="bananas">Bananas</option>
+                    <option value="potatoes">Potatoes</option>
+                </select>
+            </div>
+            <div class="input">
+                <textarea placeholder="Type something..."></textarea>
+            </div>
+        </div>
+        <pre ng-non-bindable="" class="highlight language-xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;input&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">&quot;text&quot;</span> <span class="hljs-attribute">placeholder</span>=<span class="hljs-value">&quot;Type something...&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;input&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">select</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">option</span> <span class="hljs-attribute">value</span>=<span class="hljs-value">&quot;&quot;</span>&gt;</span>Select something...<span class="hljs-tag">&lt;/<span class="hljs-title">option</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">option</span> <span class="hljs-attribute">value</span>=<span class="hljs-value">&quot;apples&quot;</span>&gt;</span>Apples<span class="hljs-tag">&lt;/<span class="hljs-title">option</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">option</span> <span class="hljs-attribute">value</span>=<span class="hljs-value">&quot;bananas&quot;</span>&gt;</span>Bananas<span class="hljs-tag">&lt;/<span class="hljs-title">option</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">option</span> <span class="hljs-attribute">value</span>=<span class="hljs-value">&quot;potatoes&quot;</span>&gt;</span>Potatoes<span class="hljs-tag">&lt;/<span class="hljs-title">option</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">select</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;input&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">textarea</span> <span class="hljs-attribute">placeholder</span>=<span class="hljs-value">&quot;Type something...&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">textarea</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span></pre>
     </section>
 
     <section id="states">
@@ -465,7 +522,9 @@
             <p>Demonstrate that the user is currently interacting with the input.</p>
 
             <div class="example">
-                <input type="text" class="input" id="focused-input" placeholder="Focused input">
+                <div class="form-group">
+                    <input type="text" class="input" id="focused-input" placeholder="Focused input">
+                </div>
             </div>
         </section>
 
@@ -479,8 +538,12 @@
             <p>Disallow interaction with the input by giving it a disabled/read-only style.</p>
 
             <div class="example">
-                <input type="text" class="input" placeholder="I&apos;m disabled!" disabled>
-                <input type="text" class="input" placeholder="I&apos;m read-only!" readonly>
+                <div class="form-group">
+                    <input type="text" class="input" placeholder="I&apos;m disabled!" disabled>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="input" placeholder="I&apos;m read-only!" readonly>
+                </div>
             </div>
             <pre ng-non-bindable="" class="highlight language-xml"><span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">&quot;text&quot;</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;input&quot;</span> <span class="hljs-attribute">disabled</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">&quot;text&quot;</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;input&quot;</span> <span class="hljs-attribute">readonly</span>&gt;</span></pre>
@@ -496,14 +559,104 @@
             <p>You are able to use some validation states with inputs as well.</p>
 
             <div class="example">
-                <input type="text" class="input validation-success" value="Successful input!">
-                <input type="text" class="input validation-error" value="I have a error!">
-                <input type="text" class="input validation-warning" value="I have a warning!">
+                <div class="form-group">
+                    <input type="text" class="input validation-success" value="Successful input!">
+                </div>
+
+                <div class="form-group">
+                    <input type="text" class="input validation-error" value="I have a error!">
+                </div>
+
+                <div class="form-group">
+                    <input type="text" class="input validation-warning" value="I have a warning!">
+                </div>
             </div>
             <pre ng-non-bindable="" class="highlight language-xml"><span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">&quot;text&quot;</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;input validation-success&quot;</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">&quot;text&quot;</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;input validation-error&quot;</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">&quot;text&quot;</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;input validation-warning&quot;</span>&gt;</span></pre>
         </section>
+    </section>
+
+    <section id="sizes">
+        
+    <h3 class="docs-heading">
+        <a href="#sizes" class="docs-anchor">#</a>
+        Sizes
+    </h3>
+
+        <p>A input can vary in size, from tiny to extra large.</p>
+
+        <div class="example example-inputs">
+            <input type="text" class="input input-xlarge" placeholder="Extra Large input">
+            <div class="input input-large">
+                <input type="text" placeholder="Large input">
+            </div>
+            <input type="text" class="input" placeholder="Normal input">
+            <select class="input input-small"><option>Small input</option></select>
+            <input type="text" class="input input-tiny" placeholder="Tiny input">
+        </div>
+        <pre ng-non-bindable="" class="highlight language-xml"><span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">&quot;text&quot;</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;input input-xlarge&quot;</span> <span class="hljs-attribute">placeholder</span>=<span class="hljs-value">&quot;Extra Large input&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;input input-large&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">&quot;text&quot;</span> <span class="hljs-attribute">placeholder</span>=<span class="hljs-value">&quot;Large input&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">&quot;text&quot;</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;input&quot;</span> <span class="hljs-attribute">placeholder</span>=<span class="hljs-value">&quot;Normal input&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">select</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;input input-small&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-title">option</span>&gt;</span>Small input<span class="hljs-tag">&lt;/<span class="hljs-title">option</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">select</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">&quot;text&quot;</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;input input-tiny&quot;</span> <span class="hljs-attribute">placeholder</span>=<span class="hljs-value">&quot;Tiny input&quot;</span>&gt;</span></pre>
+    </section>
+
+    <section id="icons">
+        
+    <h3 class="docs-heading">
+        <a href="#icons" class="docs-anchor">#</a>
+        Icons
+    </h3>
+
+        <p>
+            It&apos;s quite common that people want to place an icon inside a input, either to show
+            feedback about validation, or maybe show the type of the input (username, password,
+            date, etc).
+        </p>
+        <p>
+            You&apos;ll need to use the <code>.input</code> as a wrapper with an additional
+            <code>.input-icon</code>. This is to fix the padding of the input, so the input text
+            doesn&apos;t go below the icon.
+        </p>
+
+        <div class="example example-inputs">
+            <div class="input input-icon">
+                <input type="text" placeholder="Type your username...">
+                <span class="icon icon-user"></span>
+            </div>
+
+            <div class="input input-icon">
+                <input type="text" placeholder="Type your password...">
+                <span class="icon icon-lock"></span>
+            </div>
+        </div>
+        <pre ng-non-bindable="" class="highlight language-xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;input input-icon&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">&quot;text&quot;</span> <span class="hljs-attribute">placeholder</span>=<span class="hljs-value">&quot;Type your username...&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;icon icon-user&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;input input-icon&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">&quot;text&quot;</span> <span class="hljs-attribute">placeholder</span>=<span class="hljs-value">&quot;Type your password...&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;icon icon-lock&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span></pre>
+
+        <p>
+            You&apos;re able to place icons in the right side as well. Just add
+            <code>.input-icon-end</code> to your input wrapper:
+        </p>
+        <div class="example">
+            <div class="input input-icon input-icon-end">
+                <input type="text" placeholder="Type a movie name...">
+                <span class="icon icon-film"></span>
+            </div>
+        </div>
+        <pre ng-non-bindable="" class="highlight language-xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;input input-icon input-icon-end&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">&quot;text&quot;</span> <span class="hljs-attribute">placeholder</span>=<span class="hljs-value">&quot;Type a movie name...&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;icon icon-film&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span></pre>
     </section>
 
                 </article>
@@ -513,10 +666,10 @@
 
 
         <script src="https://rawgit.com/imsky/holder/v2.3.2/holder.js"></script>
-        <script src="https://rawgit.com/angular/bower-angular/v1.2.18/angular.js"></script>
+        <script src="https://rawgit.com/angular/bower-angular/v1.2.19/angular.js"></script>
         <script src="https://rawgit.com/WickyNilliams/headroom.js/v0.6.0/dist/headroom.js"></script>
         <script src="https://rawgit.com/WickyNilliams/headroom.js/v0.6.0/dist/angular.headroom.js"></script>
-        <script src="https://rawgit.com/injoin/bower-frontkit/0.0.7/frontkit-tmpl.js"></script>
+        <script src="https://rawgit.com/injoin/bower-frontkit/0.1.0/frontkit-tmpl.js"></script>
         <script src="/assets/scripts/docs.js"></script>
     </body>
 </html>

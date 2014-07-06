@@ -193,6 +193,13 @@ body.home {
     border-radius: 0;
   }
 }
+/*
+ * Add extra spacing between 2 inputs on example containers.
+ * Avoid the inconvenient of having to wrap inputs with a .form-group
+ */
+.example-inputs .input + .input {
+  margin-top: 0.75rem;
+}
 /* Icons
    ----- */
 .icons-list li {

@@ -60,7 +60,9 @@
 
                         
                     </li>
-                    <li class="nav-item ">
+                    <li class="nav-item 
+        active
+    ">
                         
                         <a href="/docs/overview/browser-support.html">
                         
@@ -72,6 +74,8 @@
                         
                         </a>
 
+                        
+                            <div submenu=""></div>
                         
                     </li>
                     
@@ -128,9 +132,7 @@
                 <ul class="nav nav-list">
                     <li class="nav-header">Elements</li>
 
-                    <li class="nav-item 
-        active
-    ">
+                    <li class="nav-item ">
                         
                         <a href="/docs/elements/typography.html">
                         
@@ -142,8 +144,6 @@
                         
                         </a>
 
-                        
-                            <div submenu=""></div>
                         
                     </li>
                     <li class="nav-item ">
@@ -406,204 +406,74 @@
             <div class="column small-8-12 large-9-12">
                 <article class="docs-content">
                     
-    <header class="page-header">
-        <h2>Typography</h2>
-    </header>
+    <h2>Browser and Device Support</h2>
+    <p class="lead">
+        Frontkit support a wide range of browsers, but obviously we have some limitations.<br>
+        You can check this page to see the supported browsers, their version and the OS.
+    </p>
 
-    <section id="body-copy">
+    <section id="supported-browsers">
         
     <h3 class="docs-heading">
-        <a href="#body-copy" class="docs-anchor">#</a>
-        Body Copy
+        <a href="#supported-browsers" class="docs-anchor">#</a>
+        Supported Browsers
     </h3>
 
         <p>
-            By default, the body copy of Frontkit is composed of 16px <code>font-size</code>
-            and a <code>line-height</code> of 1.42. This is applied to all paragraphs, and makes
-            reading easier to anyone.
+            We support the last 2 versions of each browser below. However, for Internet Explorer,
+            the support is wider: from version 9 and up. This is due to the still high percentage
+            of IE9 users compared to the other versions.
         </p>
 
-        <div class="example">
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent tempor, quam id
-                suscipit vestibulum, neque purus dapibus augue, a fringilla odio lectus ut eros.
-            </p>
-        </div>
-        <pre ng-non-bindable="" class="highlight language-xml"><span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent tempor...<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span></pre>
-
-        <section id="body-copy-lead">
-            
-    <h4 class="docs-heading">
-        <a href="#body-copy-lead" class="docs-anchor">#</a>
-        Lead Body Copy
-    </h4>
-
-            <p>
-                It&apos;s also possible to stand some paragraph out by adding the class <code>.lead</code>.
-            </p>
-
-            <div class="example">
-                <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                <p>
-                    Praesent tempor, quam id suscipit vestibulum, neque purus dapibus
-                    augue, a fringilla odio lectus ut eros.
-                </p>
-            </div>
-            <pre ng-non-bindable="" class="highlight language-xml"><span class="hljs-tag">&lt;<span class="hljs-title">p</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;lead&quot;</span>&gt;</span>Lorem ipsum dolor sit amet, consectetur adipiscing elit.<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>Praesent tempor, quam id suscipit vestibulum...<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span></pre>
-        </section>
-    </section>
-
-    <section id="emphasis">
-        
-    <h3 class="docs-heading">
-        <a href="#emphasis" class="docs-anchor">#</a>
-        Emphasis
-    </h3>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Chrome</th>
+                    <th>Firefox</th>
+                    <th>Internet Explorer</th>
+                    <th>Safari</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>Android</th>
+                    <td class="success">&#x2714;</td>
+                    <td class="success">&#x2714;</td>
+                    <td rowspan="4">N/A</td>
+                    <td>N/A</td>
+                </tr>
+                <tr>
+                    <th>iOS</th>
+                    <td class="success">&#x2714;</td>
+                    <td>N/A</td>
+                    <td class="success">&#x2714;</td>
+                </tr>
+                <tr>
+                    <th>Linux</th>
+                    <td class="success">&#x2714;</td>
+                    <td class="success">&#x2714;</td>
+                    <td>N/A</td>
+                </tr>
+                <tr>
+                    <th>Mac OS X</th>
+                    <td class="success">&#x2714;</td>
+                    <td class="success">&#x2714;</td>
+                    <td class="success">&#x2714;</td>
+                </tr>
+                <tr>
+                    <th>Windows</th>
+                    <td class="success">&#x2714;</td>
+                    <td class="success">&#x2714;</td>
+                    <td class="success">&#x2714; - IE9+</td>
+                    <td class="danger">&#x2718;</td>
+                </tr>
+            </tbody>
+        </table>
 
         <p>
-            Easily emphasize your text only by using HTML5 default tags.
-            No extra markup required.
+            Other browsers may work as well, however, we won&apos;t officially cover them.
         </p>
-
-        <section id="emphasis-bold">
-            
-    <h4 class="docs-heading">
-        <a href="#emphasis-bold" class="docs-anchor">#</a>
-        Bold
-    </h4>
-
-            <p>Used to give more importance to a snippet of text. Makes the text heavier.</p>
-
-            <div class="example">
-                <p>This is a text that has <strong>very important parts</strong>.</p>
-            </div>
-            <pre ng-non-bindable="" class="highlight language-xml">This is a text that has <span class="hljs-tag">&lt;<span class="hljs-title">strong</span>&gt;</span>very important parts<span class="hljs-tag">&lt;/<span class="hljs-title">strong</span>&gt;</span>.</pre>
-        </section>
-
-        <section id="emphasis-italics">
-            
-    <h4 class="docs-heading">
-        <a href="#emphasis-italics" class="docs-anchor">#</a>
-        Italics
-    </h4>
-
-            <p>To whenever you need to do a snippet of text flashy - but not more than the bold one.</p>
-
-            <div class="example">
-                <p>This is <em>really important</em>. You should take note.</p>
-            </div>
-            <pre ng-non-bindable="" class="highlight language-xml">This is <span class="hljs-tag">&lt;<span class="hljs-title">em</span>&gt;</span>really important<span class="hljs-tag">&lt;/<span class="hljs-title">em</span>&gt;</span>. You should take note.</pre>
-        </section>
-
-        <section id="emphasis-small">
-            
-    <h4 class="docs-heading">
-        <a href="#emphasis-small" class="docs-anchor">#</a>
-        Small Text
-    </h4>
-
-            <p>
-                Useful for de-emphasizing text, making it less flashy
-                than the rest of a paragraph or snippet.
-            </p>
-
-            <div class="example">
-                <p><small>Useless footprint info</small></p>
-            </div>
-            <pre ng-non-bindable="" class="highlight language-xml"><span class="hljs-tag">&lt;<span class="hljs-title">small</span>&gt;</span>Useless footprint info<span class="hljs-tag">&lt;/<span class="hljs-title">small</span>&gt;</span></pre>
-        </section>
-    </section>
-
-    <section id="abbreviations">
-        
-    <h3 class="docs-heading">
-        <a href="#abbreviations" class="docs-anchor">#</a>
-        Abbreviations
-    </h3>
-
-        <p>
-            In case you need to use abbreviations and/or acronyms, you may want to use the
-            <code>&lt;abbr&gt;</code> for this. It gives you an stylized implementation of that tag,
-            while keeping styles simple.<br>
-            Note that this style is only present when using an <code>title</code> attribute.
-        </p>
-
-        <div class="example">
-            <p>Do you know when <abbr title="HyperText Markup Language">HTML</abbr> has been created?</p>
-        </div>
-        <pre ng-non-bindable="" class="highlight language-xml"><span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>Do you know when <span class="hljs-tag">&lt;<span class="hljs-title">abbr</span> <span class="hljs-attribute">title</span>=<span class="hljs-value">&quot;HyperText Markup Language&quot;</span>&gt;</span>HTML<span class="hljs-tag">&lt;/<span class="hljs-title">abbr</span>&gt;</span> has been created?<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span></pre>
-    </section>
-
-    <section id="addresses">
-        
-    <h3 class="docs-heading">
-        <a href="#addresses" class="docs-anchor">#</a>
-        Addresses
-    </h3>
-
-        <p>Used to supply contact information for its neareset ancestor or for the whole page.</p>
-
-        <div class="example">
-            <address>
-                <strong>Google Inc.</strong><br>
-                1600 Amphitheatre Parkway<br>
-                Mountain View, CA 94043<br>
-                Phone: +1 650-253-0000<br>
-                Fax: +1 650-253-0001<br>
-            </address>
-        </div>
-        <pre ng-non-bindable="" class="highlight language-xml"><span class="hljs-tag">&lt;<span class="hljs-title">address</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-title">strong</span>&gt;</span>Google Inc.<span class="hljs-tag">&lt;/<span class="hljs-title">strong</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-title">br</span>&gt;</span>
-    1600 Amphitheatre Parkway<span class="hljs-tag">&lt;<span class="hljs-title">br</span>&gt;</span>
-    Mountain View, CA 94043<span class="hljs-tag">&lt;<span class="hljs-title">br</span>&gt;</span>
-    Phone: +1 650-253-0000<span class="hljs-tag">&lt;<span class="hljs-title">br</span>&gt;</span>
-    Fax: +1 650-253-0001<span class="hljs-tag">&lt;<span class="hljs-title">br</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-title">address</span>&gt;</span></pre>
-    </section>
-
-    <section id="blockquotes">
-        
-    <h3 class="docs-heading">
-        <a href="#blockquotes" class="docs-anchor">#</a>
-        Blockquotes
-    </h3>
-
-        <p>Used for quoting blocks of content from another source within your document.</p>
-
-        <section>
-            <h4>Default Blockquote</h4>
-            <p>Simply wrap an <code>&lt;blockquote&gt;</code> around any text.</p>
-
-            <div class="example">
-                <blockquote>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</blockquote>
-            </div>
-            <pre ng-non-bindable="" class="highlight language-xml"><span class="hljs-tag">&lt;<span class="hljs-title">blockquote</span>&gt;</span>Lorem ipsum dolor sit amet, consectetur adipiscing elit.<span class="hljs-tag">&lt;/<span class="hljs-title">blockquote</span>&gt;</span></pre>
-        </section>
-
-        <section id="blockquotes-named">
-            
-    <h4 class="docs-heading">
-        <a href="#blockquotes-named" class="docs-anchor">#</a>
-        Named Blockquotes
-    </h4>
-
-            <p>
-                Add a element with a <code>.reference</code> class to reference from where this quote
-                has been taken, or to identify who is the author.
-            </p>
-
-            <div class="example">
-                <blockquote>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    <span class="reference">Someone famous said this</span>
-                </blockquote>
-            </div>
-            <pre ng-non-bindable="" class="highlight language-xml"><span class="hljs-tag">&lt;<span class="hljs-title">blockquote</span>&gt;</span>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-    <span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;reference&quot;</span>&gt;</span>Someone famous said this<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-title">blockquote</span>&gt;</span></pre>
-        </section>
     </section>
 
                 </article>
