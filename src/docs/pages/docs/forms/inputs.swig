@@ -118,4 +118,24 @@
             {% endhighlight %}
         </section>
     </section>
+
+    <section id="sizes">
+        {{ macros.docsSectionTitle( "Sizes", "sizes", 3 ) }}
+        <p>A input can vary in size, from tiny to extra large.</p>
+
+        <div class="example example-inputs">
+            <input type="text" class="input input-xlarge" placeholder="Extra Large input">
+            <input type="text" class="input input-large" placeholder="Large input">
+            <input type="text" class="input" placeholder="Normal input">
+            <select class="input input-small"><option>Small input</option></select>
+            <input type="text" class="input input-tiny" placeholder="Tiny input">
+        </div>
+        {% highlight xml %}
+            <input type="text" class="input input-xlarge" placeholder="Extra Large input">
+            <input type="text" class="input input-large" placeholder="Large input">
+            <input type="text" class="input" placeholder="Normal input">
+            <select class="input input-small"><option>Small input</option></select>
+            <input type="text" class="input input-tiny" placeholder="Tiny input">
+        {% endhighlight %}
+    </section>
 {% endblock %}

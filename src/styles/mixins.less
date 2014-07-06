@@ -228,6 +228,18 @@
   border-radius: max( @btn-border-radius * @factor, @border-radius-small );
 }
 
+// Input size variation
+.input-size( @factor: 1 ) {
+  height: @height-base * @factor;
+  padding: ( @padding-base-y * @factor ) ( @padding-base-x * @factor );
+  font-size: unit( @factor, rem );
+  border-radius: max( @input-border-radius * @factor, @border-radius-small );
+
+  select& {
+    line-height: @height-base * @factor;
+  }
+}
+
 .make-triangle( @side, @size, @color ) {
   border: @size solid transparent;
 
