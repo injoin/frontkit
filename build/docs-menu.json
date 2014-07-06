@@ -5,7 +5,8 @@
             "getting-started": {
                 "path": "index",
                 "label": "Getting Started"
-            }
+            },
+            "browser-support": "Browser Support"
         }
     },
     "structure": {

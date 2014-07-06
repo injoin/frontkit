@@ -8,37 +8,55 @@
         <code>&lt;select&gt;</code> tag behavior.
     </p>
 
-    <section id="single">
-        {{ macros.docsSectionTitle( "Single Selection", "single", 3 ) }}
+    <section id="example">
+        {{ macros.docsSectionTitle( "Example", "example", 3 ) }}
         <p>
-            A single selection dropdown is a simple <code>&lt;select&gt;</code> tag which is
-            decorated with the <code>dropdown</code> directive.
+            Below is shown a full featured example of the dropdown directive. You can see its
+            currently selected items and change the maximum number of items allowed.
         </p>
 
         <div class="example">
-            {% raw -%}
-            <dropdown ng-model="selectedBand">
-                <dropdown-items placeholder="Select a rock band...">{{ $dropdown.items[ $index ] }}</dropdown-items>
-                <dropdown-options items="band in bands | filter: $dropdown.search">
-                    {{ band }}
-                </dropdown-options>
-            </dropdown>
-            {% endraw %}
+            <form class="form-horizontal" ng-init="maxItems = 1">
+                {% raw -%}
+                <div class="form-group">
+                    <label class="column small-3-12 large-2-12">Max items:</label>
+                    <div class="column small-3-12 large-2-12">
+                        <input type="number" min="1" class="input" ng-model="maxItems"
+                               placeholder="Select...">
+                    </div>
+                </div>
 
-            {% raw %}
-            <p>You have selected {{ selectedBand }}.</p>
-            {% endraw %}
-        </div>
-        {% highlight xml %}
-            {% raw %}
-                <dropdown ng-model="selectedBand">
+                <dropdown ng-model="selectedBand" max-items="maxItems">
                     <dropdown-items placeholder="Select a rock band...">{{ $dropdown.items[ $index ] }}</dropdown-items>
-                    <dropdown-options items="band in bands | filter: $dropdown.search">
+                    <dropdown-options options="band in bands | filter: $dropdown.search">
                         {{ band }}
                     </dropdown-options>
                 </dropdown>
 
                 <p>You have selected {{ selectedBand }}.</p>
+                {% endraw %}
+            </form>
+        </div>
+        {% highlight xml %}
+            {% raw %}
+                <form class="form-horizontal" ng-init="maxItems = 1">
+                    <div class="form-group">
+                        <label class="column small-3-12 large-2-12">Max items:</label>
+                        <div class="column small-3-12 large-2-12">
+                            <input type="number" min="1" class="input" ng-model="maxItems"
+                                   placeholder="Select...">
+                        </div>
+                    </div>
+
+                    <dropdown ng-model="selectedBand">
+                        <dropdown-items placeholder="Select a rock band...">{{ $dropdown.items[ $index ] }}</dropdown-items>
+                        <dropdown-options options="band in bands | filter: $dropdown.search">
+                            {{ band }}
+                        </dropdown-options>
+                    </dropdown>
+
+                    <p>You have selected {{ selectedBand }}.</p>
+                </form>
             {% endraw %}
         {% endhighlight %}
     </section>
@@ -178,7 +196,7 @@
         {% highlight xml %}
             {% raw %}
                 <!-- You could omit the filter if you don't want to allow searching options -->
-                <dropdown-options items="option in options | filter: $dropdown.search">
+                <dropdown-options options="option in options | filter: $dropdown.search">
                     <!-- Render the content of the foo property of the current option -->
                     {{ option.foo }}
                 </dropdown>
@@ -202,7 +220,7 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>items</td>
+                        <td>options</td>
                         <td>String</td>
                         <td><code>ng-repeat</code> like expression to generate the option list.</td>
                     </tr>

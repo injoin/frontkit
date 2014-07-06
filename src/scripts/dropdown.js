@@ -66,7 +66,7 @@
                 // Transclude contents into the right place in the directive
                 transclude( scope, function( children ) {
                     var clone = $( "<div>" ).append( children );
-                    var items = clone.querySelector( ".dropdown-items" );
+                    var items = clone.querySelector( ".dropdown-item" );
                     var options = clone.querySelector( ".dropdown-options" );
 
                     if ( items.length ) {
@@ -109,8 +109,11 @@
             ctrl.valueKey = null;
             ctrl.open = false;
             ctrl.search = EMPTY_SEARCH;
-            ctrl.maxItems = +$attrs.maxItems || 1;
             ctrl.activeOption = null;
+
+            $scope.$parent.$watch( $attrs.maxItems, function( maxItems ) {
+                ctrl.maxItems = +maxItems || 1;
+            });
 
             ctrl.isFull = function() {
                 return ctrl.items.length >= ctrl.maxItems;
@@ -181,13 +184,12 @@
             definition.require = "^dropdown";
 
             definition.link = function( scope, element, attr, $dropdown, transclude ) {
-                var item = element.querySelector( ".dropdown-item" );
                 transclude(function( childs ) {
-                    item.append( childs );
+                    element.append( childs );
                 });
 
-                item.attr( "ng-repeat", "item in $dropdown.items" );
-                $compile( item )( scope );
+                element.attr( "ng-repeat", "item in $dropdown.items" );
+                $compile( element )( scope );
 
                 attr.$observe( "placeholder", function( placeholder ) {
                     $dropdown.placeholder = placeholder;
@@ -223,7 +225,7 @@
             definition.link = function( scope, element, attr, $dropdown, transclude ) {
                 var list = element[ 0 ];
                 var option = element.querySelector( ".dropdown-option" );
-                var repeat = repeatParser.parse( attr.items );
+                var repeat = repeatParser.parse( attr.options );
 
                 // If we have a repeat expr, let's use it to build the option list
                 if ( repeat ) {
@@ -365,6 +367,8 @@
             definition.restrict = "C";
             definition.require = "^dropdown";
             definition.link = function( scope, element, attr, $dropdown ) {
+                var inputWrapper = element.querySelector( ".dropdown-input" );
+                var inputHelper = element.querySelector( ".dropdown-input-helper" );
                 var input = element.querySelector( ".dropdown-input input" );
 
                 // Scope Watchers
@@ -404,16 +408,40 @@
                     }
 
                     // Disable searching when dropdown is full
-                    typed = String.fromCharCode( key ).trim();
-                    if ( $dropdown.isFull() && typed ) {
-                        evt.preventDefault();
+                    typed = hasCharLength( key );
+                    if ( typed && $dropdown.isFull() ) {
+                        return evt.preventDefault();
                     }
+                });
+
+                input.on( "keydown", function() {
+                    var textWidth;
+
+                    if ( !$dropdown.items.length ) {
+                        inputWrapper.css( "width", "100%" );
+                        return;
+                    }
+
+                    // Find the width of the input string
+                    inputHelper.text( input.val() ).css( "display", "inline" );
+                    textWidth = inputHelper[ 0 ].getBoundingClientRect().width;
+
+                    // Use the width found before and add some room to avoid a flash of
+                    // overflow in the input
+                    inputWrapper.css( "width", "calc( " + textWidth + "px + 1em )" );
+
+                    inputHelper.css( "display", "none" );
                 });
             };
 
             return definition;
 
             // -------------------------------------------------------------------------------------
+
+            function hasCharLength( key ) {
+                var str = String.fromCharCode( key );
+                return str.trim().length || /\s/.test( str );
+            }
 
             function handleBackspace( evt, scope, $dropdown ) {
                 // If some search is available, backspace action should be delete the last char

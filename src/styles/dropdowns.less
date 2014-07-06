@@ -12,7 +12,7 @@
 .dropdown-container:extend( .input ) {
   position: relative;
   width: 100%;
-  display: table;
+  height: auto;
   padding-right: @padding-base-x + @dropdown-caret-size; /* 1 */
   margin-bottom: 0;
 
@@ -21,18 +21,20 @@
   }
 }
 
-.dropdown-items {
-  display: table-cell;
-  width: 1px;
+.dropdown-item {
+  display: inline-block;
   white-space: nowrap;
-
-  .dropdown-item:last-child {
-    margin-right: .25rem;
-  }
+  margin-right: .25rem;
 }
 
 .dropdown-input {
-  display: table-cell;
+  display: block;
+
+  .dropdown-fulfilled & {
+    display: inline-block;
+    width: 1em;
+    min-width: 1em;
+  }
 
   input {
     width: 100%;
@@ -107,15 +109,42 @@
 .dropdown-option {
   min-height: unit( @line-height-base, rem ) + ( 2 * @padding-small-y ); /* 1 */
   padding: @padding-small-y @padding-base-x;
-  color: @dropdown-item-text;
+  color: @dropdown-option-text;
   cursor: pointer;
-
-  //&:first-child { .border-top-radius( @border-radius-base ); }
-  //&:last-child  { .border-bottom-radius( @border-radius-base ); }
 
   &.active,
   &:hover {
-    color: @dropdown-item-hover-text;
-    background-color: @dropdown-item-hover-bg;
+    color: @dropdown-option-hover-text;
+    background-color: @dropdown-option-hover-bg;
   }
+}
+
+/* Multiple selection
+   ------------------ */
+
+.dropdown.dropdown-multi .dropdown-item {
+  padding: .2em .5em;
+  font-size: @dropdown-item-font-size;
+  color: @dropdown-item-text;
+  background: @dropdown-item-bg;
+  border-radius: @dropdown-item-border-radius;
+}
+
+/* Input helper
+   -------------
+   Element used to calculate string width. */
+
+/*
+ * 1. Position outside the screen
+ * 2. Make sure contents always show in a single row with all typed whitespaces
+ */
+.dropdown-input-helper {
+  /* 1 */
+  position: fixed;
+  top: -9999em;
+  left: -9999em;
+
+  /* 2 */
+  display: inline;
+  white-space: pre;
 }

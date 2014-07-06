@@ -27,9 +27,12 @@ label {
   display: block;
   margin-bottom: ( @margin-base-y / 2 );
 
-  label,
-  .input,
+  label {
+    margin-bottom: ( @margin-small-y / 2 );
+  }
+
   .form-help-block {
+    margin-top: ( @margin-small-y / 2 );
     margin-bottom: ( @margin-small-y / 2 );
   }
 
@@ -81,6 +84,25 @@ label {
       width: auto; /* 1 */
       margin-bottom: 0;
       vertical-align: middle;
+    }
+  }
+}
+
+/* Horizontal form
+   --------------- */
+
+.form-horizontal .form-group {
+  .make-row();
+
+  @media ( min-width: @screen-small ) {
+    label,
+    .form-help-block {
+      margin-bottom: 0;
+    }
+
+    label {
+      padding-top: calc( ~"@{padding-base-y} + 1px" );
+      text-align: right;
     }
   }
 }
