@@ -324,6 +324,28 @@
   .offset-x( @columns-count - 1 );
 }
 
+// Generate grid ordering
+.generate-grid-ordering( @column-name, @columns-count, @type ) {
+  .order-x( @index ) when ( @index >= 0 ) {
+    .@{column-name}-@{type}-@{index}-@{columns-count} { .order( @index ); }
+    .order-x( @index - 1 );
+  }
+
+  // Pulling
+  .order( @columns ) when ( @type = pull ) and ( @columns = 0 ) { right: auto; }
+  .order( @columns ) when ( @type = pull ) and ( @columns > 0 ) {
+    right: percentage( @columns / @columns-count );
+  }
+
+  // Pushing
+  .order( @columns ) when ( @type = push ) and ( @columns = 0 ) { right: auto; }
+  .order( @columns ) when ( @type = push ) and ( @columns > 0 ) {
+    left: percentage( @columns / @columns-count );
+  }
+
+  .order-x( @columns-count );
+}
+
 // Generate golden ratio grid
 .generate-golden-grid( @column-name ) {
   .@{column-name}-golden-long   { width: percentage( @golden-ratio ); }
@@ -338,6 +360,8 @@
   .grid( @index ) when ( @index > 0 ) {
     .generate-grid-columns( @column-name, extract( @grid-size, @index ) );
     .generate-grid-offset( @column-name, extract( @grid-size, @index ) );
+    .generate-grid-ordering( @column-name, extract( @grid-size, @index ), pull );
+    .generate-grid-ordering( @column-name, extract( @grid-size, @index ), push );
 
     .grid( @index - 1 );
   }
