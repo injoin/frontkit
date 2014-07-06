@@ -96,3 +96,30 @@ select[ multiple ].input, {
     height: @height-base;
   }
 }
+
+/* Input Icons
+   ----------- */
+
+.input-icon {
+  input {
+    padding-left: ( @padding-base-x * 1.5 ) + 1em;
+  }
+
+  .@{icon-prefix} {
+    position: absolute;
+    top: @padding-base-y + @one-px;
+    left: @padding-base-x;
+  }
+}
+
+.input-icon-end {
+  input {
+    padding-left: @padding-base-x;
+    padding-right: ( @padding-base-x * 1.5 ) + 1em;
+  }
+
+  .@{icon-prefix} {
+    left: auto;
+    right: @padding-base-x;
+  }
+}
