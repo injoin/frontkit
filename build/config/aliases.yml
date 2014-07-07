@@ -60,6 +60,7 @@ test:
 dev:
   - package
   - docs
+  - connect:dev
   - karma:dev:start
   - watch
 

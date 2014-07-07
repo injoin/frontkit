@@ -1,6 +1,10 @@
-docs:
-  options:
+dev:
+  options: &SERVER
     hostname: "*"
     port: 8000
     livereload: "<%= liveReload %>"
+
+docs:
+  options:
+    << : *SERVER
     keepalive: true
