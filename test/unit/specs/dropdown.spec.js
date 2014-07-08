@@ -166,6 +166,14 @@ describe( "Dropdown Directive", function() {
             expect( $dropdown.items ).to.eql([ "foo", "bar" ]);
         });
 
+        it( "should not push duplicated items in the array [#39]", function() {
+            $dropdown.maxItems = 2;
+            $dropdown.addItem( "foo" );
+            $dropdown.addItem( "foo" );
+
+            expect( $dropdown.items ).to.eql([ "foo" ]);
+        });
+
         it( "should close the dropdown if full", function() {
             var isFull = sinon.stub( $dropdown, "isFull" ).returns( true );
             var close = sinon.spy( $dropdown, "close" );

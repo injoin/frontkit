@@ -200,31 +200,43 @@ table th.column {
 
 /* Table Contextual classes
    ------------------------ */
-.table tr,
-.table td,
-.table th {
-  &.active {
-    background-color: @table-bg-active;
-  }
 
-  &.success {
-    color: @table-text-success;
-    background-color: @table-bg-success;
-  }
+/*
+ * We need high specificty in these selectors, otherwise .table-striped would win.
+ * See #38 for details
+ */
+.table > thead,
+.table > tbody,
+.table > tfoot,
+.table.table-striped > thead,
+.table.table-striped > tbody,
+.table.table-striped > tfoot {
+  > tr,
+  > tr > td,
+  > tr > th {
+    &.active {
+      background-color: @table-bg-active;
+    }
 
-  &.danger {
-    color: @table-text-danger;
-    background-color: @table-bg-danger;
-  }
+    &.success {
+      color: @table-text-success;
+      background-color: @table-bg-success;
+    }
 
-  &.warning {
-    color: @table-text-warning;
-    background-color: @table-bg-warning;
-  }
+    &.danger {
+      color: @table-text-danger;
+      background-color: @table-bg-danger;
+    }
 
-  &.info {
-    color: @table-text-info;
-    background-color: @table-bg-info;
+    &.warning {
+      color: @table-text-warning;
+      background-color: @table-bg-warning;
+    }
+
+    &.info {
+      color: @table-text-info;
+      background-color: @table-bg-info;
+    }
   }
 }
 
