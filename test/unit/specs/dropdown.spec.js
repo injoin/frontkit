@@ -372,6 +372,26 @@ describe( "Dropdown Directive", function() {
                 expect( spy.called ).to.be.ok;
             });
 
+            it( "should not block ctrl key combo", function() {
+                var events;
+                var spy = sinon.spy();
+
+                compileDirective();
+                sinon.stub( $dropdown, "isFull" ).returns( true );
+
+                events = getEvents( input[ 0 ] );
+                events.keydown.unshift(function( evt ) {
+                    evt.preventDefault = spy;
+                    evt.ctrlKey = true;
+                    evt.keyCode = "a".charCodeAt( 0 );
+                });
+
+                input.triggerHandler( "keydown" );
+                expect( spy ).to.not.have.been.called;
+
+                $dropdown.isFull.restore();
+            });
+
             it( "should not do anything if dropdown not full and not a special key", function() {
                 var events;
                 var spy = sinon.spy();

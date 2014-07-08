@@ -409,7 +409,7 @@
 
                     // Disable searching when dropdown is full
                     typed = hasCharLength( key );
-                    if ( typed && $dropdown.isFull() ) {
+                    if ( typed && !evt.ctrlKey && $dropdown.isFull() ) {
                         return evt.preventDefault();
                     }
                 });
