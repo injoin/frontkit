@@ -209,6 +209,29 @@ describe( "Dropdown Directive", function() {
             items = dropdown.querySelectorAll( ".dropdown-item" );
             expect( $( items[ 0 ] ).text() ).to.equal( "foo" );
         });
+
+        it( "should set the active option as the added item when maxItems = 1", function() {
+            $dropdown.addItem( "foo" );
+            expect( $dropdown.activeOption ).to.equal( "foo" );
+        });
+
+        it( "should set the active option as an available option when maxItems > 1", function() {
+            $dropdown.options = [ "foo", "bar", "baz" ];
+            $dropdown.maxItems = 2;
+
+            // Add one, should go to 'bar'
+            $dropdown.addItem( "foo" );
+            expect( $dropdown.activeOption ).to.equal( "bar" );
+
+            // Add another one, should go to 'baz'
+            $dropdown.addItem( "bar" );
+            expect( $dropdown.activeOption ).to.equal( "baz" );
+
+            // Reset and, by selecting the last item, should select the previous option
+            $dropdown.items = [];
+            $dropdown.addItem( "baz" );
+            expect( $dropdown.activeOption ).to.equal( "bar" );
+        });
     });
 
     // ---------------------------------------------------------------------------------------------
@@ -378,7 +401,6 @@ describe( "Dropdown Directive", function() {
 
                 compileDirective();
                 sinon.stub( $dropdown, "isFull" ).returns( true );
-
                 events = getEvents( input[ 0 ] );
                 events.keydown.unshift(function( evt ) {
                     evt.preventDefault = spy;
@@ -599,6 +621,32 @@ describe( "Dropdown Directive", function() {
             event = document.createEvent( "Event" );
             event.initEvent( "keydown", true, true );
         });
+
+        it( "should pass thru added options if maxItems > 1 [#41]", function() {
+            $dropdown.maxItems = 2;
+            $dropdown.addItem( options[ 0 ] );
+            $rootScope.$apply();
+
+            // If arrow up, should keep on 2nd option because the first one is already selected
+            event.keyCode = keycodes.ARROWUP;
+            input.dispatchEvent( event );
+            expect( $dropdown.activeOption ).to.equal( options[ 1 ] );
+
+            // If page up, should keep on 2nd option because the first one is already selected
+            event.keyCode = keycodes.PGUP;
+            input.dispatchEvent( event );
+            expect( $dropdown.activeOption ).to.equal( options[ 1 ] );
+
+            // If arrow down from 1st option, should go to the 3rd option, because the 2nd is
+            // already selected
+            $dropdown.items = [ options[ 1 ] ];
+            $dropdown.activeOption = options[ 0 ];
+            event.keyCode = keycodes.ARROWDOWN;
+            input.dispatchEvent( event );
+            expect( $dropdown.activeOption ).to.equal( options[ 2 ] );
+        });
+
+        // -----------------------------------------------------------------------------------------
 
         describe( "with page up, page down, arrow up or arrow down", function() {
             it( "should open the dropdown if it's not yet", function() {
