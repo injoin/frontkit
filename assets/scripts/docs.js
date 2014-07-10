@@ -7,8 +7,9 @@
     ]);
 
     module.directive( "submenu", [
+        "$timeout",
         "$document",
-        function( $document ) {
+        function( $timeout, $document ) {
             var document = $document[ 0 ];
             var definition = {};
 
@@ -21,19 +22,21 @@
                 "</ul>";
 
             definition.link = function( scope ) {
-                var headings = document.querySelectorAll(
-                    ".docs-content > section > .docs-heading"
-                );
-                scope.headings = [];
+                $timeout(function() {
+                    var headings = document.querySelectorAll(
+                        ".docs-content > section > .docs-heading"
+                    );
+                    scope.headings = [];
 
-                [].forEach.call( headings, function( heading ) {
-                    var text = heading.innerText;
-                    var anchor = heading.querySelector( ".docs-anchor" );
-                    text = text.replace( anchor.innerText, "" );
+                    [].forEach.call( headings, function( heading ) {
+                        var text = heading.innerText;
+                        var anchor = heading.querySelector( ".docs-anchor" );
+                        text = text.replace( anchor.innerText, "" );
 
-                    scope.headings.push({
-                        href: anchor.href,
-                        text: text.trim()
+                        scope.headings.push({
+                            href: anchor.href,
+                            text: text.trim()
+                        });
                     });
                 });
             };
