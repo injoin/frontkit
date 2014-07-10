@@ -8,7 +8,7 @@
     <p class="lead">Buttons denote some possible action for the user.</p>
 
     <section id="options">
-        {{ macros.docsSectionTitle( "Button Options", "options", 3 ) }}
+        <h3 docs-heading="options">Button Options</h3>
         <p>
             Frontkit comes with a variety of button classes that allow you to quickly create a
             semantic, informational button.
@@ -48,7 +48,7 @@
     </section>
 
     <section id="states">
-        {{ macros.docsSectionTitle( "States", "states", 3 ) }}
+        <h3 docs-heading="states">States</h3>
         <p>A button can have a few configurable states.</p>
 
         <div class="example">
@@ -64,7 +64,7 @@
     </section>
 
     <section id="sizes">
-        {{ macros.docsSectionTitle( "Sizes", "sizes", 3 ) }}
+        <h3 docs-heading="sizes">Sizes</h3>
         <p>A button can vary in size, from tiny to extra large.</p>
 
         <div class="example">
@@ -118,7 +118,7 @@
     </section>
 
     <section id="groups">
-        {{ macros.docsSectionTitle( "Button Groups", "groups", 3 ) }}
+        <h3 docs-heading="groups">Button Groups</h3>
         <p>Buttons can be grouped together.</p>
 
         <div class="example">
@@ -137,7 +137,7 @@
         {% endhighlight %}
 
         <section id="groups-state">
-            {{ macros.docsSectionTitle( "Shared state", "groups-state", 4 ) }}
+            <h4 docs-heading="groups-state">Shared state</h4>
             <p>
                 When using button groups, you are able to share state between them.
                 Just add the desired state class in the <code>.btn-group</code> container.

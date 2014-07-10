@@ -8,7 +8,7 @@
     <p class="lead">Forms are collections of user input controls.</p>
 
     <section id="default">
-        {{ macros.docsSectionTitle( "Default Example", "default", 3 ) }}
+        <h3 docs-heading="default">Default Example</h3>
         <p>Below is a very simple, yet very common, form example: a login page.</p>
 
         <div class="example">
@@ -72,7 +72,7 @@
     </section>
 
     <section id="inline">
-        {{ macros.docsSectionTitle( "Inline Form", "inline", 3 ) }}
+        <h3 docs-heading="inline">Inline Form</h3>
         <p>
             Add <code>.form-inline</code> to inline all controls of a form. Note that this only applies when you
             have a 768px wide viewport.
@@ -103,7 +103,7 @@
     </section>
 
     <section id="horizontal">
-        {{ macros.docsSectionTitle( "Horizontal Form", "horizontal", 3 ) }}
+        <h3 docs-heading="horizontal">Horizontal Form</h3>
         <p>
             When you need to align your forms horizontally, you can add a
             <code>.form-horizontal</code> to your form, and then use

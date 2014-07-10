@@ -12,7 +12,7 @@
     </p>
 
     <section id="usage">
-        {{ macros.docsSectionTitle( "Usage", "usage", 3 ) }}
+        <h3 docs-heading="usage">Usage</h3>
         <p>
             To use a Frontkit icon, you must use the <code>.icon</code> class in conjunction with
             the icon class, <a href="#icons-list">available below</a>:
@@ -27,7 +27,7 @@
     </section>
 
     <section id="icons-list">
-        {{ macros.docsSectionTitle( "Icons List", "icons-list", 3 ) }}
+        <h3 docs-heading="icons-list">Icons List</h3>
         <p>
             In the list below you can see a demo of all available icons in Frontkit, grouped by
             category, and their respective classes.

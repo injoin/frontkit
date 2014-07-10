@@ -8,7 +8,7 @@
     <p class="lead">Give your components some labels for easily distinguish them from the others.</p>
 
     <section id="default">
-        {{ macros.docsSectionTitle( "Label Options", "options", 3 ) }}
+        <h3 docs-heading="options">Label Options</h3>
         <p>
             Below are exemplified all available options of labels in Frontkit.
             Switching the styles is as easy as changing the <code>label-*</code> class suffix.

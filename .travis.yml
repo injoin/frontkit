@@ -26,6 +26,7 @@ deploy:
     - frontkit.dev.zip
   on:
     tags: true
+    all_branches: true
 
 notifications:
   slack: "${SLACK_ROOM}"

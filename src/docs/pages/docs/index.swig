@@ -9,7 +9,7 @@
     </p>
 
     <section id="download">
-        {{ macros.docsSectionTitle( "Download", "download", 3 ) }}
+        <h3 docs-heading="download">Download</h3>
         <p>
             Frontkit can be downloaded in the flavor you like the most.
             Check below for the available packages and installation methods:
@@ -67,7 +67,7 @@
     </section>
 
     <section id="dependencies">
-        {{ macros.docsSectionTitle( "Dependencies", "dependencies", 3 ) }}
+        <h3 docs-heading="dependencies">Dependencies</h3>
         <p>
             The only dependency in order to use Frontkit is
             <a href="https://angularjs.org/">Angular.js</a>, required to run a few Frontkit
@@ -78,7 +78,7 @@
     </section>
 
     <section id="package-contents">
-        {{ macros.docsSectionTitle( "Package contents", "package-contents", 3 ) }}
+        <h3 docs-heading="package-contents">Package contents</h3>
         <p>
             After you have downloaded Frontkit, unzip the compressed folder and check its contents.
             The directory structure you will see is just like the example below:
@@ -106,7 +106,7 @@
     </section>
 
     <section id="template">
-        {{ macros.docsSectionTitle( "Basic Template", "template", 3 ) }}
+        <h3 docs-heading="template">Basic Template</h3>
         <p>
             Start with the following basic HTML template; it's the minimal Frontkit page you can
             build. Customize as you wish so that it matches your needs!

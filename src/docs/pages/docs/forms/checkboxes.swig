@@ -9,7 +9,7 @@
     </p>
 
     <section id="introduction">
-        {{ macros.docsSectionTitle( "Introduction", "introduction", 3 ) }}
+        <h3 docs-heading="introduction">Introduction</h3>
         <p>
             The <code>checkbox</code> and <code>radio</code> directives made available by Frontkit
             are simple directives that only apply styles to the respective HTML form controls.<br>
@@ -18,7 +18,7 @@
     </section>
 
     <section id="checkboxes">
-        {{ macros.docsSectionTitle( "Checkboxes", "checkboxes", 3 ) }}
+        <h3 docs-heading="checkboxes">Checkboxes</h3>
         <p>For checkboxes, you can use the <code>checkbox</code> directive as an attribute.</p>
 
         <div class="example">
@@ -47,7 +47,7 @@
     </section>
 
     <section id="radios">
-        {{ macros.docsSectionTitle( "Radio buttons", "radios", 3 ) }}
+        <h3 docs-heading="radios">Radio buttons</h3>
         <p>For radio buttons, you can use the <code>radio</code> directive as an attribute.</p>
 
         <div class="example">

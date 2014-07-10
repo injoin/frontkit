@@ -8,7 +8,7 @@
     </header>
 
     <section id="body-copy">
-        {{ macros.docsSectionTitle( "Body Copy", "body-copy", 3 ) }}
+        <h3 docs-heading="body-copy">Body Copy</h3>
         <p>
             By default, the body copy of Frontkit is composed of 16px <code>font-size</code>
             and a <code>line-height</code> of 1.42. This is applied to all paragraphs, and makes
@@ -26,7 +26,7 @@
         {% endhighlight %}
 
         <section id="body-copy-lead">
-            {{ macros.docsSectionTitle( "Lead Body Copy", "body-copy-lead", 4 ) }}
+            <h4 docs-heading="body-copy-lead">Lead Body Copy</h4>
             <p>
                 It's also possible to stand some paragraph out by adding the class <code>.lead</code>.
             </p>
@@ -46,14 +46,14 @@
     </section>
 
     <section id="emphasis">
-        {{ macros.docsSectionTitle( "Emphasis", "emphasis", 3 ) }}
+        <h3 docs-heading="emphasis">Emphasis</h3>
         <p>
             Easily emphasize your text only by using HTML5 default tags.
             No extra markup required.
         </p>
 
         <section id="emphasis-bold">
-            {{ macros.docsSectionTitle( "Bold", "emphasis-bold", 4 ) }}
+            <h4 docs-heading="emphasis-bold">Bold</h4>
             <p>Used to give more importance to a snippet of text. Makes the text heavier.</p>
 
             <div class="example">
@@ -65,7 +65,7 @@
         </section>
 
         <section id="emphasis-italics">
-            {{ macros.docsSectionTitle( "Italics", "emphasis-italics", 4 ) }}
+            <h4 docs-heading="emphasis-italics">Italics</h4>
             <p>To whenever you need to do a snippet of text flashy - but not more than the bold one.</p>
 
             <div class="example">
@@ -77,7 +77,7 @@
         </section>
 
         <section id="emphasis-small">
-            {{ macros.docsSectionTitle( "Small Text", "emphasis-small", 4 ) }}
+            <h4 docs-heading="emphasis-small">Small Text</h4>
             <p>
                 Useful for de-emphasizing text, making it less flashy
                 than the rest of a paragraph or snippet.
@@ -93,7 +93,7 @@
     </section>
 
     <section id="abbreviations">
-        {{ macros.docsSectionTitle( "Abbreviations", "abbreviations", 3 ) }}
+        <h3 docs-heading="abbreviations">Abbreviations</h3>
         <p>
             In case you need to use abbreviations and/or acronyms, you may want to use the
             <code>&lt;abbr&gt;</code> for this. It gives you an stylized implementation of that tag,
@@ -110,7 +110,7 @@
     </section>
 
     <section id="addresses">
-        {{ macros.docsSectionTitle( "Addresses", "addresses", 3 ) }}
+        <h3 docs-heading="addresses">Addresses</h3>
         <p>Used to supply contact information for its neareset ancestor or for the whole page.</p>
 
         <div class="example">
@@ -134,7 +134,7 @@
     </section>
 
     <section id="blockquotes">
-        {{ macros.docsSectionTitle( "Blockquotes", "blockquotes", 3 ) }}
+        <h3 docs-heading="blockquotes">Blockquotes</h3>
         <p>Used for quoting blocks of content from another source within your document.</p>
 
         <section>
@@ -150,7 +150,7 @@
         </section>
 
         <section id="blockquotes-named">
-            {{ macros.docsSectionTitle( "Named Blockquotes", "blockquotes-named", 4 ) }}
+            <h4 docs-heading="blockquotes-named">Named Blockquotes</h4>
             <p>
                 Add a element with a <code>.reference</code> class to reference from where this quote
                 has been taken, or to identify who is the author.

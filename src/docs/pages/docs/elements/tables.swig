@@ -7,7 +7,7 @@
     </header>
 
     <section id="basic">
-        {{ macros.docsSectionTitle( "Basic Table", "basic", 3 ) }}
+        <h3 docs-heading="basic">Basic Table</h3>
         <p>
             A very simple and efficient table style.
             Just add the base class <code>.table</code> to any table, and you're done.<br>
@@ -55,7 +55,7 @@
     </section>
 
     <section id="striped">
-        {{ macros.docsSectionTitle( "Striped Rows", "striped", 3 ) }}
+        <h3 docs-heading="striped">Striped Rows</h3>
         <p>
             To give zebra-striping to any table, simply add the <code>.table-striped</code> class.
             Note that this will only affect rows within an <code>&lt;tbody&gt;</code>.
@@ -101,7 +101,7 @@
     </section>
 
     <section id="bordered">
-        {{ macros.docsSectionTitle( "Bordered Table", "bordered", 3 ) }}
+        <h3 docs-heading="bordered">Bordered Table</h3>
         <p>
             A table can have all borders highlighted.
             Do to that, just add the <code>.table-bordered</code> class.
@@ -147,7 +147,7 @@
     </section>
 
     <section id="hover">
-        {{ macros.docsSectionTitle( "Hover State", "hover", 3 ) }}
+        <h3 docs-heading="hover">Hover State</h3>
         <p>
             You're able to show a hover state on table rows within a <code>&lt;tbody&gt;</code> -
             just add the <code>.table-hover</code> class.
@@ -193,7 +193,7 @@
     </section>
 
     <section id="contextual">
-        {{ macros.docsSectionTitle( "Contextual classes", "contextual", 3 ) }}
+        <h3 docs-heading="contextual">Contextual classes</h3>
         <p>You are able to give rows and cells different colors by applying contextual classes.</p>
 
         <table class="table table-bordered">
@@ -292,7 +292,7 @@
             <tr class="warning">...</tr>
             <tr class="danger">...</tr>
             <tr class="info">...</tr>
-        
+
             <!-- On cells - both td and th -->
             <tr>
                 <td class="active">...</td>
@@ -305,7 +305,7 @@
     </section>
 
     <section id="responsive">
-        {{ macros.docsSectionTitle( "Responsive Tables", "responsive", 3 ) }}
+        <h3 docs-heading="responsive">Responsive Tables</h3>
         <p>
             Make big tables scroll in small devices (&lt; 960px) by wrapping them in a element with
             the <code>.table-responsive</code> class.

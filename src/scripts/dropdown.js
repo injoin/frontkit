@@ -120,10 +120,20 @@
             };
 
             ctrl.addItem = function( item ) {
+                var added = true;
+
                 if ( ctrl.maxItems === 1 ) {
                     ctrl.items = [ item ];
-                } else if ( !ctrl.isFull() && !~ctrl.items.indexOf( item ) ) {
+                } else if ( !ctrl.isFull() && !ctrl.isSelected( item ) ) {
                     ctrl.items.push( item );
+                } else {
+                    added = false;
+                }
+
+                // Do we successfully added an item?
+                if ( added ) {
+                    // Find an available option to activate
+                    ctrl.activeOption = ctrl.findAvailableOption( item );
                 }
 
                 if ( ctrl.isFull() ) {
@@ -134,6 +144,27 @@
             ctrl.close = function() {
                 ctrl.open = false;
                 clearSearch();
+            };
+
+            ctrl.isSelected = function( value ) {
+                return !!~ctrl.items.indexOf( value );
+            };
+
+            ctrl.findAvailableOption = function( item ) {
+                var options = ctrl.options;
+                var index = options.indexOf( item );
+                var movement = index === options.length - 1 ? -1 : 1;
+
+                if ( ctrl.maxItems === 1 ) {
+                    return item;
+                }
+
+                do {
+                    index += movement;
+                    item = options[ index ];
+                } while ( ctrl.isSelected( item ) );
+
+                return item;
             };
 
             ctrl.parseOptions = function( model ) {
@@ -241,7 +272,9 @@
                     option.attr( "ng-repeat", repeatParser.toNgRepeat( repeat ) );
                     option.attr( "ng-click", "$dropdown.addItem( " + repeat.item + " )" );
                     option.attr( "ng-class", "{" +
-                        "active: $dropdown.activeOption === " + repeat.item +
+                        "active: $dropdown.activeOption === " + repeat.item + "," +
+                        "disabled: $dropdown.maxItems > 1 &&" +
+                        "          $dropdown.isSelected( " + repeat.item + " )" +
                     "}" );
 
                     // ...and compile it
@@ -409,7 +442,7 @@
 
                     // Disable searching when dropdown is full
                     typed = hasCharLength( key );
-                    if ( typed && $dropdown.isFull() ) {
+                    if ( typed && !evt.ctrlKey && $dropdown.isFull() ) {
                         return evt.preventDefault();
                     }
                 });
@@ -462,9 +495,10 @@
             }
 
             function handleKeyNav( evt, scope, $dropdown ) {
-                var limit, movement, method, index;
+                var limit, movement, originalMovement, method, index, noActiveOption;
                 var options = $dropdown.options;
                 var active = $dropdown.activeOption;
+                var singleSelection = $dropdown.maxItems === 1;
 
                 if ( !$dropdown.open ) {
                     $dropdown.open = true;
@@ -498,13 +532,56 @@
                     case keycodes.PGDOWN:
                         movement = 4;
                         break;
-
                 }
 
+                originalMovement = movement;
                 limit = movement < 0 ? 0 : options.length - 1;
                 method = movement < 0 ? "max" : "min";
 
-                active = options[ Math[ method ]( limit, index + movement ) ];
+                do {
+                    index = Math[ method ]( limit, index + movement );
+
+                    // If we were originally:
+                    // - moving up by a page, then increase the option index;
+                    // - moving up by one, then decrease the option index;
+                    // - moving down by a page, then decrease the option index;
+                    // - moving down by one, then increase the option index.
+                    if ( originalMovement > 1 ) {
+                        movement = -1;
+                    } else if ( originalMovement < -1 ) {
+                        movement = 1;
+                    } else {
+                        movement = originalMovement > 0 ? 1 : -1;
+                    }
+
+                    active = options[ index ];
+
+                    // One single item is allowed to be selected? Then this is a good option to be
+                    // used as the active one.
+                    if ( singleSelection ) {
+                        break;
+                    }
+
+                    // If:
+                    // - this isn't the first iteration;
+                    // - and we're moving by one;
+                    // - and the found index is equal to the limit for this movement;
+                    // them we've reached the last navigable option for this movement.
+                    // So, we'll break here to stop an endless loop.
+                    if ( limit === index && noActiveOption != null && Math.abs( movement ) === 1 ) {
+                        break;
+                    }
+
+                    // In order to continue looping, the found option must not be the already
+                    // selected option and must be selected.
+                    noActiveOption = active !== $dropdown.activeOption;
+                    noActiveOption &= $dropdown.isSelected( active );
+                } while ( noActiveOption );
+
+                if ( $dropdown.isSelected( active ) && !singleSelection ) {
+                    return;
+                }
+
                 if ( active !== $dropdown.activeOption ) {
                     $dropdown.activeOption = active;
                     scope.$safeApply();

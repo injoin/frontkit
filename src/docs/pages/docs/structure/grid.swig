@@ -11,7 +11,7 @@
     </p>
 
     <section id="introduction">
-        {{ macros.docsSectionTitle( "Introduction", "introduction", 3 ) }}
+        <h3 docs-heading="introduction">Introduction</h3>
         <p>
             The Frontkit grid system is a powerful way to create page layouts that will work in any
             device. And it's easy to learn, even if you know nothing about grid systems:
@@ -49,7 +49,7 @@
     </section>
 
     <section id="options">
-        {{ macros.docsSectionTitle( "Grid options", "options", 3 ) }}
+        <h3 docs-heading="options">Grid options</h3>
         <p>
             Below are listed some options that are inherent to each screen size when you use the
             Frontkit grid system.
@@ -121,7 +121,7 @@
     </section>
 
     <section id="examples">
-        {{ macros.docsSectionTitle( "Examples", "examples", 3 ) }}
+        <h3 docs-heading="examples">Examples</h3>
         <p>
             Remember: <strong>Frontkit is mobile-first!</strong> This means you can code aiming tiny
             devices first. Larger devices will inherit those styles, so you can customize them as
@@ -130,7 +130,7 @@
 
         {# Example: Basic grid #}
         <section id="examples-basic">
-            {{ macros.docsSectionTitle( "Basic Grid", "examples-basic", 4 ) }}
+            <h4 docs-heading="examples-basic">Basic Grid</h4>
             <p>
                 A simple grid that will vertically stack its columns when the resolution goes below
                 a medium resolution. Don't know what is a medium resolution?
@@ -181,7 +181,7 @@
 
         {# Example: Fluid #}
         <section id="examples-fluid">
-            {{ macros.docsSectionTitle( "Fluid Grid", "examples-fluid", 4 ) }}
+            <h4 docs-heading="examples-fluid">Fluid Grid</h4>
             <p>
                 Some columns in the example below take different sizes, depending on the screen
                 size. Try resizing your browser or viewing this page in different devices to see the
@@ -243,7 +243,7 @@
 
         {# Example: Offsets #}
         <section id="examples-offset">
-            {{ macros.docsSectionTitle( "Offset column", "examples-offset", 4 ) }}
+            <h4 docs-heading="examples-offset">Offset column</h4>
             <p>
                 Sometimes, you need to make a offset between two columns - maybe because there is no
                 content in that white space? Frontkit bring you some classes to solve exactly this
@@ -274,7 +274,7 @@
 
         {# Example: Ordering #}
         <section id="examples-ordering">
-            {{ macros.docsSectionTitle( "Column Ordering", "examples-ordering", 4 ) }}
+            <h4 docs-heading="examples-ordering">Column Ordering</h4>
             <p>
                 The following example shows you how to reorder grid columns, either by pulling or
                 pushing it.
@@ -298,7 +298,7 @@
     </section>
 
     <section id="golden-ratio">
-        {{ macros.docsSectionTitle( "Golden Ratio Grid", "golden-ratio", 3 ) }}
+        <h3 docs-heading="golden-ratio">Golden Ratio Grid</h3>
         <p>
             The <a href="http://en.wikipedia.org/wiki/Golden_ratio">Golden Ratio</a> is a number
             that indicate a perfectly balanced proportion for design (~1.618). If you like applying

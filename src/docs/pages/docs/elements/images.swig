@@ -7,7 +7,7 @@
     </header>
 
     <section id="rounded">
-        {{ macros.docsSectionTitle( "Rounded", "rounded", 3 ) }}
+        <h3 docs-heading="rounded">Rounded</h3>
         <p>
             An image can be rounded when you add the <code>img-rounded</code> class.
             By default, any image will get a 4% <code>border-radius</code>, no matter how big it is.
@@ -24,7 +24,7 @@
     </section>
 
     <section id="circular">
-        {{ macros.docsSectionTitle( "Circular", "circular", 3 ) }}
+        <h3 docs-heading="circular">Circular</h3>
         <p>Images will be circular if you add the <code>img-circular</code> class.</p>
 
         <div class="example">
@@ -37,7 +37,7 @@
     </section>
 
     <section id="thumbnail">
-        {{ macros.docsSectionTitle( "Thumbnail", "thumbnail", 3 ) }}
+        <h3 docs-heading="thumbnail">Thumbnail</h3>
         <p>A image can be bordered by simply adding the <code>img-bordered</code> class.</p>
 
         <div class="example">
