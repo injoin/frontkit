@@ -152,7 +152,7 @@
                 <dropdown-items placeholder="This is the placeholder text">
                     <!-- Render the content of the foo property of the current item -->
                     {{ $dropdown.items[ $index ].foo }}
-                </dropdown>
+                </dropdown-items>
             {% endraw %}
         {% endhighlight %}
 
@@ -193,7 +193,7 @@
                 <dropdown-options options="option in options | filter: $dropdown.search">
                     <!-- Render the content of the foo property of the current option -->
                     {{ option.foo }}
-                </dropdown>
+                </dropdown-options>
             {% endraw %}
         {% endhighlight %}
 
