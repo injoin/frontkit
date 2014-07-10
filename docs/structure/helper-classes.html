@@ -108,7 +108,9 @@
 
                         
                     </li>
-                    <li class="nav-item ">
+                    <li class="nav-item 
+        active
+    ">
                         
                         <a href="/docs/structure/helper-classes.html">
                         
@@ -120,6 +122,8 @@
                         
                         </a>
 
+                        
+                            <div submenu=""></div>
                         
                     </li>
                     <li class="nav-item ">
@@ -226,9 +230,7 @@
 
                         
                     </li>
-                    <li class="nav-item 
-        active
-    ">
+                    <li class="nav-item ">
                         
                         <a href="/docs/elements/images.html">
                         
@@ -240,8 +242,6 @@
                         
                         </a>
 
-                        
-                            <div submenu=""></div>
                         
                     </li>
                     <li class="nav-item ">
@@ -420,44 +420,68 @@
             <div class="column small-8-12 large-9-12">
                 <article class="docs-content">
                     
-    <header class="page-header">
-        <h2>Images</h2>
-    </header>
+    <h2>Helper Classes</h2>
+    <p class="lead">
+        Sometimes, you need a few common styles right away in your page.<br>
+        Frontkit allows you to get around these occasions by providing a few helper classes.
+    </p>
 
-    <section id="rounded">
-        <h3 docs-heading="rounded">Rounded</h3>
+    <section id="visibility">
+        <h3 docs-heading="visibility">Visibility</h3>
+        <p>Toggle visibility status of any element with <code>.show</code>/<code>.hide</code>.</p>
+
+        <pre ng-non-bindable="" class="highlight language-xml"><span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;show&quot;</span>&gt;</span>Visible<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;hide&quot;</span>&gt;</span>Hidden<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span></pre>
+    </section>
+
+    <section id="floating">
+        <h3 docs-heading="floating">Quick Float</h3>
         <p>
-            An image can be rounded when you add the <code>img-rounded</code> class.
-            By default, any image will get a 4% <code>border-radius</code>, no matter how big it is.
+            Set the <code>float</code> CSS attribute of an element with ease.<br>
+            To better integrate with right-to-left cultures, we use <code>.pull-start</code> and
+            <code>.pull-end</code>, so their functionality can be easily switched to left/right
+            (for LTR cultures) or right/left (for RTL cultures).
+        </p>
+
+        <pre ng-non-bindable="" class="highlight language-xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;pull-start&quot;</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;pull-end&quot;</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span></pre>
+    </section>
+
+    <section id="text-alignment">
+        <h3 docs-heading="text-alignmenet">Text Alignment</h3>
+        <p>
+            Use any of the left/center/right/justify text alignment styles by applying any of the
+            <code>.text-*</code> classes below.
         </p>
 
         <div class="example">
-            <img data-src="holder.js/150x150" class="img-rounded">
-            <img data-src="holder.js/250x200" class="img-rounded">
-            <img data-src="holder.js/150x150" class="img-rounded">
+            <p class="text-left">Left aligned text</p>
+            <p class="text-center">Center aligned text</p>
+            <p class="text-right">Right aligned text</p>
+            <p class="text-justify">Justified text</p>
         </div>
-        <pre ng-non-bindable="" class="highlight language-xml"><span class="hljs-tag">&lt;<span class="hljs-title">img</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">&quot;...&quot;</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;img-rounded&quot;</span>&gt;</span></pre>
+        <pre ng-non-bindable="" class="highlight language-xml"><span class="hljs-tag">&lt;<span class="hljs-title">p</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;text-left&quot;</span>&gt;</span>Left aligned text<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">p</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;text-center&quot;</span>&gt;</span>Center aligned text<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">p</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;text-right&quot;</span>&gt;</span>Right aligned text<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">p</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;text-justify&quot;</span>&gt;</span>Justified text<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span></pre>
     </section>
 
-    <section id="circular">
-        <h3 docs-heading="circular">Circular</h3>
-        <p>Images will be circular if you add the <code>img-circular</code> class.</p>
+    <section id="contextual-text">
+        <h3 docs-heading="contextual-text">Contextual Text Coloring</h3>
+        <p>Make your text carry some visual context with colors.</p>
 
         <div class="example">
-            <img data-src="holder.js/150x150" class="img-circular">
-            <img data-src="holder.js/150x150" class="img-circular">
+            <p class="text-muted">Muted/disabled text</p>
+            <p class="text-success">Successful text</p>
+            <p class="text-info">Info text</p>
+            <p class="text-warning">Warning text</p>
+            <p class="text-danger">Danger text</p>
         </div>
-        <pre ng-non-bindable="" class="highlight language-xml"><span class="hljs-tag">&lt;<span class="hljs-title">img</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">&quot;...&quot;</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;img-circular&quot;</span>&gt;</span></pre>
-    </section>
-
-    <section id="thumbnail">
-        <h3 docs-heading="thumbnail">Thumbnail</h3>
-        <p>A image can be bordered by simply adding the <code>img-bordered</code> class.</p>
-
-        <div class="example">
-            <img data-src="holder.js/150x150" class="img-bordered">
-        </div>
-        <pre ng-non-bindable="" class="highlight language-xml"><span class="hljs-tag">&lt;<span class="hljs-title">img</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">&quot;...&quot;</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;img-bordered&quot;</span>&gt;</span></pre>
+        <pre ng-non-bindable="" class="highlight language-xml"><span class="hljs-tag">&lt;<span class="hljs-title">p</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;text-muted&quot;</span>&gt;</span>Muted/disabled text<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">p</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;text-success&quot;</span>&gt;</span>Successful text<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">p</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;text-info&quot;</span>&gt;</span>Info text<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">p</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;text-warning&quot;</span>&gt;</span>Warning text<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">p</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;text-danger&quot;</span>&gt;</span>Danger text<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span></pre>
     </section>
 
                 </article>

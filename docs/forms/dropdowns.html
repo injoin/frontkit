@@ -8,7 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         
-        <link rel="stylesheet" href="https://rawgit.com/injoin/bower-frontkit/0.1.1/frontkit.css">
+        <link rel="stylesheet" href="https://rawgit.com/injoin/bower-frontkit/0.1.2/frontkit.css">
         <link rel="stylesheet" href="/assets/styles/docs.css">
         <link rel="stylesheet" href="https://rawgit.com/components/highlightjs/8.0.0/styles/github.css">
     </head>
@@ -101,6 +101,20 @@
 
                         
                             Block Grid
+                        
+
+                        
+                        </a>
+
+                        
+                    </li>
+                    <li class="nav-item ">
+                        
+                        <a href="/docs/structure/helper-classes.html">
+                        
+
+                        
+                            Helper Classes
                         
 
                         
@@ -413,12 +427,7 @@
     </p>
 
     <section id="example">
-        
-    <h3 class="docs-heading">
-        <a href="#example" class="docs-anchor">#</a>
-        Example
-    </h3>
-
+        <h3 docs-heading="example">Example</h3>
         <p>
             Below is shown a full featured example of the dropdown directive. You can see its
             currently selected items and change the maximum number of items allowed.
@@ -465,12 +474,7 @@
     </section>
 
     <section id="$dropdown-variable">
-        
-    <h3 class="docs-heading">
-        <a href="#$dropdown-variable" class="docs-anchor">#</a>
-        The <code>$dropdown</code> variable
-    </h3>
-
+        <h3 docs-heading="$dropdown-variable">The <code>$dropdown</code> variable</h3>
         <p>
             Inside the <code>&lt;dropdown&gt;</code> tag you have the <code>$dropdown</code>
             variable available to you. Below you can find some interesting properties you can use
@@ -511,12 +515,7 @@
     </section>
 
     <section id="dropdown">
-        
-    <h3 class="docs-heading">
-        <a href="#dropdown" class="docs-anchor">#</a>
-        <code>&lt;dropdown&gt;</code>
-    </h3>
-
+        <h3 docs-heading="dropdown"><code>&lt;dropdown&gt;</code></h3>
         <p>
             The <code>&lt;dropdown&gt;</code> element is the main element and the container of the
             other dropdown parts. Any HTML you define inside it (except for other documented
@@ -529,12 +528,7 @@
 <span class="hljs-tag">&lt;/<span class="hljs-title">dropdown</span>&gt;</span></pre>
 
         <section id="dropdown-arguments">
-            
-    <h4 class="docs-heading">
-        <a href="#dropdown-arguments" class="docs-anchor">#</a>
-        Arguments
-    </h4>
-
+            <h4 docs-heading="dropdown-arguments">Arguments</h4>
 
             <table class="table table-bordered table-striped">
                 <thead>
@@ -556,12 +550,7 @@
     </section>
 
     <section id="dropdown-items">
-        
-    <h3 class="docs-heading">
-        <a href="#dropdown-items" class="docs-anchor">#</a>
-        <code>&lt;dropdown-items&gt;</code>
-    </h3>
-
+        <h3 docs-heading="dropdown-items"><code>&lt;dropdown-items&gt;</code></h3>
         <p>
             The <code>&lt;dropdown-items&gt;</code> element contains the template for the selected
             items. Any HTML defined inside it will be used to render the selected items.
@@ -571,15 +560,10 @@
         <pre ng-non-bindable="" class="highlight language-xml"><span class="hljs-tag">&lt;<span class="hljs-title">dropdown-items</span> <span class="hljs-attribute">placeholder</span>=<span class="hljs-value">&quot;This is the placeholder text&quot;</span>&gt;</span>
     <span class="hljs-comment">&lt;!-- Render the content of the foo property of the current item --&gt;</span>
     {{ $dropdown.items[ $index ].foo }}
-<span class="hljs-tag">&lt;/<span class="hljs-title">dropdown</span>&gt;</span></pre>
+<span class="hljs-tag">&lt;/<span class="hljs-title">dropdown-items</span>&gt;</span></pre>
 
         <section id="dropdown-items-arguments">
-            
-    <h4 class="docs-heading">
-        <a href="#dropdown-items-arguments" class="docs-anchor">#</a>
-        Arguments
-    </h4>
-
+            <h4 docs-heading="dropdown-items-arguments">Arguments</h4>
 
             <table class="table table-bordered table-striped">
                 <thead>
@@ -601,12 +585,7 @@
     </section>
 
     <section id="dropdown-options">
-        
-    <h3 class="docs-heading">
-        <a href="#dropdown-options" class="docs-anchor">#</a>
-        <code>&lt;dropdown-options&gt;</code>
-    </h3>
-
+        <h3 docs-heading="dropdown-options"><code>&lt;dropdown-options&gt;</code></h3>
 
         <p>
             The <code>&lt;dropdown-options&gt;</code> element contains the template for each option.
@@ -618,15 +597,10 @@
 <span class="hljs-tag">&lt;<span class="hljs-title">dropdown-options</span> <span class="hljs-attribute">options</span>=<span class="hljs-value">&quot;option in options | filter: $dropdown.search&quot;</span>&gt;</span>
     <span class="hljs-comment">&lt;!-- Render the content of the foo property of the current option --&gt;</span>
     {{ option.foo }}
-<span class="hljs-tag">&lt;/<span class="hljs-title">dropdown</span>&gt;</span></pre>
+<span class="hljs-tag">&lt;/<span class="hljs-title">dropdown-options</span>&gt;</span></pre>
 
         <section id="dropdown-options-arguments">
-            
-    <h4 class="docs-heading">
-        <a href="#dropdown-options-arguments" class="docs-anchor">#</a>
-        Arguments
-    </h4>
-
+            <h4 docs-heading="dropdown-options-arguments">Arguments</h4>
             <p>
                 The below argument list is only available to the <code>&lt;dropdown-options&gt;</code>
                 tag.
@@ -661,7 +635,7 @@
         <script src="https://rawgit.com/angular/bower-angular/v1.2.19/angular.js"></script>
         <script src="https://rawgit.com/WickyNilliams/headroom.js/v0.6.0/dist/headroom.js"></script>
         <script src="https://rawgit.com/WickyNilliams/headroom.js/v0.6.0/dist/angular.headroom.js"></script>
-        <script src="https://rawgit.com/injoin/bower-frontkit/0.1.1/frontkit-tmpl.js"></script>
+        <script src="https://rawgit.com/injoin/bower-frontkit/0.1.2/frontkit-tmpl.js"></script>
         <script src="/assets/scripts/docs.js"></script>
     </body>
 </html>
