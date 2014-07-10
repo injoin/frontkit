@@ -12,7 +12,7 @@
     </p>
 
     <section id="default-example">
-        {{ macros.docsSectionTitle( "Default Example", "default-example", 3 ) }}
+        <h3 docs-heading="default-example">Default Example</h3>
         <p>
             Below is a basic example. It uses a <code>.input-group</code> with a input and some
             add-ons. To place add-ons, use <code>.input-group-addon</code> with some text inside.
@@ -55,7 +55,7 @@
     </section>
 
     <section id="button-addons">
-        {{ macros.docsSectionTitle( "Button add-ons", "button-addons", 3 ) }}
+        <h3 docs-heading="button-addons">Button add-ons</h3>
         <p>
             It's also possible to use button add-ons. To appear correctly, your button needs to be
             wrapped in a <code>.input-group-btn</code>.
@@ -85,7 +85,7 @@
     </section>
 
     <section id="checkbox-radio-addons">
-        {{ macros.docsSectionTitle( "Checkboxes and radio add-ons", "checkbox-radio-addons", 3 ) }}
+        <h3 docs-heading="checkbox-radio-addons">Checkboxes and radio add-ons</h3>
         <p>
             You can also place Frontkit checkboxes or radio buttons inside a input group's add-on
             instead of text.

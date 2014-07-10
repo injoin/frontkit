@@ -6,7 +6,7 @@
     <p class="lead">Give feedback on the completion of some task with progress bars.</p>
 
     <section id="default">
-        {{ macros.docsSectionTitle( "Default Example", "default", 3 ) }}
+        <h3 docs-heading="default">Default Example</h3>
         <p>Default progress bar usage.</p>
 
         <div class="example">
@@ -22,7 +22,7 @@
     </section>
 
     <section id="contextual-options">
-        {{ macros.docsSectionTitle( "Contextual Options", "contextual-options", 3 ) }}
+        <h3 docs-heading="contextual-options">Contextual Options</h3>
         <p>
             You can use a few of the contextual classes of Frontkit to create different styles of
             progress bars:
@@ -59,7 +59,7 @@
     </section>
 
     <section id="striped">
-        {{ macros.docsSectionTitle( "Striped", "striped", 3 ) }}
+        <h3 docs-heading="striped">Striped</h3>
         <p>
             Use <code>.progress-striped</code> class to create a striped effect in your progress
             bar.
@@ -78,7 +78,7 @@
     </section>
 
     <section id="animated">
-        {{ macros.docsSectionTitle( "Animated", "animated", 3 ) }}
+        <h3 docs-heading="animated">Animated</h3>
         <p>
             You can also create an animated progress bar by adding the <code>.active</code> class.
             Note that <code>.progress-striped</code> is also needed to create the effect.

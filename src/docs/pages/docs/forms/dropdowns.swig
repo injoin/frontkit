@@ -9,7 +9,7 @@
     </p>
 
     <section id="example">
-        {{ macros.docsSectionTitle( "Example", "example", 3 ) }}
+        <h3 docs-heading="example">Example</h3>
         <p>
             Below is shown a full featured example of the dropdown directive. You can see its
             currently selected items and change the maximum number of items allowed.
@@ -62,10 +62,7 @@
     </section>
 
     <section id="$dropdown-variable">
-        {{ macros.docsSectionTitle(
-            "The <code>$dropdown</code> variable",
-            "$dropdown-variable", 3
-        ) }}
+        <h3 docs-heading="$dropdown-variable">The <code>$dropdown</code> variable</h3>
         <p>
             Inside the <code>&lt;dropdown&gt;</code> tag you have the <code>$dropdown</code>
             variable available to you. Below you can find some interesting properties you can use
@@ -106,7 +103,7 @@
     </section>
 
     <section id="dropdown">
-        {{ macros.docsSectionTitle( "<code>&lt;dropdown&gt;</code>", "dropdown", 3 ) }}
+        <h3 docs-heading="dropdown"><code>&lt;dropdown&gt;</code></h3>
         <p>
             The <code>&lt;dropdown&gt;</code> element is the main element and the container of the
             other dropdown parts. Any HTML you define inside it (except for other documented
@@ -121,7 +118,7 @@
         {% endhighlight %}
 
         <section id="dropdown-arguments">
-            {{ macros.docsSectionTitle( "Arguments", "dropdown-arguments", 4 ) }}
+            <h4 docs-heading="dropdown-arguments">Arguments</h4>
 
             <table class="table table-bordered table-striped">
                 <thead>
@@ -143,7 +140,7 @@
     </section>
 
     <section id="dropdown-items">
-        {{ macros.docsSectionTitle( "<code>&lt;dropdown-items&gt;</code>", "dropdown-items", 3 ) }}
+        <h3 docs-heading="dropdown-items"><code>&lt;dropdown-items&gt;</code></h3>
         <p>
             The <code>&lt;dropdown-items&gt;</code> element contains the template for the selected
             items. Any HTML defined inside it will be used to render the selected items.
@@ -160,7 +157,7 @@
         {% endhighlight %}
 
         <section id="dropdown-items-arguments">
-            {{ macros.docsSectionTitle( "Arguments", "dropdown-items-arguments", 4 ) }}
+            <h4 docs-heading="dropdown-items-arguments">Arguments</h4>
 
             <table class="table table-bordered table-striped">
                 <thead>
@@ -182,10 +179,7 @@
     </section>
 
     <section id="dropdown-options">
-        {{ macros.docsSectionTitle(
-            "<code>&lt;dropdown-options&gt;</code>",
-            "dropdown-options", 3
-        ) }}
+        <h3 docs-heading="dropdown-options"><code>&lt;dropdown-options&gt;</code></h3>
 
         <p>
             The <code>&lt;dropdown-options&gt;</code> element contains the template for each option.
@@ -204,7 +198,7 @@
         {% endhighlight %}
 
         <section id="dropdown-options-arguments">
-            {{ macros.docsSectionTitle( "Arguments", "dropdown-options-arguments", 4 ) }}
+            <h4 docs-heading="dropdown-options-arguments">Arguments</h4>
             <p>
                 The below argument list is only available to the <code>&lt;dropdown-options&gt;</code>
                 tag.

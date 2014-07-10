@@ -7,7 +7,7 @@
     </header>
 
     <section id="default">
-        {{ macros.docsSectionTitle( "Default Headings", "default", 3 ) }}
+        <h3 docs-heading="default">Default Headings</h3>
         <p>
             The default headings of Frontkit are the same tags you already know from plain HTML:
             from <code>&lt;h1&gt;</code> to <code>&lt;h6&gt;</code>.
@@ -32,7 +32,7 @@
     </section>
 
     <section id="page-header">
-        {{ macros.docsSectionTitle( "Page Headers", "page-header", 3 ) }}
+        <h3 docs-heading="page-header">Page Headers</h3>
         <p>Page headers create a beautiful, light style to separate between page sections.</p>
 
         <div class="example">

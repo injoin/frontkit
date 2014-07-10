@@ -9,7 +9,7 @@
     </p>
 
     <section id="nav-lists">
-        {{ macros.docsSectionTitle( "Nav Lists", "nav-lists", 3 ) }}
+        <h3 docs-heading="nav-lists">Nav Lists</h3>
         <p>Nav lists are vertical navigations that have light styles.</p>
 
         <div class="example">

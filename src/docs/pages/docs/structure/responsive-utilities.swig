@@ -9,14 +9,14 @@
     </p>
 
     <section id="visibility">
-        {{ macros.docsSectionTitle( "Visibility", "visibility", 3 ) }}
+        <h3 docs-heading="visibility">Visibility</h3>
         <p>
             You can show or hide a element depending on the screen size in a ton of ways.
             Check both tables below to discover how you can do this.
         </p>
 
         <section id="visibility-visible">
-            {{ macros.docsSectionTitle( "Visible by size", "visibility-visible", 4 ) }}
+            <h4 docs-heading="visibility-visible">Visible by size</h4>
             <p>
                 The below table shows classes that are used to make elements visible depending on
                 the screen size.
@@ -142,7 +142,7 @@
         </section>
 
         <section id="visibility-hidden">
-            {{ macros.docsSectionTitle( "Hidden by size", "visibility-hidden", 4 ) }}
+            <h4 docs-heading="visibility-hidden">Hidden by size</h4>
             <p>
                 The below table shows classes that are used to make elements hidden depending on the
                 screen size.
@@ -271,7 +271,7 @@
     </section>
 
     <section id="orientation">
-        {{ macros.docsSectionTitle( "Orientation", "orientation", 3 ) }}
+        <h3 docs-heading="orientation">Orientation</h3>
         <p>
             A simple way to detect the orientation of your device. On mobile devices, the visibility
             of elements will automatically change whenever you rotate the device. On desktops, the

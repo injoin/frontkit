@@ -7,7 +7,7 @@
     </header>
 
     <section id="inline">
-        {{ macros.docsSectionTitle( "Inline", "inline", 3 ) }}
+        <h3 docs-heading="inline">Inline</h3>
         <p>Wrap simple snippets of code with <code>&lt;code&gt;</code>.</p>
 
         <div class="example">
@@ -19,7 +19,7 @@
     </section>
 
     <section id="block">
-        {{ macros.docsSectionTitle( "Block", "block", 3 ) }}
+        <h3 docs-heading="block">Block</h3>
         <p>For more lines of code, you should go with the <code>&lt;pre&gt;</code> tag.</p>
 
         <div class="example">
@@ -31,7 +31,7 @@
     </section>
 
     <section id="keyboard">
-        {{ macros.docsSectionTitle( "Keyboard", "keyboard", 3 ) }}
+        <h3 docs-heading="keyboard">Keyboard</h3>
         <p>
             Want to highlight some keystroke?
             You may use the tag <code>&lt;kbd&gt;</code> for this purpose:
@@ -46,7 +46,7 @@
     </section>
 
     <section id="output">
-        {{ macros.docsSectionTitle( "Sample Output", "output", 3 ) }}
+        <h3 docs-heading="output">Sample Output</h3>
         <p>
             It's also possible to highlight sample output from a computer program by using the
             <code>&lt;samp&gt;</code> tag.

@@ -9,7 +9,7 @@
     </p>
 
     <section id="supported-browsers">
-        {{ macros.docsSectionTitle( "Supported Browsers", "supported-browsers", 3 ) }}
+        <h3 docs-heading="supported-browsers">Supported Browsers</h3>
         <p>
             We support the last 2 versions of each browser below. However, for Internet Explorer,
             the support is wider: from version 9 and up. This is due to the still high percentage

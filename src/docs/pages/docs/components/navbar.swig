@@ -8,7 +8,7 @@
     <p class="lead">Navbars are meta components that primarily serve as navigation containers for your page.</p>
 
     <section id="default">
-        {{ macros.docsSectionTitle( "Default Navbar", "default", 3 ) }}
+        <h3 docs-heading="default">Default Navbar</h3>
 
         <p>
             The default navbar occupies a whole row, and isn't sticked
@@ -57,14 +57,14 @@
     </section>
 
     <section id="components">
-        {{ macros.docsSectionTitle( "Components", "components", 3 )  }}
+        <h3 docs-heading="components">Components</h3>
         <p>
             There are various components that are tightly integrated with the navbar.
             Here you'll be able to see what are them and how to use them.
         </p>
 
         <section id="component-brand">
-            {{ macros.docsSectionTitle( "Brand", "component-brand", 4 ) }}
+            <h4 docs-heading="component-brand">Brand</h4>
             <p>The brand is, normally, the project name, or the site name.</p>
 
             <div class="example">
@@ -80,7 +80,7 @@
         </section>
 
         <section id="component-nav">
-            {{ macros.docsSectionTitle( "Navs", "component-nav", 4 ) }}
+            <h4 docs-heading="component-nav">Navs</h4>
 
             <p>
                 You can add some <a href="{{ macros.url( "components/nav" ) }}">navigation menus</a>
@@ -110,7 +110,7 @@
         </section>
 
         <section id="component-form">
-            {{ macros.docsSectionTitle( "Forms", "component-form", 4 ) }}
+            <h4 docs-heading="component-form">Forms</h4>
             <p>You may also put some inline form in your navbar.</p>
 
             <div class="example">
@@ -131,7 +131,7 @@
         </section>
 
         <section id="component-text">
-            {{ macros.docsSectionTitle( "Navbar Text", "component-text", 4 ) }}
+            <h4 docs-heading="component-text">Navbar Text</h4>
             <p>
                 If you want to put plain text inside your navbar, you can do so by wrapping it
                 with a <code>.navbar-text</code> class, which will properly align your text.
@@ -152,7 +152,7 @@
         </section>
 
         <section id="component-links">
-            {{ macros.docsSectionTitle( "Non-nav Links", "component-links", 4 ) }}
+            <h4 docs-heading="component-links">Non-nav Links</h4>
             <p>
                 It's also possible to make non-nav links inherit the proper styles from the navbar component.
                 All you have to do is put your links the <code>.navbar-link</code> link.

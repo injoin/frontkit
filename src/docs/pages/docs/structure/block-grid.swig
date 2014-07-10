@@ -10,7 +10,7 @@
     </p>
 
     <section id="introduction">
-        {{ macros.docsSectionTitle( "Introduction", "introduction", 3 ) }}
+        <h3 docs-heading="introduction">Introduction</h3>
         <p>
             A block grid is much simpler than the original
             <a href="{{ macros.siteUrl( "structure/grid" ) }}">grid system</a>, although both share
@@ -43,7 +43,7 @@
     </section>
 
     <section id="example">
-        {{ macros.docsSectionTitle( "Block Grid Example", "example", 3 ) }}
+        <h3 docs-heading="example">Block Grid Example</h3>
         <p>
             The below example demonstrate how the block grid behaves: it shows 4 images per row on
             medium and bigger devices, while showing 2 images per row on tiny and small devices.

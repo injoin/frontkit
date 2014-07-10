@@ -8,7 +8,7 @@
     <p class="lead">Inputs are simple form controls that allow the user to enter information.</p>
 
     <section class="default">
-        {{ macros.docsSectionTitle( "Default Input", "default", 3 ) }}
+        <h3 docs-heading="default">Default Input</h3>
         <p>
             The default input has a light style.
             It's suitable for usage in selects and any text-based form control, like for example,
@@ -96,14 +96,14 @@
     </section>
 
     <section id="states">
-        {{ macros.docsSectionTitle( "States", "states", 3 ) }}
+        <h3 docs-heading="states">States</h3>
         <p>
             To provide feedback to your users about something going on in the page,
             you may use any of the below states in your inputs:
         </p>
 
         <section id="state-focus">
-            {{ macros.docsSectionTitle( "Focus State", "state-focus", 4 ) }}
+            <h4 docs-heading="state-focus">Focus State</h4>
             <p>Demonstrate that the user is currently interacting with the input.</p>
 
             <div class="example">
@@ -114,7 +114,7 @@
         </section>
 
         <section id="state-disabled">
-            {{ macros.docsSectionTitle( "Disabled/Read-only States", "state-disabled", 4 ) }}
+            <h4 docs-heading="state-disabled">Disabled/Read-only States</h4>
             <p>Disallow interaction with the input by giving it a disabled/read-only style.</p>
 
             <div class="example">
@@ -132,7 +132,7 @@
         </section>
 
         <section id="state-validation">
-            {{ macros.docsSectionTitle( "Validation States", "state-validation", 4 ) }}
+            <h4 docs-heading="state-validation">Validation States</h4>
             <p>You are able to use some validation states with inputs as well.</p>
 
             <div class="example">
@@ -157,7 +157,7 @@
     </section>
 
     <section id="sizes">
-        {{ macros.docsSectionTitle( "Sizes", "sizes", 3 ) }}
+        <h3 docs-heading="sizes">Sizes</h3>
         <p>A input can vary in size, from tiny to extra large.</p>
 
         <div class="example example-inputs">
@@ -181,7 +181,7 @@
     </section>
 
     <section id="icons">
-        {{ macros.docsSectionTitle( "Icons", "icons", 3 ) }}
+        <h3 docs-heading="icons">Icons</h3>
         <p>
             It's quite common that people want to place an icon inside a input, either to show
             feedback about validation, or maybe show the type of the input (username, password,

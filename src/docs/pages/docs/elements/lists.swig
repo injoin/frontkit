@@ -7,7 +7,7 @@
     </header>
 
     <section id="unordered">
-        {{ macros.docsSectionTitle( "Unordered", "unordered", 3 ) }}
+        <h3 docs-heading="unordered">Unordered</h3>
         <p>A list where the order does not explicitly matter.</p>
 
         <div class="example">
@@ -39,7 +39,7 @@
     </section>
 
     <section id="ordered">
-        {{ macros.docsSectionTitle( "Ordered", "ordered", 3 ) }}
+        <h3 docs-heading="ordered">Ordered</h3>
         <p>A list where the order does explicitly matter.</p>
 
         <div class="example">
@@ -59,7 +59,7 @@
     </section>
 
     <section id="unstyled">
-        {{ macros.docsSectionTitle( "Unstyled", "unstyled", 3 ) }}
+        <h3 docs-heading="unstyled">Unstyled</h3>
         <p>
             Removes the default styling of a list.<br>
             <strong>Note:</strong> this does not apply to nested lists.
@@ -95,7 +95,7 @@
     </section>
 
     <section id="inline">
-        {{ macros.docsSectionTitle( "Inline", "inline", 3 ) }}
+        <h3 docs-heading="inline">Inline</h3>
         <p>Place list items side-by-side with a light padding.</p>
 
         <div class="example">
@@ -113,7 +113,7 @@
     </section>
 
     <section id="description">
-        {{ macros.docsSectionTitle( "Descriptions", "description", 3 ) }}
+        <h3 docs-heading="description">Descriptions</h3>
         <p>A list of terms and their associated descriptions.</p>
 
         <div class="example">
@@ -136,7 +136,7 @@
         {% endhighlight %}
 
         <section id="description-inline">
-            {{ macros.docsSectionTitle( "Inline Description", "description-inline", 4 ) }}
+            <h4 docs-heading="description-inline">Inline Description</h4>
             <p>
                 It's also possible to inline a description list by adding the class
                 <code>dl-inline</code> to your <code>&lt;dl&gt;</code>.

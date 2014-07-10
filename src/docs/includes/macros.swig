@@ -21,10 +21,3 @@
 {% macro baseUrl( path ) -%}
     {{ basePath + path }}
 {%- endmacro %}
-
-{% macro docsSectionTitle( label, path, level ) %}
-    <h{{ level }} class="docs-heading">
-        <a href="#{{ path }}" class="docs-anchor">#</a>
-        {% autoescape false %}{{ label }}{% endautoescape %}
-    </h{{ level }}>
-{% endmacro %}
