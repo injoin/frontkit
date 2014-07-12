@@ -19,7 +19,7 @@
             definition.restrict = "EA";
             definition.replace = true;
             definition.transclude = true;
-            definition.templateUrl = "templates/dropdown/single.html";
+            definition.templateUrl = "templates/dropdown/dropdown.html";
             definition.controller = "DropdownController";
             definition.controllerAs = "$dropdown";
             definition.scope = true;
