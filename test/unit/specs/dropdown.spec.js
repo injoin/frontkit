@@ -57,7 +57,7 @@ describe( "Dropdown Directive", function() {
         compileDirective();
 
         // Find the compiled dropdown options container
-        list = dropdown.querySelector( ".dropdown-options" )[ 0 ];
+        list = dropdown.querySelector( ".dropdown-optgroups" )[ 0 ];
 
         // Adjust the active option
         $dropdown.activeOption = 10;
@@ -216,7 +216,7 @@ describe( "Dropdown Directive", function() {
         });
 
         it( "should set the active option as an available option when maxItems > 1", function() {
-            $dropdown.options = [ "foo", "bar", "baz" ];
+            $dropdown.rawOptions = [ "foo", "bar", "baz" ];
             $dropdown.maxItems = 2;
 
             // Add one, should go to 'bar'
@@ -244,11 +244,11 @@ describe( "Dropdown Directive", function() {
             optionsElem = dropdown.find( "dropdown-options" );
         }));
 
-        it( "should be empty array if value is null", function() {
+        it( "should be empty if value is null", function() {
             optionsElem.attr( "options", "option in options" );
             compileDirective();
 
-            expect( $dropdown.options ).to.eql( [] );
+            expect( $dropdown.options ).to.eql( {} );
         });
 
         it( "should accept array of options", function() {
@@ -263,7 +263,9 @@ describe( "Dropdown Directive", function() {
 
             compiledOptions = compileDirective().querySelectorAll( ".dropdown-option" );
             expect( compiledOptions ).to.have.property( "length", 3 );
-            expect( $dropdown.options ).to.eql( $rootScope.options );
+            expect( $dropdown.options ).to.eql({
+                "": $rootScope.options
+            });
         });
 
         it( "should accept hash of options", function() {
@@ -277,7 +279,9 @@ describe( "Dropdown Directive", function() {
 
             compiledOptions = compileDirective().querySelectorAll( ".dropdown-option" );
             expect( compiledOptions ).to.have.property( "length", 2 );
-            expect( $dropdown.options ).to.eql( $rootScope.options );
+            expect( $dropdown.options ).to.eql({
+                "": $rootScope.options
+            });
         });
 
         it( "should throw error if value not array or object", function() {
@@ -302,13 +306,15 @@ describe( "Dropdown Directive", function() {
             compileDirective();
 
             // Promise not yet resolved. The options must be an empty array for now
-            expect( $dropdown.options ).to.eql( [] );
+            expect( $dropdown.options ).to.eql( {} );
 
             // Promise resolved. The options must be equal to its value
             deferred.resolve( options );
             $rootScope.$apply();
 
-            expect( $dropdown.options ).to.eql( options );
+            expect( $dropdown.options ).to.eql({
+                "": options
+            });
         });
 
         it( "should not override promise values", function() {
@@ -327,11 +333,15 @@ describe( "Dropdown Directive", function() {
 
             deferred1.resolve( options1 );
             $rootScope.$apply();
-            expect( $dropdown.options ).to.not.eql( options1 );
+            expect( $dropdown.options ).to.not.eql({
+                "": options1
+            });
 
             deferred2.resolve( options2 );
             $rootScope.$apply();
-            expect( $dropdown.options ).to.eql( options2 );
+            expect( $dropdown.options ).to.eql({
+                "": options2
+            });
         });
 
         it( "should transclude the content for each option", function() {
@@ -346,6 +356,56 @@ describe( "Dropdown Directive", function() {
             compiledOptions = compileDirective().querySelectorAll( ".dropdown-option" );
 
             expect( compiledOptions.text() ).to.equal( "foo bar" );
+        });
+    });
+
+    // ---------------------------------------------------------------------------------------------
+
+    describe( "groups", function() {
+        var optionsElem;
+
+        beforeEach(function() {
+            optionsElem = dropdown.find( "dropdown-options" );
+            optionsElem.attr( "options", "option in options" );
+            optionsElem.attr( "group-by", "option.group" );
+
+            $rootScope.options = [{
+                name: "foo",
+                group: "foo"
+            }, {
+                name: "foobar",
+                group: "foo"
+            }, {
+                name: "bar",
+                group: "bar"
+            }];
+        });
+
+        it( "should exist", function() {
+            compileDirective();
+            expect( $dropdown.options ).to.eql({
+                bar: [ $rootScope.options[ 2 ] ],
+                foo: [ $rootScope.options[ 0 ], $rootScope.options[ 1 ] ]
+            });
+        });
+
+        it( "should have empty string key for ungrouped options", function() {
+            optionsElem.removeAttr( "group-by" );
+            compileDirective();
+
+            expect( $dropdown.options ).to.eql({
+                "": $rootScope.options
+            });
+        });
+
+        it( "should be sorted by key", function() {
+            var keys;
+
+            compileDirective();
+            keys = Object.keys( $dropdown.options );
+
+            expect( keys[ 0 ] ).to.equal( "bar" );
+            expect( keys[ 1 ] ).to.equal( "foo" );
         });
     });
 
