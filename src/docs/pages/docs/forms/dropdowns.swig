@@ -34,14 +34,14 @@
                 </div>
 
                 <dropdown ng-model="selectedBand" max-items="maxItems" ng-show="useGroupBy">
-                    <dropdown-items placeholder="Select a rock band...">{{ $dropdown.items[ $index ] }}</dropdown-items>
+                    <dropdown-items placeholder="Select a rock band...">{{ $dropdown.items[ $index ].name }}</dropdown-items>
                     <dropdown-options group-by="band.genre" options="band in bands | filter: $dropdown.search">
                         {{ band.name }}
                     </dropdown-options>
                 </dropdown>
 
                 <dropdown ng-model="selectedBand" max-items="maxItems" ng-hide="useGroupBy">
-                    <dropdown-items placeholder="Select a rock band...">{{ $dropdown.items[ $index ] }}</dropdown-items>
+                    <dropdown-items placeholder="Select a rock band...">{{ $dropdown.items[ $index ].name }}</dropdown-items>
                     <dropdown-options options="band in bands | filter: $dropdown.search">
                         {{ band.name }}
                     </dropdown-options>
@@ -60,12 +60,26 @@
                             <input type="number" min="1" class="input" ng-model="maxItems"
                                    placeholder="Select...">
                         </div>
+
+                        <div class="column small-6-12 large-4-12">
+                            <label>
+                                <input type="checkbox" checkbox ng-model="useGroupBy">
+                                Group by genre
+                            </label>
+                        </div>
                     </div>
 
-                    <dropdown ng-model="selectedBand">
-                        <dropdown-items placeholder="Select a rock band...">{{ $dropdown.items[ $index ] }}</dropdown-items>
+                    <dropdown ng-model="selectedBand" max-items="maxItems" ng-show="useGroupBy">
+                        <dropdown-items placeholder="Select a rock band...">{{ $dropdown.items[ $index ].name }}</dropdown-items>
+                        <dropdown-options group-by="band.genre" options="band in bands | filter: $dropdown.search">
+                            {{ band.name }}
+                        </dropdown-options>
+                    </dropdown>
+
+                    <dropdown ng-model="selectedBand" max-items="maxItems" ng-hide="useGroupBy">
+                        <dropdown-items placeholder="Select a rock band...">{{ $dropdown.items[ $index ].name }}</dropdown-items>
                         <dropdown-options options="band in bands | filter: $dropdown.search">
-                            {{ band }}
+                            {{ band.name }}
                         </dropdown-options>
                     </dropdown>
 
