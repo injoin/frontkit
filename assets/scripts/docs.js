@@ -68,21 +68,21 @@
         function( $rootScope, $http ) {
             // Add some bands for dropdowns example
             $rootScope.bands = [
-                "AC/DC",
-                "Black Sabbath",
-                "Bon Jovi",
-                "Dio",
-                "Iron Maiden",
-                "Led Zeppelin",
-                "Metallica",
-                "Motorhead",
-                "Red Hot Chili Peppers",
-                "Scorpion",
-                "Sex Pistols",
-                "The Beatles",
-                "The Clash",
-                "The Ramones",
-                "The Who"
+                { name: "AC/DC", genre: "Hard Rock" },
+                { name: "Black Sabbath", genre: "Heavy Metal" },
+                { name: "Bon Jovi", genre: "Hard Rock" },
+                { name: "Dio", genre: "Heavy Metal" },
+                { name: "Iron Maiden", genre: "Heavy Metal" },
+                { name: "Led Zeppelin", genre: "Hard Rock" },
+                { name: "Metallica", genre: "Heavy Metal" },
+                { name: "Motorhead", genre: "Heavy Metal" },
+                { name: "Red Hot Chili Peppers" },
+                { name: "Scorpion", genre: "Heavy Metal" },
+                { name: "Sex Pistols", genre: "Punk" },
+                { name: "The Beatles" },
+                { name: "The Clash", genre: "Punk" },
+                { name: "The Ramones", genre: "Punk" },
+                { name: "The Who", genre: "Hard Rock" }
             ];
 
             $http.get( "/assets/meta/icons-list.json" ).success(function( response ) {
