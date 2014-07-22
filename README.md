@@ -6,7 +6,7 @@
 
 The powerful front-end framework from InJoin.
 
-Check out the documentation by accessing <http://frontkit.injoin.com.br>!
+Check out the documentation by accessing <http://frontkit.injoin.io>!
 
 ## Supported Browsers
 We support the last 2 versions of each browser below. However, for Internet Explorer, the support is
