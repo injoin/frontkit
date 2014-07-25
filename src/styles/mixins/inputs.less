@@ -1,0 +1,55 @@
+// Mixins - Inputs
+// -------------------------------------------------------------------------------------------------
+
+// Input focus styles
+.input-focus( @border-color: @input-border-focus ) {
+  @inner-shadow-color: @border-color;
+  @outer-shadow-color: fade( @inner-shadow-color, 15% );
+
+  border-color: @border-color;
+  outline: 0;
+  .box-shadow( ~"inset 2px 0 @{inner-shadow-color}, 0 0 5px 3px @{outer-shadow-color}" );
+}
+
+// Input validation state styles
+.input-validation-state( @name, @color ) {
+  .validation-@{name} .input,
+  .input.validation-@{name} {
+    border-color: lighten( @color, 10% );
+    color: @color;
+
+    &:focus {
+      .input-focus( @color );
+    }
+  }
+}
+
+// Input size variation
+.input-size( @factor: 1 ) {
+  min-height: @height-base * @factor;
+  font-size: unit( @factor, rem );
+
+  select& {
+    line-height: @height-base * @factor;
+  }
+
+  &,
+  input,
+  select,
+  textarea {
+    padding: ( @padding-base-y * @factor ) ( @padding-base-x * @factor );
+    border-radius: max( @input-border-radius * @factor, @border-radius-small );
+  }
+
+  input,
+  select,
+  textarea {
+    /*
+     * 1. Adds 2px because of the horizontal border of the parent + 1px because of the margin-left move.
+     * 2. Place the input on top of the parent element
+     */
+    width: calc( ~"100% + ( @{padding-base-x} * @{factor} * 2 ) + 3px" ); /* 1 */
+    margin: -( ( @padding-base-y * @factor ) + @one-px )
+            -( ( @padding-base-x * @factor ) + @one-px ); /* 2 */
+  }
+}
