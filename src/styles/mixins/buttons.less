@@ -1,0 +1,39 @@
+// Mixins - Buttons
+// -------------------------------------------------------------------------------------------------
+
+// Button color variation
+.button-variation( @bg: @brand-default, @text: @text-color, @border: @btn-border ) {
+  border-color: @border;
+  color: @text;
+  background-color: @bg;
+
+  &:hover,
+  &:focus,
+  &:active,
+  &.active,
+  .active & {
+    border-color: darken( @border, 10% );
+    color: @text;
+    background-color: darken( @bg, 5% );
+  }
+
+  &[ disabled ],
+  &.disabled,
+  .disabled & {
+    &,
+    &:hover,
+    &:focus,
+    &:active
+    &.active {
+      border-color: @border;
+      background-color: @bg;
+    }
+  }
+}
+
+// Button size variation
+.button-size( @factor: 1 ) {
+  padding: ( @padding-base-y * @factor ) ( @padding-base-x * @factor );
+  font-size: unit( @factor, rem );
+  border-radius: max( @btn-border-radius * @factor, @border-radius-small );
+}

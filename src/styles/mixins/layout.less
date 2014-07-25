@@ -1,0 +1,14 @@
+// Mixins - Layout
+// -------------------------------------------------------------------------------------------------
+
+// Generate a media query for .container
+.container-sizing( @screen, @container ) {
+  @container-width: unit( @container / @font-size-base, rem );
+
+  @media screen and ( min-width: @screen ) {
+    .container {
+      // To not use inner mixins, we use the min() function here
+      max-width: min( @container-width, 80rem );
+    }
+  }
+}

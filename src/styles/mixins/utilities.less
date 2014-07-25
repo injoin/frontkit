@@ -1,0 +1,56 @@
+// Mixins - Utilities
+// -------------------------------------------------------------------------------------------------
+
+// The good & old clearfix hack we all know.
+// http://nicolasgallagher.com/micro-clearfix-hack/
+.clear-float() {
+  &:before,
+  &:after {
+    content: " ";
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+// Text Overflow - requires display: inline-block or block to work
+.text-overflow() {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.tab-focus() {
+  // Default
+  outline: thin dotted #333;
+  // Webkit
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+
+.make-triangle( @side, @size, @color ) {
+  border: @size solid transparent;
+
+  .triangle() when ( @side = down ) {
+    border-top-color: @color;
+    border-bottom: none;
+  }
+
+  .triangle() when ( @side = up ) {
+    border-bottom-color: @color;
+    border-top: none;
+  }
+
+  .triangle() when ( @side = left ) {
+    border-right-color: @color;
+    border-left: none;
+  }
+
+  .triangle() when ( @side = right ) {
+    border-left-color: @color;
+    border-right: none;
+  }
+
+  .triangle();
+}
