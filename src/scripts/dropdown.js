@@ -1,4 +1,3 @@
-/* jshint unused: false */
 !function( ng ) {
     "use strict";
 
@@ -454,7 +453,7 @@
                     }
                 });
 
-                scope.$watchCollection( "$dropdown.items", function( items ) {
+                scope.$watchCollection( "$dropdown.items", function() {
                     fixInputWidth( $dropdown, element, input );
                 });
 
