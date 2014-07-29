@@ -69,4 +69,11 @@
         return $( this[ 0 ].querySelectorAll( str ) );
     };
 
+    $.prototype.style = function( prop ) {
+        var view = this[ 0 ].ownerDocument.defaultView;
+        var styles = view.getComputedStyle( this[ 0 ], null );
+
+        return styles.getPropertyValue( prop );
+    };
+
 }( angular );
