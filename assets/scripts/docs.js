@@ -29,9 +29,9 @@
                     scope.headings = [];
 
                     [].forEach.call( headings, function( heading ) {
-                        var text = heading.innerText;
+                        var text = heading.textContent;
                         var anchor = heading.querySelector( ".docs-anchor" );
-                        text = text.replace( anchor.innerText, "" );
+                        text = text.replace( anchor.textContent, "" );
 
                         scope.headings.push({
                             href: anchor.href,
