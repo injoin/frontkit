@@ -39,7 +39,7 @@ describe( "Offcanvas Directive", function() {
 
     afterEach(function() {
         this.menu.remove();
-        this.styleBiggerScreen.remove();
+        $( this.styleBiggerScreen ).remove();
     });
 
     it( "should exist", inject(function( $injector ) {
