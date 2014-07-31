@@ -2,6 +2,13 @@
 {% set active = "docs" %}
 {% import "../includes/macros.swig" as macros %}
 
+{% block before_navbar %}
+    <button class="btn btn-link navbar-btn pull-start show-small-below"
+            ng-click="$event.stopPropagation(); showOffcanvas = !showOffcanvas">
+        <span class="icon icon-menu"></span>
+    </button>
+{% endblock %}
+
 {% block page %}
     <header class="hero-unit docs-master-head">
         <div class="container">
@@ -16,7 +23,8 @@
 
     <main class="container">
         <div class="row">
-            <aside class="column small-4-12 large-3-12 docs-sidebar">
+            <aside class="column large-3-12 docs-sidebar"
+                   offcanvas="showOffcanvas" target-screen="small-below">
                 {% for menuId, data in menu %}
                 <ul class="nav nav-list">
                     <li class="nav-header">{{ data.label }}</li>
@@ -49,7 +57,7 @@
                 {% endfor %}
             </aside>
 
-            <div class="column small-8-12 large-9-12">
+            <div class="column large-9-12">
                 <article class="docs-content">
                     {% block content %}{% endblock %}
                 </article>

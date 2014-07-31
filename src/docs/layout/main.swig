@@ -15,6 +15,8 @@
     <body class="{{ currentPage }}">
         <div class="navbar navbar-fixed-top docs-navbar" headroom offset="150">
             <div class="container">
+                {% block before_navbar %}{% endblock %}
+
                 <a href="/" class="navbar-brand">{{ pkg.title }}</a>
                 <nav class="navbar-nav">
                     <ul class="nav">
