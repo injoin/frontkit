@@ -138,15 +138,9 @@
                     start: function( coords ) {
                         lastSwipe = coords;
                     },
-                    end: function( coords, evt ) {
+                    end: function( coords ) {
                         var dist = coords.x - lastSwipe.x;
                         var direction = dist > 0 ? "right" : "left";
-                        var target = findScrollingParent( evt.target );
-
-                        // Does this swipe was not on the document?
-                        if ( target !== $document[ 0 ] ) {
-                            return;
-                        }
 
                         // Do we have swiped enough to do the callback?
                         if ( Math.abs( dist ) > offcanvasConfig.swipeThreshold ) {
@@ -155,18 +149,6 @@
                     }
                 });
             };
-
-            // -------------------------------------------------------------------------------------
-
-            // Find a scrolling parent.
-            // If none found, return the document element.
-            function findScrollingParent( elem ) {
-                while ( elem && elem.offsetWidth >= elem.scrollWidth ) {
-                    elem = elem.parentNode;
-                }
-
-                return elem || $document[ 0 ];
-            }
         }
     ]);
 
