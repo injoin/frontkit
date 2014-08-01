@@ -1,7 +1,7 @@
 describe( "Offcanvas Directive", function() {
     "use strict";
 
-    var $rootScope, $rootElement, $window, $compile;
+    var $rootScope, $rootElement, $compile;
     var $ = angular.element;
 
     before(function() {
@@ -18,7 +18,6 @@ describe( "Offcanvas Directive", function() {
     beforeEach( inject(function( $injector ) {
         $rootScope = $injector.get( "$rootScope" );
         $rootElement = $injector.get( "$rootElement" );
-        $window = $injector.get( "$window" );
         $compile = $injector.get( "$compile" );
 
         this.menu = angular.element( "<div></div>" );
