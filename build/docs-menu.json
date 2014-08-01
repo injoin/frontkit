@@ -54,6 +54,7 @@
             "labels": "Labels",
             "nav": "Nav",
             "navbar": "Navbar",
+            "offcanvas": "Offcanvas",
             "progress-bars": "Progress Bars"
         }
     }
