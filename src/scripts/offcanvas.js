@@ -2,11 +2,18 @@
     "use strict";
 
     var $ = ng.element;
-    ng.module( "frontkit.offcanvas", [] ).directive( "offcanvas", [
+    var module = ng.module( "frontkit.offcanvas", [] );
+
+    module.value( "offcanvasConfig", {
+        swipeThreshold: 30
+    });
+
+    module.directive( "offcanvas", [
         "$parse",
         "$window",
         "$document",
-        function( $parse, $window, $document ) {
+        "swipeManager",
+        function( $parse, $window, $document, swipeManager ) {
             var body = $document.find( "body" );
 
             return function( scope, element, attrs ) {
@@ -34,6 +41,19 @@
                             scope.$apply();
                         } catch ( e ) {}
                     }
+                });
+
+                swipeManager(function( opening ) {
+                    var tests;
+
+                    try {
+                        expr.assign( scope, opening );
+                    } catch ( e ) {}
+
+                    tests = runTests();
+                    tests.active = opening;
+
+                    activateOffcanvas( tests, runTests.prevResult );
                 });
 
                 // Functions
@@ -95,4 +115,58 @@
             };
         }
     ]);
+
+    module.factory( "swipeManager", [
+        "$injector",
+        "$document",
+        "offcanvasConfig",
+        function( $injector, $document, offcanvasConfig ) {
+            var $swipe;
+            try {
+                $swipe = $injector.get( "$swipe" );
+            } catch ( e ) {}
+
+            return function( callback ) {
+                var lastSwipe;
+
+                if ( !$swipe ) {
+                    return;
+                }
+
+                $swipe.bind( $document, {
+                    start: function( coords ) {
+                        lastSwipe = coords;
+                    },
+                    end: function( coords, evt ) {
+                        var dist = coords.x - lastSwipe.x;
+                        var direction = dist > 0 ? "right" : "left";
+                        var target = findScrollingParent( evt.target );
+
+                        // Does this swipe was not on the document?
+                        if ( target !== $document[ 0 ] ) {
+                            return;
+                        }
+
+                        // Do we have swiped enough to do the callback?
+                        if ( Math.abs( dist ) > offcanvasConfig.swipeThreshold ) {
+                            callback( direction === "right" ? true : false );
+                        }
+                    }
+                });
+            };
+
+            // -------------------------------------------------------------------------------------
+
+            // Find a scrolling parent.
+            // If none found, return the document element.
+            function findScrollingParent( elem ) {
+                while ( elem && elem.offsetWidth >= elem.scrollWidth ) {
+                    elem = elem.parentNode;
+                }
+
+                return elem || $document[ 0 ];
+            }
+        }
+    ]);
+
 }( angular );

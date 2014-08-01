@@ -14,7 +14,7 @@ describe( "Offcanvas Directive", function() {
         $( document.head ).append( this.styleTinyScreen );
     });
 
-    beforeEach( module( "frontkit.offcanvas" ) );
+    beforeEach( module( "ngTouch", "frontkit.offcanvas" ) );
     beforeEach( inject(function( $injector ) {
         $rootScope = $injector.get( "$rootScope" );
         $rootElement = $injector.get( "$rootElement" );
@@ -169,5 +169,67 @@ describe( "Offcanvas Directive", function() {
             $( window ).triggerHandler( "resize" );
             expect( this.menu[ 0 ].style.display ).to.equal( "" );
         });
+    });
+
+    // ---------------------------------------------------------------------------------------------
+
+    describe( "when has ngTouch available", function() {
+        var offcanvasConfig;
+
+        beforeEach( inject(function( $injector ) {
+            offcanvasConfig = $injector.get( "offcanvasConfig" );
+
+            this.startEvent = document.createEvent( "Event" );
+            this.startEvent.initEvent( "touchstart", true, true );
+            this.startEvent.clientY = 0;
+
+            this.endEvent = document.createEvent( "Event" );
+            this.endEvent.initEvent( "touchend", true, true );
+            this.endEvent.clientY = 0;
+        }));
+
+        it( "should open on swipe to right", function() {
+            this.compile( "foo" );
+
+            // Trigger touchstart...
+            this.startEvent.clientX = 0;
+            document.dispatchEvent( this.startEvent );
+
+            // ...and then touchend
+            this.endEvent.clientX = offcanvasConfig.swipeThreshold + 1;
+            document.dispatchEvent( this.endEvent );
+
+            expect( $rootScope.foo ).to.be.ok;
+        });
+
+        it( "should close on swipe to left", function() {
+            $rootScope.foo = true;
+            this.compile( "foo" );
+
+            // Trigger touchstart...
+            this.startEvent.clientX = offcanvasConfig.swipeThreshold + 1;
+            document.dispatchEvent( this.startEvent );
+
+            // ...and then touchend
+            this.endEvent.clientX = 0;
+            document.dispatchEvent( this.endEvent );
+
+            expect( $rootScope.foo ).to.not.be.ok;
+        });
+
+        it( "should not do anything if not enough swiped distance", function() {
+            this.compile( "foo" );
+
+            // Trigger touchstart...
+            this.startEvent.clientX = 0;
+            document.dispatchEvent( this.startEvent );
+
+            // ...and then touchend
+            this.endEvent.clientX = offcanvasConfig.swipeThreshold;
+            document.dispatchEvent( this.endEvent );
+
+            expect( $rootScope.foo ).to.be.undefined;
+        });
+
     });
 });
