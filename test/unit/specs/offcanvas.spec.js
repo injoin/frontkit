@@ -266,3 +266,51 @@ describe( "Offcanvas Directive", function() {
 
     });
 });
+
+// -------------------------------------------------------------------------------------------------
+
+describe( "Offcanvas Directive", function() {
+    "use strict";
+
+    var $rootScope;
+    var $ = angular.element;
+
+    beforeEach( module( "frontkit.offcanvas" ) );
+    beforeEach( inject(function( $injector ) {
+        var $rootElement = $injector.get( "$rootElement" );
+        var $compile = $injector.get( "$compile" );
+        $rootScope = $injector.get( "$rootScope" );
+
+        this.menu = $( "<div></div>" );
+        $rootElement.append( this.menu );
+
+        this.compile = function( expr ) {
+            this.menu.attr( "offcanvas", expr );
+            $compile( this.menu )( $rootScope );
+            $rootScope.$apply();
+
+            return this.menu;
+        };
+    }));
+
+    describe( "when ngTouch is not available", function() {
+        it( "should not try to bind to swipe events", inject(function( offcanvasConfig ) {
+            var startEvent, endEvent;
+            this.compile( "foo" );
+
+            startEvent = document.createEvent( "Event" );
+            startEvent.initEvent( "touchstart", true, true );
+            startEvent.clientX = 0;
+            startEvent.clientY = 0;
+            document.dispatchEvent( startEvent );
+
+            endEvent = document.createEvent( "Event" );
+            endEvent.initEvent( "touchend", true, true );
+            endEvent.clientX = offcanvasConfig.swipeThreshold + 1;
+            endEvent.clientY = 0;
+            document.dispatchEvent( endEvent );
+
+            expect( $rootScope.foo ).to.be.undefined;
+        }));
+    });
+});
