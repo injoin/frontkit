@@ -1,7 +1,7 @@
 describe( "Offcanvas Directive", function() {
     "use strict";
 
-    var $rootScope, $rootElement, $window;
+    var $rootScope, $rootElement, $window, $compile;
     var $ = angular.element;
 
     before(function() {
@@ -19,13 +19,14 @@ describe( "Offcanvas Directive", function() {
         $rootScope = $injector.get( "$rootScope" );
         $rootElement = $injector.get( "$rootElement" );
         $window = $injector.get( "$window" );
+        $compile = $injector.get( "$compile" );
 
         this.menu = angular.element( "<div></div>" );
         $rootElement.append( this.menu );
 
         this.compile = function( expr ) {
             this.menu.attr( "offcanvas", expr );
-            $injector.get( "$compile" )( this.menu )( $rootScope );
+            $compile( this.menu )( $rootScope );
             $rootScope.$apply();
 
             return this.menu;
@@ -42,6 +43,8 @@ describe( "Offcanvas Directive", function() {
         $( this.styleBiggerScreen ).remove();
     });
 
+    // ---------------------------------------------------------------------------------------------
+
     it( "should exist", inject(function( $injector ) {
         var getDirective = function() {
             return $injector.get( "offcanvasDirective" );
@@ -49,6 +52,37 @@ describe( "Offcanvas Directive", function() {
 
         expect( getDirective ).to.not.throw( Error );
     }));
+
+    it( "should not conflict with other offcanvas instances", function( done ) {
+        var ctx = this;
+
+        // Create another offcanvas menu
+        var another = this.menu.clone();
+        another.attr( "offcanvas", "test" );
+        $compile( another )( $rootScope );
+        $rootElement.append( another );
+
+        // ...and now compile the original menu, with the opposite condition
+        $rootScope.test = false;
+        this.compile( "!test" );
+
+        setTimeout(function() {
+            expect( ctx.getClasses( ctx.menu ) ).to.contain( "offcanvas-menu-active" );
+            expect( ctx.getClasses( another ) ).to.not.contain( "offcanvas-menu-active" );
+
+            $rootScope.test = true;
+            $rootScope.$apply();
+
+            setTimeout(function() {
+                expect( ctx.getClasses( ctx.menu ) ).to.not.contain( "offcanvas-menu-active" );
+                expect( ctx.getClasses( another ) ).to.contain( "offcanvas-menu-active" );
+
+                done();
+            }, 0 );
+        }, 0 );
+    });
+
+    // ---------------------------------------------------------------------------------------------
 
     describe( "when there's a click in body", function() {
         it( "should assign false to expression when it's true", function() {

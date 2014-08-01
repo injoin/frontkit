@@ -107,6 +107,7 @@
                     // happen normally
                     setTimeout(function() {
                         body.toggleClass( "offcanvas-active", active );
+                        element.toggleClass( "offcanvas-menu-active", active );
                     }, 0 );
 
                     // Save the current result as the previous one!

@@ -28,12 +28,14 @@
   bottom: 0;
   z-index: @zindex-offcanvas-menu;
   width: 50%;
+  padding: @padding-base-y @padding-base-x;
+  background-color: @body-bg;
   .transform( translateX( -100% ) );
   .transition( transform .25s ease-out );
   .transition( box-shadow .25s ease-out );
+}
 
-  .offcanvas-active & {
-    .transform( translateX( 0% ) );
-    .box-shadow( @offcanvas-menu-shadow );
-  }
+.offcanvas-menu-active {
+  .transform( translateX( 0% ) );
+  .box-shadow( @offcanvas-menu-shadow );
 }
