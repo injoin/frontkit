@@ -32,6 +32,7 @@
 
         <script src="{{ macros.baseUrl( "libs/holderjs/holder.js" ) }}"></script>
         <script src="{{ macros.baseUrl( "libs/angular/angular.js" ) }}"></script>
+        <script src="{{ macros.baseUrl( "libs/angular-touch/angular-touch.js" ) }}"></script>
         <script src="{{ macros.baseUrl( "libs/headroom.js/dist/headroom.js" ) }}"></script>
         <script src="{{ macros.baseUrl( "libs/headroom.js/dist/angular.headroom.js" ) }}"></script>
         <script src="{{ macros.baseUrl( "dist/frontkit-tmpl.js" ) }}"></script>
