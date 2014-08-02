@@ -23,7 +23,7 @@
 
     <main class="container">
         <div class="row">
-            <aside class="column large-3-12 docs-sidebar"
+            <aside class="column medium-4-12 large-3-12 docs-sidebar"
                    offcanvas="showOffcanvas" target-screen="small-below">
                 {% for menuId, data in menu %}
                 <ul class="nav nav-list">
@@ -57,7 +57,7 @@
                 {% endfor %}
             </aside>
 
-            <div class="column large-9-12">
+            <div class="column medium-8-12 large-9-12">
                 <article class="docs-content">
                     {% block content %}{% endblock %}
                 </article>
