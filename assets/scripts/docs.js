@@ -2,6 +2,7 @@
     "use strict";
 
     var module = ng.module( "frontkit-docs", [
+        "ngTouch",
         "headroom",
         "frontkit"
     ]);
