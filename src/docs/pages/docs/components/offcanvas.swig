@@ -1,5 +1,5 @@
 {% extends "../../../layout/docs.swig" %}
-{% set docs = "navbar" %}
+{% set docs = "offcanvas" %}
 
 {% block content %}
     <header class="page-header">
