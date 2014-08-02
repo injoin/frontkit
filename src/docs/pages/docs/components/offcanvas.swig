@@ -46,4 +46,46 @@
             </button>
         {% endhighlight %}
     </section>
+
+    <section id="arguments">
+        <h3 docs-heading="arguments">Arguments</h3>
+
+        <table class="table table-bordered table-striped">
+            <colgroup>
+                <col class="tiny-3-12 medium-2-12">
+            </colgroup>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>offcanvas</td>
+                    <td>String</td>
+                    <td>Contains the expression that will control toggling the offcanvas menu.</td>
+                </tr>
+                <tr>
+                    <td>target-screen</td>
+                    <td>String</td>
+                    <td>
+                        <p>
+                            Set the target screen size for the offcanvas menu.<br>
+                            By default, there is no target screen size.
+                        </p>
+                        <p>
+                            The value of this attribute can be any of the <a href="{{
+                                macros.siteUrl( "docs/structure/responsive-utilities" )
+                            }}#visibility">
+                                responsive utility classes for visibility
+                            </a>, but removing its prefix like <code>show-</code> or
+                            <code>hide-</code>.
+                        </p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
 {% endblock %}
