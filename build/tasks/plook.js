@@ -5,10 +5,14 @@ module.exports = function( grunt ) {
     var path = require( "path" );
     var _ = require( "lodash" );
 
+    var PLOOK_URL = "http://plook.injoin.io/";
+
     grunt.registerMultiTask(
-        "bower-rawgit", "Update Bower module references in HTML files with rawgit.com url",
+        "plook", "Update Bower module references in HTML files with Plook URLs",
         function() {
-            var dir, installed, bowerPkgRegex;
+            var bowerCfg, dir, installed, bowerPkgRegex, distRegex;
+            var distDir = grunt.config( "cfg.distDir" );
+            var version = grunt.config( "package.version" );
 
             // Quick fail: depend on "deps" task, so we ensure that every bower dep is here
             this.requires( "deps" );
@@ -21,6 +25,9 @@ module.exports = function( grunt ) {
 
             // Use the configured bower dir, or use the default bower_components
             dir = bower.config.directory || "bower_components";
+
+            // Read our bower config file
+            bowerCfg = grunt.file.readJSON( "bower.json" );
 
             // Create a hash of what is installed in bower and its respective .bower.json file
             installed = {};
@@ -37,6 +44,7 @@ module.exports = function( grunt ) {
             // Regex used to discover if a asset is a bower package.
             // The only assumption we make is that it must reside inside the configured directory.
             bowerPkgRegex = new RegExp( "^/?" + dir + "/(.+?)/" );
+            distRegex = new RegExp( "^/?" + distDir + "/(.+)$" );
 
             this.filesSrc.forEach(function( src ) {
                 // Load the contents of the file as HTML
@@ -51,11 +59,10 @@ module.exports = function( grunt ) {
                     attr = asset.is( "link" ) ? "href" : "src";
                     value = asset.attr( attr );
 
+                    // Replace bower deps first
                     value = value.replace( bowerPkgRegex, function( match, depname ) {
                         var dep = installed[ depname ];
-                        var slug = dep._source.replace( "git://github.com/", "" )
-                                              .replace( ".git", "" );
-                        var url = "https://rawgit.com/" + slug + "/";
+                        var url = PLOOK_URL + depname + "/";
 
                         // Use tag if it exists or commit otherwise.
                         // Also add a trailing slash
@@ -63,6 +70,15 @@ module.exports = function( grunt ) {
 
                         return url;
                     });
+
+                    // Replace Frontkit's dist stuff now, but only if the bower replace have did
+                    // nothing
+                    if ( value === asset.attr( attr ) ) {
+                        value = value.replace( distRegex, function( match, file ) {
+                            var url = PLOOK_URL + bowerCfg.name + "/" + version + "/";
+                            return url + file;
+                        });
+                    }
 
                     asset.attr( attr, value );
                 });
