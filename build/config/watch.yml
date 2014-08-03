@@ -7,7 +7,7 @@ options:
 styles:
   files:
     - "libs/**/*.css"
-    - "src/styles/*.less"
+    - "src/styles/**/*.less"
   tasks: css
 
 scripts:
