@@ -8,13 +8,19 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         
-        <link rel="stylesheet" href="https://rawgit.com/injoin/bower-frontkit/0.1.2/frontkit.css">
+        <link rel="stylesheet" href="http://plook.injoin.io/frontkit/0.2.0/frontkit.css">
         <link rel="stylesheet" href="/assets/styles/docs.css">
-        <link rel="stylesheet" href="https://rawgit.com/components/highlightjs/8.0.0/styles/github.css">
+        <link rel="stylesheet" href="http://plook.injoin.io/highlightjs/8.0.0/styles/github.css">
     </head>
     <body class="">
         <div class="navbar navbar-fixed-top docs-navbar" headroom="" offset="150">
             <div class="container">
+                
+    <button class="btn btn-link navbar-btn pull-start show-small-below" ng-click="$event.stopPropagation(); showOffcanvas = !showOffcanvas">
+        <span class="icon icon-menu"></span>
+    </button>
+
+
                 <a href="/" class="navbar-brand">Frontkit</a>
                 <nav class="navbar-nav">
                     <ul class="nav">
@@ -42,7 +48,7 @@
 
     <main class="container">
         <div class="row">
-            <aside class="column small-4-12 large-3-12 docs-sidebar">
+            <aside class="column medium-4-12 large-3-12 docs-sidebar" offcanvas="showOffcanvas" target-screen="small-below">
                 
                 <ul class="nav nav-list">
                     <li class="nav-header">Overview</li>
@@ -400,6 +406,21 @@
                     </li>
                     <li class="nav-item ">
                         
+                        <a href="/docs/components/offcanvas.html">
+                        
+
+                        Offcanvas
+                        
+
+                        
+                            <span class="label label-default js-highlight">JS</span>
+                        
+                        </a>
+
+                        
+                    </li>
+                    <li class="nav-item ">
+                        
                         <a href="/docs/components/progress-bars.html">
                         
 
@@ -417,7 +438,7 @@
                 
             </aside>
 
-            <div class="column small-8-12 large-9-12">
+            <div class="column medium-8-12 large-9-12">
                 <article class="docs-content">
                     
     <h2>Dropdowns</h2>
@@ -440,12 +461,26 @@
                     <div class="column small-3-12 large-2-12">
                         <input type="number" min="1" class="input" ng-model="maxItems" placeholder="Select...">
                     </div>
+
+                    <div class="column small-6-12 large-4-12">
+                        <label>
+                            <input type="checkbox" checkbox="" ng-model="useGroupBy">
+                            Group by genre
+                        </label>
+                    </div>
                 </div>
 
-                <dropdown ng-model="selectedBand" max-items="maxItems">
-                    <dropdown-items placeholder="Select a rock band...">{{ $dropdown.items[ $index ] }}</dropdown-items>
+                <dropdown ng-model="selectedBand" max-items="maxItems" ng-show="useGroupBy">
+                    <dropdown-items placeholder="Select a rock band...">{{ $dropdown.items[ $index ].name }}</dropdown-items>
+                    <dropdown-options group-by="band.genre" options="band in bands | filter: $dropdown.search">
+                        {{ band.name }}
+                    </dropdown-options>
+                </dropdown>
+
+                <dropdown ng-model="selectedBand" max-items="maxItems" ng-hide="useGroupBy">
+                    <dropdown-items placeholder="Select a rock band...">{{ $dropdown.items[ $index ].name }}</dropdown-items>
                     <dropdown-options options="band in bands | filter: $dropdown.search">
-                        {{ band }}
+                        {{ band.name }}
                     </dropdown-options>
                 </dropdown>
 
@@ -460,12 +495,26 @@
             <span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">&quot;number&quot;</span> <span class="hljs-attribute">min</span>=<span class="hljs-value">&quot;1&quot;</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;input&quot;</span> <span class="hljs-attribute">ng-model</span>=<span class="hljs-value">&quot;maxItems&quot;</span>
                    <span class="hljs-attribute">placeholder</span>=<span class="hljs-value">&quot;Select...&quot;</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;column small-6-12 large-4-12&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-title">label</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">&quot;checkbox&quot;</span> <span class="hljs-attribute">checkbox</span> <span class="hljs-attribute">ng-model</span>=<span class="hljs-value">&quot;useGroupBy&quot;</span>&gt;</span>
+                Group by genre
+            <span class="hljs-tag">&lt;/<span class="hljs-title">label</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
 
-    <span class="hljs-tag">&lt;<span class="hljs-title">dropdown</span> <span class="hljs-attribute">ng-model</span>=<span class="hljs-value">&quot;selectedBand&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-title">dropdown-items</span> <span class="hljs-attribute">placeholder</span>=<span class="hljs-value">&quot;Select a rock band...&quot;</span>&gt;</span>{{ $dropdown.items[ $index ] }}<span class="hljs-tag">&lt;/<span class="hljs-title">dropdown-items</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">dropdown</span> <span class="hljs-attribute">ng-model</span>=<span class="hljs-value">&quot;selectedBand&quot;</span> <span class="hljs-attribute">max-items</span>=<span class="hljs-value">&quot;maxItems&quot;</span> <span class="hljs-attribute">ng-show</span>=<span class="hljs-value">&quot;useGroupBy&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">dropdown-items</span> <span class="hljs-attribute">placeholder</span>=<span class="hljs-value">&quot;Select a rock band...&quot;</span>&gt;</span>{{ $dropdown.items[ $index ].name }}<span class="hljs-tag">&lt;/<span class="hljs-title">dropdown-items</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">dropdown-options</span> <span class="hljs-attribute">group-by</span>=<span class="hljs-value">&quot;band.genre&quot;</span> <span class="hljs-attribute">options</span>=<span class="hljs-value">&quot;band in bands | filter: $dropdown.search&quot;</span>&gt;</span>
+            {{ band.name }}
+        <span class="hljs-tag">&lt;/<span class="hljs-title">dropdown-options</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">dropdown</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-title">dropdown</span> <span class="hljs-attribute">ng-model</span>=<span class="hljs-value">&quot;selectedBand&quot;</span> <span class="hljs-attribute">max-items</span>=<span class="hljs-value">&quot;maxItems&quot;</span> <span class="hljs-attribute">ng-hide</span>=<span class="hljs-value">&quot;useGroupBy&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">dropdown-items</span> <span class="hljs-attribute">placeholder</span>=<span class="hljs-value">&quot;Select a rock band...&quot;</span>&gt;</span>{{ $dropdown.items[ $index ].name }}<span class="hljs-tag">&lt;/<span class="hljs-title">dropdown-items</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-title">dropdown-options</span> <span class="hljs-attribute">options</span>=<span class="hljs-value">&quot;band in bands | filter: $dropdown.search&quot;</span>&gt;</span>
-            {{ band }}
+            {{ band.name }}
         <span class="hljs-tag">&lt;/<span class="hljs-title">dropdown-options</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-title">dropdown</span>&gt;</span>
 
@@ -594,7 +643,9 @@
 
         <div class="example"></div>
         <pre ng-non-bindable="" class="highlight language-xml"><span class="hljs-comment">&lt;!-- You could omit the filter if you don&apos;t want to allow searching options --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">dropdown-options</span> <span class="hljs-attribute">options</span>=<span class="hljs-value">&quot;option in options | filter: $dropdown.search&quot;</span>&gt;</span>
+<span class="hljs-comment">&lt;!-- You could also omit the group-by attribute if you don&apos;t want groups --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">dropdown-options</span> <span class="hljs-attribute">options</span>=<span class="hljs-value">&quot;option in options | filter: $dropdown.search&quot;</span>
+                  <span class="hljs-attribute">group-by</span>=<span class="hljs-value">&quot;option.groupKey&quot;</span>&gt;</span>
     <span class="hljs-comment">&lt;!-- Render the content of the foo property of the current option --&gt;</span>
     {{ option.foo }}
 <span class="hljs-tag">&lt;/<span class="hljs-title">dropdown-options</span>&gt;</span></pre>
@@ -616,6 +667,14 @@
                 </thead>
                 <tbody>
                     <tr>
+                        <td>group-by</td>
+                        <td>String</td>
+                        <td>
+                            An Angular expression that allows for grouping options by its return
+                            value.
+                        </td>
+                    </tr>
+                    <tr>
                         <td>options</td>
                         <td>String</td>
                         <td><code>ng-repeat</code> like expression to generate the option list.</td>
@@ -631,11 +690,12 @@
     </main>
 
 
-        <script src="https://rawgit.com/imsky/holder/v2.3.2/holder.js"></script>
-        <script src="https://rawgit.com/angular/bower-angular/v1.2.19/angular.js"></script>
-        <script src="https://rawgit.com/WickyNilliams/headroom.js/v0.6.0/dist/headroom.js"></script>
-        <script src="https://rawgit.com/WickyNilliams/headroom.js/v0.6.0/dist/angular.headroom.js"></script>
-        <script src="https://rawgit.com/injoin/bower-frontkit/0.1.2/frontkit-tmpl.js"></script>
+        <script src="http://plook.injoin.io/holderjs/v2.3.2/holder.js"></script>
+        <script src="http://plook.injoin.io/angular/v1.2.21/angular.js"></script>
+        <script src="http://plook.injoin.io/angular-touch/v1.2.21/angular-touch.js"></script>
+        <script src="http://plook.injoin.io/headroom.js/v0.6.0/dist/headroom.js"></script>
+        <script src="http://plook.injoin.io/headroom.js/v0.6.0/dist/angular.headroom.js"></script>
+        <script src="http://plook.injoin.io/frontkit/0.2.0/frontkit-tmpl.js"></script>
         <script src="/assets/scripts/docs.js"></script>
     </body>
 </html>

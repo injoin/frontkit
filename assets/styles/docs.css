@@ -7,11 +7,13 @@
 .headroom--pinned {
   -webkit-transform: translateY(0%);
   -moz-transform: translateY(0%);
+  -ms-transform: translateY(0%);
   transform: translateY(0%);
 }
 .headroom--unpinned {
   -webkit-transform: translateY(-100%);
   -moz-transform: translateY(-100%);
+  -ms-transform: translateY(-100%);
   transform: translateY(-100%);
 }
 body {
@@ -37,6 +39,7 @@ body.home {
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
   -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }
 .home .docs-footer {
@@ -48,6 +51,7 @@ body.home {
   padding-bottom: 0.625rem;
   -webkit-transform: translateX(-50%);
   -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
   transform: translateX(-50%);
 }
 .docs-navbar {
@@ -70,6 +74,13 @@ body.home {
 }
 .docs-navbar .navbar-nav .nav-item.active > a,
 .docs-navbar .navbar-nav .nav-item > a:hover {
+  color: #ffffff;
+}
+.docs-navbar .btn.btn-link {
+  color: #b3e9e6;
+  text-decoration: none;
+}
+.docs-navbar .btn.btn-link:hover {
   color: #ffffff;
 }
 .docs-sidebar {

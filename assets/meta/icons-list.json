@@ -89,7 +89,7 @@
         "bitcoin-circle"
     ],
     "Others": [
-        "external",
+        "asterisk",
         "plus",
         "remove",
         "home",
@@ -110,6 +110,7 @@
         "stickynote-o",
         "scissors",
         "tools",
+        "calendar",
         "gun",
         "lens",
         "city",
@@ -169,7 +170,6 @@
         "file",
         "cursor",
         "tasks",
-        "asterisk",
         "wifi",
         "usb",
         "download",
@@ -242,6 +242,7 @@
         "exit",
         "quote-left",
         "quote-right",
-        "preview"
+        "preview",
+        "external"
     ]
 }

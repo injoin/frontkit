@@ -8,13 +8,19 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         
-        <link rel="stylesheet" href="https://rawgit.com/injoin/bower-frontkit/0.1.2/frontkit.css">
+        <link rel="stylesheet" href="http://plook.injoin.io/frontkit/0.2.0/frontkit.css">
         <link rel="stylesheet" href="/assets/styles/docs.css">
-        <link rel="stylesheet" href="https://rawgit.com/components/highlightjs/8.0.0/styles/github.css">
+        <link rel="stylesheet" href="http://plook.injoin.io/highlightjs/8.0.0/styles/github.css">
     </head>
     <body class="">
         <div class="navbar navbar-fixed-top docs-navbar" headroom="" offset="150">
             <div class="container">
+                
+    <button class="btn btn-link navbar-btn pull-start show-small-below" ng-click="$event.stopPropagation(); showOffcanvas = !showOffcanvas">
+        <span class="icon icon-menu"></span>
+    </button>
+
+
                 <a href="/" class="navbar-brand">Frontkit</a>
                 <nav class="navbar-nav">
                     <ul class="nav">
@@ -42,7 +48,7 @@
 
     <main class="container">
         <div class="row">
-            <aside class="column small-4-12 large-3-12 docs-sidebar">
+            <aside class="column medium-4-12 large-3-12 docs-sidebar" offcanvas="showOffcanvas" target-screen="small-below">
                 
                 <ul class="nav nav-list">
                     <li class="nav-header">Overview</li>
@@ -400,6 +406,21 @@
                     </li>
                     <li class="nav-item ">
                         
+                        <a href="/docs/components/offcanvas.html">
+                        
+
+                        Offcanvas
+                        
+
+                        
+                            <span class="label label-default js-highlight">JS</span>
+                        
+                        </a>
+
+                        
+                    </li>
+                    <li class="nav-item ">
+                        
                         <a href="/docs/components/progress-bars.html">
                         
 
@@ -417,7 +438,7 @@
                 
             </aside>
 
-            <div class="column small-8-12 large-9-12">
+            <div class="column medium-8-12 large-9-12">
                 <article class="docs-content">
                     
     <header class="page-header">
@@ -461,11 +482,12 @@
     </main>
 
 
-        <script src="https://rawgit.com/imsky/holder/v2.3.2/holder.js"></script>
-        <script src="https://rawgit.com/angular/bower-angular/v1.2.19/angular.js"></script>
-        <script src="https://rawgit.com/WickyNilliams/headroom.js/v0.6.0/dist/headroom.js"></script>
-        <script src="https://rawgit.com/WickyNilliams/headroom.js/v0.6.0/dist/angular.headroom.js"></script>
-        <script src="https://rawgit.com/injoin/bower-frontkit/0.1.2/frontkit-tmpl.js"></script>
+        <script src="http://plook.injoin.io/holderjs/v2.3.2/holder.js"></script>
+        <script src="http://plook.injoin.io/angular/v1.2.21/angular.js"></script>
+        <script src="http://plook.injoin.io/angular-touch/v1.2.21/angular-touch.js"></script>
+        <script src="http://plook.injoin.io/headroom.js/v0.6.0/dist/headroom.js"></script>
+        <script src="http://plook.injoin.io/headroom.js/v0.6.0/dist/angular.headroom.js"></script>
+        <script src="http://plook.injoin.io/frontkit/0.2.0/frontkit-tmpl.js"></script>
         <script src="/assets/scripts/docs.js"></script>
     </body>
 </html>
