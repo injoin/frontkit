@@ -28,7 +28,7 @@ if [ ! -z "${TRAVIS_TAG}" ]; then
     git merge master --no-edit
 
     # Update references to a few compiled files
-    grunt docs deps bower-rawgit dist-bower
+    grunt docs deps plook
 
     # Force add ignored stuff
     git add -f assets/styles/docs.css

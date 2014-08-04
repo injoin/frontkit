@@ -8,6 +8,7 @@ module.exports = function( config ) {
         files: [
             // Deps
             "libs/angular/angular.js",
+            "libs/angular-touch/angular-touch.js",
 
             // Sources
             "src/scripts/*.js",

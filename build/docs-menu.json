@@ -54,6 +54,10 @@
             "labels": "Labels",
             "nav": "Nav",
             "navbar": "Navbar",
+            "offcanvas": {
+                "label": "Offcanvas",
+                "js": true
+            },
             "progress-bars": "Progress Bars"
         }
     }

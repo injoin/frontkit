@@ -1,0 +1,10 @@
+// Mixins - Navbar
+// -------------------------------------------------------------------------------------------------
+
+// Calculate the vertical spacing of a navbar component
+.navbar-spacing( @height: @line-height-base, @prop: padding ) {
+  @value: ( ( @navbar-height - @height ) / 2 ) - @one-px;
+
+  @{prop}-top: @value;
+  @{prop}-bottom: @value;
+}

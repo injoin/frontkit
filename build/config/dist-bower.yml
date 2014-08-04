@@ -1,4 +1,0 @@
-docs:
-  src:
-    - docs/**/*.html
-    - index.html

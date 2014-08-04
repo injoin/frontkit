@@ -83,7 +83,7 @@
  * 2. Add a frame effect to the options list
  * 3. Make sure it's shown on top of other elements
  */
-.dropdown-options {
+.dropdown-optgroups {
   position: absolute;
   z-index: @zindex-dropdown-options; /* 4 */
   overflow-y: auto;
@@ -101,6 +101,29 @@
   .dropdown.open & {
     display: block;
   }
+}
+
+.dropdown-optgroup {
+  padding: 0 @padding-base-x;
+
+  &.dropdown-optgroup-ungrouped {
+    padding-left: 0;
+  }
+
+  + .dropdown-optgroup {
+    border-top: 1px solid @dropdown-optgroup-separator;
+  }
+}
+
+.dropdown-optgroup-label {
+  display: block;
+  padding: @padding-small-y 0;
+  font-weight: bold;
+}
+
+.dropdown-options {
+  margin: 0 -@padding-base-x 0 0;
+  list-style: none;
 }
 
 /*

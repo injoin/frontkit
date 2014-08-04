@@ -24,12 +24,26 @@
                         <input type="number" min="1" class="input" ng-model="maxItems"
                                placeholder="Select...">
                     </div>
+
+                    <div class="column small-6-12 large-4-12">
+                        <label>
+                            <input type="checkbox" checkbox ng-model="useGroupBy">
+                            Group by genre
+                        </label>
+                    </div>
                 </div>
 
-                <dropdown ng-model="selectedBand" max-items="maxItems">
-                    <dropdown-items placeholder="Select a rock band...">{{ $dropdown.items[ $index ] }}</dropdown-items>
+                <dropdown ng-model="selectedBand" max-items="maxItems" ng-show="useGroupBy">
+                    <dropdown-items placeholder="Select a rock band...">{{ $dropdown.items[ $index ].name }}</dropdown-items>
+                    <dropdown-options group-by="band.genre" options="band in bands | filter: $dropdown.search">
+                        {{ band.name }}
+                    </dropdown-options>
+                </dropdown>
+
+                <dropdown ng-model="selectedBand" max-items="maxItems" ng-hide="useGroupBy">
+                    <dropdown-items placeholder="Select a rock band...">{{ $dropdown.items[ $index ].name }}</dropdown-items>
                     <dropdown-options options="band in bands | filter: $dropdown.search">
-                        {{ band }}
+                        {{ band.name }}
                     </dropdown-options>
                 </dropdown>
 
@@ -46,12 +60,26 @@
                             <input type="number" min="1" class="input" ng-model="maxItems"
                                    placeholder="Select...">
                         </div>
+
+                        <div class="column small-6-12 large-4-12">
+                            <label>
+                                <input type="checkbox" checkbox ng-model="useGroupBy">
+                                Group by genre
+                            </label>
+                        </div>
                     </div>
 
-                    <dropdown ng-model="selectedBand">
-                        <dropdown-items placeholder="Select a rock band...">{{ $dropdown.items[ $index ] }}</dropdown-items>
+                    <dropdown ng-model="selectedBand" max-items="maxItems" ng-show="useGroupBy">
+                        <dropdown-items placeholder="Select a rock band...">{{ $dropdown.items[ $index ].name }}</dropdown-items>
+                        <dropdown-options group-by="band.genre" options="band in bands | filter: $dropdown.search">
+                            {{ band.name }}
+                        </dropdown-options>
+                    </dropdown>
+
+                    <dropdown ng-model="selectedBand" max-items="maxItems" ng-hide="useGroupBy">
+                        <dropdown-items placeholder="Select a rock band...">{{ $dropdown.items[ $index ].name }}</dropdown-items>
                         <dropdown-options options="band in bands | filter: $dropdown.search">
-                            {{ band }}
+                            {{ band.name }}
                         </dropdown-options>
                     </dropdown>
 
@@ -190,7 +218,9 @@
         {% highlight xml %}
             {% raw %}
                 <!-- You could omit the filter if you don't want to allow searching options -->
-                <dropdown-options options="option in options | filter: $dropdown.search">
+                <!-- You could also omit the group-by attribute if you don't want groups -->
+                <dropdown-options options="option in options | filter: $dropdown.search"
+                                  group-by="option.groupKey">
                     <!-- Render the content of the foo property of the current option -->
                     {{ option.foo }}
                 </dropdown-options>
@@ -213,6 +243,14 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <tr>
+                        <td>group-by</td>
+                        <td>String</td>
+                        <td>
+                            An Angular expression that allows for grouping options by its return
+                            value.
+                        </td>
+                    </tr>
                     <tr>
                         <td>options</td>
                         <td>String</td>

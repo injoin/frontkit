@@ -3,6 +3,7 @@
 
     ng.module( "frontkit", [
         "frontkit.checkbox",
-        "frontkit.dropdown"
+        "frontkit.dropdown",
+        "frontkit.offcanvas"
     ]);
 }( angular );

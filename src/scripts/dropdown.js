@@ -1,4 +1,3 @@
-/* jshint unused: false */
 !function( ng ) {
     "use strict";
 
@@ -19,7 +18,7 @@
             definition.restrict = "EA";
             definition.replace = true;
             definition.transclude = true;
-            definition.templateUrl = "templates/dropdown/single.html";
+            definition.templateUrl = "templates/dropdown/dropdown.html";
             definition.controller = "DropdownController";
             definition.controllerAs = "$dropdown";
             definition.scope = true;
@@ -67,14 +66,14 @@
                 transclude( scope, function( children ) {
                     var clone = $( "<div>" ).append( children );
                     var items = clone.querySelector( ".dropdown-item" );
-                    var options = clone.querySelector( ".dropdown-options" );
+                    var optgroups = clone.querySelector( ".dropdown-optgroups" );
 
                     if ( items.length ) {
                         element.querySelector( ".dropdown-container" ).prepend( items );
                     }
 
-                    if ( options.length ) {
-                        element.querySelector( "dropdown-options" ).replaceWith( options );
+                    if ( optgroups.length ) {
+                        element.querySelector( "dropdown-options" ).replaceWith( optgroups );
                     }
                 });
 
@@ -97,13 +96,15 @@
 
     module.controller( "DropdownController", [
         "$scope",
+        "$parse",
         "$attrs",
         "$q",
-        function( $scope, $attrs, $q ) {
+        function( $scope, $parse, $attrs, $q ) {
             var ctrl = this;
             var EMPTY_SEARCH = "";
 
-            ctrl.options = [];
+            ctrl.rawOptions = [];
+            ctrl.options = {};
             ctrl.items = [];
             ctrl.placeholder = null;
             ctrl.valueKey = null;
@@ -139,6 +140,8 @@
                 if ( ctrl.isFull() ) {
                     ctrl.close();
                 }
+
+                $scope.$safeApply();
             };
 
             ctrl.close = function() {
@@ -151,7 +154,7 @@
             };
 
             ctrl.findAvailableOption = function( item ) {
-                var options = ctrl.options;
+                var options = ctrl.rawOptions;
                 var index = options.indexOf( item );
                 var movement = index === options.length - 1 ? -1 : 1;
 
@@ -167,38 +170,82 @@
                 return item;
             };
 
-            ctrl.parseOptions = function( model ) {
+            ctrl.parseOptions = function( ngRepeat, groupingExpr ) {
                 var currPromise;
-                $scope.$watch( model, function watchFn( value ) {
+                var groupBy = $parse( groupingExpr );
+
+                $scope.$watch( ngRepeat.expr, function watchFn( value ) {
                     var promise;
                     currPromise = null;
 
                     if ( value == null ) {
-                        ctrl.options = [];
-                    } else {
-                        promise = $q.when( value ).then(function( options ) {
-                            var activeKey;
-                            var isArray = ng.isArray( options );
+                        ctrl.options = {};
+                        ctrl.rawOptions = [];
+                        return;
+                    }
 
-                            if ( promise !== currPromise ) {
-                                return;
-                            } else if ( !isArray && !ng.isObject( options ) ) {
-                                throw new Error( "Dropdown options should be array or object!" );
+                    promise = $q.when( value ).then(function( options ) {
+                        var activeKey;
+                        var isArray = ng.isArray( options );
+
+                        if ( promise !== currPromise ) {
+                            return;
+                        } else if ( !isArray && !ng.isObject( options ) ) {
+                            throw new Error( "Dropdown options should be array or object!" );
+                        }
+
+                        ctrl.options = {};
+
+                        ng.forEach( options, function( option, key ) {
+                            var group;
+                            var locals = {};
+                            locals.$dropdown = ctrl;
+                            locals[ ngRepeat.key ] = !isArray ? key : null;
+                            locals[ ngRepeat.item ] = option;
+
+                            group = groupBy( $scope, locals );
+                            group = group == null ? "" : group.toString().trim();
+                            ctrl.options[ group ] = ctrl.options[ group ] || ( isArray ? [] : {} );
+
+                            if ( isArray ) {
+                                ctrl.options[ group ].push( option );
+                            } else {
+                                ctrl.options[ group ][ key ] = option;
                             }
-
-                            ctrl.options = options;
-
-                            activeKey = isArray ? 0 : Object.keys( options )[ 0 ];
-                            ctrl.activeOption = options[ activeKey ];
                         });
 
-                        currPromise = promise;
-                    }
+                        // Sort the options object by keys
+                        ctrl.options = sortByKeys( ctrl.options );
+                        ctrl.rawOptions = extractOptions( ctrl.options );
+
+                        activeKey = isArray ? 0 : Object.keys( options )[ 0 ];
+                        ctrl.activeOption = ctrl.rawOptions[ activeKey ];
+                    });
+
+                    currPromise = promise;
                 }, true );
             };
 
             function clearSearch() {
                 ctrl.search = EMPTY_SEARCH;
+            }
+
+            function sortByKeys( obj ) {
+                var ret = {};
+                ng.forEach( Object.keys( obj ).sort(), function( key ) {
+                    ret[ key ] = obj[ key ];
+                });
+
+                return ret;
+            }
+
+            function extractOptions( groups ) {
+                var ret = [];
+                ng.forEach( groups, function( options ) {
+                    ret = ret.concat( options );
+                });
+
+                return ret;
             }
         }
     ]);
@@ -255,21 +302,30 @@
 
             definition.link = function( scope, element, attr, $dropdown, transclude ) {
                 var list = element[ 0 ];
+                var optgroup = element.querySelector( ".dropdown-optgroup" );
                 var option = element.querySelector( ".dropdown-option" );
                 var repeat = repeatParser.parse( attr.options );
 
                 // If we have a repeat expr, let's use it to build the option list
                 if ( repeat ) {
-                    $dropdown.parseOptions( repeat.expr );
-                    repeat.expr = "$dropdown.options";
+                    $dropdown.parseOptions( repeat, attr.groupBy );
 
                     // Option list building
                     transclude(function( childs ) {
                         option.append( childs );
                     });
 
-                    // Add a few directives to the option...
+                    // Create optgroup's ng-repeat expression
+                    optgroup.attr( "ng-repeat", "(group, options) in $dropdown.options" );
+                    optgroup.attr( "ng-class", "{" +
+                        "'dropdown-optgroup-ungrouped': group === ''" +
+                    "}" );
+
+                    // Update repeat expression for options, making them use groups
+                    repeat.expr = "options";
                     option.attr( "ng-repeat", repeatParser.toNgRepeat( repeat ) );
+
+                    // Add a few other directives to the option...
                     option.attr( "ng-click", "$dropdown.addItem( " + repeat.item + " )" );
                     option.attr( "ng-class", "{" +
                         "active: $dropdown.activeOption === " + repeat.item + "," +
@@ -278,7 +334,7 @@
                     "}" );
 
                     // ...and compile it
-                    $compile( option )( scope );
+                    $compile( optgroup )( scope );
                 }
 
                 // Configure the overflow for this list
@@ -295,24 +351,11 @@
                 // Functions
                 // ---------------------------------------------------------------------------------
                 function adjustScroll() {
-                    var fromScrollTop, index, activeElem;
-                    var options = $dropdown.options;
+                    var fromScrollTop;
+                    var options = $dropdown.rawOptions;
                     var scrollTop = list.scrollTop;
-
-                    if ( ng.isArray( options ) ) {
-                        index = options.indexOf( $dropdown.activeOption );
-                    } else {
-                        // To keep compatibility with arrays, we'll init the index as -1
-                        index = -1;
-                        Object.keys( options ).some(function( key, i ) {
-                            if ( options[ key ] === $dropdown.activeOption ) {
-                                index = i;
-                                return true;
-                            }
-                        });
-                    }
-
-                    activeElem = list.querySelectorAll( ".dropdown-option" )[ index ];
+                    var index = options.indexOf( $dropdown.activeOption );
+                    var activeElem = list.querySelectorAll( ".dropdown-option" )[ index ];
 
                     if ( !$dropdown.open || !activeElem ) {
                         // To be handled!
@@ -400,8 +443,6 @@
             definition.restrict = "C";
             definition.require = "^dropdown";
             definition.link = function( scope, element, attr, $dropdown ) {
-                var inputWrapper = element.querySelector( ".dropdown-input" );
-                var inputHelper = element.querySelector( ".dropdown-input-helper" );
                 var input = element.querySelector( ".dropdown-input input" );
 
                 // Scope Watchers
@@ -410,6 +451,10 @@
                     if ( search && !$dropdown.isFull() ) {
                         $dropdown.open = true;
                     }
+                });
+
+                scope.$watchCollection( "$dropdown.items", function() {
+                    fixInputWidth( $dropdown, element, input );
                 });
 
                 // DOM Events
@@ -448,28 +493,34 @@
                 });
 
                 input.on( "keydown", function() {
-                    var textWidth;
-
-                    if ( !$dropdown.items.length ) {
-                        inputWrapper.css( "width", "100%" );
-                        return;
-                    }
-
-                    // Find the width of the input string
-                    inputHelper.text( input.val() ).css( "display", "inline" );
-                    textWidth = inputHelper[ 0 ].getBoundingClientRect().width;
-
-                    // Use the width found before and add some room to avoid a flash of
-                    // overflow in the input
-                    inputWrapper.css( "width", "calc( " + textWidth + "px + 1em )" );
-
-                    inputHelper.css( "display", "none" );
+                    fixInputWidth( $dropdown, element, input );
                 });
             };
 
             return definition;
 
             // -------------------------------------------------------------------------------------
+
+            function fixInputWidth( $dropdown, element, input ) {
+                var textWidth;
+                var inputWrapper = element.querySelector( ".dropdown-input" );
+                var inputHelper = element.querySelector( ".dropdown-input-helper" );
+
+                if ( !$dropdown.items.length ) {
+                    inputWrapper.css( "width", "100%" );
+                    return;
+                }
+
+                // Find the width of the input string
+                inputHelper.text( input.val() ).css( "display", "inline" );
+                textWidth = inputHelper[ 0 ].getBoundingClientRect().width;
+
+                // Use the width found before and add some room to avoid a flash of
+                // overflow in the input
+                inputWrapper.css( "width", "calc( " + textWidth + "px + 1em )" );
+
+                inputHelper.css( "display", "none" );
+            }
 
             function hasCharLength( key ) {
                 var str = String.fromCharCode( key );
@@ -496,7 +547,7 @@
 
             function handleKeyNav( evt, scope, $dropdown ) {
                 var limit, movement, originalMovement, method, index, noActiveOption;
-                var options = $dropdown.options;
+                var options = $dropdown.rawOptions;
                 var active = $dropdown.activeOption;
                 var singleSelection = $dropdown.maxItems === 1;
 

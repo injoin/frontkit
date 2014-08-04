@@ -1,0 +1,41 @@
+/* Offcanvas
+   ============================================================================================== */
+
+.offcanvas {
+  overflow-x: hidden;
+}
+
+.offcanvas-active {
+  overflow-y: hidden;
+
+  &:after {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: @zindex-offcanvas-overlay;
+    content: "";
+    background: @offcanvas-overlay-color;
+  }
+}
+
+.offcanvas-menu {
+  position: fixed;
+  overflow-y: auto;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  z-index: @zindex-offcanvas-menu;
+  width: 50%;
+  padding: @padding-base-y @padding-base-x;
+  background-color: @body-bg;
+  .transform( translateX( -100% ) );
+  .transition( transform .25s ease-out );
+  .transition( box-shadow .25s ease-out );
+}
+
+.offcanvas-menu-active {
+  .transform( translateX( 0% ) );
+  .box-shadow( @offcanvas-menu-shadow );
+}
