@@ -2,14 +2,14 @@
     "name": "frontkit",
     "description": "The powerful front-end framework from InJoin.",
     "dependencies": {
-        "angular": "~1.2.10"
+        "angular": "~1.2.10",
+        "normalize.css": "~3.0.0"
     },
     "devDependencies": {
         "angular-mocks": "~1.2.10",
         "angular-touch": "~1.2.10",
         "headroom.js": "~0.6.0",
         "holderjs": "~2.3.1",
-        "highlightjs": "~8.0.0",
-        "normalize.css": "~3.0.0"
+        "highlightjs": "~8.0.0"
     }
 }
