@@ -7,7 +7,7 @@
         "type": "git",
         "url": "git://github.com/injoin/frontkit.git"
     },
-    "homepage": "https://github.com/injoin/frontkit",
+    "homepage": "http://frontkit.injoin.io",
     "license": "MIT",
     "dependencies": {},
     "devDependencies": {
