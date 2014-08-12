@@ -1,5 +1,7 @@
 core:
-  src: src/styles/frontkit.less
+  src:
+    - libs/normalize.css/normalize.css
+    - src/styles/frontkit.less
   dest: dist/frontkit.css
 
 core-min:
@@ -10,7 +12,7 @@ core-min:
     sourceMapRootpath: /
     outputSourceFiles: true
     cleancss: true
-  src: src/styles/frontkit.less
+  src: "<%= less.core.src %>"
   dest: dist/frontkit.min.css
 
 docs:
