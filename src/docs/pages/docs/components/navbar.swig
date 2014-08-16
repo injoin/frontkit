@@ -169,4 +169,26 @@
             {% endhighlight %}
         </section>
     </section>
+
+    <section id="static">
+        <h3 docs-heading="static">Static Navbar</h3>
+        <p>
+            You can have a navbar that is full width with no rounded corners by using the
+            <code>.navbar-static</code> class. Better used attached to the top or bottom of an
+            element, like the <code>&lt;body&gt;</code> itself.
+        </p>
+
+        <div class="example">
+            <div class="navbar navbar-static">
+                <a href="#" class="navbar-brand">Brand</a>
+                <ul class="nav navbar-nav">
+                    <li class="nav-item active"><a href="#">Link</a></li>
+                    <li class="nav-item"><a href="#">Link</a></li>
+                </ul>
+            </div>
+        </div>
+        {% highlight xml %}
+            <div class="navbar navbar-static"></div>
+        {% endhighlight %}
+    </section>
 {% endblock %}
