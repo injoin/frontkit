@@ -9,14 +9,7 @@
   overflow-y: hidden;
 
   &:after {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: @zindex-offcanvas-overlay;
-    content: "";
-    background: @offcanvas-overlay-color;
+    .make-overlay( fixed );
   }
 }
 
