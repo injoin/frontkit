@@ -58,6 +58,7 @@
                 "label": "Offcanvas",
                 "js": true
             },
+            "overlay": "Overlay",
             "progress-bars": "Progress Bars"
         }
     }
