@@ -33,4 +33,6 @@ if [ ! -z "${TRAVIS_TAG}" ]; then
 
     # Back to the project root
     cd ..
+else
+    echo "Not a tagged commit"
 fi
