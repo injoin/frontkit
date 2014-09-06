@@ -15,10 +15,23 @@
             attribute to any element with a <code>title</code> attribute.
         </p>
 
-        <div class="example">
-            Lorem ipsum dolor sit amet, consectetur
-            <abbr title="I'm a tooltip!" tooltip>adipiscing elit</abbr>.
-            Curabitur finibus augue eget nibh euismod euismod.
+        <div class="example" ng-init="tooltip = 'I\'m a tooltip!'">
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <label class="column small-3-12 medium-4-12 large-3-12">Tooltip content:</label>
+                    <div class="column small-5-12">
+                        <input type="text" class="input" ng-model="tooltip" placeholder="Type...">
+                    </div>
+                </div>
+            </form>
+
+            {% raw -%}
+            <p>
+                Lorem ipsum dolor sit amet, consectetur
+                <a href title="{{ tooltip }}" tooltip>adipiscing elit</a>.
+                Curabitur finibus augue eget nibh euismod euismod.
+            </p>
+            {% endraw %}
         </div>
         {% highlight xml %}
             Lorem ipsum dolor sit amet, consectetur

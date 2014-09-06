@@ -5,18 +5,23 @@ describe( "Tooltip Directive", function() {
 
     beforeEach( module( "frontkit.tooltip" ) );
     beforeEach( inject(function( $injector ) {
+        var self = this;
         var $rootScope = $injector.get( "$rootScope" );
         var $document = $injector.get( "$document" );
         var $compile = $injector.get( "$compile" );
 
         this.clock = sinon.useFakeTimers();
 
-        this.element = $( "<span title='Foobar' tooltip>" ).text( "foo" );
-        this.title = this.element.attr( "title" );
+        this.element = $( "<span title='{{ title }}' tooltip>" ).text( "foo" );
         $document.find( "body" ).append( this.element );
         $compile( this.element )( $rootScope );
 
+        this.setTitle = function( title ) {
+            $rootScope.title = self.title = title;
+        };
+
         this.tooltip = $document.querySelector( ".tooltip" );
+        this.setTitle( "foobar" );
     }));
 
     afterEach(function() {
@@ -52,6 +57,13 @@ describe( "Tooltip Directive", function() {
 
             this.clock.tick( 300 );
             expect( tooltip.className.split( " " ) ).to.contain( "visible" );
+        });
+
+        it( "should not show the tooltip if no title available", function() {
+            this.setTitle( "" );
+            this.clock.tick( 300 );
+
+            expect( this.tooltip[ 0 ].className.split( " " ) ).to.not.contain( "visible" );
         });
 
         it( "should set the tooltip content to the title attribute", function() {
