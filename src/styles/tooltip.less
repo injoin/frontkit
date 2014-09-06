@@ -1,0 +1,29 @@
+/* Tooltip
+   ============================================================================================== */
+
+.tooltip {
+  position: fixed;
+  max-width: @tooltip-max-width;
+  margin-top: @tooltip-arrow-size;
+  padding: @padding-small-y @padding-small-x;
+  font-size: @font-size-small;
+  color: @tooltip-text-color;
+  background-color: @tooltip-bg;
+  border-radius: @border-radius-base;
+  opacity: 0;
+  .transform( translateX( -50% ) );
+  .transition( .15s linear opacity );
+
+  &.visible {
+    opacity: @tooltip-opacity;
+  }
+
+  &:before {
+    position: absolute;
+    top: -@tooltip-arrow-size;
+    left: 50%;
+    content: "";
+    .make-triangle( up, @tooltip-arrow-size, @tooltip-bg );
+    .transform( translateX( -50% ) );
+  }
+}

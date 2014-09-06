@@ -59,7 +59,8 @@
                 "js": true
             },
             "overlay": "Overlay",
-            "progress-bars": "Progress Bars"
+            "progress-bars": "Progress Bars",
+            "tooltips": "Tooltips"
         }
     }
 }
