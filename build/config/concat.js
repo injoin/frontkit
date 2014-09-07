@@ -1,11 +1,6 @@
 module.exports = function( grunt ) {
     "use strict";
 
-    var removeSpecialBanners = function( src ) {
-        src = src.replace( /\/\*!.+?\*\//, "" );
-        return src;
-    };
-
     return {
         core: {
             src: [
@@ -23,8 +18,7 @@ module.exports = function( grunt ) {
         },
         "banner-css": {
             options: {
-                banner: grunt.file.read( "build/banners/banner-css.txt" ),
-                process: removeSpecialBanners
+                banner: grunt.file.read( "build/banners/banner-css.txt" )
             },
             src: "dist/*.css",
             expand: true

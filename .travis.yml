@@ -17,6 +17,11 @@ after_success:
   - chmod +x build/scripts/docs-update.sh
   - ./build/scripts/docs-update.sh
 
+# Try to avoid problem with tag_name not well formed
+# See travis-ci/travis-ci#2510 for reference
+before_deploy:
+  - git fetch --tags
+
 deploy:
   provider: releases
   api-key: "${GH_TOKEN}"

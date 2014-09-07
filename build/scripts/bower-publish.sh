@@ -18,7 +18,7 @@ if [ ! -z "${TRAVIS_TAG}" ]; then
 
     # Unzip the package into the git repo, copy the bower.json file
     unzip -o frontkit.dev.zip -d bower-frontkit
-    cp bower.json bower-frontkit/bower.json
+    cp build/release-bower.json bower-frontkit/bower.json
 
     # cd into the repo and configure git
     cd bower-frontkit
@@ -33,4 +33,6 @@ if [ ! -z "${TRAVIS_TAG}" ]; then
 
     # Back to the project root
     cd ..
+else
+    echo "Not a tagged commit"
 fi

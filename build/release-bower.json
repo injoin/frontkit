@@ -1,0 +1,8 @@
+{
+    "name": "frontkit",
+    "description": "The powerful front-end framework from InJoin.",
+    "dependencies": {
+        "angular": "~1.2.10"
+    },
+    "homepage": "http://frontkit.injoin.io"
+}

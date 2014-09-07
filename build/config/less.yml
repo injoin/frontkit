@@ -1,7 +1,5 @@
 core:
-  src:
-    - libs/normalize.css/normalize.css
-    - src/styles/frontkit.less
+  src: src/styles/frontkit.less
   dest: dist/frontkit.css
 
 core-min:
