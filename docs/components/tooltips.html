@@ -358,9 +358,7 @@
 
                         
                     </li>
-                    <li class="nav-item 
-        active
-    ">
+                    <li class="nav-item ">
                         
                         <a href="/docs/components/labels.html">
                         
@@ -372,8 +370,6 @@
                         
                         </a>
 
-                        
-                            <div submenu=""></div>
                         
                     </li>
                     <li class="nav-item ">
@@ -447,7 +443,9 @@
 
                         
                     </li>
-                    <li class="nav-item ">
+                    <li class="nav-item 
+        active
+    ">
                         
                         <a href="/docs/components/tooltips.html">
                         
@@ -460,6 +458,8 @@
                         </a>
 
                         
+                            <div submenu=""></div>
+                        
                     </li>
                     
                 </ul>
@@ -469,39 +469,39 @@
             <div class="column medium-8-12 large-9-12">
                 <article class="docs-content">
                     
-    <header class="page-header">
-        <h2>Labels</h2>
-    </header>
-    <p class="lead">Give your components some labels for easily distinguish them from the others.</p>
+    <h2>Tooltips</h2>
+    <p class="lead">
+        A tooltip is a very simple directive that shows a hint in any element using its
+        <code>title</code> attribute, but in a much more stylish way.
+    </p>
 
-    <section id="default">
-        <h3 docs-heading="options">Label Options</h3>
+    <section id="example">
+        <h3 docs-heading="example">Example</h3>
         <p>
-            Below are exemplified all available options of labels in Frontkit.
-            Switching the styles is as easy as changing the <code>label-*</code> class suffix.
+            To start using the tooltip directive, all you need to do is add the <code>tooltip</code>
+            attribute to any element with a <code>title</code> attribute.
         </p>
 
-        <div class="example">
-            <span class="label label-default">Default</span>
-            <span class="label label-success">Success</span>
-            <span class="label label-info">Info</span>
-            <span class="label label-warning">Warning</span>
-            <span class="label label-danger">Danger</span>
+        <div class="example" ng-init="tooltip = &apos;I\&apos;m a tooltip!&apos;">
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <label class="column small-3-12 medium-4-12 large-3-12">Tooltip content:</label>
+                    <div class="column small-5-12">
+                        <input type="text" class="input" ng-model="tooltip" placeholder="Type...">
+                    </div>
+                </div>
+            </form>
+
+            <p>
+                Lorem ipsum dolor sit amet, consectetur
+                <a href="" title="{{ tooltip }}" tooltip="">adipiscing elit</a>.
+                Curabitur finibus augue eget nibh euismod euismod.
+            </p>
+            
         </div>
-        <pre ng-non-bindable="" class="highlight language-xml"><span class="hljs-comment">&lt;!-- Default label --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;label label-default&quot;</span>&gt;</span>Default<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
-
-<span class="hljs-comment">&lt;!-- Success label --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;label label-success&quot;</span>&gt;</span>Success<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
-
-<span class="hljs-comment">&lt;!-- Info label --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;label label-info&quot;</span>&gt;</span>Info<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
-
-<span class="hljs-comment">&lt;!-- Warning label --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;label label-warning&quot;</span>&gt;</span>Warning<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
-
-<span class="hljs-comment">&lt;!-- Danger label --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;label label-danger&quot;</span>&gt;</span>Danger<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span></pre>
+        <pre ng-non-bindable="" class="highlight language-xml">Lorem ipsum dolor sit amet, consectetur
+<span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">href</span> <span class="hljs-attribute">title</span>=<span class="hljs-value">&quot;{{ tooltip }}&quot;</span> <span class="hljs-attribute">tooltip</span>&gt;</span>adipiscing elit<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>.
+Curabitur finibus augue eget nibh euismod euismod.</pre>
     </section>
 
                 </article>

@@ -358,9 +358,7 @@
 
                         
                     </li>
-                    <li class="nav-item 
-        active
-    ">
+                    <li class="nav-item ">
                         
                         <a href="/docs/components/labels.html">
                         
@@ -372,8 +370,6 @@
                         
                         </a>
 
-                        
-                            <div submenu=""></div>
                         
                     </li>
                     <li class="nav-item ">
@@ -419,7 +415,9 @@
 
                         
                     </li>
-                    <li class="nav-item ">
+                    <li class="nav-item 
+        active
+    ">
                         
                         <a href="/docs/components/overlay.html">
                         
@@ -431,6 +429,8 @@
                         
                         </a>
 
+                        
+                            <div submenu=""></div>
                         
                     </li>
                     <li class="nav-item ">
@@ -470,38 +470,21 @@
                 <article class="docs-content">
                     
     <header class="page-header">
-        <h2>Labels</h2>
+        <h2>Overlay</h2>
     </header>
-    <p class="lead">Give your components some labels for easily distinguish them from the others.</p>
+    <p class="lead">
+        A overlay is a simple, semi-transparent element that covers other elements.
+    </p>
 
-    <section id="default">
-        <h3 docs-heading="options">Label Options</h3>
-        <p>
-            Below are exemplified all available options of labels in Frontkit.
-            Switching the styles is as easy as changing the <code>label-*</code> class suffix.
-        </p>
+    <section id="example">
+        <h3 docs-heading="example">Example</h3>
 
         <div class="example">
-            <span class="label label-default">Default</span>
-            <span class="label label-success">Success</span>
-            <span class="label label-info">Info</span>
-            <span class="label label-warning">Warning</span>
-            <span class="label label-danger">Danger</span>
+            <p>This text is blocked by the overlay element</p>
+            <div class="overlay"></div>
         </div>
-        <pre ng-non-bindable="" class="highlight language-xml"><span class="hljs-comment">&lt;!-- Default label --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;label label-default&quot;</span>&gt;</span>Default<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
-
-<span class="hljs-comment">&lt;!-- Success label --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;label label-success&quot;</span>&gt;</span>Success<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
-
-<span class="hljs-comment">&lt;!-- Info label --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;label label-info&quot;</span>&gt;</span>Info<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
-
-<span class="hljs-comment">&lt;!-- Warning label --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;label label-warning&quot;</span>&gt;</span>Warning<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
-
-<span class="hljs-comment">&lt;!-- Danger label --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;label label-danger&quot;</span>&gt;</span>Danger<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span></pre>
+        <pre ng-non-bindable="" class="highlight language-xml"><span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>This text is blocked by the overlay element<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;overlay&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span></pre>
     </section>
 
                 </article>

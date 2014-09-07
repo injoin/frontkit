@@ -173,6 +173,7 @@ body.home {
    ------- */
 .example {
   position: relative;
+  overflow: hidden;
   margin-bottom: 1.5rem;
   padding: 2.6rem 1rem 0.625rem;
   border: 1px solid #eeeeee;
