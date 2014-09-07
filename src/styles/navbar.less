@@ -110,7 +110,7 @@
   position: fixed;
   left: 0;
   right: 0;
-  z-index: @zindex-navbar-fixed;
+  z-index: @zindex-navbar;
   border-left-width: 0;
   border-right-width: 0;
   border-radius: 0;
@@ -118,6 +118,15 @@
 
 .navbar-fixed-top    { top: 0; }
 .navbar-fixed-bottom { bottom: 0; }
+
+/* Static navbar
+   ------------- */
+.navbar-static {
+  z-index: @zindex-navbar;
+  border-left-width: 0;
+  border-right-width: 0;
+  border-radius: 0;
+}
 
 /* Navbar collapsing
    ----------------- */
