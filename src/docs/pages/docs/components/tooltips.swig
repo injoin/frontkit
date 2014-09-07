@@ -34,9 +34,11 @@
             {% endraw %}
         </div>
         {% highlight xml %}
+            {% raw -%}
             Lorem ipsum dolor sit amet, consectetur
-            <abbr title="I'm a tooltip!" tooltip>adipiscing elit</abbr>.
+            <a href title="{{ tooltip }}" tooltip>adipiscing elit</a>.
             Curabitur finibus augue eget nibh euismod euismod.
+            {% endraw %}
         {% endhighlight %}
     </section>
 {% endblock %}
