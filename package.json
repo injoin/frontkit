@@ -2,7 +2,7 @@
     "title": "Frontkit",
     "description": "The powerful front-end framework from InJoin.",
     "name": "frontkit",
-    "version": "0.2.1",
+    "version": "0.3.0",
     "repository": {
         "type": "git",
         "url": "git://github.com/injoin/frontkit.git"
