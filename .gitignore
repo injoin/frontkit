@@ -11,6 +11,7 @@ test/coverage/
 assets/meta/*.json
 assets/styles/*.css
 src/templates/**/*.js
+*.zip
 
 # Dependencies
 node_modules/
