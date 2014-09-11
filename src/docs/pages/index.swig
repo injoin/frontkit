@@ -15,9 +15,11 @@
     </main>
 
     <footer class="container docs-footer">
-        <iframe src="http://ghbtns.com/github-btn.html?user=injoin&amp;repo=frontkit&amp;type=watch&amp;count=true"
-                style="width: 110px; height: 20px; border: 0; vertical-align: middle"></iframe>
-        <iframe src="http://ghbtns.com/github-btn.html?user=injoin&amp;repo=frontkit&amp;type=fork&amp;count=true"
-                style="width: 95px; height: 20px; border: 0; vertical-align: middle"></iframe>
+        <ul class="list-inline">
+            <li>{{ macros.socialButton( "github-stars" ) }}</li>
+            <li>{{ macros.socialButton( "github-forks" ) }}</li>
+            <li>{{ macros.socialButton( "twitter-tweet" ) }}</li>
+            <li>{{ macros.socialButton( "twitter-follow" ) }}</li>
+        </ul>
     </footer>
 {% endblock %}

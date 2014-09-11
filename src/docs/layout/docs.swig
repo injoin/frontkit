@@ -64,4 +64,21 @@
             </div>
         </div>
     </main>
+
+    <footer class="docs-footer">
+        <div class="container text-center">
+            <ul class="list-inline">
+                <li>{{ macros.socialButton( "github-stars" ) }}</li>
+                <li>{{ macros.socialButton( "github-forks" ) }}</li>
+                <li>{{ macros.socialButton( "twitter-tweet" ) }}</li>
+                <li>{{ macros.socialButton( "twitter-follow" ) }}</li>
+            </ul>
+
+            <p>
+                Frontkit is developed by the
+                <a href="https://github.com/orgs/injoin/people">InJoin core team</a> and
+                licensed under <a href="http://opensource.org/licenses/MIT">MIT</a>.
+            </p>
+        </div>
+    </footer>
 {% endblock %}
