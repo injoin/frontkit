@@ -97,6 +97,11 @@ body.home {
   padding-top: 1.5rem;
   border-top: 2px solid #eeeeee;
 }
+body:not( .home ) .docs-footer {
+  padding: 1.25rem 1rem;
+  font-size: 0.85em;
+  background: #eeeeee;
+}
 /*
  * 1. Ensure that it's visible when focused
  */
@@ -227,6 +232,11 @@ body.home {
   display: inline-block;
   width: 1.5rem;
   text-align: center;
+}
+/* Social Networks
+   ============================================================================================== */
+.social-button {
+  vertical-align: middle;
 }
 /* Helpers
    ============================================================================================== */
