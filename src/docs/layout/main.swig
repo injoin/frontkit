@@ -37,5 +37,6 @@
         <script src="{{ macros.baseUrl( "libs/headroom.js/dist/angular.headroom.js" ) }}"></script>
         <script src="{{ macros.baseUrl( "dist/frontkit-tmpl.js" ) }}"></script>
         <script src="{{ macros.baseUrl( "assets/scripts/docs.js" ) }}"></script>
+        <script src="//platform.twitter.com/widgets.js"></script>
     </body>
 </html>

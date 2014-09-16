@@ -113,6 +113,12 @@ body {
   }
 }
 
+body:not( .home ) .docs-footer {
+  padding: ( @padding-large-y * 2 ) @padding-base-x;
+  font-size: @font-size-small;
+  background: @gray-light-2;
+}
+
 /*
  * 1. Ensure that it's visible when focused
  */
@@ -265,6 +271,12 @@ body {
       text-align: center;
     }
   }
+}
+
+/* Social Networks
+   ============================================================================================== */
+.social-button {
+  vertical-align: middle;
 }
 
 /* Helpers

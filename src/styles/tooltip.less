@@ -4,7 +4,7 @@
 .tooltip {
   position: fixed;
   max-width: @tooltip-max-width;
-  margin-top: @tooltip-arrow-size;
+  margin-top: calc( ~"@{tooltip-arrow-size} + 3px" );
   padding: @padding-small-y @padding-small-x;
   font-size: @font-size-small;
   color: @tooltip-text-color;

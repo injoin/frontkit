@@ -11,10 +11,6 @@ Arrows:
   - chevron-up
   - chevron-down
   - chevron-right
-  - chevron-left-circle
-  - chevron-up-circle
-  - chevron-down-circle
-  - chevron-right-circle
 
 Media:
   - play
@@ -25,22 +21,28 @@ Media:
   - backward
   - forward
   - fast-forward
-  - retract
+  - contract
   - expand
+  - contract2
+  - expand2
   - shuffle
   - crop
   - equalizer
   - volume-mute
-  - volume-down
-  - volume-up
+  - volume-decrease
+  - volume-increase
+  - volume-muted
+  - volume-low
+  - volume-medium
+  - volume-high
   - flip-horizontal
   - flip-vertical
 
 Text Edition:
-  - align-center
-  - align-justify
-  - align-left
-  - align-right
+  - paragraph-center
+  - paragraph-justify
+  - paragraph-left
+  - paragraph-right
   - bold
   - italic
   - underline
@@ -49,42 +51,37 @@ Text Edition:
   - fontcase
   - text-width
   - text-height
-  - subscript
-  - superscript
   - list
-  - list-numeric
-  - indent-left
-  - indent-right
+  - numbered-list
+  - unordered-list
+  - indent-decrease
+  - indent-increase
+  - table
 
 Brands:
-  - evernote
   - facebook
   - facebook-square
   - facebook-circle
+  - linkedin
   - twitter
   - twitter-square
   - twitter-circle
-  - linkedin
   - github
-  - github-square
-  - google
+  - googleplus
+  - googleplus-square
+  - googleplus-circle
   - instagram
   - skype
+  - tumblr
+  - tumblr-square
   - youtube
-  - vk
-
-Currency:
-  - dollar
-  - euro
-  - pound
-  - bitcoin
-  - dollar-square
-  - euro-square
-  - pound-square
-  - bitcoin-square
-  - dollar-circle
-  - euro-circle
-  - pound-circle
-  - bitcoin-circle
+  - pinterest
+  - pinterest-square
+  - soundcloud
+  - soundcloud-square
+  - stackoverflow
+  - feed
+  - feed-square
+  - feed-circle
 
 Others: true

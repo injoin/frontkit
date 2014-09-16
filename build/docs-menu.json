@@ -60,7 +60,10 @@
             },
             "overlay": "Overlay",
             "progress-bars": "Progress Bars",
-            "tooltips": "Tooltips"
+            "tooltips": {
+                "label": "Tooltips",
+                "js": true
+            }
         }
     }
 }
