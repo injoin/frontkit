@@ -114,4 +114,18 @@ describe( "Tooltip Directive", function() {
         });
     });
 
+    // ---------------------------------------------------------------------------------------------
+
+    describe( "on $destroy", function() {
+        beforeEach(function() {
+            this.element.triggerHandler( "mouseenter" );
+            this.clock.tick( 300 );
+            this.element.remove();
+        });
+
+        it( "should hide the tooltip [#64]", function() {
+            expect( this.tooltip[ 0 ].className.split( " " ) ).to.not.contain( "visible" );
+        });
+    });
+
 });

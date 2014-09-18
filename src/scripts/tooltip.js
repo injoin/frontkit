@@ -44,6 +44,13 @@
                                 top: rect.bottom + "px",
                                 left: rect.left + ( rect.width / 2 ) + "px"
                             });
+
+                            // When the element is destroyed, also trigger mouseleave event,
+                            // so the tooltip is surely hidden
+                            element.on( "$destroy", function destroyCb() {
+                                element.triggerHandler( "mouseleave" );
+                                element.off( "$destroy", destroyCb );
+                            });
                         }, 300 );
                     });
 
