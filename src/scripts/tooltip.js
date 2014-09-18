@@ -31,7 +31,10 @@
                             var rect = element[ 0 ].getBoundingClientRect();
                             timeout = null;
 
-                            if ( !text ) {
+                            // If one of these is the case, no tooltip will be shown:
+                            // 1. no text
+                            // 2. no parent element (meaning the element is no longer in the DOM)
+                            if ( !text || !element.parent().length ) {
                                 return;
                             }
 

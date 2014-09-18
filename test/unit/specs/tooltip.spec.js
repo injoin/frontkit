@@ -66,6 +66,14 @@ describe( "Tooltip Directive", function() {
             expect( this.tooltip[ 0 ].className.split( " " ) ).to.not.contain( "visible" );
         });
 
+        it( "should not show the tooltip if element not in the DOM", function() {
+            this.element.remove();
+
+            this.clock.tick( 300 );
+
+            expect( this.tooltip[ 0 ].className.split( " " ) ).to.not.contain( "visible" );
+        });
+
         it( "should set the tooltip content to the title attribute", function() {
             var tooltip = this.tooltip;
 
