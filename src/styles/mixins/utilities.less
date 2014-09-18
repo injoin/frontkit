@@ -54,3 +54,13 @@
 
   .triangle();
 }
+
+// Create @font-face contents
+.font( @name, @url, @style: normal, @weight: normal ) {
+  @font-face {
+    font-family: @name;
+    src: url( @url ) format( "woff" );
+    font-style: @style;
+    font-weight: @weight;
+  }
+}

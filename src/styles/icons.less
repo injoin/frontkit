@@ -1,14 +1,12 @@
-@font-face {
-  font-family: frontkit;
-  src: url( "@{icon-fontpath}/frontkit.woff" ) format( "woff" );
-  font-style: normal;
-  font-weight: normal;
-}
+.font( frontkit, @icon-fontpath );
 
 /*
  * 1. Avoid bad rendering on Webkit
+ * 2. Use better alignment between icon and text
  */
 .@{icon-prefix}:before {
+  position: relative;
+  top: 2px; /* 2 */
   line-height: 1;
   font-family: frontkit;
   font-style: normal;

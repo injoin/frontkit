@@ -66,6 +66,14 @@ describe( "Tooltip Directive", function() {
             expect( this.tooltip[ 0 ].className.split( " " ) ).to.not.contain( "visible" );
         });
 
+        it( "should not show the tooltip if element not in the DOM", function() {
+            this.element.remove();
+
+            this.clock.tick( 300 );
+
+            expect( this.tooltip[ 0 ].className.split( " " ) ).to.not.contain( "visible" );
+        });
+
         it( "should set the tooltip content to the title attribute", function() {
             var tooltip = this.tooltip;
 
@@ -102,6 +110,20 @@ describe( "Tooltip Directive", function() {
             this.clock.tick( 300 );
             this.element.triggerHandler( "mouseleave" );
 
+            expect( this.tooltip[ 0 ].className.split( " " ) ).to.not.contain( "visible" );
+        });
+    });
+
+    // ---------------------------------------------------------------------------------------------
+
+    describe( "on $destroy", function() {
+        beforeEach(function() {
+            this.element.triggerHandler( "mouseenter" );
+            this.clock.tick( 300 );
+            this.element.remove();
+        });
+
+        it( "should hide the tooltip [#64]", function() {
             expect( this.tooltip[ 0 ].className.split( " " ) ).to.not.contain( "visible" );
         });
     });
