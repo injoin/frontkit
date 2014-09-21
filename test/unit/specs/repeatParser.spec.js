@@ -3,7 +3,7 @@ describe( "repeatParser factory", function() {
 
     var repeatParser;
 
-    beforeEach( module( "frontkit.dropdown" ) );
+    beforeEach( module( "frontkit.utils" ) );
     beforeEach( inject(function( $injector ) {
         repeatParser = $injector.get( "repeatParser" );
     }));

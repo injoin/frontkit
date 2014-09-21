@@ -67,6 +67,50 @@
         }
     ]);
 
+    module.service( "repeatParser", function() {
+        var self = this;
+
+        // RegExp directly taken from Angular.js ngRepeat source
+        // https://github.com/angular/angular.js/blob/v1.2.16/src/ng/directive/ngRepeat.js#L211
+        var exprRegex = /^\s*([\s\S]+?)\s+in\s+([\s\S]+?)(?:\s+track\s+by\s+([\s\S]+?))?\s*$/;
+        var itemRegex = /^(?:([\$\w]+)|\(([\$\w]+)\s*,\s*([\$\w]+)\))$/;
+
+        self.parse = function( expr ) {
+            var lhs, rhs, trackBy, key, item;
+            var match = ( expr || "" ).match( exprRegex );
+
+            if ( !match ) {
+                return;
+            }
+
+            lhs = match[ 1 ];
+            rhs = match[ 2 ];
+            trackBy = match[ 3 ];
+
+            match = lhs.match( itemRegex );
+            if ( !match ) {
+                return;
+            }
+
+            item = match[ 3 ] || match[ 1 ];
+            key = match[ 2 ];
+
+            return {
+                key: key,
+                item: item,
+                expr: rhs,
+                trackBy: trackBy
+            };
+        };
+
+        self.toNgRepeat = function( obj ) {
+            var lhs = obj.key ? "(" + obj.key + ", " + obj.item + ")" : obj.item;
+            var trackBy = obj.trackBy ? " track by " + obj.trackBy : "";
+
+            return lhs + " in " + obj.expr + trackBy;
+        };
+    });
+
     // Extensions to jQLite
     $.prototype.querySelector = function( str ) {
         return $( this[ 0 ].querySelector( str ) );
