@@ -3,6 +3,7 @@
 
     var $ = ng.element;
     var module = ng.module( "frontkit.dropdown", [
+        "frontkit.position",
         "frontkit.utils"
     ]);
 
@@ -12,7 +13,8 @@
 
     module.directive( "dropdown", [
         "$document",
-        function( $document ) {
+        "$$position",
+        function( $document, $$position ) {
             var definition = {};
 
             definition.restrict = "EA";
@@ -67,14 +69,22 @@
                     var clone = $( "<div>" ).append( children );
                     var items = clone.querySelector( ".dropdown-item" );
                     var optgroups = clone.querySelector( ".dropdown-optgroups" );
+                    var container = element.querySelector( ".dropdown-container" );
 
                     if ( items.length ) {
-                        element.querySelector( ".dropdown-container" ).prepend( items );
+                        container.prepend( items );
                     }
 
                     if ( optgroups.length ) {
                         element.querySelector( "dropdown-options" ).replaceWith( optgroups );
                     }
+
+                    $$position( optgroups, {
+                        x: "center",
+                        y: "bottom",
+                        copyWidth: true,
+                        target: container
+                    });
                 });
 
                 // DOM Events
