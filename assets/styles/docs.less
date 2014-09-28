@@ -11,6 +11,8 @@
 @theme-base-color:          #00B5AD;
 @icon-demo-size:            1.5rem;
 
+@home-fixed-height:         640px;
+
 // Frontkit Overrides
 @navbar-bg:                 @theme-base-color;
 @navbar-brand-color:        #fff;
@@ -41,33 +43,51 @@ body {
     line-height: 1;
     font-size: 5rem;
     font-weight: bold;
-    text-shadow: 0px 3px 10px rgba( 0, 0, 0, .5 );
+    text-shadow: 0px 3px 10px fade( #000, 50% );
+  }
+
+  .docs-version {
+    color: inherit;
+    font-size: 1rem;
+    font-weight: inherit;
+    text-shadow: none;
+    opacity: .8;
   }
 }
 
 .home {
   .docs-master-head {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    .transform( translate( -50%, -50% ) );
+    @media ( max-height: ( @home-fixed-height - 1px ) ) {
+      margin-top: 70px;
+      margin-bottom: 70px;
+    }
+
+    @media ( min-height: @home-fixed-height ) {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      .transform( translate( -50%, -50% ) );
+    }
   }
 
   .docs-footer {
-    position: absolute;
-    left: 50%;
-    bottom: 0;
-    border-top: 1px solid rgba( 255, 255, 255, .2 );
     padding-top: @padding-large-y;
     padding-bottom: @padding-large-y;
-    .transform( translateX( -50% ) );
+    border-top: 1px solid fade( #fff, 20% );
+
+    @media ( min-height: @home-fixed-height ) {
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      .transform( translateX( -50% ) );
+    }
   }
 }
 
 .docs-navbar {
   border-color: @navbar-border;
   background: @navbar-bg;
-  .box-shadow( 0 1px 0 rgba( 255, 255, 255, .5 ) );
+  .box-shadow( 0 1px 0 fade( #fff, 50% ) );
 
   .navbar-brand {
     color: @navbar-brand-color;
