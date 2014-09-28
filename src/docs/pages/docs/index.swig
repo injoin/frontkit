@@ -25,7 +25,7 @@
                     Compiled and minified CSS, JavaScript and font files.
                     No docs or source files are included.
                 </p>
-                <a href="https://github.com/injoin/frontkit/releases/{{ pkg.version }}/frontkit.zip"
+                <a href="https://github.com/injoin/frontkit/releases/download/{{ pkg.version }}/frontkit.zip"
                    class="btn btn-primary">
                     Download package
                 </a>
@@ -41,7 +41,7 @@
                     files for LESS and JavaScript.
                     Useful for customizing sources before building.
                 </p>
-                <a href="https://github.com/injoin/frontkit/releases/{{ pkg.version }}/frontkit.dev.zip"
+                <a href="https://github.com/injoin/frontkit/releases/download/{{ pkg.version }}/frontkit.dev.zip"
                    class="btn btn-primary">
                     Download package
                 </a>
