@@ -4,7 +4,11 @@
 
 {% block page %}
     <main class="container docs-master-head">
-        <h1>{{ pkg.title  }}</h1>
+        <h1>
+            {{ pkg.title  }}
+
+            <span class="docs-version">v{{ pkg.version }}</span>
+        </h1>
         <p class="lead">{{ pkg.description }}</p>
         <div>
             <a href="{{ macros.siteUrl( "docs/index" ) }}#download"

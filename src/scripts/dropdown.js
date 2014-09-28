@@ -3,6 +3,7 @@
 
     var $ = ng.element;
     var module = ng.module( "frontkit.dropdown", [
+        "frontkit.position",
         "frontkit.utils"
     ]);
 
@@ -12,7 +13,8 @@
 
     module.directive( "dropdown", [
         "$document",
-        function( $document ) {
+        "$$position",
+        function( $document, $$position ) {
             var definition = {};
 
             definition.restrict = "EA";
@@ -67,14 +69,22 @@
                     var clone = $( "<div>" ).append( children );
                     var items = clone.querySelector( ".dropdown-item" );
                     var optgroups = clone.querySelector( ".dropdown-optgroups" );
+                    var container = element.querySelector( ".dropdown-container" );
 
                     if ( items.length ) {
-                        element.querySelector( ".dropdown-container" ).prepend( items );
+                        container.prepend( items );
                     }
 
                     if ( optgroups.length ) {
                         element.querySelector( "dropdown-options" ).replaceWith( optgroups );
                     }
+
+                    $$position( optgroups, {
+                        x: "center",
+                        y: "bottom",
+                        copyWidth: true,
+                        target: container
+                    });
                 });
 
                 // DOM Events
@@ -661,49 +671,5 @@
             }
         }
     ]);
-
-    module.service( "repeatParser", function() {
-        var self = this;
-
-        // RegExp directly taken from Angular.js ngRepeat source
-        // https://github.com/angular/angular.js/blob/v1.2.16/src/ng/directive/ngRepeat.js#L211
-        var exprRegex = /^\s*([\s\S]+?)\s+in\s+([\s\S]+?)(?:\s+track\s+by\s+([\s\S]+?))?\s*$/;
-        var itemRegex = /^(?:([\$\w]+)|\(([\$\w]+)\s*,\s*([\$\w]+)\))$/;
-
-        self.parse = function( expr ) {
-            var lhs, rhs, trackBy, key, item;
-            var match = ( expr || "" ).match( exprRegex );
-
-            if ( !match ) {
-                return;
-            }
-
-            lhs = match[ 1 ];
-            rhs = match[ 2 ];
-            trackBy = match[ 3 ];
-
-            match = lhs.match( itemRegex );
-            if ( !match ) {
-                return;
-            }
-
-            item = match[ 3 ] || match[ 1 ];
-            key = match[ 2 ];
-
-            return {
-                key: key,
-                item: item,
-                expr: rhs,
-                trackBy: trackBy
-            };
-        };
-
-        self.toNgRepeat = function( obj ) {
-            var lhs = obj.key ? "(" + obj.key + ", " + obj.item + ")" : obj.item;
-            var trackBy = obj.trackBy ? " track by " + obj.trackBy : "";
-
-            return lhs + " in " + obj.expr + trackBy;
-        };
-    });
 
 }( angular );
