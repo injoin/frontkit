@@ -4,5 +4,6 @@
     "dependencies": {
         "angular": "~1.2.10"
     },
-    "homepage": "http://frontkit.injoin.io"
+    "homepage": "http://frontkit.injoin.io",
+    "ignore": []
 }
